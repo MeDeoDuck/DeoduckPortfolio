@@ -29,7 +29,7 @@ export default function ContactSection() {
         <div className="flex flex-col items-center gap-4 sm:flex-row sm:gap-6">
           <a
             href={`mailto:${t.contact.email}`}
-            className="flex items-center gap-2 rounded-full border border-mist/40 px-6 py-3 font-mono text-xs tracking-wider text-mist transition-colors duration-200 hover:border-mist hover:bg-mist/5 md:text-sm"
+            className="pressable hover-lift flex items-center gap-2 rounded-full border border-mist/40 px-6 py-3 font-mono text-xs tracking-wider text-mist hover:border-mist md:text-sm"
           >
             <Mail size={16} />
             {t.contact.email}
@@ -38,7 +38,7 @@ export default function ContactSection() {
             href={t.contact.github}
             target="_blank"
             rel="noreferrer"
-            className="flex items-center gap-2 rounded-full border border-mist/40 px-6 py-3 font-mono text-xs tracking-wider text-mist transition-colors duration-200 hover:border-mist hover:bg-mist/5 md:text-sm"
+            className="pressable hover-lift flex items-center gap-2 rounded-full border border-mist/40 px-6 py-3 font-mono text-xs tracking-wider text-mist hover:border-mist md:text-sm"
           >
             <Github size={16} />
             github.com/MeDeoDuck

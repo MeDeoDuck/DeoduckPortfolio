@@ -10,8 +10,8 @@ export default {
         frost: '#BBCCD7',
       },
       fontFamily: {
-        display: ['Kanit', 'Pretendard', 'sans-serif'],
-        sans: ['Pretendard', 'Kanit', 'sans-serif'],
+        display: ['Archivo', 'Pretendard Variable', 'Pretendard', 'sans-serif'],
+        sans: ['Pretendard Variable', 'Pretendard', 'Archivo', 'sans-serif'],
         mono: ['"JetBrains Mono"', 'ui-monospace', 'monospace'],
       },
     },

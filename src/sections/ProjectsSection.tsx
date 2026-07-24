@@ -1,5 +1,5 @@
 import { useRef } from 'react'
-import { motion, useScroll, useTransform } from 'framer-motion'
+import { motion, useReducedMotion, useScroll, useTransform } from 'framer-motion'
 import { ArrowUpRight } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import FadeIn from '../components/FadeIn'
@@ -48,7 +48,8 @@ export default function ProjectsSection() {
               <li className="border-t border-white/10">
                 <Link
                   to={`/project/${project.id}`}
-                  className="group flex flex-col gap-2 py-6 transition-colors duration-200 hover:bg-white/[0.03] sm:flex-row sm:items-baseline sm:gap-6 md:py-7"
+                  className="group pressable flex flex-col gap-2 py-6 sm:flex-row sm:items-baseline sm:gap-6 md:py-7"
+                  style={{ transition: 'transform 160ms var(--ease-out), background-color 200ms ease' }}
                 >
                   <span className="font-mono text-xs text-mist/35">{project.no}</span>
                   <span className="min-w-[190px] font-display text-lg font-medium uppercase tracking-wide text-mist md:text-xl">
@@ -83,6 +84,7 @@ function StackCard({
   viewDetail: string
 }) {
   const ref = useRef<HTMLDivElement>(null)
+  const reduce = useReducedMotion()
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ['start end', 'start start'],
@@ -94,7 +96,7 @@ function StackCard({
   return (
     <div ref={ref} className="sticky h-[85vh]" style={{ top: `${index * 28}px` }}>
       <motion.article
-        style={{ scale }}
+        style={{ scale: reduce ? 1 : scale }}
         className="sticky top-24 flex flex-col gap-6 rounded-[40px] border-2 border-mist/70 bg-ink p-4 sm:rounded-[50px] sm:p-6 md:top-32 md:rounded-[60px] md:p-8"
       >
         <header className="flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
@@ -123,7 +125,8 @@ function StackCard({
 
           <Link
             to={`/project/${project.id}`}
-            className="shrink-0 rounded-full border-2 border-mist px-7 py-2.5 text-center text-xs font-medium uppercase tracking-widest text-mist transition-colors duration-200 hover:bg-mist/10 sm:px-9 sm:py-3 sm:text-sm"
+            className="pressable shrink-0 rounded-full border-2 border-mist px-7 py-2.5 text-center text-xs font-medium uppercase tracking-widest text-mist sm:px-9 sm:py-3 sm:text-sm"
+            style={{ transition: 'transform 160ms var(--ease-out), background-color 200ms ease' }}
           >
             {viewDetail}
           </Link>

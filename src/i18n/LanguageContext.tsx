@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useMemo, useState } from 'react'
+import { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react'
 import type { ReactNode } from 'react'
 import { content } from './content'
 import type { Content, Lang } from './types'
@@ -29,14 +29,30 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
     document.documentElement.lang = lang
   }, [lang])
 
+  /** 언어가 바뀌는 순간만 짧게 dip 시킨다. CSS가 이 속성을 보고 애니메이션을 건다. */
+  const runSwap = useCallback(() => {
+    const root = document.documentElement
+    root.dataset.swapping = '1'
+    window.setTimeout(() => {
+      delete root.dataset.swapping
+    }, 220)
+  }, [])
+
   const value = useMemo<LanguageValue>(
     () => ({
       lang,
-      setLang,
-      toggle: () => setLang((prev) => (prev === 'ko' ? 'en' : 'ko')),
+      setLang: (next: Lang) => {
+        if (next === lang) return
+        runSwap()
+        setLang(next)
+      },
+      toggle: () => {
+        runSwap()
+        setLang((prev) => (prev === 'ko' ? 'en' : 'ko'))
+      },
       t: content[lang],
     }),
-    [lang],
+    [lang, runSwap],
   )
 
   return <LanguageContext.Provider value={value}>{children}</LanguageContext.Provider>

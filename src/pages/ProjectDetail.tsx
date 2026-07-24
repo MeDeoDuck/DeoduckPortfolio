@@ -114,7 +114,8 @@ export default function ProjectDetail() {
                   href={l.href}
                   target="_blank"
                   rel="noreferrer"
-                  className="group flex items-center gap-2 rounded-full border-2 border-mist px-6 py-2.5 text-xs font-medium uppercase tracking-widest text-mist transition-colors duration-200 hover:bg-mist/10 md:text-sm"
+                  className="group pressable flex items-center gap-2 rounded-full border-2 border-mist px-6 py-2.5 text-xs font-medium uppercase tracking-widest text-mist md:text-sm"
+                  style={{ transition: 'transform 160ms var(--ease-out), background-color 200ms ease' }}
                 >
                   {l.label}
                   <ArrowUpRight
@@ -169,7 +170,7 @@ export default function ProjectDetail() {
         <div className="mt-20 border-t border-white/10 pt-8">
           <Link
             to="/"
-            className="font-mono text-xs uppercase tracking-[0.25em] text-mist/50 transition-colors duration-200 hover:text-mist"
+            className="pressable inline-block font-mono text-xs uppercase tracking-[0.25em] text-mist/50 hover:text-mist"
           >
             {t.detailLabels.back}
           </Link>

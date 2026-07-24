@@ -17,20 +17,16 @@ export default function Navbar({ variant = 'home' }: Props) {
   ]
 
   return (
-    <nav className="flex w-full items-center justify-between px-6 pt-6 text-sm font-medium uppercase tracking-wider text-mist md:px-10 md:pt-8 md:text-lg lg:text-[1.4rem]">
-      <div className="flex items-center gap-5 md:gap-8">
+    <nav className="flex w-full items-center justify-between gap-4 px-6 pt-6 text-sm font-medium uppercase tracking-wider text-mist md:px-10 md:pt-8 md:text-lg lg:text-[1.35rem]">
+      <div className="flex items-center gap-4 md:gap-8">
         {variant === 'home' ? (
           links.map((l) => (
-            <a
-              key={l.href}
-              href={l.href}
-              className="transition-opacity duration-200 hover:opacity-70"
-            >
+            <a key={l.href} href={l.href} className="pressable hover-dim">
               {l.label}
             </a>
           ))
         ) : (
-          <Link to="/" className="transition-opacity duration-200 hover:opacity-70">
+          <Link to="/" className="pressable hover-dim">
             {t.detailLabels.back}
           </Link>
         )}
@@ -39,8 +35,9 @@ export default function Navbar({ variant = 'home' }: Props) {
       <button
         type="button"
         onClick={toggle}
-        aria-label="Toggle language"
-        className="flex items-center gap-1 rounded-full border border-mist/40 px-3 py-1 font-mono text-[0.7rem] tracking-widest transition-colors duration-200 hover:border-mist md:text-xs"
+        aria-label={lang === 'ko' ? 'Switch to English' : '한국어로 전환'}
+        className="pressable flex shrink-0 items-center gap-1 rounded-full border border-mist/40 px-3 py-1 font-mono text-[0.7rem] tracking-widest md:text-xs"
+        style={{ transition: 'transform 160ms var(--ease-out), border-color 200ms ease' }}
       >
         <span className={lang === 'ko' ? 'text-mist' : 'text-mist/40'}>KO</span>
         <span className="text-mist/30">/</span>

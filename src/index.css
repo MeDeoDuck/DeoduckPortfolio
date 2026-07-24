@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  /* 기본 CSS 이징은 힘이 약해서 의도가 안 읽힌다. 강한 커브를 쓴다. */
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+}
+
 *,
 *::before,
 *::after {
@@ -21,14 +27,16 @@ html {
 }
 
 body {
-  font-family: 'Pretendard Variable', Pretendard, 'Kanit', sans-serif;
+  font-family: 'Pretendard Variable', Pretendard, 'Archivo', sans-serif;
   -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
   color: #d7e2ea;
 }
 
 /* 영문 디스플레이 타이포 */
 .font-display {
-  font-family: 'Kanit', 'Pretendard Variable', Pretendard, sans-serif;
+  font-family: 'Archivo', 'Pretendard Variable', Pretendard, sans-serif;
+  font-stretch: 112%;
 }
 
 /* 거대 제목 그라디언트 */
@@ -50,6 +58,80 @@ body {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
+/* ---------- 인터랙션 ---------- */
+
+/* 누르면 반응한다. 모든 눌리는 요소에 붙인다. */
+.pressable {
+  transition: transform 160ms var(--ease-out);
+}
+.pressable:active {
+  transform: scale(0.97);
+}
+
+/* 터치 기기에서 탭이 hover로 오인되지 않게 잠근다. */
+@media (hover: hover) and (pointer: fine) {
+  .hover-lift {
+    transition: transform 200ms var(--ease-out), opacity 200ms ease;
+  }
+  .hover-lift:hover {
+    transform: translateY(-2px);
+  }
+  .hover-dim:hover {
+    opacity: 0.7;
+  }
+}
+.hover-dim {
+  transition: opacity 200ms ease;
+}
+
+:focus-visible {
+  outline: 2px solid #bbccd7;
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+/* ---------- 진입 모션 (CSS = 메인 스레드 밖) ---------- */
+/* 페이지 로드 중에는 JS 애니메이션이 프레임을 떨어뜨린다. 히어로는 CSS로 돌린다. */
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 26px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes fade-only {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.rise {
+  animation: rise-in 620ms var(--ease-out) both;
+}
+
+/* 언어 전환: 리마운트 없이 짧은 dip으로 교체 순간을 가린다.
+   전체 리마운트를 하면 스크롤 리빌이 전부 다시 돌아 새로고침처럼 보인다.
+   full-page blur는 비싸서 opacity만 쓴다(합성 단계에서 처리). */
+@keyframes lang-dip {
+  from {
+    opacity: 0.45;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+html[data-swapping='1'] #root {
+  animation: lang-dip 200ms var(--ease-out) both;
+}
+
 ::selection {
   background: #bbccd7;
   color: #0c0c0c;
@@ -69,8 +151,22 @@ body {
   background: #3b4048;
 }
 
+/* ---------- 모션 민감 사용자 ---------- */
+/* 움직임은 없애되 opacity는 남긴다. 전부 끄면 상태 변화가 안 읽힌다. */
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
+  }
+  .rise {
+    animation: fade-only 220ms ease both;
+  }
+  html[data-swapping='1'] #root {
+    animation: none;
+  }
+  .pressable:active {
+    transform: none;
+  }
+  .hover-lift:hover {
+    transform: none;
   }
 }

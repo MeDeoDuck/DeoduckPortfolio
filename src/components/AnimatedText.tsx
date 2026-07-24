@@ -1,5 +1,5 @@
 import { useRef } from 'react'
-import { motion, useScroll, useTransform } from 'framer-motion'
+import { motion, useReducedMotion, useScroll, useTransform } from 'framer-motion'
 
 interface Props {
   text: string
@@ -9,10 +9,20 @@ interface Props {
 /** 스크롤 진행에 따라 글자가 하나씩 또렷해진다. */
 export default function AnimatedText({ text, className }: Props) {
   const ref = useRef<HTMLParagraphElement>(null)
+  const reduce = useReducedMotion()
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ['start 0.8', 'end 0.2'],
   })
+
+  // 모션 민감 사용자에게 글자 단위 애니메이션은 과하다. 그냥 읽히게 둔다.
+  if (reduce) {
+    return (
+      <p ref={ref} className={className}>
+        {text}
+      </p>
+    )
+  }
 
   const chars = Array.from(text)
 
