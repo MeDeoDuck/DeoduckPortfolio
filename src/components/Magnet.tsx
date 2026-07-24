@@ -1,5 +1,6 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef } from 'react'
 import type { ReactNode } from 'react'
+import { motion, useMotionValue, useReducedMotion, useSpring } from 'framer-motion'
 
 interface Props {
   children: ReactNode
@@ -10,55 +11,51 @@ interface Props {
   className?: string
 }
 
-export default function Magnet({
-  children,
-  padding = 150,
-  strength = 3,
-  className,
-}: Props) {
+/**
+ * 마우스 위치를 그대로 따라가면 기계적으로 느껴진다.
+ * 스프링으로 보간해 관성이 생기게 한다. 장식용 모션이라 이 정도가 맞다.
+ * 임계 감쇠에 가깝게 둬서 튀지 않는다.
+ */
+export default function Magnet({ children, padding = 150, strength = 3, className }: Props) {
   const ref = useRef<HTMLDivElement>(null)
-  const [offset, setOffset] = useState({ x: 0, y: 0 })
-  const [active, setActive] = useState(false)
+  const reduce = useReducedMotion()
+
+  const rawX = useMotionValue(0)
+  const rawY = useMotionValue(0)
+  const x = useSpring(rawX, { stiffness: 140, damping: 20, mass: 0.6 })
+  const y = useSpring(rawY, { stiffness: 140, damping: 20, mass: 0.6 })
 
   useEffect(() => {
-    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches
     if (reduce) return
 
     const onMove = (e: MouseEvent) => {
       const el = ref.current
       if (!el) return
       const rect = el.getBoundingClientRect()
-      const cx = rect.left + rect.width / 2
-      const cy = rect.top + rect.height / 2
-      const dx = e.clientX - cx
-      const dy = e.clientY - cy
+      const dx = e.clientX - (rect.left + rect.width / 2)
+      const dy = e.clientY - (rect.top + rect.height / 2)
       const within =
         Math.abs(dx) < rect.width / 2 + padding && Math.abs(dy) < rect.height / 2 + padding
 
-      if (within) {
-        setActive(true)
-        setOffset({ x: dx / strength, y: dy / strength })
-      } else {
-        setActive(false)
-        setOffset({ x: 0, y: 0 })
-      }
+      rawX.set(within ? dx / strength : 0)
+      rawY.set(within ? dy / strength : 0)
     }
 
     window.addEventListener('mousemove', onMove, { passive: true })
     return () => window.removeEventListener('mousemove', onMove)
-  }, [padding, strength])
+  }, [padding, strength, reduce, rawX, rawY])
+
+  if (reduce) {
+    return (
+      <div ref={ref} className={className}>
+        {children}
+      </div>
+    )
+  }
 
   return (
-    <div
-      ref={ref}
-      className={className}
-      style={{
-        transform: `translate3d(${offset.x}px, ${offset.y}px, 0)`,
-        transition: active ? 'transform 0.3s ease-out' : 'transform 0.6s ease-in-out',
-        willChange: 'transform',
-      }}
-    >
+    <motion.div ref={ref} className={className} style={{ x, y, willChange: 'transform' }}>
       {children}
-    </div>
+    </motion.div>
   )
 }

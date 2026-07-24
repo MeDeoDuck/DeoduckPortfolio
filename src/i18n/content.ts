@@ -6,6 +6,8 @@ export const content: Record<Lang, Content> = {
       about: '소개',
       capabilities: '역량',
       projects: '프로젝트',
+      experience: '경력',
+      awards: '수상',
       contact: '연락',
     },
     hero: {
@@ -391,6 +393,75 @@ export const content: Record<Lang, Content> = {
         },
       ],
     },
+    experience: {
+      heading: '경력 · 학력',
+      items: [
+        {
+          period: '2026.07 ~ 현재',
+          title: '일학습병행 인턴',
+          org: '웨이버스 (공간정보 · GeoAI 플랫폼)',
+        },
+        {
+          period: '2025.03 ~ 2026.08',
+          title: '학부연구생',
+          org: '인하대학교',
+          children: [
+            { label: '금융인공지능 연구실', period: '2025.12 ~ 2026.08' },
+            { label: '비전 · 학습 연구실', period: '2025.06 ~ 2025.10' },
+            { label: '자율시스템 연구실', period: '2025.03 ~ 2025.06' },
+          ],
+        },
+        {
+          period: '2026.01 ~ 2026.02',
+          title: 'LLM Compression 트랙 수료',
+          org: 'LG Aimers 8기 (LG AI 교육 프로그램)',
+        },
+        {
+          period: '2021 ~ 현재',
+          title: '인공지능공학 학사',
+          org: '인하대학교',
+        },
+        {
+          period: '2025.03 ~ 현재',
+          title: '부회장 · 멤버',
+          org: 'LinkUs (AI talent network)',
+          note:
+            '리더십 팀에서 유일한 엔지니어로, 커리어 네트워킹 모임에서 AI talent network로의 리브랜딩을 맡고 있습니다.',
+          children: [
+            { label: '20기 부회장', period: '2026.07 ~ 현재' },
+            { label: '19기 멤버', period: '2025.03 ~ 2025.06' },
+          ],
+        },
+        {
+          period: '2025.03 ~ 2026.02',
+          title: '학과 서포터즈',
+          org: '인하대학교 미래자동차공학과',
+        },
+      ],
+    },
+    awards: {
+      heading: '수상 · 자격',
+      items: [
+        {
+          year: '2026',
+          title: '캡스톤 디자인 3등',
+          org: '인하대학교 소프트웨어융합대학장상',
+        },
+        {
+          year: '2026',
+          title: 'LinkUs 동아리 활동 대상',
+        },
+        {
+          year: '2024',
+          title: '인컴톤 대상',
+          org: 'LINK 3.0 사업단장상',
+        },
+      ],
+      certificationsLabel: '자격',
+      certifications: ['OPIc IH (영어)', 'SQLD'],
+      copyrightsLabel: '저작권 등록',
+      copyrights: ['모아봄 (Moabom)', 'LST 기반 Stable Diffusion 학습 방법'],
+    },
     contact: {
       heading: '연락',
       body:
@@ -413,6 +484,8 @@ export const content: Record<Lang, Content> = {
       about: 'About',
       capabilities: 'Capabilities',
       projects: 'Projects',
+      experience: 'Experience',
+      awards: 'Awards',
       contact: 'Contact',
     },
     hero: {
@@ -801,6 +874,75 @@ export const content: Record<Lang, Content> = {
           featured: false,
         },
       ],
+    },
+    experience: {
+      heading: 'Experience',
+      items: [
+        {
+          period: '2026.07 ~ Present',
+          title: 'Work-study program intern',
+          org: 'WAVUS (geospatial and GeoAI platform)',
+        },
+        {
+          period: '2025.03 ~ 2026.08',
+          title: 'Undergraduate researcher',
+          org: 'Inha University',
+          children: [
+            { label: 'Financial AI Lab', period: '2025.12 ~ 2026.08' },
+            { label: 'Vision and Learning Lab', period: '2025.06 ~ 2025.10' },
+            { label: 'Autonomous Systems Lab', period: '2025.03 ~ 2025.06' },
+          ],
+        },
+        {
+          period: '2026.01 ~ 2026.02',
+          title: 'Completed the LLM Compression track',
+          org: 'LG Aimers 8th (LG AI education program)',
+        },
+        {
+          period: '2021 ~ Present',
+          title: 'BS in AI Engineering',
+          org: 'Inha University',
+        },
+        {
+          period: '2025.03 ~ Present',
+          title: 'Vice president, member',
+          org: 'LinkUs (AI talent network)',
+          note:
+            'The only engineer on the leadership team, currently leading the rebrand from a career networking club into an AI talent network.',
+          children: [
+            { label: 'Vice president, 20th cohort', period: '2026.07 ~ Present' },
+            { label: 'Member, 19th cohort', period: '2025.03 ~ 2025.06' },
+          ],
+        },
+        {
+          period: '2025.03 ~ 2026.02',
+          title: 'Department supporter',
+          org: 'Department of Future Vehicle Engineering, Inha University',
+        },
+      ],
+    },
+    awards: {
+      heading: 'Awards',
+      items: [
+        {
+          year: '2026',
+          title: 'Capstone Design, 3rd place',
+          org: 'Awarded by the Dean of the College of Software Convergence, Inha University',
+        },
+        {
+          year: '2026',
+          title: 'LinkUs, Grand Prize for club activity',
+        },
+        {
+          year: '2024',
+          title: 'Incomthon, Grand Prize',
+          org: 'Awarded by the Director of the LINK 3.0 Program',
+        },
+      ],
+      certificationsLabel: 'Certifications',
+      certifications: ['OPIc IH (English)', 'SQLD'],
+      copyrightsLabel: 'Registered software copyrights',
+      copyrights: ['Moabom', 'Stable Diffusion training method based on LST'],
     },
     contact: {
       heading: 'Contact',

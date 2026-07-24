@@ -1,3 +1,5 @@
+import { useEffect, useState } from 'react'
+import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { useLang } from '../i18n/LanguageContext'
 
@@ -7,42 +9,73 @@ interface Props {
 }
 
 export default function Navbar({ variant = 'home' }: Props) {
-  const { t, lang, toggle } = useLang()
+  const { t, lang, setLang } = useLang()
+  const [scrolled, setScrolled] = useState(false)
+
+  // 크롬은 처음엔 투명하다가, 내용이 밑으로 흘러들어올 때 재질이 생긴다.
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 24)
+    onScroll()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
 
   const links = [
     { href: '#about', label: t.nav.about },
     { href: '#capabilities', label: t.nav.capabilities },
     { href: '#projects', label: t.nav.projects },
+    { href: '#experience', label: t.nav.experience },
+    { href: '#awards', label: t.nav.awards },
     { href: '#contact', label: t.nav.contact },
   ]
 
   return (
-    <nav className="flex w-full items-center justify-between gap-4 px-6 pt-6 text-sm font-medium uppercase tracking-wider text-mist md:px-10 md:pt-8 md:text-lg lg:text-[1.35rem]">
-      <div className="flex items-center gap-4 md:gap-8">
-        {variant === 'home' ? (
-          links.map((l) => (
-            <a key={l.href} href={l.href} className="pressable hover-dim">
-              {l.label}
-            </a>
-          ))
-        ) : (
-          <Link to="/" className="pressable hover-dim">
-            {t.detailLabels.back}
-          </Link>
-        )}
-      </div>
+    <header
+      className={`fixed inset-x-0 top-0 z-50 ${scrolled ? 'material' : ''}`}
+      style={{ transition: 'background-color 300ms ease, backdrop-filter 300ms ease' }}
+    >
+      <nav className="mx-auto flex w-full max-w-[1400px] items-center justify-between gap-4 px-5 py-3.5 md:px-10 md:py-4">
+        <div className="flex min-w-0 items-center gap-3 overflow-x-auto md:gap-7">
+          {variant === 'home' ? (
+            links.map((l) => (
+              <a
+                key={l.href}
+                href={l.href}
+                className="pressable hover-dim shrink-0 text-[0.8rem] text-mist/75 md:text-sm"
+              >
+                {l.label}
+              </a>
+            ))
+          ) : (
+            <Link to="/" className="pressable hover-dim text-[0.8rem] text-mist/75 md:text-sm">
+              {t.detailLabels.back}
+            </Link>
+          )}
+        </div>
 
-      <button
-        type="button"
-        onClick={toggle}
-        aria-label={lang === 'ko' ? 'Switch to English' : '한국어로 전환'}
-        className="pressable flex shrink-0 items-center gap-1 rounded-full border border-mist/40 px-3 py-1 font-mono text-[0.7rem] tracking-widest md:text-xs"
-        style={{ transition: 'transform 160ms var(--ease-out), border-color 200ms ease' }}
-      >
-        <span className={lang === 'ko' ? 'text-mist' : 'text-mist/40'}>KO</span>
-        <span className="text-mist/30">/</span>
-        <span className={lang === 'en' ? 'text-mist' : 'text-mist/40'}>EN</span>
-      </button>
-    </nav>
+        <div className="flex shrink-0 items-center rounded-full border border-mist/15 p-0.5 font-mono text-[0.65rem] tracking-widest">
+          {(['ko', 'en'] as const).map((code) => (
+            <button
+              key={code}
+              type="button"
+              onClick={() => setLang(code)}
+              aria-pressed={lang === code}
+              className="relative rounded-full px-2.5 py-1"
+            >
+              {lang === code && (
+                <motion.span
+                  layoutId="lang-pill"
+                  className="absolute inset-0 rounded-full bg-mist/12"
+                  transition={{ type: 'spring', bounce: 0, duration: 0.35 }}
+                />
+              )}
+              <span className={`relative ${lang === code ? 'text-mist' : 'text-mist/40'}`}>
+                {code.toUpperCase()}
+              </span>
+            </button>
+          ))}
+        </div>
+      </nav>
+    </header>
   )
 }

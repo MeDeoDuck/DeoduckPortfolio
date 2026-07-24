@@ -4,6 +4,7 @@ interface Props {
   className?: string
 }
 
+/** 강조는 한 가지 색으로만 한다. 그라디언트를 여러 색으로 채우면 나머지가 다 흐려진다. */
 export default function ContactButton({
   label,
   href = 'mailto:seankim0824@gmail.com',
@@ -12,14 +13,8 @@ export default function ContactButton({
   return (
     <a
       href={href}
-      className={`pressable hover-lift inline-block rounded-full px-8 py-3 text-xs font-medium uppercase tracking-widest text-white sm:px-10 sm:py-3.5 sm:text-sm md:px-12 md:py-4 md:text-base ${className ?? ''}`}
-      style={{
-        background:
-          'linear-gradient(123deg, #18011F 7%, #B600A8 37%, #7621B0 72%, #BE4C00 100%)',
-        boxShadow: '0px 4px 4px rgba(181, 1, 167, 0.25), 4px 4px 12px #7721B1 inset',
-        outline: '2px solid #fff',
-        outlineOffset: '-3px',
-      }}
+      className={`pressable hover-lift inline-block rounded-full bg-accent px-7 py-3 text-xs font-medium tracking-wide text-white sm:px-9 sm:py-3.5 sm:text-sm ${className ?? ''}`}
+      style={{ boxShadow: '0 6px 20px rgb(10 132 255 / 0.28)' }}
     >
       {label}
     </a>

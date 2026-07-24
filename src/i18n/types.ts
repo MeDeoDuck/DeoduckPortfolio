@@ -49,11 +49,34 @@ export interface Project {
   featured: boolean
 }
 
+export interface TimelineItem {
+  /** 예: "2026.07 ~ 현재". 자료 없으면 빈 문자열 */
+  period: string
+  /** 직함·역할. 예: "일학습병행 인턴" */
+  title: string
+  /** 소속. 예: "웨이버스 (공간정보·GeoAI 플랫폼)" */
+  org: string
+  /** 한 줄 보충 설명. 없으면 생략 */
+  note?: string
+  /** 하위 항목(연구실 3곳 등). 없으면 생략 */
+  children?: Array<{ label: string; period: string }>
+}
+
+export interface AwardItem {
+  /** 예: "2026" */
+  year: string
+  title: string
+  /** 시상 주체. 없으면 생략 */
+  org?: string
+}
+
 export interface Content {
   nav: {
     about: string
     capabilities: string
     projects: string
+    experience: string
+    awards: string
     contact: string
   }
   hero: {
@@ -78,6 +101,20 @@ export interface Content {
     viewDetail: string
     liveLabel: string
     items: Project[]
+  }
+  /** 경력·학력·활동. 수상과는 분리한다. */
+  experience: {
+    heading: string
+    items: TimelineItem[]
+  }
+  /** 수상·자격·저작권. 경력과는 분리한다. */
+  awards: {
+    heading: string
+    items: AwardItem[]
+    certificationsLabel: string
+    certifications: string[]
+    copyrightsLabel: string
+    copyrights: string[]
   }
   contact: {
     heading: string
