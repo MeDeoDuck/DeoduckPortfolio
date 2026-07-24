@@ -30,42 +30,6 @@ export default function AwardsSection() {
             </FadeIn>
           ))}
         </ul>
-
-        <div className="mt-14 grid gap-10 sm:grid-cols-2">
-          <FadeIn y={16}>
-            <div>
-              <h3 className="t-eyebrow mb-4 font-mono text-mist/35">
-                {t.awards.certificationsLabel}
-              </h3>
-              <ul className="flex flex-wrap gap-2">
-                {t.awards.certifications.map((item) => (
-                  <li
-                    key={item}
-                    className="rounded-full border border-mist/15 px-3.5 py-1.5 font-mono text-[0.7rem] text-mist/70"
-                  >
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </FadeIn>
-
-          <FadeIn delay={0.08} y={16}>
-            <div>
-              <h3 className="t-eyebrow mb-4 font-mono text-mist/35">{t.awards.copyrightsLabel}</h3>
-              <ul className="flex flex-wrap gap-2">
-                {t.awards.copyrights.map((item) => (
-                  <li
-                    key={item}
-                    className="rounded-full border border-mist/15 px-3.5 py-1.5 font-mono text-[0.7rem] text-mist/70"
-                  >
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </FadeIn>
-        </div>
       </div>
     </section>
   )

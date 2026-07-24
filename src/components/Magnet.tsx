@@ -16,14 +16,18 @@ interface Props {
  * 스프링으로 보간해 관성이 생기게 한다. 장식용 모션이라 이 정도가 맞다.
  * 임계 감쇠에 가깝게 둬서 튀지 않는다.
  */
-export default function Magnet({ children, padding = 150, strength = 3, className }: Props) {
+export default function Magnet({ children, padding = 220, strength = 2.2, className }: Props) {
   const ref = useRef<HTMLDivElement>(null)
   const reduce = useReducedMotion()
 
+  // 감쇠비를 임계(≈1)에 맞추고 질량을 낮춘다.
+  // 과감쇠면 꼬리가 길게 남아 "언제 끝나지" 싶은 느낌이 든다.
+  // X와 Y는 각각의 스프링으로 둔다. 하나로 묶으면 속도가 다를 때 어긋난다.
+  const spring = { stiffness: 320, damping: 19, mass: 0.3 }
   const rawX = useMotionValue(0)
   const rawY = useMotionValue(0)
-  const x = useSpring(rawX, { stiffness: 140, damping: 20, mass: 0.6 })
-  const y = useSpring(rawY, { stiffness: 140, damping: 20, mass: 0.6 })
+  const x = useSpring(rawX, spring)
+  const y = useSpring(rawY, spring)
 
   useEffect(() => {
     if (reduce) return

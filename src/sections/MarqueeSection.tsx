@@ -36,7 +36,7 @@ export default function MarqueeSection() {
       const section = sectionRef.current
       if (!section) return
       const top = section.getBoundingClientRect().top + window.scrollY
-      const shift = (window.scrollY - top + window.innerHeight) * 0.3 - 200
+      const shift = (window.scrollY - top + window.innerHeight) * 0.22 - 200
       // React 상태를 거치지 않는다. 스크롤 프레임마다 리렌더가 돌면 끊긴다.
       if (rowOneRef.current) {
         rowOneRef.current.style.transform = `translate3d(${shift}px, 0, 0)`

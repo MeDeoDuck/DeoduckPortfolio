@@ -440,8 +440,13 @@ export const content: Record<Lang, Content> = {
       ],
     },
     awards: {
-      heading: '수상 · 자격',
+      heading: '수상',
       items: [
+        {
+          year: '2024',
+          title: '인컴톤 대상',
+          org: 'LINK 3.0 사업단장상',
+        },
         {
           year: '2026',
           title: '캡스톤 디자인 3등',
@@ -450,11 +455,6 @@ export const content: Record<Lang, Content> = {
         {
           year: '2026',
           title: 'LinkUs 동아리 활동 대상',
-        },
-        {
-          year: '2024',
-          title: '인컴톤 대상',
-          org: 'LINK 3.0 사업단장상',
         },
       ],
       certificationsLabel: '자격',
@@ -925,6 +925,11 @@ export const content: Record<Lang, Content> = {
       heading: 'Awards',
       items: [
         {
+          year: '2024',
+          title: 'Incomthon, Grand Prize',
+          org: 'Awarded by the Director of the LINK 3.0 Program',
+        },
+        {
           year: '2026',
           title: 'Capstone Design, 3rd place',
           org: 'Awarded by the Dean of the College of Software Convergence, Inha University',
@@ -932,11 +937,6 @@ export const content: Record<Lang, Content> = {
         {
           year: '2026',
           title: 'LinkUs, Grand Prize for club activity',
-        },
-        {
-          year: '2024',
-          title: 'Incomthon, Grand Prize',
-          org: 'Awarded by the Director of the LINK 3.0 Program',
         },
       ],
       certificationsLabel: 'Certifications',

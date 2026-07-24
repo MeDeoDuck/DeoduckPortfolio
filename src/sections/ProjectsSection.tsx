@@ -74,16 +74,17 @@ function StackCard({
 }) {
   const ref = useRef<HTMLDivElement>(null)
   const reduce = useReducedMotion()
+  // 화면을 통째로 넘겨야 끝나면 지루하다. 카드 위가 화면 중간에 닿을 때 마무리한다.
   const { scrollYProgress } = useScroll({
     target: ref,
-    offset: ['start end', 'start start'],
+    offset: ['start end', 'start 0.5'],
   })
 
   const targetScale = 1 - (total - 1 - index) * 0.025
   const scale = useTransform(scrollYProgress, [0, 1], [1, targetScale])
 
   return (
-    <div ref={ref} className="sticky h-[78vh]" style={{ top: `${index * 22}px` }}>
+    <div ref={ref} className="sticky h-[66vh]" style={{ top: `${index * 22}px` }}>
       <motion.article
         style={{ scale: reduce ? 1 : scale }}
         className="hover-edge sticky top-24 flex flex-col gap-5 rounded-[28px] border border-mist/15 bg-ink p-5 md:top-28 md:rounded-[36px] md:p-7"

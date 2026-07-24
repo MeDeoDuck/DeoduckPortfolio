@@ -6,6 +6,7 @@ import CapabilitiesSection from '../sections/CapabilitiesSection'
 import ProjectsSection from '../sections/ProjectsSection'
 import ExperienceSection from '../sections/ExperienceSection'
 import AwardsSection from '../sections/AwardsSection'
+import CredentialsSection from '../sections/CredentialsSection'
 import ContactSection from '../sections/ContactSection'
 
 export default function Home() {
@@ -20,6 +21,7 @@ export default function Home() {
         <ProjectsSection />
         <ExperienceSection />
         <AwardsSection />
+        <CredentialsSection />
         <ContactSection />
       </main>
     </>

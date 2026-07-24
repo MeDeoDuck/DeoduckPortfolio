@@ -13,8 +13,9 @@ export default function Navbar({ variant = 'home' }: Props) {
   const [scrolled, setScrolled] = useState(false)
 
   // 크롬은 처음엔 투명하다가, 내용이 밑으로 흘러들어올 때 재질이 생긴다.
+  // 문턱을 낮게 둬야 조금만 움직여도 반응한다. 대신 전환은 길고 부드럽게.
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 24)
+    const onScroll = () => setScrolled(window.scrollY > 8)
     onScroll()
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
@@ -32,7 +33,10 @@ export default function Navbar({ variant = 'home' }: Props) {
   return (
     <header
       className={`fixed inset-x-0 top-0 z-50 ${scrolled ? 'material' : ''}`}
-      style={{ transition: 'background-color 300ms ease, backdrop-filter 300ms ease' }}
+      style={{
+        transition:
+          'background-color 460ms var(--ease-out), backdrop-filter 460ms var(--ease-out), border-color 460ms var(--ease-out)',
+      }}
     >
       <nav className="mx-auto flex w-full max-w-[1400px] items-center justify-between gap-4 px-5 py-3.5 md:px-10 md:py-4">
         <div className="flex min-w-0 items-center gap-3 overflow-x-auto md:gap-7">
