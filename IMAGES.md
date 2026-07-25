@@ -33,24 +33,28 @@
 | 24 | CAGE-CareRF 카드 | 이미지 A |
 | 25 | CAGE-CareRF 카드 | 이미지 B |
 | 26 | CAGE-CareRF 카드 | 이미지 C |
+| 27 | StableDiffusion + LST 카드 | 이미지 A |
+| 28 | StableDiffusion + LST 카드 | 이미지 B |
+| 29 | StableDiffusion + LST 카드 | 이미지 C |
 
 > Marquee는 3배 복제되어 스크롤되므로 같은 번호가 화면에 3번 보인다. 같은 이미지 한 장으로 교체하면 된다.
+> 대표(핵심) 프로젝트 카드는 4개다: Moabom · FOMO Breaker · CAGE-CareRF · StableDiffusion + LST.
 
 ## 프로젝트 상세페이지 (각 2장)
 
 | No | 프로젝트 | 슬롯 |
 |---|---|---|
-| 27 · 28 | Moabom | 스크린샷 1 · 2 |
-| 29 · 30 | FOMO Breaker | 스크린샷 1 · 2 |
-| 31 · 32 | CAGE-CareRF | 스크린샷 1 · 2 |
-| 33 · 34 | ShiftLoss | 스크린샷 1 · 2 |
-| 35 · 36 | StableDiffusion + LST | 스크린샷 1 · 2 |
-| 37 · 38 | VoiceStep | 스크린샷 1 · 2 |
-| 39 · 40 | Linkus20 | 스크린샷 1 · 2 |
-| 41 · 42 | LG Aimers | 스크린샷 1 · 2 |
-| 43 · 44 | TrackWithReID | 스크린샷 1 · 2 |
-| 45 · 46 | Physical_AI_ws | 스크린샷 1 · 2 |
-| 47 · 48 | Lider_Cone_Path | 스크린샷 1 · 2 |
+| 30 · 31 | Moabom | 스크린샷 1 · 2 |
+| 32 · 33 | FOMO Breaker | 스크린샷 1 · 2 |
+| 34 · 35 | CAGE-CareRF | 스크린샷 1 · 2 |
+| 36 · 37 | ShiftLoss | 스크린샷 1 · 2 |
+| 38 · 39 | StableDiffusion + LST | 스크린샷 1 · 2 |
+| 40 · 41 | VoiceStep | 스크린샷 1 · 2 |
+| 42 · 43 | Linkus20 | 스크린샷 1 · 2 |
+| 44 · 45 | LG Aimers | 스크린샷 1 · 2 |
+| 46 · 47 | TrackWithReID | 스크린샷 1 · 2 |
+| 48 · 49 | Physical_AI_ws | 스크린샷 1 · 2 |
+| 50 · 51 | Lider_Cone_Path | 스크린샷 1 · 2 |
 
 ## 교체 방법
 

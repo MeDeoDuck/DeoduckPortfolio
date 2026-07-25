@@ -201,7 +201,7 @@ export const content: Record<Lang, Content> = {
         },
         {
           id: 'shiftloss',
-          no: '04',
+          no: '05',
           category: 'Research',
           name: 'ShiftLoss',
           period: '2026',
@@ -232,7 +232,7 @@ export const content: Record<Lang, Content> = {
         },
         {
           id: 'stablediffusion-lst',
-          no: '05',
+          no: '04',
           category: 'Personal · Research',
           name: 'StableDiffusion + LST',
           period: '2025',
@@ -262,7 +262,7 @@ export const content: Record<Lang, Content> = {
                 '저작권 프로그램으로 등록해 소스는 비공개입니다. 구조와 측정 결과만 공개하고 있습니다.',
             },
           ],
-          featured: false,
+          featured: true,
         },
         {
           id: 'voicestep',
@@ -680,7 +680,7 @@ export const content: Record<Lang, Content> = {
         },
         {
           id: 'shiftloss',
-          no: '04',
+          no: '05',
           category: 'Research',
           name: 'ShiftLoss',
           period: '2026',
@@ -711,7 +711,7 @@ export const content: Record<Lang, Content> = {
         },
         {
           id: 'stablediffusion-lst',
-          no: '05',
+          no: '04',
           category: 'Personal · Research',
           name: 'StableDiffusion + LST',
           period: '2025',
@@ -741,7 +741,7 @@ export const content: Record<Lang, Content> = {
                 'The work is registered as a software copyright and the source is not public. Only the structure and the measurements are shared.',
             },
           ],
-          featured: false,
+          featured: true,
         },
         {
           id: 'voicestep',
