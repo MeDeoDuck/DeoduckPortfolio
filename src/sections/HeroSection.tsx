@@ -1,6 +1,5 @@
 import Magnet from '../components/Magnet'
 import ContactButton from '../components/ContactButton'
-import Placeholder from '../components/Placeholder'
 import { useLang } from '../i18n/LanguageContext'
 
 /**
@@ -65,11 +64,12 @@ export default function HeroSection() {
         style={rise(620)}
       >
         <Magnet padding={150} strength={3}>
-          <Placeholder
-            label="프로필 사진 자리"
-            seed="portrait"
-            rounded="rounded-t-[72px]"
-            className="aspect-[3/4] w-full"
+          <img
+            src={`${import.meta.env.BASE_URL}images/portrait.jpg`}
+            alt="김재현 프로필 사진"
+            className="aspect-[3/4] w-full rounded-t-[72px] border border-mist/10 object-cover"
+            loading="eager"
+            decoding="async"
           />
         </Magnet>
       </div>
