@@ -36,11 +36,11 @@ function CredentialList({
   return (
     <section
       id={id}
-      className={`${surface ? 'surface' : 'bg-ink'} scroll-mt-24 px-5 py-20 md:px-10 md:py-24`}
+      className={`${surface ? 'surface' : 'bg-paper'} scroll-mt-24 px-5 py-20 md:px-10 md:py-24`}
     >
       <div className="mx-auto max-w-4xl">
         <FadeIn y={24}>
-          <h2 className="t-h2 font-display mb-10 text-mist md:mb-14">{heading}</h2>
+          <h2 className="t-h2 font-display mb-10 text-ink md:mb-14">{heading}</h2>
         </FadeIn>
 
         <ul>
@@ -48,12 +48,12 @@ function CredentialList({
             <FadeIn key={item} delay={i * 0.05} y={16}>
               <li
                 className="flex flex-col gap-1 py-5 md:flex-row md:gap-10 md:py-6"
-                style={{ borderTop: i === 0 ? 'none' : '1px solid rgb(215 226 234 / 0.1)' }}
+                style={{ borderTop: i === 0 ? 'none' : '1px solid rgb(29 29 31 / 0.1)' }}
               >
                 <span className="t-eyebrow shrink-0 pt-1 font-mono text-accent md:w-44">
                   {String(i + 1).padStart(2, '0')}
                 </span>
-                <h3 className="t-h3 text-mist">{item}</h3>
+                <h3 className="t-h3 text-ink">{item}</h3>
               </li>
             </FadeIn>
           ))}

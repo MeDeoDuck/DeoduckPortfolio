@@ -13,7 +13,7 @@ export default function Home() {
   return (
     <>
       <Navbar />
-      <main className="bg-ink" style={{ overflowX: 'clip' }}>
+      <main className="bg-paper" style={{ overflowX: 'clip' }}>
         <HeroSection />
         <MarqueeSection />
         <AboutSection />

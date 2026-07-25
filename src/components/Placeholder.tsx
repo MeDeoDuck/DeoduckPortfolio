@@ -33,19 +33,19 @@ export default function Placeholder({
 
   return (
     <div
-      className={`relative grain flex flex-col items-center justify-center gap-2 overflow-hidden border border-mist/10 ${rounded} ${className ?? ''}`}
+      className={`relative grain flex flex-col items-center justify-center gap-2 overflow-hidden border border-ink/10 ${rounded} ${className ?? ''}`}
       style={{
-        background: `linear-gradient(140deg, rgb(215 226 234 / ${from}) 0%, rgb(215 226 234 / ${to}) 100%)`,
+        background: `linear-gradient(140deg, rgb(29 29 31 / ${from}) 0%, rgb(29 29 31 / ${to}) 100%)`,
       }}
       role="img"
       aria-label={num ? `이미지 ${num}: ${label}` : label}
     >
       {num && (
-        <span className="font-display text-2xl font-bold leading-none text-mist/30 sm:text-3xl">
+        <span className="font-display text-2xl font-bold leading-none text-ink/45 sm:text-3xl">
           IMG {num}
         </span>
       )}
-      <span className="px-4 text-center font-mono text-[0.6rem] uppercase tracking-[0.2em] text-mist/30">
+      <span className="px-4 text-center font-mono text-[0.6rem] uppercase tracking-[0.2em] text-ink/40">
         {label}
       </span>
     </div>

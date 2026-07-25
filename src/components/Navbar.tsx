@@ -45,19 +45,19 @@ export default function Navbar({ variant = 'home' }: Props) {
               <a
                 key={l.href}
                 href={l.href}
-                className="pressable hover-dim shrink-0 text-[0.8rem] text-mist/75 md:text-sm"
+                className="pressable hover-dim shrink-0 text-[0.8rem] text-ink/75 md:text-sm"
               >
                 {l.label}
               </a>
             ))
           ) : (
-            <Link to="/" className="pressable hover-dim text-[0.8rem] text-mist/75 md:text-sm">
+            <Link to="/" className="pressable hover-dim text-[0.8rem] text-ink/75 md:text-sm">
               {t.detailLabels.back}
             </Link>
           )}
         </div>
 
-        <div className="flex shrink-0 items-center rounded-full border border-mist/15 p-0.5 font-mono text-[0.65rem] tracking-widest">
+        <div className="flex shrink-0 items-center rounded-full border border-ink/15 p-0.5 font-mono text-[0.65rem] tracking-widest">
           {(['ko', 'en'] as const).map((code) => (
             <button
               key={code}
@@ -69,11 +69,11 @@ export default function Navbar({ variant = 'home' }: Props) {
               {lang === code && (
                 <motion.span
                   layoutId="lang-pill"
-                  className="absolute inset-0 rounded-full bg-mist/12"
+                  className="absolute inset-0 rounded-full bg-ink/12"
                   transition={{ type: 'spring', bounce: 0, duration: 0.35 }}
                 />
               )}
-              <span className={`relative ${lang === code ? 'text-mist' : 'text-mist/40'}`}>
+              <span className={`relative ${lang === code ? 'text-ink' : 'text-ink/40'}`}>
                 {code.toUpperCase()}
               </span>
             </button>

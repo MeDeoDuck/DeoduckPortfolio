@@ -47,7 +47,7 @@ export default function MarqueeSection() {
   return (
     <section
       ref={sectionRef}
-      className="overflow-hidden bg-ink pb-10 pt-24 sm:pt-32 md:pt-40"
+      className="overflow-hidden bg-paper pb-10 pt-24 sm:pt-32 md:pt-40"
       aria-hidden="true"
     >
       <div className="flex flex-col gap-3">

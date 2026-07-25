@@ -39,7 +39,7 @@ export default function App() {
     <LanguageProvider>
       <HashRouter>
         <ScrollToTop />
-        <div className="relative min-h-screen bg-ink" style={{ overflowX: 'clip' }}>
+        <div className="relative min-h-screen bg-paper" style={{ overflowX: 'clip' }}>
           <AnimatedRoutes />
         </div>
       </HashRouter>

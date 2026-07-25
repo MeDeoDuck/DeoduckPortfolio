@@ -52,10 +52,10 @@ export default function AboutSection() {
 
       <div className="relative z-10 flex max-w-[640px] flex-col items-center gap-8 md:gap-10">
         <FadeIn y={24}>
-          <h2 className="t-h2 font-display text-center text-mist">{t.about.heading}</h2>
+          <h2 className="t-h2 font-display text-center text-ink">{t.about.heading}</h2>
         </FadeIn>
 
-        <AnimatedText text={t.about.body} className="t-body text-center text-mist/85" />
+        <AnimatedText text={t.about.body} className="t-body text-center text-ink/85" />
 
         <FadeIn delay={0.1} y={16}>
           <ContactButton label={t.hero.cta} />

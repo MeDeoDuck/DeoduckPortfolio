@@ -9,7 +9,7 @@ export default function AwardsSection() {
     <section id="awards" className="surface scroll-mt-24 px-5 py-20 md:px-10 md:py-28">
       <div className="mx-auto max-w-4xl">
         <FadeIn y={24}>
-          <h2 className="t-h2 font-display mb-12 text-mist md:mb-16">{t.awards.heading}</h2>
+          <h2 className="t-h2 font-display mb-12 text-ink md:mb-16">{t.awards.heading}</h2>
         </FadeIn>
 
         <ul>
@@ -17,14 +17,14 @@ export default function AwardsSection() {
             <FadeIn key={award.title} delay={i * 0.05} y={16}>
               <li
                 className="flex flex-col gap-1 py-5 md:flex-row md:gap-10 md:py-6"
-                style={{ borderTop: i === 0 ? 'none' : '1px solid rgb(215 226 234 / 0.1)' }}
+                style={{ borderTop: i === 0 ? 'none' : '1px solid rgb(29 29 31 / 0.1)' }}
               >
                 <span className="t-eyebrow shrink-0 pt-1 font-mono text-accent md:w-44">
                   {award.year}
                 </span>
                 <div className="flex flex-col gap-1">
-                  <h3 className="t-h3 text-mist">{award.title}</h3>
-                  {award.org && <p className="t-body text-mist/50">{award.org}</p>}
+                  <h3 className="t-h3 text-ink">{award.title}</h3>
+                  {award.org && <p className="t-body text-ink/50">{award.org}</p>}
                 </div>
               </li>
             </FadeIn>

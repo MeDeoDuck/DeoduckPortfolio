@@ -20,7 +20,7 @@ export default function HeroSection() {
     >
       <div className="relative flex flex-1 flex-col justify-center">
         <p
-          className="rise t-eyebrow px-5 font-mono text-mist/45 md:px-10"
+          className="rise t-eyebrow px-5 font-mono text-ink/45 md:px-10"
           style={rise(60)}
         >
           {t.hero.greeting}
@@ -39,8 +39,8 @@ export default function HeroSection() {
         <ul className="relative z-20 mt-6 flex flex-wrap gap-x-8 gap-y-3 px-5 md:gap-x-12 md:px-10">
           {t.hero.metrics.map((m, i) => (
             <li key={m.label} className="rise flex flex-col" style={rise(260 + i * 70)}>
-              <span className="t-metric font-mono text-mist">{m.value}</span>
-              <span className="t-eyebrow mt-1.5 text-mist/40">{m.label}</span>
+              <span className="t-metric font-mono text-ink">{m.value}</span>
+              <span className="t-eyebrow mt-1.5 text-ink/40">{m.label}</span>
             </li>
           ))}
         </ul>
@@ -48,7 +48,7 @@ export default function HeroSection() {
 
       <div className="relative z-20 flex items-end justify-between gap-6 px-5 pb-8 md:px-10 md:pb-12">
         <p
-          className="rise t-body max-w-[220px] text-mist/70 sm:max-w-[280px] md:max-w-[340px]"
+          className="rise t-body max-w-[220px] text-ink/70 sm:max-w-[280px] md:max-w-[340px]"
           style={rise(480)}
         >
           {t.hero.tagline}
@@ -67,7 +67,7 @@ export default function HeroSection() {
           <img
             src={`${import.meta.env.BASE_URL}images/portrait.jpg`}
             alt="김재현 프로필 사진"
-            className="aspect-[3/4] w-full rounded-t-[72px] border border-mist/10 object-cover"
+            className="aspect-[3/4] w-full rounded-t-[72px] border border-ink/10 object-cover"
             loading="eager"
             decoding="async"
           />
