@@ -73,7 +73,7 @@ export default function Navbar({ variant = 'home' }: Props) {
                   transition={{ type: 'spring', bounce: 0, duration: 0.35 }}
                 />
               )}
-              <span className={`relative ${lang === code ? 'text-ink' : 'text-ink/40'}`}>
+              <span className={`relative ${lang === code ? 'text-ink' : 'text-ink/55'}`}>
                 {code.toUpperCase()}
               </span>
             </button>

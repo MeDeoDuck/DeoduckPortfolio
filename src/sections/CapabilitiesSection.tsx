@@ -28,7 +28,7 @@ export default function CapabilitiesSection() {
               </span>
               <div className="flex flex-col gap-2">
                 <h3 className="t-h3 text-ink">{item.name}</h3>
-                <p className="t-body max-w-2xl text-ink/55">{item.desc}</p>
+                <p className="t-body max-w-2xl text-ink/65">{item.desc}</p>
               </div>
             </div>
           </FadeIn>

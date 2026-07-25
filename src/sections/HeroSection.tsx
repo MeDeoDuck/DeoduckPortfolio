@@ -20,7 +20,7 @@ export default function HeroSection() {
     >
       <div className="relative flex flex-1 flex-col justify-center">
         <p
-          className="rise t-eyebrow px-5 font-mono text-ink/45 md:px-10"
+          className="rise t-eyebrow px-5 font-mono text-ink/60 md:px-10"
           style={rise(60)}
         >
           {t.hero.greeting}
@@ -40,7 +40,7 @@ export default function HeroSection() {
           {t.hero.metrics.map((m, i) => (
             <li key={m.label} className="rise flex flex-col" style={rise(260 + i * 70)}>
               <span className="t-metric font-mono text-ink">{m.value}</span>
-              <span className="t-eyebrow mt-1.5 text-ink/40">{m.label}</span>
+              <span className="t-eyebrow mt-1.5 text-ink/55">{m.label}</span>
             </li>
           ))}
         </ul>

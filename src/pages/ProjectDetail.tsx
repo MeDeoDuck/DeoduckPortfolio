@@ -29,7 +29,7 @@ export default function ProjectDetail() {
       <main className="min-h-screen bg-paper pb-24 pt-24 md:pt-28" style={{ overflowX: 'clip' }}>
         <article className="mx-auto max-w-3xl px-5 md:px-10">
           <FadeIn y={16}>
-            <p className="t-eyebrow font-mono text-ink/40">
+            <p className="t-eyebrow font-mono text-ink/55">
               {project.no} · {project.category}
             </p>
           </FadeIn>
@@ -48,7 +48,7 @@ export default function ProjectDetail() {
                 {project.metrics.map((m) => (
                   <li key={m.label} className="flex flex-col">
                     <span className="t-metric font-mono text-ink">{m.value}</span>
-                    <span className="t-eyebrow mt-1 text-ink/40">{m.label}</span>
+                    <span className="t-eyebrow mt-1 text-ink/55">{m.label}</span>
                   </li>
                 ))}
               </ul>
@@ -58,12 +58,12 @@ export default function ProjectDetail() {
           <FadeIn delay={0.18} y={16}>
             <dl className="mt-9 grid gap-5 sm:grid-cols-2">
               <div>
-                <dt className="t-eyebrow font-mono text-ink/35">{t.detailLabels.role}</dt>
+                <dt className="t-eyebrow font-mono text-ink/55">{t.detailLabels.role}</dt>
                 <dd className="t-body mt-1.5 text-ink/75">{project.role}</dd>
               </div>
               {project.period && (
                 <div>
-                  <dt className="t-eyebrow font-mono text-ink/35">{t.detailLabels.period}</dt>
+                  <dt className="t-eyebrow font-mono text-ink/55">{t.detailLabels.period}</dt>
                   <dd className="t-body mt-1.5 text-ink/75">{project.period}</dd>
                 </div>
               )}
@@ -72,7 +72,7 @@ export default function ProjectDetail() {
 
           <FadeIn delay={0.22} y={16}>
             <div className="mt-8">
-              <p className="t-eyebrow font-mono text-ink/35">{t.detailLabels.stack}</p>
+              <p className="t-eyebrow font-mono text-ink/55">{t.detailLabels.stack}</p>
               <ul className="mt-3 flex flex-wrap gap-2">
                 {project.stack.map((s) => (
                   <li
@@ -145,7 +145,7 @@ export default function ProjectDetail() {
           <div className="mt-16 border-t border-ink/10 pt-7">
             <Link
               to="/"
-              className="pressable inline-block font-mono text-[0.72rem] uppercase tracking-[0.25em] text-ink/45 hover:text-ink"
+              className="pressable inline-block font-mono text-[0.72rem] uppercase tracking-[0.25em] text-ink/60 hover:text-ink"
             >
               {t.detailLabels.back}
             </Link>

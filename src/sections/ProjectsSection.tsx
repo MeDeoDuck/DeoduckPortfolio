@@ -32,7 +32,7 @@ export default function ProjectsSection() {
 
       <div className="mx-auto mt-20 max-w-4xl md:mt-28">
         <FadeIn y={20}>
-          <h3 className="t-eyebrow mb-6 font-mono text-ink/35">{t.projects.moreHeading}</h3>
+          <h3 className="t-eyebrow mb-6 font-mono text-ink/55">{t.projects.moreHeading}</h3>
         </FadeIn>
         <ul>
           {rest.map((project, i) => (
@@ -42,14 +42,14 @@ export default function ProjectsSection() {
                   to={`/project/${project.id}`}
                   className="group pressable flex flex-col gap-1.5 py-5 sm:flex-row sm:items-baseline sm:gap-5 md:py-6"
                 >
-                  <span className="t-eyebrow shrink-0 font-mono text-ink/30 sm:w-10">
+                  <span className="t-eyebrow shrink-0 font-mono text-ink/45 sm:w-10">
                     {project.no}
                   </span>
                   <span className="t-h3 min-w-0 shrink-0 text-ink sm:w-52">{project.name}</span>
                   <span className="t-body flex-1 text-ink/50">{project.tagline}</span>
                   <ArrowUpRight
                     size={16}
-                    className="shrink-0 text-ink/30 transition-transform duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-ink"
+                    className="shrink-0 text-ink/45 transition-transform duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-ink"
                   />
                 </Link>
               </li>
@@ -93,10 +93,10 @@ function StackCard({
           <div className="flex min-w-0 flex-col gap-2">
             <div className="flex items-center gap-3">
               <span className="t-eyebrow font-mono text-accent">{project.no}</span>
-              <span className="t-eyebrow font-mono text-ink/35">{project.category}</span>
+              <span className="t-eyebrow font-mono text-ink/55">{project.category}</span>
             </div>
             <h3 className="t-h3 text-ink">{project.name}</h3>
-            <p className="t-body max-w-xl text-ink/55">{project.tagline}</p>
+            <p className="t-body max-w-xl text-ink/65">{project.tagline}</p>
           </div>
 
           <Link
@@ -112,7 +112,7 @@ function StackCard({
             {project.metrics.map((m) => (
               <li key={m.label} className="flex flex-col">
                 <span className="t-metric font-mono text-ink">{m.value}</span>
-                <span className="t-eyebrow mt-1 text-ink/35">{m.label}</span>
+                <span className="t-eyebrow mt-1 text-ink/55">{m.label}</span>
               </li>
             ))}
           </ul>

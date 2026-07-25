@@ -19,16 +19,16 @@ export default function ExperienceSection() {
                 style={{ borderTop: i === 0 ? 'none' : '1px solid rgb(29 29 31 / 0.1)' }}
               >
                 {item.period && (
-                  <span className="t-eyebrow shrink-0 pt-1 font-mono text-ink/35 md:w-44">
+                  <span className="t-eyebrow shrink-0 pt-1 font-mono text-ink/55 md:w-44">
                     {item.period}
                   </span>
                 )}
 
                 <div className="flex min-w-0 flex-col gap-1.5">
                   <h3 className="t-h3 text-ink">{item.title}</h3>
-                  <p className="t-body text-ink/55">{item.org}</p>
+                  <p className="t-body text-ink/65">{item.org}</p>
 
-                  {item.note && <p className="t-body max-w-2xl text-ink/45">{item.note}</p>}
+                  {item.note && <p className="t-body max-w-2xl text-ink/60">{item.note}</p>}
 
                   {item.children && item.children.length > 0 && (
                     <ul className="mt-2 flex flex-col gap-1.5 border-l border-ink/10 pl-4">
@@ -38,7 +38,7 @@ export default function ExperienceSection() {
                           className="flex flex-col gap-0.5 sm:flex-row sm:items-baseline sm:gap-3"
                         >
                           <span className="t-body text-ink/70">{child.label}</span>
-                          <span className="t-eyebrow font-mono text-ink/30">{child.period}</span>
+                          <span className="t-eyebrow font-mono text-ink/45">{child.period}</span>
                         </li>
                       ))}
                     </ul>
