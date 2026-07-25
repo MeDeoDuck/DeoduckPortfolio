@@ -2,24 +2,7 @@ import { useEffect, useRef } from 'react'
 import type { RefObject } from 'react'
 import { useReducedMotion } from 'framer-motion'
 import Placeholder from '../components/Placeholder'
-
-/** 나중에 실제 프로젝트 스크린샷으로 교체할 자리 */
-const ROW_ONE = [
-  'Moabom 보고서',
-  'Moabom 아키텍처',
-  'FOMO 대시보드',
-  'FOMO 토론 화면',
-  'CAGE 그래프',
-  'VoiceStep 화면',
-]
-const ROW_TWO = [
-  'Physical AI 주행',
-  'LiDAR 콘 인식',
-  'TrackWithReID',
-  'ShiftLoss 그래프',
-  'LST 학습 곡선',
-  'Linkus20 에디터',
-]
+import { MARQUEE_ROW_ONE as ROW_ONE, MARQUEE_ROW_TWO as ROW_TWO } from '../i18n/images'
 
 export default function MarqueeSection() {
   const sectionRef = useRef<HTMLElement>(null)
