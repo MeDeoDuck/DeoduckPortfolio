@@ -73,6 +73,7 @@ function Row({
           key={`${label}-${i}`}
           label={label}
           seed={label}
+          decorative
           rounded="rounded-2xl"
           className="h-[170px] w-[280px] shrink-0 sm:h-[210px] sm:w-[340px] md:h-[270px] md:w-[420px]"
         />

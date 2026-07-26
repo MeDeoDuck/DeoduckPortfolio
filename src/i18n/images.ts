@@ -10,22 +10,23 @@ import { content } from './content'
  *   히어로 → 마퀴 → About 장식 → 대표 프로젝트 카드 → 각 프로젝트 상세페이지
  */
 
+// 실제 발표자료 이미지가 있는 seed로 채운다(장식용 마퀴). 없는 자리는 두지 않는다.
 export const MARQUEE_ROW_ONE = [
-  'Moabom 보고서',
-  'Moabom 아키텍처',
-  'FOMO 대시보드',
-  'FOMO 토론 화면',
-  'CAGE 그래프',
-  'VoiceStep 화면',
+  'moabom-c',
+  'moabom-a',
+  'moabom-b',
+  'fomo-breaker-c',
+  'fomo-breaker-a',
+  'fomo-breaker-b',
 ]
 
 export const MARQUEE_ROW_TWO = [
-  'Physical AI 주행',
-  'LiDAR 콘 인식',
-  'TrackWithReID',
-  'ShiftLoss 그래프',
-  'LST 학습 곡선',
-  'Linkus20 에디터',
+  'cage-carerf-c',
+  'cage-carerf-a',
+  'cage-carerf-b',
+  'stablediffusion-lst-c',
+  'stablediffusion-lst-a',
+  'stablediffusion-lst-b',
 ]
 
 function buildOrder(): string[] {

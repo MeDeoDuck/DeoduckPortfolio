@@ -83,7 +83,7 @@ export const content: Record<Lang, Content> = {
             { value: '98%', label: '판정 일관성 (300회 실행)' },
             { value: '99%↓', label: '추론 비용' },
           ],
-          links: [{ label: '저장소', href: 'https://github.com/MeDeoDuck/Moabom_Prototype' }],
+          links: [{ label: '벤치마크 저장소', href: 'https://github.com/MeDeoDuck/MoabomVSAll' }],
           detail: [
             {
               heading: '문제',
@@ -108,7 +108,7 @@ export const content: Record<Lang, Content> = {
             {
               heading: '배포와 운영',
               body:
-                'Docker로 묶어 Azure Container Apps에 배포하고 PostgreSQL로 데이터를 관리했습니다. v1 배포 후 사용자 13명에게 설문을 받아 개선 사항을 반영했고, 배포에서 피드백, 개선으로 이어지는 한 바퀴를 완주했습니다.\n\n현재 MAU 97명이 사용하고 있습니다.',
+                'Docker로 묶어 Azure Container Apps에 배포하고 PostgreSQL로 데이터를 관리했습니다. v1 배포 후 사용자 13명에게 설문을 받아 개선 사항을 반영했고, 배포에서 피드백, 개선으로 이어지는 한 바퀴를 완주했습니다.\n\n배포 기간 동안 MAU 97명을 확보했습니다. 제품 본체 서버는 이후 종료했고, 공개 저장소는 판정 일관성 벤치마크(MoabomVSAll)로 유지합니다.',
             },
             {
               heading: '팀과 역할',
@@ -124,7 +124,7 @@ export const content: Record<Lang, Content> = {
           category: 'Team',
           name: 'FOMO Breaker',
           period: '2026',
-          role: '멀티에이전트 토론 · 검증 게이트 설계 및 구현 (팀 5인)',
+          role: 'PM · 백엔드 · 멀티에이전트 토론·검증 게이트 (팀 5인)',
           tagline:
             '종목을 사고 싶은 이유가 분석에서 나온 것인지 FOMO에서 나온 것인지 점검하는 멀티페르소나 토론 시스템입니다.',
           stack: ['React', 'TypeScript', 'FastAPI', 'WebSocket', 'GPT-4.1', 'Llama-3.3-70B (Groq)'],
@@ -161,7 +161,7 @@ export const content: Record<Lang, Content> = {
             {
               heading: '범위',
               body:
-                '투자 자문 서비스가 아닙니다. 매수·매도를 권하지 않고, 사용자가 이미 가진 매수 의사에 과열과 리스크 요인이 있는지 점검하는 용도로 범위를 한정했습니다.\n\n5인 팀 프로젝트이며, 저는 멀티에이전트 토론 구조와 검증 게이트의 설계 및 구현을 맡았습니다.',
+                '투자 자문 서비스가 아닙니다. 매수·매도를 권하지 않고, 사용자가 이미 가진 매수 의사에 과열과 리스크 요인이 있는지 점검하는 용도로 범위를 한정했습니다.\n\n5인 팀 프로젝트이며, 저는 PM으로 팀을 이끌고 백엔드와 멀티에이전트 토론 구조·검증 게이트의 설계 및 구현을 맡았습니다.',
             },
           ],
           featured: true,
@@ -172,7 +172,7 @@ export const content: Record<Lang, Content> = {
           category: 'Team',
           name: 'CAGE-CareRF',
           period: '2026',
-          role: '모델 · 실험 (팀 3인)',
+          role: '팀장 · 전체 총괄 (팀 3인)',
           tagline: '리뷰를 6개 관계 그래프로 모델링해 조직적 가짜 리뷰를 탐지하는 멀티관계 GNN입니다.',
           stack: ['PyTorch Geometric', 'GAT', 'GCN', 'GraphSAGE', 'Sentence-BERT', 'LightGBM'],
           metrics: [
@@ -194,7 +194,7 @@ export const content: Record<Lang, Content> = {
             {
               heading: '결과',
               body:
-                'PR-AUC 0.789로, 단일 GAT 베이스라인 0.734 대비 7.4% 높았습니다.\n\n비교 대상 상위 모델들과는 통계적으로 동급 구간에 있으며, 정밀도와 재현율 사이의 균형이 상대적으로 고른 편이었습니다. 단독 1위라고 말할 수 있는 결과는 아닙니다.\n\n3인 팀 프로젝트이며, 저는 모델 구성과 실험을 맡았습니다.',
+                'PR-AUC 0.789로, 단일 GAT 베이스라인 0.734 대비 7.4% 높았습니다.\n\n비교 대상 상위 모델들과는 통계적으로 동급 구간에 있으며, 정밀도와 재현율 사이의 균형이 상대적으로 고른 편이었습니다. 단독 1위라고 말할 수 있는 결과는 아닙니다.\n\n3인 팀 프로젝트이며, 저는 팀장으로 문제 정의·모델 설계·실험 전반을 총괄했습니다.',
             },
           ],
           featured: true,
@@ -357,7 +357,7 @@ export const content: Record<Lang, Content> = {
           category: 'Team',
           name: 'Physical_AI_ws',
           period: '',
-          role: '인지 · 통합 (팀)',
+          role: '팀장 · 전체 총괄 (팀)',
           tagline: 'CCTV 인지에서 A* 경로계획, Pure Pursuit 제어까지 ROS로 통합한 물류 로봇 파이프라인입니다.',
           stack: ['ROS', 'OpenCV', 'A*', 'Pure Pursuit', 'TurtleBot4'],
           metrics: [],
@@ -366,7 +366,7 @@ export const content: Record<Lang, Content> = {
             {
               heading: '개요',
               body:
-                '물류 창고 시나리오를 가정해, 천장 CCTV로 공간과 대상을 인지하고 A*로 경로를 계획한 뒤 Pure Pursuit으로 주행을 제어하는 파이프라인을 ROS에서 하나로 연결했습니다.\n\n인지, 계획, 제어를 각각 만드는 것보다 세 단계를 하나의 노드 그래프로 이어 붙이는 과정에서 좌표계와 타이밍 문제가 주로 발생했고, 그 부분을 맞추는 데 시간을 썼습니다. 팀 프로젝트입니다.',
+                '물류 창고 시나리오를 가정해, 천장 CCTV로 공간과 대상을 인지하고 A*로 경로를 계획한 뒤 Pure Pursuit으로 주행을 제어하는 파이프라인을 ROS에서 하나로 연결했습니다.\n\n인지, 계획, 제어를 각각 만드는 것보다 세 단계를 하나의 노드 그래프로 이어 붙이는 과정에서 좌표계와 타이밍 문제가 주로 발생했고, 그 부분을 맞추는 데 시간을 썼습니다. 저는 팀장으로 인지·판단·제어 통합 전반을 총괄했습니다.',
             },
           ],
           featured: false,
@@ -387,6 +387,69 @@ export const content: Record<Lang, Content> = {
               heading: '개요',
               body:
                 '라이브러리에 맡기지 않고 파이프라인 전체를 C++로 구현했습니다. 점군에서 지면을 분리하고, 남은 점을 클러스터링해 콘을 인식하고, 양쪽 콘 사이의 중앙선을 회귀로 구한 뒤 주행 경로를 만듭니다.\n\n직접 구현하면서 각 단계의 파라미터가 다음 단계에 어떻게 전파되는지, 어디서 오차가 누적되는지를 확인할 수 있었습니다. 팀 프로젝트입니다.',
+            },
+          ],
+          featured: false,
+        },
+        {
+          id: 'ssvep-bci',
+          no: '12',
+          category: 'Coursework',
+          name: 'SSVEP BCI 신호 분석',
+          period: '2025.11',
+          role: '신호 전처리 직접 구현 (팀 3인)',
+          tagline:
+            '외부 라이브러리 없이 FFT와 필터를 직접 구현해 EEG(SSVEP) 뇌파를 전처리하고, 사용자가 응시한 자극 주파수를 분류한 신호처리 과제입니다.',
+          stack: ['Python', 'FFT · IFFT', 'Bandpass · Notch', 'CSP', 'SVM'],
+          metrics: [
+            { value: '83.3%', label: '습식 EEG 정확도' },
+            { value: '37.0%', label: '건식 EEG 정확도' },
+          ],
+          links: [],
+          detail: [
+            {
+              heading: '문제',
+              body:
+                'SSVEP는 특정 주파수로 깜빡이는 자극을 응시할 때 시각 피질에서 같은 주파수 성분이 증폭되는 현상입니다. 이 성분을 분류하면 사용자가 무엇을 보고 있는지 알 수 있지만, 원신호에는 전원 노이즈와 잡음이 섞여 있어 전처리가 성능을 좌우합니다.\n\n과제 조건은 신호처리 라이브러리를 쓰지 않고 이론만으로 전처리 파이프라인을 직접 구현하는 것이었습니다.',
+            },
+            {
+              heading: '접근',
+              body:
+                'FFT는 주기성과 대칭성을 이용해 짝수·홀수 항으로 나눠 O(N log N)으로 직접 구현하고, zero-padding으로 길이를 2의 거듭제곱에 맞췄습니다. 필터는 EEG 대역(6–45Hz)만 남기는 Bandpass, 60Hz 전원 노이즈와 고조파를 제거하는 Notch, 이동평균 스무딩, 기준선 보정을 순서대로 적용했습니다.\n\n성능이 기대만큼 나오지 않아, Bandpass·Notch가 이미 잡음을 제거한 상태라는 가설을 세우고 Hanning 윈도우를 제거하자 성능이 크게 올랐습니다.',
+            },
+            {
+              heading: '결과',
+              body:
+                '습식(Wet) EEG는 정확도 83.3%, 건식(Dry)은 37.0%로, 장비에 따른 신호 품질 차이를 실험으로 확인했습니다.\n\n팀 3인 과제이며, 핵심 성과는 라이브러리 없이 전처리를 직접 구현한 점과 장비별 성능 차를 검증한 점입니다.',
+            },
+          ],
+          featured: false,
+        },
+        {
+          id: 'nlp-slm-lora',
+          no: '13',
+          category: 'Coursework',
+          name: '한국어 감성분석 · sLM LoRA',
+          period: '2025.12',
+          role: '개인 과제',
+          tagline:
+            '한국어 감성분석(NSMC)에 소형 LLM을 LoRA로 파인튜닝하고, 근거 생성까지 요구하면 오히려 정확도가 떨어지는 현상을 정량 분석한 과제입니다.',
+          stack: ['Llama-3.2-Korean-3B', 'LoRA · PEFT', 'NSMC', 'Gemini 2.5 Flash'],
+          metrics: [
+            { value: '0.673→0.698', label: 'LoRA 파인튜닝 정확도' },
+            { value: '+0.195', label: '라벨 한글화 효과' },
+          ],
+          links: [],
+          detail: [
+            {
+              heading: '실험',
+              body:
+                'IMDB용 예시 코드를 한국어 NSMC와 한국어 소형 LLM(Llama-3.2-Korean-3B)로 이식하며, LoRA 파인튜닝·LoRA rank 변경·few-shot 프롬프트·reasoning 데이터셋 생성을 각각 실험했습니다.\n\n라벨을 영어(Yes/No)에서 한글(긍정/부정)로 바꾸자 정확도가 약 0.195 올랐지만, 프롬프트를 전부 한글화하면 오히려 떨어져 일부를 영어로 유지하는 절충을 택했습니다. LoRA rank는 r=2, r=4를 비교해 표현력과 효율의 trade-off를 확인했습니다.',
+            },
+            {
+              heading: '발견',
+              body:
+                'Base 0.673에서 LoRA r=2 0.687, r=4 0.698로 rank가 커질수록 정확도가 올랐습니다. 반면 "문제-정답-근거" 템플릿으로 Gemini에 근거를 생성시켜 학습한 reasoning 방식은 few-shot(0.543)보다 낮은 0.478로, 근거 생성까지 요구하면 오히려 성능이 떨어졌습니다.\n\n출력 목표가 정답에서 정답+근거로 바뀌며 난이도가 오르고, 학습(정답 예측)과 추론(근거 생성) 사이의 분포 불일치가 원인으로 분석됩니다. LoRA는 정답 예측에는 효과적이지만 근거 생성까지 요구하면 별도의 학습 설계가 필요하다는 결론입니다.',
             },
           ],
           featured: false,
@@ -561,7 +624,7 @@ export const content: Record<Lang, Content> = {
             { value: '98%', label: 'Verdict consistency over 300 runs' },
             { value: '99%↓', label: 'Inference cost' },
           ],
-          links: [{ label: 'Repository', href: 'https://github.com/MeDeoDuck/Moabom_Prototype' }],
+          links: [{ label: 'Benchmark repo', href: 'https://github.com/MeDeoDuck/MoabomVSAll' }],
           detail: [
             {
               heading: 'Problem',
@@ -586,7 +649,7 @@ export const content: Record<Lang, Content> = {
             {
               heading: 'Deployment and operation',
               body:
-                'The service runs in Docker on Azure Container Apps with PostgreSQL behind it. After the v1 release I collected a survey from 13 users and shipped the changes it pointed to, closing one full loop from release to feedback to improvement.\n\nThe service currently has 97 monthly active users.',
+                'The service runs in Docker on Azure Container Apps with PostgreSQL behind it. After the v1 release I collected a survey from 13 users and shipped the changes it pointed to, closing one full loop from release to feedback to improvement.\n\nIt reached 97 monthly active users during that run. The product server has since been taken down; the public repository stays as the verdict-consistency benchmark (MoabomVSAll).',
             },
             {
               heading: 'Team and role',
@@ -602,7 +665,7 @@ export const content: Record<Lang, Content> = {
           category: 'Team',
           name: 'FOMO Breaker',
           period: '2026',
-          role: 'Design and implementation of the multi-agent debate and verification gate (team of 5)',
+          role: 'PM and backend; multi-agent debate and verification gate (team of 5)',
           tagline:
             'A multi-persona debate system that checks whether the urge to buy a stock came from analysis or from FOMO.',
           stack: ['React', 'TypeScript', 'FastAPI', 'WebSocket', 'GPT-4.1', 'Llama-3.3-70B (Groq)'],
@@ -639,7 +702,7 @@ export const content: Record<Lang, Content> = {
             {
               heading: 'Scope',
               body:
-                'This is not investment advice. It does not recommend buying or selling. The scope is limited to checking a purchase intent the user already holds for signs of overheating and risk.\n\nA team project with 5 members. I owned the design and implementation of the multi-agent debate structure and the verification gate.',
+                'This is not investment advice. It does not recommend buying or selling. The scope is limited to checking a purchase intent the user already holds for signs of overheating and risk.\n\nA team project with 5 members. As PM I led the team and owned the backend and the design and implementation of the multi-agent debate structure and the verification gate.',
             },
           ],
           featured: true,
@@ -650,7 +713,7 @@ export const content: Record<Lang, Content> = {
           category: 'Team',
           name: 'CAGE-CareRF',
           period: '2026',
-          role: 'Modeling and experiments (team of 3)',
+          role: 'Team lead, overall ownership (team of 3)',
           tagline:
             'A multi-relational GNN that models reviews as six relation graphs to detect coordinated fake reviews.',
           stack: ['PyTorch Geometric', 'GAT', 'GCN', 'GraphSAGE', 'Sentence-BERT', 'LightGBM'],
@@ -673,7 +736,7 @@ export const content: Record<Lang, Content> = {
             {
               heading: 'Results',
               body:
-                'PR-AUC reached 0.789, 7.4% above the single GAT baseline at 0.734.\n\nAgainst the strongest comparison models the result sits within a statistically comparable band, with a relatively even balance between precision and recall. It is not a result I would describe as a clear first place.\n\nA team project with 3 members. I owned the model configuration and the experiments.',
+                'PR-AUC reached 0.789, 7.4% above the single GAT baseline at 0.734.\n\nAgainst the strongest comparison models the result sits within a statistically comparable band, with a relatively even balance between precision and recall. It is not a result I would describe as a clear first place.\n\nA team project with 3 members. As team lead I owned the problem definition, model design, and experiments end to end.',
             },
           ],
           featured: true,
@@ -837,7 +900,7 @@ export const content: Record<Lang, Content> = {
           category: 'Team',
           name: 'Physical_AI_ws',
           period: '',
-          role: 'Perception and integration (team)',
+          role: 'Team lead, overall ownership (team)',
           tagline:
             'A logistics robot pipeline built in ROS, running from CCTV perception through A* path planning to Pure Pursuit control.',
           stack: ['ROS', 'OpenCV', 'A*', 'Pure Pursuit', 'TurtleBot4'],
@@ -847,7 +910,7 @@ export const content: Record<Lang, Content> = {
             {
               heading: 'Overview',
               body:
-                'Assuming a warehouse scenario, an overhead CCTV feed handles perception of the space and its targets, A* plans the route, and Pure Pursuit drives the robot, all wired together as one pipeline in ROS.\n\nBuilding perception, planning, and control separately was the easier part. Most of the effort went into joining the three into a single node graph, where coordinate frames and timing caused the real problems. A team project.',
+                'Assuming a warehouse scenario, an overhead CCTV feed handles perception of the space and its targets, A* plans the route, and Pure Pursuit drives the robot, all wired together as one pipeline in ROS.\n\nBuilding perception, planning, and control separately was the easier part. Most of the effort went into joining the three into a single node graph, where coordinate frames and timing caused the real problems. As team lead I owned the perception-planning-control integration end to end.',
             },
           ],
           featured: false,
@@ -869,6 +932,69 @@ export const content: Record<Lang, Content> = {
               heading: 'Overview',
               body:
                 'The whole pipeline was implemented in C++ rather than delegated to a library. Ground points are separated from the cloud, the remainder is clustered into cones, a centerline is regressed between the two cone rows, and a driving path is generated from it.\n\nWriting it directly made it visible how each stage parameter propagates into the next and where error accumulates. A team project.',
+            },
+          ],
+          featured: false,
+        },
+        {
+          id: 'ssvep-bci',
+          no: '12',
+          category: 'Coursework',
+          name: 'SSVEP BCI signal analysis',
+          period: '2025.11',
+          role: 'Signal preprocessing from scratch (team of 3)',
+          tagline:
+            'A signal-processing assignment that implements FFT and filters from scratch, with no library, to preprocess EEG (SSVEP) and classify the stimulus frequency the user was looking at.',
+          stack: ['Python', 'FFT · IFFT', 'Bandpass · Notch', 'CSP', 'SVM'],
+          metrics: [
+            { value: '83.3%', label: 'Wet EEG accuracy' },
+            { value: '37.0%', label: 'Dry EEG accuracy' },
+          ],
+          links: [],
+          detail: [
+            {
+              heading: 'Problem',
+              body:
+                'SSVEP is the effect where staring at a stimulus flickering at a given frequency amplifies the same frequency component in the visual cortex. Classifying that component tells you what the user is looking at, but the raw signal carries mains noise and interference, so preprocessing decides the outcome.\n\nThe assignment required building the preprocessing pipeline from theory alone, without any signal-processing library.',
+            },
+            {
+              heading: 'Approach',
+              body:
+                'FFT was implemented directly at O(N log N) by splitting into even and odd terms, with zero-padding to a power of two. Filters were applied in order: a bandpass keeping the EEG band (6–45Hz), a notch removing 60Hz mains noise and its harmonics, moving-average smoothing, and baseline correction.\n\nWhen accuracy fell short, I hypothesized the bandpass and notch had already removed the noise, and removing the Hanning window raised performance sharply.',
+            },
+            {
+              heading: 'Result',
+              body:
+                'Wet EEG reached 83.3% accuracy and dry EEG 37.0%, confirming experimentally how much the equipment changes signal quality.\n\nA team assignment of 3. The core outcome was implementing the preprocessing from scratch and verifying the gap between equipment types.',
+            },
+          ],
+          featured: false,
+        },
+        {
+          id: 'nlp-slm-lora',
+          no: '13',
+          category: 'Coursework',
+          name: 'Korean sentiment analysis · sLM LoRA',
+          period: '2025.12',
+          role: 'Individual assignment',
+          tagline:
+            'A study that LoRA fine-tunes a small LLM for Korean sentiment analysis (NSMC) and quantifies how demanding a generated rationale actually lowers accuracy.',
+          stack: ['Llama-3.2-Korean-3B', 'LoRA · PEFT', 'NSMC', 'Gemini 2.5 Flash'],
+          metrics: [
+            { value: '0.673→0.698', label: 'LoRA fine-tuning accuracy' },
+            { value: '+0.195', label: 'Korean label effect' },
+          ],
+          links: [],
+          detail: [
+            {
+              heading: 'Experiments',
+              body:
+                'Porting an IMDB example to Korean NSMC and a small Korean LLM (Llama-3.2-Korean-3B), I ran LoRA fine-tuning, LoRA rank changes, few-shot prompting, and reasoning-dataset generation.\n\nSwitching labels from English (Yes/No) to Korean raised accuracy by about 0.195, but making the whole prompt Korean lowered it, so I kept part of it in English. Comparing rank r=2 and r=4 showed the trade-off between capacity and efficiency.',
+            },
+            {
+              heading: 'Finding',
+              body:
+                'Accuracy rose from a base of 0.673 to 0.687 at r=2 and 0.698 at r=4 as rank grew. In contrast, the reasoning approach, trained on rationale that Gemini generated in a problem-answer-rationale template, scored 0.478, below few-shot at 0.543: demanding a rationale actually hurt.\n\nAs the output target shifts from answer to answer-plus-rationale the task gets harder, and the distribution mismatch between training (predict the answer) and inference (generate a rationale) is the likely cause. LoRA is effective for predicting the answer, but demanding a rationale needs a separate training design.',
             },
           ],
           featured: false,
