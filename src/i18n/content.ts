@@ -207,10 +207,7 @@ export const content: Record<Lang, Content> = {
             { value: '5', label: '서로 다른 이론을 가진 페르소나' },
             { value: '2', label: '발언·내부 사고 분리 LLM' },
           ],
-          links: [
-            { label: '저장소', href: 'https://github.com/MeDeoDuck/FOMO-Breaker' },
-            { label: '라이브', href: 'https://fomo-breaker.vercel.app' },
-          ],
+          links: [{ label: '저장소', href: 'https://github.com/MeDeoDuck/FOMO-Breaker' }],
           detail: [
             {
               heading: '문제',
@@ -783,10 +780,7 @@ export const content: Record<Lang, Content> = {
             { value: '5', label: 'Personas with distinct theory priors' },
             { value: '2', label: 'LLMs splitting speech from internal reasoning' },
           ],
-          links: [
-            { label: 'Repository', href: 'https://github.com/MeDeoDuck/FOMO-Breaker' },
-            { label: 'Live', href: 'https://fomo-breaker.vercel.app' },
-          ],
+          links: [{ label: 'Repository', href: 'https://github.com/MeDeoDuck/FOMO-Breaker' }],
           detail: [
             {
               heading: 'Problem',
