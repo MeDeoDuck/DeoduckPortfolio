@@ -94,10 +94,11 @@ function InfoCard({
               <dt className="t-eyebrow text-ink/50">{item.label}</dt>
               <dd className="mt-1 text-sm font-semibold text-ink">
                 {item.href ? (
+                  /* mailto·tel은 같은 탭에서 핸들러가 받는다. 새 탭을 열면 빈 탭만 남는다. */
                   <a
                     href={item.href}
-                    target={item.href.startsWith('mailto:') ? undefined : '_blank'}
-                    rel="noreferrer"
+                    target={item.href.startsWith('http') ? '_blank' : undefined}
+                    rel={item.href.startsWith('http') ? 'noreferrer' : undefined}
                     className="pressable hover-dim break-all underline decoration-ink/20 underline-offset-4 hover:decoration-accent"
                   >
                     {item.value}

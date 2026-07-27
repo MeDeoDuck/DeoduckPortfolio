@@ -77,13 +77,13 @@ export const content: Record<Lang, Content> = {
       info: [
         { label: '학력', value: '인하대학교 인공지능공학 학사' },
         { label: '현재', value: '웨이버스 일학습병행 인턴 (공간정보 · GeoAI)' },
-        { label: '관심 분야', value: '멀티에이전트 LLM · 모델 경량화 · 하네스 엔지니어링' },
+        { label: '관심 분야', value: '멀티에이전트 LLM · 하네스 엔지니어링' },
       ],
       contactLabel: 'Contact',
       contacts: [
         { label: 'GitHub', value: '@MeDeoDuck', href: 'https://github.com/MeDeoDuck' },
         { label: '이메일', value: 'seankim0824@gmail.com', href: 'mailto:seankim0824@gmail.com' },
-        { label: '라이브 데모', value: 'fomo-breaker.vercel.app', href: 'https://fomo-breaker.vercel.app' },
+        { label: '연락처', value: '010-2589-4493', href: 'tel:01025894493' },
       ],
     },
     skills: {
@@ -653,13 +653,13 @@ export const content: Record<Lang, Content> = {
       info: [
         { label: 'Education', value: 'BS in AI Engineering, Inha University' },
         { label: 'Currently', value: 'Work-study intern at WAVUS (geospatial · GeoAI)' },
-        { label: 'Focus', value: 'Multi-agent LLM · model compression · harness engineering' },
+        { label: 'Focus', value: 'Multi-agent LLM · harness engineering' },
       ],
       contactLabel: 'Contact',
       contacts: [
         { label: 'GitHub', value: '@MeDeoDuck', href: 'https://github.com/MeDeoDuck' },
         { label: 'Email', value: 'seankim0824@gmail.com', href: 'mailto:seankim0824@gmail.com' },
-        { label: 'Live demo', value: 'fomo-breaker.vercel.app', href: 'https://fomo-breaker.vercel.app' },
+        { label: 'Phone', value: '+82 10-2589-4493', href: 'tel:+821025894493' },
       ],
     },
     skills: {
