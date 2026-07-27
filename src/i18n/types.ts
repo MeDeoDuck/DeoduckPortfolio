@@ -19,6 +19,28 @@ export interface ProjectLink {
   href: string
 }
 
+/** Hello 섹션의 정보 카드 한 줄. href가 있으면 링크로 그린다. */
+export interface InfoItem {
+  label: string
+  value: string
+  href?: string
+}
+
+export interface SkillItem {
+  name: string
+  /**
+   * 아이콘 SVG 주소. 비워두면 이름으로 모노그램 타일을 그린다.
+   * 상용 모델처럼 공개 아이콘이 없는 항목은 일부러 비워둔다.
+   */
+  icon?: string
+}
+
+export interface SkillGroup {
+  /** 예: "AI · ML" */
+  label: string
+  items: SkillItem[]
+}
+
 export interface DetailBlock {
   heading: string
   /** 문단. 줄바꿈은 \n\n 으로 구분 */
@@ -72,6 +94,8 @@ export interface AwardItem {
 
 export interface Content {
   nav: {
+    hello: string
+    skills: string
     about: string
     capabilities: string
     projects: string
@@ -85,6 +109,24 @@ export interface Content {
     tagline: string
     metrics: Metric[]
     cta: string
+  }
+  /** 히어로 바로 뒤에 오는 인사 섹션. 사진 + 타이핑 인사 + 정보 카드 2단. */
+  hello: {
+    eyebrow: string
+    /** 한 글자씩 찍히는 인사 한 줄 */
+    typed: string
+    /** 가운데 조각만 액센트 색으로 칠한다 */
+    headline: { lead: string; accent: string; tail: string }
+    body: string
+    infoLabel: string
+    info: InfoItem[]
+    contactLabel: string
+    contacts: InfoItem[]
+  }
+  skills: {
+    eyebrow: string
+    heading: string
+    groups: SkillGroup[]
   }
   about: {
     heading: string

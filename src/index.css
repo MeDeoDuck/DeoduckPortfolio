@@ -210,6 +210,22 @@ html[lang='en'] .t-body {
   animation: rise-in 560ms var(--ease-out) both;
 }
 
+/* 타이핑 커서. 찍는 동안은 계속 켜두고, 다 찍힌 뒤에만 깜빡인다.
+   찍는 중에 깜빡이면 글자가 지워지는 것처럼 보인다. */
+@keyframes caret-blink {
+  0%,
+  45% {
+    opacity: 1;
+  }
+  55%,
+  100% {
+    opacity: 0;
+  }
+}
+.caret-blink {
+  animation: caret-blink 1.1s steps(1, end) infinite;
+}
+
 @keyframes lang-dip {
   from {
     opacity: 0.45;
@@ -255,6 +271,9 @@ html[data-swapping='1'] #root {
   .pressable:active,
   .hover-lift:hover {
     transform: none;
+  }
+  .caret-blink {
+    animation: none;
   }
 }
 

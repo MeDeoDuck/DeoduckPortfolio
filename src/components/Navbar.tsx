@@ -22,6 +22,8 @@ export default function Navbar({ variant = 'home' }: Props) {
   }, [])
 
   const links = [
+    { href: '#hello', label: t.nav.hello },
+    { href: '#skills', label: t.nav.skills },
     { href: '#about', label: t.nav.about },
     { href: '#capabilities', label: t.nav.capabilities },
     { href: '#projects', label: t.nav.projects },

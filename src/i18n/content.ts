@@ -1,8 +1,53 @@
-import type { Content, Lang } from './types'
+import type { Content, Lang, SkillItem } from './types'
+
+/** devicon / simple-icons 실제 존재 확인된 경로만 쓴다. */
+const devicon = (path: string) =>
+  `https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/${path}.svg`
+const simple = (slug: string) => `https://cdn.simpleicons.org/${slug}`
+
+/**
+ * 기술 항목은 언어에 따라 바뀌지 않는다. 분류 이름만 번역한다.
+ * icon이 없는 항목은 공개 아이콘이 없는 것들 — 모노그램 타일로 그린다.
+ */
+const SKILLS: Record<'ai' | 'llm' | 'backend' | 'lang', SkillItem[]> = {
+  ai: [
+    { name: 'PyTorch', icon: devicon('pytorch/pytorch-original') },
+    { name: 'Hugging Face', icon: simple('huggingface') },
+    { name: 'scikit-learn', icon: devicon('scikitlearn/scikitlearn-original') },
+    { name: 'OpenCV', icon: devicon('opencv/opencv-original') },
+    { name: 'NumPy', icon: devicon('numpy/numpy-original') },
+    { name: 'Pandas', icon: devicon('pandas/pandas-original') },
+  ],
+  llm: [
+    { name: 'LangGraph', icon: simple('langchain') },
+    { name: 'Gemini', icon: simple('googlegemini') },
+    { name: 'GPT-4.1' },
+    { name: 'Llama 3.3' },
+    { name: 'KLUE-RoBERTa' },
+  ],
+  backend: [
+    { name: 'FastAPI', icon: devicon('fastapi/fastapi-original') },
+    { name: 'PostgreSQL', icon: devicon('postgresql/postgresql-original') },
+    { name: 'SQLAlchemy', icon: devicon('sqlalchemy/sqlalchemy-original') },
+    { name: 'Docker', icon: devicon('docker/docker-original') },
+    { name: 'Azure', icon: devicon('azure/azure-original') },
+    { name: 'GitHub Actions', icon: devicon('githubactions/githubactions-original') },
+  ],
+  lang: [
+    { name: 'Python', icon: devicon('python/python-original') },
+    { name: 'C++', icon: devicon('cplusplus/cplusplus-original') },
+    { name: 'TypeScript', icon: devicon('typescript/typescript-original') },
+    { name: 'React', icon: devicon('react/react-original') },
+    { name: 'ROS', icon: devicon('ros/ros-original') },
+    { name: 'Git', icon: devicon('git/git-original') },
+  ],
+}
 
 export const content: Record<Lang, Content> = {
   ko: {
     nav: {
+      hello: '인사',
+      skills: '기술',
       about: '소개',
       capabilities: '역량',
       projects: '프로젝트',
@@ -21,6 +66,35 @@ export const content: Record<Lang, Content> = {
         { value: '99%↓', label: '추론 비용' },
       ],
       cta: '프로젝트 보기',
+    },
+    hello: {
+      eyebrow: '안녕하세요 👋',
+      typed: '안녕하세요, AI 엔지니어 김재현입니다',
+      headline: { lead: '모델이 제안하면 ', accent: '코드가 검증하는', tail: ' 시스템을 만듭니다' },
+      body:
+        '인하대학교 인공지능공학과에 재학 중입니다. 모델이 답을 제안하면 코드가 그 답을 검사하는 구조로 시스템을 설계하고, 실사용자에게 배포한 뒤 운영 비용을 낮추는 일까지 합니다.',
+      infoLabel: 'Personal Info',
+      info: [
+        { label: '학력', value: '인하대학교 인공지능공학 학사' },
+        { label: '현재', value: '웨이버스 일학습병행 인턴 (공간정보 · GeoAI)' },
+        { label: '관심 분야', value: '멀티에이전트 LLM · 모델 경량화 · 하네스 엔지니어링' },
+      ],
+      contactLabel: 'Contact',
+      contacts: [
+        { label: 'GitHub', value: '@MeDeoDuck', href: 'https://github.com/MeDeoDuck' },
+        { label: '이메일', value: 'seankim0824@gmail.com', href: 'mailto:seankim0824@gmail.com' },
+        { label: '라이브 데모', value: 'fomo-breaker.vercel.app', href: 'https://fomo-breaker.vercel.app' },
+      ],
+    },
+    skills: {
+      eyebrow: 'Skills',
+      heading: '기술 스택',
+      groups: [
+        { label: 'AI · ML', items: SKILLS.ai },
+        { label: 'LLM · Agent', items: SKILLS.llm },
+        { label: 'Backend · Infra', items: SKILLS.backend },
+        { label: 'Language · Tool', items: SKILLS.lang },
+      ],
     },
     about: {
       heading: '소개',
@@ -544,6 +618,8 @@ export const content: Record<Lang, Content> = {
 
   en: {
     nav: {
+      hello: 'Hello',
+      skills: 'Skills',
       about: 'About',
       capabilities: 'Capabilities',
       projects: 'Projects',
@@ -562,6 +638,39 @@ export const content: Record<Lang, Content> = {
         { value: '99%↓', label: 'Inference cost' },
       ],
       cta: 'View projects',
+    },
+    hello: {
+      eyebrow: 'Hello 👋',
+      typed: "Hi, I'm Jaehyun Kim — AI engineer.",
+      headline: {
+        lead: 'I build systems where ',
+        accent: 'code verifies the model',
+        tail: ', not the other way around.',
+      },
+      body:
+        'I am an AI Engineering undergrad at Inha University. I design systems where the model proposes an answer and code checks it, then ship them to real users and bring the running cost down.',
+      infoLabel: 'Personal Info',
+      info: [
+        { label: 'Education', value: 'BS in AI Engineering, Inha University' },
+        { label: 'Currently', value: 'Work-study intern at WAVUS (geospatial · GeoAI)' },
+        { label: 'Focus', value: 'Multi-agent LLM · model compression · harness engineering' },
+      ],
+      contactLabel: 'Contact',
+      contacts: [
+        { label: 'GitHub', value: '@MeDeoDuck', href: 'https://github.com/MeDeoDuck' },
+        { label: 'Email', value: 'seankim0824@gmail.com', href: 'mailto:seankim0824@gmail.com' },
+        { label: 'Live demo', value: 'fomo-breaker.vercel.app', href: 'https://fomo-breaker.vercel.app' },
+      ],
+    },
+    skills: {
+      eyebrow: 'Skills',
+      heading: 'Tech Stack',
+      groups: [
+        { label: 'AI · ML', items: SKILLS.ai },
+        { label: 'LLM · Agent', items: SKILLS.llm },
+        { label: 'Backend · Infra', items: SKILLS.backend },
+        { label: 'Language · Tool', items: SKILLS.lang },
+      ],
     },
     about: {
       heading: 'About',

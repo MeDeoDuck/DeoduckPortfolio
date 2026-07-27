@@ -1,5 +1,7 @@
 import Navbar from '../components/Navbar'
 import HeroSection from '../sections/HeroSection'
+import HelloSection from '../sections/HelloSection'
+import SkillsSection from '../sections/SkillsSection'
 import MarqueeSection from '../sections/MarqueeSection'
 import AboutSection from '../sections/AboutSection'
 import CapabilitiesSection from '../sections/CapabilitiesSection'
@@ -15,6 +17,8 @@ export default function Home() {
       <Navbar />
       <main className="bg-paper" style={{ overflowX: 'clip' }}>
         <HeroSection />
+        <HelloSection />
+        <SkillsSection />
         <MarqueeSection />
         <AboutSection />
         <CapabilitiesSection />
