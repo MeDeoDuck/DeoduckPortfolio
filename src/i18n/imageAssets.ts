@@ -12,7 +12,7 @@ const SEEDS = new Set<string>([
   'stablediffusion-lst-d1', 'stablediffusion-lst-d2',
   'track-reid-d1', 'track-reid-d2',
   'physical-ai-d1', 'physical-ai-d2',
-  'ssvep-bci-d1', 'ssvep-bci-d2',
+  'ssvep-bci-d1', 'ssvep-bci-d2', 'ssvep-bci-pipeline',
   'nlp-slm-lora-d1', 'nlp-slm-lora-d2',
 ])
 

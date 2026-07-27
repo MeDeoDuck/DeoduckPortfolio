@@ -27,7 +27,7 @@ export const MARQUEE_ROW_ONE = [
 export const MARQUEE_ROW_TWO = [
   'fomo-breaker-b', // 환각 게이트 플로우차트
   'stablediffusion-lst-a', // UNet + LST 구조
-  'ssvep-bci-d1', // 신호 전처리 필터 구성
+  'ssvep-bci-pipeline', // 최종 EEG 전처리 파이프라인
   'track-reid-d1', // ByteTrack + TransReID 통합
 ]
 
