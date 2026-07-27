@@ -1,4 +1,5 @@
 import { content } from './content'
+import { imageAsset } from './imageAssets'
 
 /**
  * 이미지 자리마다 연속 번호를 매긴다.
@@ -21,7 +22,6 @@ export const MARQUEE_ROW_ONE = [
 ]
 
 export const MARQUEE_ROW_TWO = [
-  'cage-carerf-c',
   'cage-carerf-a',
   'cage-carerf-b',
   'stablediffusion-lst-c',
@@ -44,8 +44,11 @@ function buildOrder(): string[] {
   // About 코너 장식
   keys.push('deco-a', 'deco-b', 'deco-c', 'deco-d')
 
-  // 대표 프로젝트 카드 (홈): 각 3장
-  for (const p of featured) keys.push(`${p.id}-a`, `${p.id}-b`, `${p.id}-c`)
+  // 대표 프로젝트 카드 (홈): 기본 3장, 넓은 앵커 이미지(-c)를 뺀 카드는 2장
+  for (const p of featured) {
+    keys.push(`${p.id}-a`, `${p.id}-b`)
+    if (imageAsset(`${p.id}-c`)) keys.push(`${p.id}-c`)
+  }
 
   // 각 프로젝트 상세페이지: 각 2장
   for (const p of items) keys.push(`${p.id}-d1`, `${p.id}-d2`)

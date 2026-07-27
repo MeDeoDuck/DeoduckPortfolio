@@ -6,7 +6,8 @@
 const SEEDS = new Set<string>([
   'moabom-a', 'moabom-b', 'moabom-c', 'moabom-d1', 'moabom-d2',
   'fomo-breaker-a', 'fomo-breaker-b', 'fomo-breaker-c', 'fomo-breaker-d1', 'fomo-breaker-d2',
-  'cage-carerf-a', 'cage-carerf-b', 'cage-carerf-c', 'cage-carerf-d1', 'cage-carerf-d2',
+  // cage-carerf는 실험 결과 표(-c)를 뺐다. 카드가 자동으로 2장 레이아웃으로 떨어진다.
+  'cage-carerf-a', 'cage-carerf-b', 'cage-carerf-d1', 'cage-carerf-d2',
   'stablediffusion-lst-a', 'stablediffusion-lst-b', 'stablediffusion-lst-c',
   'stablediffusion-lst-d1', 'stablediffusion-lst-d2',
   'track-reid-d1', 'track-reid-d2',

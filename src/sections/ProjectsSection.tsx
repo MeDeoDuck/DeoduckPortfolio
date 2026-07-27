@@ -4,6 +4,7 @@ import { ArrowUpRight } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import FadeIn from '../components/FadeIn'
 import Placeholder from '../components/Placeholder'
+import { imageAsset } from '../i18n/imageAssets'
 import { useLang } from '../i18n/LanguageContext'
 import type { Project } from '../i18n/types'
 
@@ -74,6 +75,7 @@ function StackCard({
 }) {
   const ref = useRef<HTMLDivElement>(null)
   const reduce = useReducedMotion()
+  const hasWide = Boolean(imageAsset(`${project.id}-c`))
   // 화면을 통째로 넘겨야 끝나면 지루하다. 카드 위가 화면 중간에 닿을 때 마무리한다.
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -118,28 +120,46 @@ function StackCard({
           </ul>
         )}
 
-        <div className="grid grid-cols-5 gap-3">
-          <div className="col-span-2 flex flex-col gap-3">
+        {/* 넓은 앵커 이미지(-c)가 있으면 비대칭 3장, 없으면 남은 2장을 같은 비중으로 나눈다. */}
+        {hasWide ? (
+          <div className="grid grid-cols-5 gap-3">
+            <div className="col-span-2 flex flex-col gap-3">
+              <Placeholder
+                label={`${project.name} 01`}
+                seed={`${project.id}-a`}
+                rounded="rounded-2xl"
+                className="w-full flex-1"
+              />
+              <Placeholder
+                label={`${project.name} 02`}
+                seed={`${project.id}-b`}
+                rounded="rounded-2xl"
+                className="w-full flex-1"
+              />
+            </div>
+            <Placeholder
+              label={`${project.name} 03`}
+              seed={`${project.id}-c`}
+              rounded="rounded-2xl"
+              className="col-span-3 min-h-[170px] w-full md:min-h-[240px]"
+            />
+          </div>
+        ) : (
+          <div className="grid grid-cols-2 gap-3">
             <Placeholder
               label={`${project.name} 01`}
               seed={`${project.id}-a`}
               rounded="rounded-2xl"
-              className="w-full flex-1"
+              className="aspect-video w-full"
             />
             <Placeholder
               label={`${project.name} 02`}
               seed={`${project.id}-b`}
               rounded="rounded-2xl"
-              className="w-full flex-1"
+              className="aspect-video w-full"
             />
           </div>
-          <Placeholder
-            label={`${project.name} 03`}
-            seed={`${project.id}-c`}
-            rounded="rounded-2xl"
-            className="col-span-3 min-h-[170px] w-full md:min-h-[240px]"
-          />
-        </div>
+        )}
       </motion.article>
     </div>
   )
