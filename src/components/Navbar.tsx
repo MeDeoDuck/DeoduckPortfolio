@@ -11,11 +11,22 @@ interface Props {
 export default function Navbar({ variant = 'home' }: Props) {
   const { t, lang, setLang } = useLang()
   const [scrolled, setScrolled] = useState(false)
+  // 스토리 히어로는 텍스트 금지 구간이다. 내비게이션도 그 구간을 지나야 나타난다.
+  const [pastStory, setPastStory] = useState(false)
 
   // 크롬은 처음엔 투명하다가, 내용이 밑으로 흘러들어올 때 재질이 생긴다.
   // 문턱을 낮게 둬야 조금만 움직여도 반응한다. 대신 전환은 길고 부드럽게.
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 8)
+    const story = document.getElementById('story')
+    const onScroll = () => {
+      setScrolled(window.scrollY > 8)
+      if (!story) {
+        setPastStory(true)
+        return
+      }
+      const rect = story.getBoundingClientRect()
+      setPastStory(rect.bottom <= window.innerHeight + 8)
+    }
     onScroll()
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
@@ -36,8 +47,10 @@ export default function Navbar({ variant = 'home' }: Props) {
     <header
       className={`fixed inset-x-0 top-0 z-50 ${scrolled ? 'material' : ''}`}
       style={{
+        opacity: pastStory ? 1 : 0,
+        pointerEvents: pastStory ? 'auto' : 'none',
         transition:
-          'background-color 460ms var(--ease-out), backdrop-filter 460ms var(--ease-out), border-color 460ms var(--ease-out)',
+          'opacity 360ms var(--ease-out), background-color 460ms var(--ease-out), backdrop-filter 460ms var(--ease-out), border-color 460ms var(--ease-out)',
       }}
     >
       <nav className="mx-auto flex w-full max-w-[1400px] items-center justify-between gap-4 px-5 py-3.5 md:px-10 md:py-4">
