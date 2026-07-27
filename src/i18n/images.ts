@@ -11,22 +11,24 @@ import { imageAsset } from './imageAssets'
  *   히어로 → 마퀴 → About 장식 → 대표 프로젝트 카드 → 각 프로젝트 상세페이지
  */
 
-// 실제 발표자료 이미지가 있는 seed로 채운다(장식용 마퀴). 없는 자리는 두지 않는다.
+/**
+ * 장식용 마퀴 타일.
+ * 한 프로젝트당 한 장만 쓴다. 같은 프로젝트를 연달아 넣으면 띠 전체가
+ * 한두 프로젝트로 보인다. 이미지가 있는 8개 프로젝트를 두 줄에 나눠
+ * 대표작·비대표작을 섞고, 결과표·표지 대신 파이프라인·구조도만 고른다.
+ */
 export const MARQUEE_ROW_ONE = [
-  'moabom-c',
-  'moabom-a',
-  'moabom-b',
-  'fomo-breaker-c',
-  'fomo-breaker-a',
-  'fomo-breaker-b',
+  'moabom-a', // 서비스 아키텍처
+  'cage-carerf-b', // 전체 학습 파이프라인
+  'physical-ai-d1', // 인지 → 판단 → 제어 파이프라인
+  'nlp-slm-lora-d2', // 과제 수행 파이프라인
 ]
 
 export const MARQUEE_ROW_TWO = [
-  'cage-carerf-a',
-  'cage-carerf-b',
-  'stablediffusion-lst-c',
-  'stablediffusion-lst-a',
-  'stablediffusion-lst-b',
+  'fomo-breaker-b', // 환각 게이트 플로우차트
+  'stablediffusion-lst-a', // UNet + LST 구조
+  'ssvep-bci-d1', // 신호 전처리 필터 구성
+  'track-reid-d1', // ByteTrack + TransReID 통합
 ]
 
 function buildOrder(): string[] {
