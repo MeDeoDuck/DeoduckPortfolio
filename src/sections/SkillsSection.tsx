@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import type { CSSProperties } from 'react'
 import { motion, useReducedMotion } from 'framer-motion'
 import FadeIn from '../components/FadeIn'
 import { useLang } from '../i18n/LanguageContext'
@@ -25,7 +26,11 @@ export default function SkillsSection() {
               className={group.wide ? 'md:col-span-2' : undefined}
             >
               <p className="t-eyebrow text-ink/50">{group.label}</p>
-              <div className="mt-4 flex flex-wrap gap-3">
+              {/* 항목 수와 무관하게 항상 정확히 두 줄. 끝줄에 한두 개만 남으면 눈에 걸린다. */}
+              <div
+                className="mt-4 flex flex-wrap gap-3 md:grid md:[grid-template-columns:repeat(var(--cols),84px)]"
+                style={{ '--cols': Math.ceil(group.items.length / 2) } as CSSProperties}
+              >
                 {group.items.map((item) => (
                   <Tile key={item.name} item={item} />
                 ))}
