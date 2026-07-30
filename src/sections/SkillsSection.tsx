@@ -18,7 +18,12 @@ export default function SkillsSection() {
 
         <div className="mt-12 grid gap-x-12 gap-y-10 md:mt-16 md:grid-cols-2">
           {t.skills.groups.map((group, gi) => (
-            <FadeIn key={group.label} delay={gi * 0.06} y={16}>
+            <FadeIn
+              key={group.label}
+              delay={gi * 0.06}
+              y={16}
+              className={group.wide ? 'md:col-span-2' : undefined}
+            >
               <p className="t-eyebrow text-ink/50">{group.label}</p>
               <div className="mt-4 flex flex-wrap gap-3">
                 {group.items.map((item) => (

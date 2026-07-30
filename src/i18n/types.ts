@@ -39,6 +39,8 @@ export interface SkillGroup {
   /** 예: "AI · ML" */
   label: string
   items: SkillItem[]
+  /** 항목이 많은 분류는 2열 그리드를 가로로 다 쓴다. */
+  wide?: boolean
 }
 
 export interface DetailBlock {

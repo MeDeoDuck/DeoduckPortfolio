@@ -13,6 +13,10 @@ const SKILLS: Record<'ai' | 'backend' | 'lang', SkillItem[]> = {
   ai: [
     { name: 'PyTorch', icon: devicon('pytorch/pytorch-original') },
     { name: 'Hugging Face', icon: simple('huggingface') },
+    { name: 'scikit-learn', icon: devicon('scikitlearn/scikitlearn-original') },
+    { name: 'OpenCV', icon: devicon('opencv/opencv-original') },
+    { name: 'NumPy', icon: devicon('numpy/numpy-original') },
+    { name: 'Pandas', icon: devicon('pandas/pandas-original') },
     { name: 'LangGraph', icon: simple('langchain') },
     { name: 'LangChain', icon: simple('langchain') },
     { name: 'n8n', icon: simple('n8n') },
@@ -21,10 +25,6 @@ const SKILLS: Record<'ai' | 'backend' | 'lang', SkillItem[]> = {
     { name: 'MoT' },
     { name: 'GNN' },
     { name: 'Time Series' },
-    { name: 'scikit-learn', icon: devicon('scikitlearn/scikitlearn-original') },
-    { name: 'OpenCV', icon: devicon('opencv/opencv-original') },
-    { name: 'NumPy', icon: devicon('numpy/numpy-original') },
-    { name: 'Pandas', icon: devicon('pandas/pandas-original') },
   ],
   backend: [
     { name: 'FastAPI', icon: devicon('fastapi/fastapi-original') },
@@ -91,7 +91,7 @@ export const content: Record<Lang, Content> = {
       eyebrow: 'Skills',
       heading: '기술 스택',
       groups: [
-        { label: 'AI · ML', items: SKILLS.ai },
+        { label: 'AI · ML', items: SKILLS.ai, wide: true },
         { label: 'Backend · Infra', items: SKILLS.backend },
         { label: 'Language · Tool', items: SKILLS.lang },
       ],
@@ -663,7 +663,7 @@ export const content: Record<Lang, Content> = {
       eyebrow: 'Skills',
       heading: 'Tech Stack',
       groups: [
-        { label: 'AI · ML', items: SKILLS.ai },
+        { label: 'AI · ML', items: SKILLS.ai, wide: true },
         { label: 'Backend · Infra', items: SKILLS.backend },
         { label: 'Language · Tool', items: SKILLS.lang },
       ],
