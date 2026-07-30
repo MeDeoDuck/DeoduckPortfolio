@@ -4,6 +4,9 @@ import type { Content, Lang, SkillItem } from './types'
 const devicon = (path: string) =>
   `https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/${path}.svg`
 const simple = (slug: string) => `https://cdn.simpleicons.org/${slug}`
+/** cdn.simpleicons.org에서 빠진 슬러그는 npm 패키지 쪽 원본을 쓴다. */
+const simpleRaw = (slug: string) =>
+  `https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/${slug}.svg`
 
 /**
  * 기술 항목은 언어에 따라 바뀌지 않는다. 분류 이름만 번역한다.
@@ -41,6 +44,11 @@ const SKILLS: Record<'ai' | 'backend' | 'lang', SkillItem[]> = {
     { name: 'React', icon: devicon('react/react-original') },
     { name: 'ROS', icon: devicon('ros/ros-original') },
     { name: 'Git', icon: devicon('git/git-original') },
+    { name: 'GitHub', icon: devicon('github/github-original') },
+    { name: 'GitLab', icon: devicon('gitlab/gitlab-original') },
+    { name: 'Claude Max', icon: simple('claude') },
+    { name: 'Codex Pro', icon: simpleRaw('openai') },
+    { name: 'Higgsfield' },
   ],
 }
 
@@ -93,7 +101,7 @@ export const content: Record<Lang, Content> = {
       groups: [
         { label: 'AI · ML', items: SKILLS.ai, wide: true },
         { label: 'Backend · Infra', items: SKILLS.backend },
-        { label: 'Language · Tool', items: SKILLS.lang },
+        { label: 'Language · Tool', items: SKILLS.lang, wide: true },
       ],
     },
     about: {
@@ -665,7 +673,7 @@ export const content: Record<Lang, Content> = {
       groups: [
         { label: 'AI · ML', items: SKILLS.ai, wide: true },
         { label: 'Backend · Infra', items: SKILLS.backend },
-        { label: 'Language · Tool', items: SKILLS.lang },
+        { label: 'Language · Tool', items: SKILLS.lang, wide: true },
       ],
     },
     about: {
