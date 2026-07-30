@@ -31,6 +31,7 @@ const SKILLS: Record<'ai' | 'backend' | 'lang' | 'plugin', SkillItem[]> = {
     { name: 'n8n', icon: simple('n8n') },
     { name: 'PEFT', icon: glyph('peft') },
     { name: 'Quantization', icon: glyph('quantization') },
+    { name: 'Distillation', icon: glyph('distillation') },
     { name: 'MoT', icon: glyph('mot') },
     { name: 'GNN', icon: glyph('gnn') },
     { name: 'Time Series', icon: glyph('time-series') },
