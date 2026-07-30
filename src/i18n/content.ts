@@ -58,6 +58,7 @@ const SKILLS: Record<'ai' | 'backend' | 'lang' | 'plugin', SkillItem[]> = {
   plugin: [
     { name: 'anthropics/superpowers', icon: mark('superpowers') },
     { name: 'garrytan/gstack', icon: mark('gstack') },
+    { name: 'mattpocock/grill-me', icon: mark('grill-me') },
     { name: 'leonxlnx/taste-skill', icon: mark('taste-skill') },
     { name: 'anthropics/frontend-design', icon: mark('frontend-design') },
     { name: 'anthropics/code-simplifier', icon: mark('code-simplifier') },
