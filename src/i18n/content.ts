@@ -33,8 +33,9 @@ const SKILLS: Record<'ai' | 'backend' | 'lang', SkillItem[]> = {
     { name: 'FastAPI', icon: devicon('fastapi/fastapi-original') },
     { name: 'PostgreSQL', icon: devicon('postgresql/postgresql-original') },
     { name: 'SQLAlchemy', icon: devicon('sqlalchemy/sqlalchemy-original') },
-    { name: 'Docker', icon: devicon('docker/docker-original') },
     { name: 'Azure', icon: devicon('azure/azure-original') },
+    { name: 'Docker', icon: devicon('docker/docker-original') },
+    { name: 'Anaconda', icon: devicon('anaconda/anaconda-original') },
     { name: 'GitHub Actions', icon: devicon('githubactions/githubactions-original') },
   ],
   lang: [
