@@ -7,12 +7,14 @@ const simple = (slug: string) => `https://cdn.simpleicons.org/${slug}`
 /** cdn.simpleicons.org에서 빠진 슬러그는 npm 패키지 쪽 원본을 쓴다. */
 const simpleRaw = (slug: string) =>
   `https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/${slug}.svg`
+/** 공개 로고가 없는 플러그인은 페이지 팔레트로 직접 그린 마크를 쓴다. public/plugins/ */
+const mark = (file: string) => `${import.meta.env.BASE_URL}plugins/${file}.svg`
 
 /**
  * 기술 항목은 언어에 따라 바뀌지 않는다. 분류 이름만 번역한다.
  * icon이 없는 항목은 공개 아이콘이 없는 것들 — 모노그램 타일로 그린다.
  */
-const SKILLS: Record<'ai' | 'backend' | 'lang', SkillItem[]> = {
+const SKILLS: Record<'ai' | 'backend' | 'lang' | 'plugin', SkillItem[]> = {
   ai: [
     { name: 'PyTorch', icon: devicon('pytorch/pytorch-original') },
     { name: 'Hugging Face', icon: simple('huggingface') },
@@ -52,6 +54,15 @@ const SKILLS: Record<'ai' | 'backend' | 'lang', SkillItem[]> = {
     { name: 'Claude Max', icon: simple('claude') },
     { name: 'Codex Pro', icon: simpleRaw('openai') },
     { name: 'Higgsfield' },
+  ],
+  plugin: [
+    { name: 'anthropics/superpowers', icon: mark('superpowers') },
+    { name: 'garrytan/gstack', icon: mark('gstack') },
+    { name: 'leonxlnx/taste-skill', icon: mark('taste-skill') },
+    { name: 'anthropics/frontend-design', icon: mark('frontend-design') },
+    { name: 'anthropics/code-simplifier', icon: mark('code-simplifier') },
+    { name: 'revfactory/harness', icon: mark('harness') },
+    { name: 'anthropics/telegram', icon: simple('telegram') },
   ],
 }
 
@@ -105,6 +116,7 @@ export const content: Record<Lang, Content> = {
         { label: 'AI · ML', items: SKILLS.ai, wide: true },
         { label: 'Backend · Infra', items: SKILLS.backend },
         { label: 'Language · Tool', items: SKILLS.lang, wide: true },
+        { label: 'AI Plugin', items: SKILLS.plugin, wide: true, tile: 128 },
       ],
     },
     about: {
@@ -677,6 +689,7 @@ export const content: Record<Lang, Content> = {
         { label: 'AI · ML', items: SKILLS.ai, wide: true },
         { label: 'Backend · Infra', items: SKILLS.backend },
         { label: 'Language · Tool', items: SKILLS.lang, wide: true },
+        { label: 'AI Plugin', items: SKILLS.plugin, wide: true, tile: 128 },
       ],
     },
     about: {

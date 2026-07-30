@@ -28,11 +28,16 @@ export default function SkillsSection() {
               <p className="t-eyebrow text-ink/50">{group.label}</p>
               {/* 항목 수와 무관하게 항상 정확히 두 줄. 끝줄에 한두 개만 남으면 눈에 걸린다. */}
               <div
-                className="mt-4 flex flex-wrap gap-3 md:grid md:[grid-template-columns:repeat(var(--cols),84px)]"
-                style={{ '--cols': Math.ceil(group.items.length / 2) } as CSSProperties}
+                className="mt-4 flex flex-wrap gap-3 md:grid md:[grid-template-columns:repeat(var(--cols),var(--tile))]"
+                style={
+                  {
+                    '--cols': Math.ceil(group.items.length / 2),
+                    '--tile': `${group.tile ?? 84}px`,
+                  } as CSSProperties
+                }
               >
                 {group.items.map((item) => (
-                  <Tile key={item.name} item={item} />
+                  <Tile key={item.name} item={item} width={group.tile ?? 84} />
                 ))}
               </div>
             </FadeIn>
@@ -43,22 +48,30 @@ export default function SkillsSection() {
   )
 }
 
+/** "anthropics/superpowers"처럼 소유자가 붙은 이름은 두 줄로 끊어 읽힌다. */
+function splitName(name: string) {
+  const at = name.indexOf('/')
+  return at < 0 ? { owner: undefined, label: name } : { owner: name.slice(0, at + 1), label: name.slice(at + 1) }
+}
+
 /** 아이콘이 없거나 CDN이 죽어도 빈 칸을 남기지 않는다. 이름 첫 글자로 대체한다. */
 function monogram(name: string) {
-  const head = name.replace(/[^A-Za-z0-9가-힣+]/g, '')
+  const head = splitName(name).label.replace(/[^A-Za-z0-9가-힣+]/g, '')
   return head.slice(0, 2).toUpperCase()
 }
 
-function Tile({ item }: { item: SkillItem }) {
+function Tile({ item, width }: { item: SkillItem; width: number }) {
   const reduce = useReducedMotion()
   const [broken, setBroken] = useState(false)
   const showIcon = Boolean(item.icon) && !broken
+  const { owner, label } = splitName(item.name)
 
   return (
     <motion.div
       whileHover={reduce ? undefined : { y: -3 }}
       transition={{ type: 'spring', bounce: 0, duration: 0.3 }}
-      className="group flex w-[84px] flex-col items-center gap-2 rounded-2xl border border-ink/10 bg-paper p-3 shadow-[0_1px_2px_rgb(29_29_31/0.04)] transition-[border-color,box-shadow] duration-200 hover:border-accent/35 hover:shadow-[0_1px_2px_rgb(29_29_31/0.04),0_10px_22px_-14px_rgb(29_29_31/0.35)]"
+      style={{ width }}
+      className="group flex flex-col items-center gap-2 rounded-2xl border border-ink/10 bg-paper p-3 shadow-[0_1px_2px_rgb(29_29_31/0.04)] transition-[border-color,box-shadow] duration-200 hover:border-accent/35 hover:shadow-[0_1px_2px_rgb(29_29_31/0.04),0_10px_22px_-14px_rgb(29_29_31/0.35)]"
     >
       <div className="flex h-10 w-10 items-center justify-center">
         {showIcon ? (
@@ -77,7 +90,8 @@ function Tile({ item }: { item: SkillItem }) {
         )}
       </div>
       <span className="text-center text-[0.68rem] font-medium leading-tight text-ink/70">
-        {item.name}
+        {owner && <span className="block text-[0.6rem] font-normal text-ink/35">{owner}</span>}
+        {label}
       </span>
     </motion.div>
   )

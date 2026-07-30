@@ -41,6 +41,8 @@ export interface SkillGroup {
   items: SkillItem[]
   /** 항목이 많은 분류는 2열 그리드를 가로로 다 쓴다. */
   wide?: boolean
+  /** 타일 한 칸 너비(px). 기본 84. 라벨이 긴 분류만 넓힌다. */
+  tile?: number
 }
 
 export interface DetailBlock {
