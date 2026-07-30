@@ -11,6 +11,8 @@ const simpleRaw = (slug: string) =>
 const mark = (file: string) => `${import.meta.env.BASE_URL}plugins/${file}.svg`
 /** 로고가 존재하지 않는 기술 개념(PEFT·양자화 등)도 같은 규칙으로 그린다. public/marks/ */
 const glyph = (file: string) => `${import.meta.env.BASE_URL}marks/${file}.svg`
+/** CDN 아이콘 세트에 없는 브랜드는 공식 사이트 로고를 받아 둔다. public/logos/ */
+const logo = (file: string) => `${import.meta.env.BASE_URL}logos/${file}`
 
 /**
  * 기술 항목은 언어에 따라 바뀌지 않는다. 분류 이름만 번역한다.
@@ -48,14 +50,14 @@ const SKILLS: Record<'ai' | 'backend' | 'lang' | 'plugin', SkillItem[]> = {
     { name: 'TypeScript', icon: devicon('typescript/typescript-original') },
     { name: 'React', icon: devicon('react/react-original') },
     { name: 'ROS', icon: devicon('ros/ros-original') },
-    { name: 'MORAI' },
+    { name: 'MORAI', icon: logo('morai.png') },
     { name: 'Gazebo', icon: devicon('gazebo/gazebo-original') },
     { name: 'Git', icon: devicon('git/git-original') },
     { name: 'GitHub', icon: devicon('github/github-original') },
     { name: 'GitLab', icon: devicon('gitlab/gitlab-original') },
     { name: 'Claude Max', icon: simple('claude') },
     { name: 'Codex Pro', icon: simpleRaw('openai') },
-    { name: 'Higgsfield' },
+    { name: 'Higgsfield', icon: logo('higgsfield.jpg') },
   ],
   plugin: [
     { name: 'anthropics/superpowers', icon: mark('superpowers') },

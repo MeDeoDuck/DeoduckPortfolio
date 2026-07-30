@@ -81,7 +81,8 @@ function Tile({ item, width }: { item: SkillItem; width: number }) {
             loading="lazy"
             decoding="async"
             onError={() => setBroken(true)}
-            className="h-full w-full object-contain"
+            /* 배경이 꽉 찬 정사각 로고(MORAI·Higgsfield)가 각지지 않게. 투명 로고엔 영향 없다. */
+            className="h-full w-full rounded-[9px] object-contain"
           />
         ) : (
           <span className="font-mono text-[0.8rem] font-bold tracking-tight text-accent">
