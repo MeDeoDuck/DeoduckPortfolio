@@ -562,8 +562,8 @@ export const content: Record<Lang, Content> = {
       items: [
         {
           period: '2026.07 ~ 현재',
-          title: '일학습병행 인턴',
-          org: '웨이버스 (공간정보 · GeoAI 플랫폼)',
+          title: 'GeoAI 그룹 인턴',
+          org: '웨이버스 (VLM · GraphRAG · Multi Agent)',
         },
         {
           period: '2025.03 ~ 2026.08',
@@ -1139,8 +1139,8 @@ export const content: Record<Lang, Content> = {
       items: [
         {
           period: '2026.07 ~ Present',
-          title: 'Work-study program intern',
-          org: 'WAVUS (geospatial and GeoAI platform)',
+          title: 'GeoAI group intern',
+          org: 'WAVUS (VLM · GraphRAG · Multi Agent)',
         },
         {
           period: '2025.03 ~ 2026.08',
