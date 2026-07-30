@@ -43,6 +43,8 @@ const SKILLS: Record<'ai' | 'backend' | 'lang', SkillItem[]> = {
     { name: 'TypeScript', icon: devicon('typescript/typescript-original') },
     { name: 'React', icon: devicon('react/react-original') },
     { name: 'ROS', icon: devicon('ros/ros-original') },
+    { name: 'MORAI' },
+    { name: 'Gazebo', icon: devicon('gazebo/gazebo-original') },
     { name: 'Git', icon: devicon('git/git-original') },
     { name: 'GitHub', icon: devicon('github/github-original') },
     { name: 'GitLab', icon: devicon('gitlab/gitlab-original') },
