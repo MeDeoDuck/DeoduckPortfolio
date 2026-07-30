@@ -69,6 +69,7 @@ const SKILLS: Record<'ai' | 'backend' | 'lang' | 'plugin', SkillItem[]> = {
     { name: 'revfactory/harness', icon: mark('harness') },
     { name: 'anthropics/telegram', icon: simple('telegram') },
     { name: 'msitarzewski/agency-agents', icon: mark('agency-agents') },
+    { name: 'coreyhaines31/marketingskills', icon: mark('marketingskills') },
   ],
 }
 
