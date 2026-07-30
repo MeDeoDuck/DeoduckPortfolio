@@ -77,7 +77,7 @@ export const content: Record<Lang, Content> = {
       infoLabel: 'Personal Info',
       info: [
         { label: '학력', value: '인하대학교 인공지능공학 학사' },
-        { label: '현재', value: '웨이버스 일학습병행 인턴 (공간정보 · GeoAI)' },
+        { label: '현재', value: '웨이버스 GeoAI 그룹 인턴 (VLM · GraphRAG · Multi Agent)' },
         { label: '관심 분야', value: '멀티에이전트 LLM · 하네스 엔지니어링' },
       ],
       contactLabel: 'Contact',
@@ -649,7 +649,7 @@ export const content: Record<Lang, Content> = {
       infoLabel: 'Personal Info',
       info: [
         { label: 'Education', value: 'BS in AI Engineering, Inha University' },
-        { label: 'Currently', value: 'Work-study intern at WAVUS (geospatial · GeoAI)' },
+        { label: 'Currently', value: 'GeoAI group intern at WAVUS (VLM · GraphRAG · Multi Agent)' },
         { label: 'Focus', value: 'Multi-agent LLM · harness engineering' },
       ],
       contactLabel: 'Contact',
