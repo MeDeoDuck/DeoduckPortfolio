@@ -9,6 +9,8 @@ const simpleRaw = (slug: string) =>
   `https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/${slug}.svg`
 /** 공개 로고가 없는 플러그인은 페이지 팔레트로 직접 그린 마크를 쓴다. public/plugins/ */
 const mark = (file: string) => `${import.meta.env.BASE_URL}plugins/${file}.svg`
+/** 로고가 존재하지 않는 기술 개념(PEFT·양자화 등)도 같은 규칙으로 그린다. public/marks/ */
+const glyph = (file: string) => `${import.meta.env.BASE_URL}marks/${file}.svg`
 
 /**
  * 기술 항목은 언어에 따라 바뀌지 않는다. 분류 이름만 번역한다.
@@ -25,11 +27,11 @@ const SKILLS: Record<'ai' | 'backend' | 'lang' | 'plugin', SkillItem[]> = {
     { name: 'LangGraph', icon: simple('langchain') },
     { name: 'LangChain', icon: simple('langchain') },
     { name: 'n8n', icon: simple('n8n') },
-    { name: 'PEFT' },
-    { name: 'Quantization' },
-    { name: 'MoT' },
-    { name: 'GNN' },
-    { name: 'Time Series' },
+    { name: 'PEFT', icon: glyph('peft') },
+    { name: 'Quantization', icon: glyph('quantization') },
+    { name: 'MoT', icon: glyph('mot') },
+    { name: 'GNN', icon: glyph('gnn') },
+    { name: 'Time Series', icon: glyph('time-series') },
   ],
   backend: [
     { name: 'FastAPI', icon: devicon('fastapi/fastapi-original') },
