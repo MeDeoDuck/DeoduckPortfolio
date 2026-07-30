@@ -60,8 +60,8 @@ const SKILLS: Record<'ai' | 'backend' | 'lang' | 'plugin', SkillItem[]> = {
     { name: 'garrytan/gstack', icon: mark('gstack') },
     { name: 'mattpocock/grill-me', icon: mark('grill-me') },
     { name: 'leonxlnx/taste-skill', icon: mark('taste-skill') },
-    { name: 'anthropics/frontend-design', icon: mark('frontend-design') },
-    { name: 'anthropics/code-simplifier', icon: mark('code-simplifier') },
+    { name: 'revfactory/harness', icon: mark('harness') },
+    { name: 'anthropics/telegram', icon: simple('telegram') },
     { name: 'msitarzewski/agency-agents', icon: mark('agency-agents') },
   ],
 }
