@@ -3,6 +3,7 @@ import { Link, useParams } from 'react-router-dom'
 import FadeIn from '../components/FadeIn'
 import Navbar from '../components/Navbar'
 import Placeholder from '../components/Placeholder'
+import { imageAsset } from '../i18n/imageAssets'
 import { useLang } from '../i18n/LanguageContext'
 
 export default function ProjectDetail() {
@@ -22,6 +23,8 @@ export default function ProjectDetail() {
       </>
     )
   }
+
+  const slides = [`${project.id}-d1`, `${project.id}-d2`].filter((s) => imageAsset(s))
 
   return (
     <>
@@ -108,22 +111,24 @@ export default function ProjectDetail() {
             </FadeIn>
           )}
 
-          <FadeIn delay={0.3} y={20}>
-            <div className="mt-12 grid gap-3 sm:grid-cols-2">
-              <Placeholder
-                label={`${project.name} 스크린샷 1`}
-                seed={`${project.id}-d1`}
-                rounded="rounded-2xl"
-                className="min-h-[180px] w-full md:min-h-[230px]"
-              />
-              <Placeholder
-                label={`${project.name} 스크린샷 2`}
-                seed={`${project.id}-d2`}
-                rounded="rounded-2xl"
-                className="min-h-[180px] w-full md:min-h-[230px]"
-              />
-            </div>
-          </FadeIn>
+          {/* 발표자료 크롭이 준비된 프로젝트만. 없는 자리는 회색 박스 대신 아예 비운다. */}
+          {slides.length > 0 && (
+            <FadeIn delay={0.3} y={20}>
+              <div
+                className={`mt-12 grid gap-3 ${slides.length > 1 ? 'sm:grid-cols-2' : ''}`}
+              >
+                {slides.map((seed, i) => (
+                  <Placeholder
+                    key={seed}
+                    label={`${project.name} 스크린샷 ${i + 1}`}
+                    seed={seed}
+                    rounded="rounded-2xl"
+                    className="min-h-[180px] w-full md:min-h-[230px]"
+                  />
+                ))}
+              </div>
+            </FadeIn>
+          )}
 
           <div className="mt-14 flex flex-col gap-10">
             {project.detail.map((block, i) => (

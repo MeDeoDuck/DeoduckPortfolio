@@ -8,7 +8,7 @@ import { imageAsset } from './imageAssets'
  * 각 Placeholder는 자기 seed로 이 표에서 번호를 찾아 쓴다.
  *
  * 번호 순서 = 페이지를 위에서 아래로 훑는 순서:
- *   히어로 → 마퀴 → About 장식 → 대표 프로젝트 카드 → 각 프로젝트 상세페이지
+ *   히어로 → 마퀴 → 대표 프로젝트 카드 → 각 프로젝트 상세페이지
  */
 
 /**
@@ -42,9 +42,6 @@ function buildOrder(): string[] {
 
   // 마퀴 (스크롤 타일). 3배 복제되지만 같은 자리 = 같은 번호.
   keys.push(...MARQUEE_ROW_ONE, ...MARQUEE_ROW_TWO)
-
-  // About 코너 장식
-  keys.push('deco-a', 'deco-b', 'deco-c', 'deco-d')
 
   // 대표 프로젝트 카드 (홈): 기본 3장, 넓은 앵커 이미지(-c)를 뺀 카드는 2장
   for (const p of featured) {
