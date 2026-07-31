@@ -104,6 +104,18 @@ html[lang='en'] .t-body {
   line-height: 1.65;
 }
 
+/* 한국어는 어절 단위로 끊는다. 기본값은 글자 아무 데서나 끊어서
+   '자유'가 '자 / 유'로 갈라진다. 대신 긴 토큰(URL·영문 합성어)이
+   칸을 넘길 수 있으니 overflow-wrap을 안전판으로 같이 둔다. */
+html[lang='ko'] .t-display,
+html[lang='ko'] .t-h2,
+html[lang='ko'] .t-h3,
+html[lang='ko'] .t-body,
+html[lang='ko'] .t-metric {
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+
 /* 거대 제목: 흰 배경에선 옅으면 안 읽힌다. 진한 차콜을 기본으로 두고
    위쪽만 살짝 밝혀 결을 준다(대비는 유지). */
 .hero-heading {

@@ -129,7 +129,7 @@ export const content: Record<Lang, Content> = {
     about: {
       heading: '소개',
       body:
-        '인하대학교 인공지능공학과 학사 과정에 재학 중입니다. 모델이 답을 제안하면 코드가 그 답을 검사하는 구조로 시스템을 설계합니다. 여러 에이전트가 역할을 나눠 일하는 제품을 만들어 실사용자에게 배포했고, 교사 모델의 라벨을 증류해 로컬 모델로 옮기며 추론 비용을 낮췄습니다. 근거 검증 게이트, 가드레일, self-healing 파이프라인 같은 하네스 엔지니어링을 공부하면서 실제 서비스에 적용하고 있습니다. 아직 학사 신입이고, 여기 적은 숫자는 모두 직접 측정한 값입니다.',
+        '인하대학교 인공지능공학과 학사 과정에 재학 중입니다. 모델이 답을 제안하면 코드가 그 답을 검사하는 구조로 시스템을 설계합니다. 여러 에이전트가 역할을 나눠 일하는 제품을 만들어 실사용자에게 배포했습니다. 교사 모델의 라벨을 증류해 로컬 모델로 옮기며 추론 비용도 낮췄습니다. 근거 검증 게이트, 가드레일, self-healing 파이프라인 같은 하네스 엔지니어링을 공부하면서 실제 서비스에 적용하고 있습니다. 아직 학사 신입이고, 여기 적은 숫자는 모두 직접 측정한 값입니다.',
     },
     capabilities: {
       heading: '역량',
@@ -138,31 +138,31 @@ export const content: Record<Lang, Content> = {
           no: '01',
           name: '멀티에이전트 LLM 시스템',
           desc:
-            'LangGraph로 에이전트 간 흐름을 오케스트레이션합니다. 하나의 큰 프롬프트에 맡기는 대신 역할을 나눠 분업시키고, 자유 대화가 아닌 규칙 기반 흐름 제어로 결과를 예측 가능하게 만듭니다.',
+            'LangGraph로 에이전트 간 흐름을 오케스트레이션합니다. 하나의 큰 프롬프트에 맡기는 대신 역할을 나눕니다. 자유 대화가 아닌 규칙 기반 흐름 제어라 결과가 예측 가능합니다.',
         },
         {
           no: '02',
           name: '모델 경량화 · 비용 최적화',
           desc:
-            '지식 증류로 큰 모델의 판단을 작은 모델에 옮기고, GPTQ와 AWQ 양자화로 모델 크기를 줄입니다. 반복 호출이 많은 구간을 로컬 모델로 전환해 API 비용을 낮춥니다.',
+            '지식 증류로 큰 모델의 판단을 작은 모델에 옮기고 GPTQ·AWQ 양자화로 모델 크기를 줄입니다. 반복 호출이 많은 구간을 로컬 모델로 전환해 API 비용을 낮춥니다.',
         },
         {
           no: '03',
           name: '백엔드 · 배포',
           desc:
-            'FastAPI와 PostgreSQL로 서비스를 구성하고, Docker로 묶어 Azure Container Apps에 배포합니다. CI/CD로 배포 과정을 자동화하고 스키마 마이그레이션을 관리합니다.',
+            'FastAPI와 PostgreSQL로 서비스를 구성한 뒤 Docker로 묶어 Azure Container Apps에 배포합니다. 배포 과정은 CI/CD로 자동화했고 스키마 마이그레이션도 함께 관리합니다.',
         },
         {
           no: '04',
           name: '하네스 · 가드레일 엔지니어링',
           desc:
-            '모델 출력을 그대로 쓰지 않고 근거 검증 게이트를 통과시킵니다. 서로 다른 LLM으로 교차검증하고, 실패한 단계를 다시 시도해 복구하는 self-healing 파이프라인을 구현합니다.',
+            '모델 출력을 그대로 쓰지 않고 근거 검증 게이트를 통과시킵니다. 서로 다른 LLM으로 교차검증하며, 실패한 단계를 다시 시도해 복구하는 self-healing 파이프라인을 구현합니다.',
         },
         {
           no: '05',
           name: '컴퓨터비전 · 로보틱스',
           desc:
-            '객체 검출·추적·재식별 파이프라인을 다루고, LiDAR 점군에서 지면과 장애물을 분리합니다. ROS로 인지에서 경로계획, 제어까지 하나로 연결합니다.',
+            '객체 검출·추적·재식별 파이프라인을 다루고 LiDAR 점군에서 지면과 장애물을 분리합니다. 인지에서 경로계획·제어까지는 ROS로 하나로 연결합니다.',
         },
       ],
     },
@@ -702,7 +702,7 @@ export const content: Record<Lang, Content> = {
     about: {
       heading: 'About',
       body:
-        'I am an undergraduate in AI Engineering at Inha University. I design systems where the model proposes an answer and code checks it before anything reaches the user. I shipped a multi-agent product to real users, distilled teacher labels into a local model to cut inference cost, and I am studying harness engineering, evidence gates, guardrails, and self-healing pipelines, by applying it to services people actually use. I am early in my career, and every number on this site is one I measured myself.',
+        'I am an undergraduate in AI Engineering at Inha University. I design systems where the model proposes an answer and code checks it before anything reaches the user. I shipped a multi-agent product to real users, and distilled teacher labels into a local model to cut inference cost. Right now I am learning harness engineering — evidence gates, guardrails, self-healing pipelines — by applying it to services people actually use. I am early in my career, and every number on this site is one I measured myself.',
     },
     capabilities: {
       heading: 'Capabilities',

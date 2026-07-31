@@ -24,15 +24,34 @@ export default function AnimatedText({ text, className }: Props) {
     )
   }
 
-  const chars = Array.from(text)
+  /*
+   * 글자마다 inline-block을 주면 브라우저가 모든 글자를 줄바꿈 지점으로 본다.
+   * 그러면 self-healing·LangGraph 같은 단어가 중간에서 잘린다.
+   * 어절을 통째로 감싸고 그 안에서만 글자를 쪼갠다. 공백은 바깥에 남겨
+   * 줄바꿈은 어절 사이에서만 일어나게 한다.
+   */
+  const total = Array.from(text).length
+  const tokens = text.split(/(\s+)/).filter(Boolean)
+  let cursor = 0
 
   return (
     <p ref={ref} className={className}>
-      {chars.map((ch, i) => (
-        <Char key={i} progress={scrollYProgress} index={i} total={chars.length}>
-          {ch}
-        </Char>
-      ))}
+      {tokens.map((token, ti) => {
+        const start = cursor
+        const chars = Array.from(token)
+        cursor += chars.length
+        // 공백은 애니메이션 없이 그대로 — 여기가 유일한 줄바꿈 지점이다.
+        if (/^\s+$/.test(token)) return <span key={ti}>{token}</span>
+        return (
+          <span key={ti} className="inline-block">
+            {chars.map((ch, i) => (
+              <Char key={i} progress={scrollYProgress} index={start + i} total={total}>
+                {ch}
+              </Char>
+            ))}
+          </span>
+        )
+      })}
     </p>
   )
 }
