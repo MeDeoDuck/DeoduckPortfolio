@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" role="img" aria-label="skills">
+  <!-- 낱개 스킬을 한 묶음으로 쌓아 올린 형태. 맨 위 한 장만 액센트. -->
+  <rect x="3.6" y="14.6" width="16.8" height="5.4" rx="1.9" fill="none" stroke="#1D1D1F" stroke-width="1.7"/>
+  <rect x="3.6" y="9.2" width="16.8" height="5.4" rx="1.9" fill="none" stroke="#1D1D1F" stroke-width="1.7"/>
+  <rect x="3.6" y="3.8" width="16.8" height="5.4" rx="1.9" fill="#0071E3"/>
+</svg>

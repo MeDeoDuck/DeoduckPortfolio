@@ -63,9 +63,11 @@ const SKILLS: Record<'ai' | 'backend' | 'lang' | 'plugin', SkillItem[]> = {
   plugin: [
     { name: 'anthropics/superpowers', icon: mark('superpowers') },
     { name: 'garrytan/gstack', icon: mark('gstack') },
-    { name: 'mattpocock/grill-me', icon: mark('grill-me') },
+    { name: 'mattpocock/skills', icon: mark('skills') },
     { name: 'mattpocock/sandcastle', icon: mark('sandcastle') },
     { name: 'leonxlnx/taste-skill', icon: mark('taste-skill') },
+    { name: 'nextlevelbuilder/ui-ux-pro-max', icon: mark('ui-ux-pro-max') },
+    { name: 'lazyweb', icon: mark('lazyweb') },
     { name: 'revfactory/harness', icon: mark('harness') },
     { name: 'anthropics/telegram', icon: simple('telegram') },
     { name: 'msitarzewski/agency-agents', icon: mark('agency-agents') },
