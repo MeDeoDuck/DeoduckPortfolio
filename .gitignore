@@ -6,3 +6,6 @@ dist-ssr
 .vscode/*
 !.vscode/extensions.json
 .gstack/
+
+# Claude Code 작업 공간(중첩 worktree). 저장소에 들어가면 안 된다.
+.claude/

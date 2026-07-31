@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="김재현 포트폴리오">
+  <!-- 사이트와 같은 3색만 쓴다: ink #1D1D1F, paper #FFFFFF, accent #0071E3.
+       16px에서도 형태가 뭉개지지 않도록 획을 굵게 잡았다. -->
+  <rect width="32" height="32" rx="7" fill="#1D1D1F"/>
+  <!-- 모델이 제안하고(위 획) 코드가 검증한다(아래 액센트 체크) -->
+  <path d="M9 12h14" stroke="#FFFFFF" stroke-width="2.6" stroke-linecap="round"/>
+  <path d="M9 19l4.2 4.2L23 13.4" fill="none" stroke="#0071E3" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

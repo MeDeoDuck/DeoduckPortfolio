@@ -42,6 +42,12 @@ body {
   font-optical-sizing: auto;
 }
 
+/* 모노는 연도·수치·라벨에만 쓴다. 자릿수 폭이 흔들리면 표처럼 읽히지 않는다. */
+.font-mono {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: 'tnum' 1;
+}
+
 /* ---------- 타이포 스케일 (기준: 한글) ---------- */
 .t-display {
   font-size: clamp(2.4rem, 12vw, 7.2rem);
@@ -55,6 +61,8 @@ body {
   line-height: 1.3;
   letter-spacing: -0.005em;
   font-weight: 700;
+  /* 제목 끝에 한 단어만 떨어지는 걸 막는다 */
+  text-wrap: balance;
 }
 
 .t-h3 {
@@ -62,6 +70,7 @@ body {
   line-height: 1.4;
   letter-spacing: 0;
   font-weight: 600;
+  text-wrap: balance;
 }
 
 .t-body {
@@ -69,6 +78,8 @@ body {
   line-height: 1.75;
   letter-spacing: 0;
   font-weight: 400;
+  /* 마지막 줄에 한 단어만 남는 걸 막는다. balance는 본문에 쓰면 줄수를 흔든다. */
+  text-wrap: pretty;
 }
 
 .t-eyebrow {
@@ -78,11 +89,15 @@ body {
   text-transform: uppercase;
 }
 
+/* 훑는 사람의 눈이 멈추는 유일한 지점. 본문보다 확실히 크게 두고,
+   자릿수가 흔들리지 않도록 tabular figures를 강제한다. */
 .t-metric {
-  font-size: clamp(1.05rem, 1.7vw, 1.55rem);
-  line-height: 1.1;
-  letter-spacing: -0.01em;
+  font-size: clamp(1.5rem, 2.6vw, 2.2rem);
+  line-height: 1.05;
+  letter-spacing: -0.025em;
   font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: 'tnum' 1;
 }
 
 html[lang='en'] .t-display {
@@ -156,7 +171,7 @@ html[lang='en'] .t-body {
   transition: transform 100ms ease-out;
 }
 .pressable:active {
-  transform: scale(0.97);
+  transform: scale(0.96);
 }
 
 @media (hover: hover) and (pointer: fine) {
@@ -208,47 +223,6 @@ html[lang='en'] .t-body {
 }
 .rise {
   animation: rise-in 560ms var(--ease-out) both;
-}
-
-/* 스토리 히어로 말풍선 — 캐릭터 머리 옆에서 까딱거리다 스크롤이 시작되면 사라진다 */
-.story-bubble {
-  position: absolute;
-  left: 50%;
-  top: 17%;
-  margin-left: 96px;
-  padding: 10px 18px;
-  background: #fff;
-  border: 1px solid rgb(29 29 31 / 0.14);
-  border-radius: 18px;
-  box-shadow: 0 2px 6px rgb(29 29 31 / 0.06), 0 14px 30px -18px rgb(29 29 31 / 0.3);
-  font-size: 0.82rem;
-  letter-spacing: 0.08em;
-  color: #1d1d1f;
-  white-space: nowrap;
-  pointer-events: none;
-  animation: bubble-bob 1.5s ease-in-out infinite;
-}
-.story-bubble::after {
-  content: '';
-  position: absolute;
-  left: -6px;
-  bottom: 9px;
-  width: 12px;
-  height: 12px;
-  background: #fff;
-  border-left: 1px solid rgb(29 29 31 / 0.14);
-  border-bottom: 1px solid rgb(29 29 31 / 0.14);
-  transform: rotate(45deg);
-  border-radius: 2px;
-}
-@keyframes bubble-bob {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-7px);
-  }
 }
 
 /* 타이핑 커서. 찍는 동안은 계속 켜두고, 다 찍힌 뒤에만 깜빡인다.
@@ -314,9 +288,6 @@ html[data-swapping='1'] #root {
     transform: none;
   }
   .caret-blink {
-    animation: none;
-  }
-  .story-bubble {
     animation: none;
   }
 }

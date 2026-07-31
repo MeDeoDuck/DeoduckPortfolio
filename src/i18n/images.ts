@@ -43,9 +43,6 @@ function buildOrder(): string[] {
   // 마퀴 (스크롤 타일). 3배 복제되지만 같은 자리 = 같은 번호.
   keys.push(...MARQUEE_ROW_ONE, ...MARQUEE_ROW_TWO)
 
-  // About 코너 장식
-  keys.push('deco-a', 'deco-b', 'deco-c', 'deco-d')
-
   // 대표 프로젝트 카드 (홈): 기본 3장, 넓은 앵커 이미지(-c)를 뺀 카드는 2장
   for (const p of featured) {
     keys.push(`${p.id}-a`, `${p.id}-b`)

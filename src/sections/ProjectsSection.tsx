@@ -127,20 +127,20 @@ function StackCard({
               <Placeholder
                 label={`${project.name} 01`}
                 seed={`${project.id}-a`}
-                rounded="rounded-2xl"
+                rounded="rounded-lg"
                 className="w-full flex-1"
               />
               <Placeholder
                 label={`${project.name} 02`}
                 seed={`${project.id}-b`}
-                rounded="rounded-2xl"
+                rounded="rounded-lg"
                 className="w-full flex-1"
               />
             </div>
             <Placeholder
               label={`${project.name} 03`}
               seed={`${project.id}-c`}
-              rounded="rounded-2xl"
+              rounded="rounded-lg"
               className="col-span-3 min-h-[170px] w-full md:min-h-[240px]"
             />
           </div>
@@ -149,13 +149,13 @@ function StackCard({
             <Placeholder
               label={`${project.name} 01`}
               seed={`${project.id}-a`}
-              rounded="rounded-2xl"
+              rounded="rounded-lg"
               className="aspect-video w-full"
             />
             <Placeholder
               label={`${project.name} 02`}
               seed={`${project.id}-b`}
-              rounded="rounded-2xl"
+              rounded="rounded-lg"
               className="aspect-video w-full"
             />
           </div>

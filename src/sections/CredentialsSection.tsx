@@ -36,7 +36,7 @@ function CredentialList({
   return (
     <section
       id={id}
-      className={`${surface ? 'surface' : 'bg-paper'} scroll-mt-24 px-5 py-20 md:px-10 md:py-24`}
+      className={`${surface ? 'surface' : 'bg-paper'} scroll-mt-24 px-5 py-20 md:px-10 md:py-28`}
     >
       <div className="mx-auto max-w-4xl">
         <FadeIn y={24}>

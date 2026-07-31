@@ -40,10 +40,17 @@ export default function Placeholder({
     if (decorative) {
       return (
         <div
-          className={`relative overflow-hidden border border-ink/10 bg-ink/[0.03] ${rounded} ${className ?? ''}`}
+          className={`relative overflow-hidden bg-ink/[0.03] ${rounded} ${className ?? ''}`}
           aria-hidden="true"
         >
-          <img src={src} alt="" loading="lazy" className="h-full w-full object-cover" />
+          {/* 이미지 외곽선은 순수 검정. ink(#1D1D1F)처럼 색이 섞인 준-검정은
+              밑면 색을 주워 담아 가장자리에 때가 낀 것처럼 보인다. */}
+          <img
+            src={src}
+            alt=""
+            loading="lazy"
+            className="h-full w-full object-cover outline outline-1 -outline-offset-1 outline-black/10"
+          />
         </div>
       )
     }
@@ -123,9 +130,14 @@ function ImageTile({
         whileHover={reduce ? undefined : { scale: 1.015 }}
         whileTap={reduce ? undefined : { scale: 0.985 }}
         transition={spring}
-        className={`group relative block overflow-hidden border border-ink/10 bg-ink/[0.03] ${rounded} ${className ?? ''}`}
+        className={`group relative block overflow-hidden bg-ink/[0.03] ${rounded} ${className ?? ''}`}
       >
-        <img src={src} alt={label} loading="lazy" className={`h-full w-full ${fit}`} />
+        <img
+          src={src}
+          alt={label}
+          loading="lazy"
+          className={`h-full w-full outline outline-1 -outline-offset-1 outline-black/10 ${fit}`}
+        />
         <span
           className="pointer-events-none absolute inset-0 rounded-[inherit] ring-2 ring-inset ring-accent/0 transition-[box-shadow] duration-200 group-hover:ring-accent/30"
           aria-hidden
