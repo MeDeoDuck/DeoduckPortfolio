@@ -88,10 +88,10 @@ export const content: Record<Lang, Content> = {
       contact: '연락',
     },
     hero: {
-      greeting: 'AX · 생성형 AI 엔지니어를 지망합니다',
+      greeting: 'ML 엔지니어를 지망합니다',
       name: '김재현',
       tagline:
-        'LLM의 출력을 그대로 신뢰하지 않고, 코드로 감싸 검증합니다. 여러 에이전트가 역할을 나눠 일하는 제품을 만들고, 그 운영 비용을 낮추는 일을 합니다.',
+        '완벽한 AI는 없다고 믿기에, 검증부터 설계합니다. LLM 에이전트 서비스를 설계하고 배포해 운영하며, 비용과 일관성 문제를 직접 해결했습니다.',
       metrics: [
         { value: '사용자 97명', label: '1주 배포 실사용' },
         { value: '98%', label: '판정 일관성 (300회 실행)' },
@@ -131,7 +131,7 @@ export const content: Record<Lang, Content> = {
     about: {
       heading: '소개',
       body:
-        '인하대학교 인공지능공학과 학사 과정에 재학 중입니다. 모델이 답을 제안하면 코드가 그 답을 검사하는 구조로 시스템을 설계합니다. 여러 에이전트가 역할을 나눠 일하는 제품을 만들어 실사용자에게 배포했고, 교사 모델의 라벨을 증류해 로컬 모델로 옮기며 추론 비용을 낮췄습니다. 근거 검증 게이트, 가드레일, self-healing 파이프라인 같은 하네스 엔지니어링을 공부하면서 실제 서비스에 적용하고 있습니다. 아직 학사 신입이고, 여기 적은 숫자는 모두 직접 측정한 값입니다.',
+        '인하대학교 인공지능공학과 학사 과정에 재학 중입니다. 모델이 답을 제안하면 코드가 그 답을 검사하는 구조로 시스템을 설계합니다. 여러 에이전트가 역할을 나눠 일하는 제품을 만들어 실사용자에게 배포했고, 교사 모델의 라벨을 증류해 로컬 모델로 옮기며 추론 비용을 낮췄습니다. 근거 검증 게이트, 가드레일, self-healing 파이프라인 같은 하네스 엔지니어링을 공부하면서 실제 서비스에 적용하고 있습니다. 문제를 풀며 얻은 노하우는 저만의 업무용 skill.md로 쌓아가고 있습니다. 아직 학사 신입이고, 여기 적은 숫자는 모두 직접 측정한 값입니다.',
     },
     capabilities: {
       heading: '역량',
@@ -235,7 +235,7 @@ export const content: Record<Lang, Content> = {
             '종목을 사고 싶은 이유가 분석에서 나온 것인지 FOMO에서 나온 것인지 점검하는 멀티페르소나 토론 시스템입니다.',
           stack: ['React', 'TypeScript', 'FastAPI', 'WebSocket', 'GPT-4.1', 'Llama-3.3-70B (Groq)'],
           metrics: [
-            { value: '53%', label: '가중치 제안 보류·거부 (30회 실행)' },
+            { value: '390/736', label: '검증 게이트가 보류·거부한 제안 (30회 실행)' },
             { value: '5', label: '서로 다른 이론을 가진 페르소나' },
             { value: '2', label: '발언·내부 사고 분리 LLM' },
           ],
@@ -249,12 +249,12 @@ export const content: Record<Lang, Content> = {
             {
               heading: '페르소나 설계',
               body:
-                '5명의 페르소나에 각각 다른 금융 이론 prior와 리스크 임계값, 시간 지평을 부여했습니다. 같은 종목, 같은 데이터를 봐도 서로 다른 결론에 도달하도록 전제를 다르게 설정한 것입니다.\n\n말투만 다른 페르소나는 결국 같은 답을 냅니다. 의견이 갈리게 하려면 판단 기준 자체가 달라야 한다고 보고, 이론적 전제 수준에서 차이를 만들었습니다.',
+                '5명의 페르소나에 각각 다른 금융 이론 prior와 리스크 임계값, 시간 지평을 부여했습니다. 같은 종목, 같은 데이터를 봐도 서로 다른 결론에 도달하도록 전제를 다르게 설정한 것입니다.\n\n말투만 다른 페르소나는 결국 같은 답을 냅니다. 의견이 갈리게 하려면 판단 기준 자체가 달라야 한다고 보고, 이론적 전제 수준에서 차이를 만들었습니다.\n\n세계관은 소프트 룰로, 수치 임계는 하드 룰로 나눴습니다. 페르소나의 성격은 프롬프트가 만들고, 넘어서는 안 되는 한계선은 코드가 지키는 구조입니다.',
             },
             {
               heading: '검증 게이트',
               body:
-                '페르소나는 최종 점수의 가중치를 바꾸자고 제안할 수 있지만, 제안이 곧바로 반영되지는 않습니다. 제안한 근거가 실제 신호 점수와 맞는지, 조정폭이 캡을 넘지 않는지 확인하는 게이트를 통과해야 합니다.\n\n가중치는 zero-sum으로 재분배해 총합이 유지되도록 했고, 최종 지수를 역산해 구성 요소와 일치하는지 검증합니다. 30회 실행에서 페르소나가 낸 가중치 제안의 53%가 이 게이트에서 보류되거나 거부됐습니다.',
+                '페르소나는 최종 점수의 가중치를 바꾸자고 제안할 수 있지만, 제안이 곧바로 반영되지는 않습니다. 제안한 근거가 실제 신호 점수와 맞는지, 조정폭이 캡을 넘지 않는지 확인하는 게이트를 통과해야 합니다.\n\n가중치는 zero-sum으로 재분배해 총합이 유지되도록 했고, 최종 지수를 역산해 구성 요소와 일치하는지 검증합니다. 30회 실행에서 페르소나가 낸 제안 736건 중 390건(53%)이 이 게이트에서 보류되거나 거부됐습니다.',
             },
             {
               heading: '이중 LLM 구조',
@@ -566,13 +566,15 @@ export const content: Record<Lang, Content> = {
           period: '2026.07 ~ 현재',
           title: 'GeoAI 그룹 인턴',
           org: '웨이버스 (VLM · GraphRAG · Multi Agent)',
+          note:
+            'VLM 기반 인구 밀집 지역 히트맵을 구현·고도화하고, "말로 만드는 지도" Agent와 GraphRAG를 학습하고 있습니다.',
         },
         {
-          period: '2025.03 ~ 2026.08',
+          period: '2025.03 ~ 2026.06',
           title: '학부연구생',
           org: '인하대학교',
           children: [
-            { label: '금융인공지능 연구실', period: '2025.12 ~ 2026.08' },
+            { label: '금융인공지능 연구실', period: '2025.12 ~ 2026.06' },
             { label: '비전 · 학습 연구실', period: '2025.06 ~ 2025.10' },
             { label: '자율시스템 연구실', period: '2025.03 ~ 2025.06' },
           ],
@@ -615,18 +617,21 @@ export const content: Record<Lang, Content> = {
         },
         {
           year: '2026',
-          title: '캡스톤 디자인 3등',
+          title: '캡스톤 디자인 우수상',
           org: '인하대학교 소프트웨어융합대학장상',
         },
         {
           year: '2026',
-          title: 'LinkUs 동아리 활동 대상',
+          title: 'LinkUs 활동우수자 대상',
         },
       ],
       certificationsLabel: '자격',
-      certifications: ['OPIc IH (영어)', 'SQLD'],
+      certifications: ['OPIc IH (영어, 2025.12)', 'SQLD (2025.12)'],
       copyrightsLabel: '저작권 등록',
-      copyrights: ['모아봄 (Moabom)', 'LST 기반 Stable Diffusion 학습 방법'],
+      copyrights: [
+        '모아봄 (Moabom) — C-2026-03297',
+        'LST 기반 Stable Diffusion 학습 성능 향상 프로그램 — C-2026-022267',
+      ],
     },
     contact: {
       heading: '연락',
@@ -657,10 +662,10 @@ export const content: Record<Lang, Content> = {
       contact: 'Contact',
     },
     hero: {
-      greeting: 'AX and generative AI engineer',
+      greeting: 'Aspiring ML engineer',
       name: 'Jaehyun Kim',
       tagline:
-        'I do not take LLM output on trust. I wrap it in code that checks it, build products where several agents split the work, and bring the cost of running them down.',
+        'I believe no AI is perfect, so I start from verification. I design, ship, and operate LLM agent services, and I have solved their cost and consistency problems myself.',
       metrics: [
         { value: '97 users', label: 'One-week deployment' },
         { value: '98%', label: 'Verdict consistency over 300 runs' },
@@ -704,7 +709,7 @@ export const content: Record<Lang, Content> = {
     about: {
       heading: 'About',
       body:
-        'I am an undergraduate in AI Engineering at Inha University. I design systems where the model proposes an answer and code checks it before anything reaches the user. I shipped a multi-agent product to real users, distilled teacher labels into a local model to cut inference cost, and I am studying harness engineering, evidence gates, guardrails, and self-healing pipelines, by applying it to services people actually use. I am early in my career, and every number on this site is one I measured myself.',
+        'I am an undergraduate in AI Engineering at Inha University. I design systems where the model proposes an answer and code checks it before anything reaches the user. I shipped a multi-agent product to real users, distilled teacher labels into a local model to cut inference cost, and I am studying harness engineering, evidence gates, guardrails, and self-healing pipelines, by applying it to services people actually use. I turn the know-how from each problem into my own library of work skill.md files. I am early in my career, and every number on this site is one I measured myself.',
     },
     capabilities: {
       heading: 'Capabilities',
@@ -787,7 +792,7 @@ export const content: Record<Lang, Content> = {
             {
               heading: 'Deployment and operation',
               body:
-                'The service runs in Docker on Azure Container Apps with PostgreSQL behind it. After the v1 release I collected a survey from 13 users and shipped the changes it pointed to, closing one full loop from release to feedback to improvement.\n\nIt reached 97 monthly active users during that run. The product server has since been taken down; the public repository stays as the verdict-consistency benchmark (MoabomVSAll).',
+                'The service runs in Docker on Azure Container Apps with PostgreSQL behind it. After the v1 release I collected a survey from 13 users and shipped the changes it pointed to, closing one full loop from release to feedback to improvement.\n\nAbout 97 users came in during the roughly one-week deployment and survey window. The product server has since been taken down; the public repository stays as the verdict-consistency benchmark (MoabomVSAll).',
             },
             {
               heading: 'Team and role',
@@ -808,7 +813,7 @@ export const content: Record<Lang, Content> = {
             'A multi-persona debate system that checks whether the urge to buy a stock came from analysis or from FOMO.',
           stack: ['React', 'TypeScript', 'FastAPI', 'WebSocket', 'GPT-4.1', 'Llama-3.3-70B (Groq)'],
           metrics: [
-            { value: '53%', label: 'Weight proposals held or rejected, 30 runs' },
+            { value: '390/736', label: 'Proposals held or rejected at the gate, 30 runs' },
             { value: '5', label: 'Personas with distinct theory priors' },
             { value: '2', label: 'LLMs splitting speech from internal reasoning' },
           ],
@@ -822,12 +827,12 @@ export const content: Record<Lang, Content> = {
             {
               heading: 'Persona design',
               body:
-                'Each of the five personas carries a different financial theory prior, risk threshold, and time horizon. Given the same ticker and the same data, they are set up to reach different conclusions.\n\nPersonas that differ only in tone end up agreeing. To make opinions actually diverge, the judging criteria themselves have to differ, so the differences were built in at the level of theoretical priors.',
+                'Each of the five personas carries a different financial theory prior, risk threshold, and time horizon. Given the same ticker and the same data, they are set up to reach different conclusions.\n\nPersonas that differ only in tone end up agreeing. To make opinions actually diverge, the judging criteria themselves have to differ, so the differences were built in at the level of theoretical priors.\n\nEach worldview is enforced as soft rules while numeric thresholds are hard rules: the persona\'s character lives in the prompt, and the limits it must not cross live in code.',
             },
             {
               heading: 'Verification gate',
               body:
-                'A persona may propose a change to the weights behind the final score, but the proposal is not applied on the spot. It has to pass a gate that checks whether the stated grounds match the actual signal scores and whether the adjustment stays under a cap.\n\nWeights are redistributed zero-sum so the total is preserved, and the final index is recomputed backward to confirm it matches its components. Across 30 runs, 53% of persona weight proposals were held or rejected at this gate.',
+                'A persona may propose a change to the weights behind the final score, but the proposal is not applied on the spot. It has to pass a gate that checks whether the stated grounds match the actual signal scores and whether the adjustment stays under a cap.\n\nWeights are redistributed zero-sum so the total is preserved, and the final index is recomputed backward to confirm it matches its components. Across 30 runs, 390 of the 736 persona proposals (53%) were held or rejected at this gate.',
             },
             {
               heading: 'Dual LLM structure',
@@ -1143,13 +1148,15 @@ export const content: Record<Lang, Content> = {
           period: '2026.07 ~ Present',
           title: 'GeoAI group intern',
           org: 'WAVUS (VLM · GraphRAG · Multi Agent)',
+          note:
+            'Building and refining a VLM-based crowd-density heatmap, and studying a "maps from words" agent with GraphRAG.',
         },
         {
-          period: '2025.03 ~ 2026.08',
+          period: '2025.03 ~ 2026.06',
           title: 'Undergraduate researcher',
           org: 'Inha University',
           children: [
-            { label: 'Financial AI Lab', period: '2025.12 ~ 2026.08' },
+            { label: 'Financial AI Lab', period: '2025.12 ~ 2026.06' },
             { label: 'Vision and Learning Lab', period: '2025.06 ~ 2025.10' },
             { label: 'Autonomous Systems Lab', period: '2025.03 ~ 2025.06' },
           ],
@@ -1192,18 +1199,21 @@ export const content: Record<Lang, Content> = {
         },
         {
           year: '2026',
-          title: 'Capstone Design, 3rd place',
+          title: 'Capstone Design, Excellence Award',
           org: 'Awarded by the Dean of the College of Software Convergence, Inha University',
         },
         {
           year: '2026',
-          title: 'LinkUs, Grand Prize for club activity',
+          title: 'LinkUs, Grand Prize for outstanding members',
         },
       ],
       certificationsLabel: 'Certifications',
-      certifications: ['OPIc IH (English)', 'SQLD'],
+      certifications: ['OPIc IH (English, 2025.12)', 'SQLD (2025.12)'],
       copyrightsLabel: 'Registered software copyrights',
-      copyrights: ['Moabom', 'Stable Diffusion training method based on LST'],
+      copyrights: [
+        'Moabom — C-2026-03297',
+        'Stable Diffusion training efficiency program based on LST — C-2026-022267',
+      ],
     },
     contact: {
       heading: 'Contact',
