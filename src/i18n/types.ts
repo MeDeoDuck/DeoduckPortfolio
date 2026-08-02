@@ -1,7 +1,7 @@
 export type Lang = 'ko' | 'en'
 
 export interface Metric {
-  /** 숫자 위주 값. 예: "MAU 97", "98%", "99%↓" */
+  /** 숫자 위주 값. 예: "사용자 97명", "98%", "99%↓" */
   value: string
   /** 짧은 설명 라벨 */
   label: string

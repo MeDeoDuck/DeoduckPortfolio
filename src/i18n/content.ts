@@ -93,7 +93,7 @@ export const content: Record<Lang, Content> = {
       tagline:
         'LLM의 출력을 그대로 신뢰하지 않고, 코드로 감싸 검증합니다. 여러 에이전트가 역할을 나눠 일하는 제품을 만들고, 그 운영 비용을 낮추는 일을 합니다.',
       metrics: [
-        { value: 'MAU 97', label: '실사용자 배포' },
+        { value: '사용자 97명', label: '1주 배포 실사용' },
         { value: '98%', label: '판정 일관성 (300회 실행)' },
         { value: '99%↓', label: '추론 비용' },
       ],
@@ -185,7 +185,7 @@ export const content: Record<Lang, Content> = {
             '여러 유튜브 테크 리뷰의 자막과 댓글을 모아 제품 단위 구매 판단 보고서를 만드는 멀티에이전트 LLM 서비스입니다.',
           stack: ['LangGraph', 'FastAPI', 'PostgreSQL', 'Docker', 'Azure', 'GPT-4.1', 'KLUE-RoBERTa'],
           metrics: [
-            { value: 'MAU 97', label: '실사용자' },
+            { value: '사용자 97명', label: '1주 배포 실사용' },
             { value: '98%', label: '판정 일관성 (300회 실행)' },
             { value: '99%↓', label: '추론 비용' },
           ],
@@ -214,7 +214,7 @@ export const content: Record<Lang, Content> = {
             {
               heading: '배포와 운영',
               body:
-                'Docker로 묶어 Azure Container Apps에 배포하고 PostgreSQL로 데이터를 관리했습니다. v1 배포 후 사용자 13명에게 설문을 받아 개선 사항을 반영했고, 배포에서 피드백, 개선으로 이어지는 한 바퀴를 완주했습니다.\n\n배포 기간 동안 MAU 97명을 확보했습니다. 제품 본체 서버는 이후 종료했고, 공개 저장소는 판정 일관성 벤치마크(MoabomVSAll)로 유지합니다.',
+                'Docker로 묶어 Azure Container Apps에 배포하고 PostgreSQL로 데이터를 관리했습니다. v1 배포 후 사용자 13명에게 설문을 받아 개선 사항을 반영했고, 배포에서 피드백, 개선으로 이어지는 한 바퀴를 완주했습니다.\n\n약 1주의 배포·설문 기간 동안 사용자 97명이 들어왔습니다. 제품 본체 서버는 이후 종료했고, 공개 저장소는 판정 일관성 벤치마크(MoabomVSAll)로 유지합니다.',
             },
             {
               heading: '팀과 역할',
@@ -662,7 +662,7 @@ export const content: Record<Lang, Content> = {
       tagline:
         'I do not take LLM output on trust. I wrap it in code that checks it, build products where several agents split the work, and bring the cost of running them down.',
       metrics: [
-        { value: 'MAU 97', label: 'Shipped to real users' },
+        { value: '97 users', label: 'One-week deployment' },
         { value: '98%', label: 'Verdict consistency over 300 runs' },
         { value: '99%↓', label: 'Inference cost' },
       ],
@@ -758,7 +758,7 @@ export const content: Record<Lang, Content> = {
             'A multi-agent LLM service that collects transcripts and comments across YouTube tech reviews and turns them into a purchase decision report for a single product.',
           stack: ['LangGraph', 'FastAPI', 'PostgreSQL', 'Docker', 'Azure', 'GPT-4.1', 'KLUE-RoBERTa'],
           metrics: [
-            { value: 'MAU 97', label: 'Active users' },
+            { value: '97 users', label: 'One-week deployment' },
             { value: '98%', label: 'Verdict consistency over 300 runs' },
             { value: '99%↓', label: 'Inference cost' },
           ],
