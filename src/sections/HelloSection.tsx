@@ -61,7 +61,8 @@ export default function HelloSection() {
             </div>
 
             <FadeIn delay={0.24} y={20}>
-              <p className="t-body max-w-lg text-ink/65">{h.body}</p>
+              {/* 자기소개는 문장 단위로 줄을 끊어 쓴다. \n이 그대로 줄바꿈으로 보이게 pre-line. */}
+              <p className="t-body max-w-lg whitespace-pre-line text-ink/65">{h.body}</p>
             </FadeIn>
           </div>
         </div>

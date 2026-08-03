@@ -129,12 +129,14 @@ function StackCard({
                 seed={`${project.id}-a`}
                 rounded="rounded-lg"
                 className="w-full flex-1"
+                scoped
               />
               <Placeholder
                 label={`${project.name} 02`}
                 seed={`${project.id}-b`}
                 rounded="rounded-lg"
                 className="w-full flex-1"
+                scoped
               />
             </div>
             <Placeholder
@@ -142,6 +144,7 @@ function StackCard({
               seed={`${project.id}-c`}
               rounded="rounded-lg"
               className="col-span-3 min-h-[170px] w-full md:min-h-[240px]"
+              scoped
             />
           </div>
         ) : (
@@ -151,12 +154,14 @@ function StackCard({
               seed={`${project.id}-a`}
               rounded="rounded-lg"
               className="aspect-video w-full"
+              scoped
             />
             <Placeholder
               label={`${project.name} 02`}
               seed={`${project.id}-b`}
               rounded="rounded-lg"
               className="aspect-video w-full"
+              scoped
             />
           </div>
         )}

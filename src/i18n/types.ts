@@ -88,6 +88,14 @@ export interface TimelineItem {
   children?: Array<{ label: string; period: string }>
 }
 
+/** 저작권 등록 항목. code가 목록 마커 자리에 표시된다. */
+export interface CopyrightItem {
+  /** 등록번호. 예: "C-2026-03297" */
+  code: string
+  /** 프로그램 이름 */
+  name: string
+}
+
 export interface AwardItem {
   /** 예: "2026" */
   year: string
@@ -104,6 +112,7 @@ export interface Content {
     capabilities: string
     projects: string
     experience: string
+    activities: string
     awards: string
     contact: string
   }
@@ -148,8 +157,13 @@ export interface Content {
     liveLabel: string
     items: Project[]
   }
-  /** 경력·학력·활동. 수상과는 분리한다. */
+  /** 경력·학력. 수상과는 분리한다. */
   experience: {
+    heading: string
+    items: TimelineItem[]
+  }
+  /** 대외활동. 경력·학력과 분리한다. */
+  activities: {
     heading: string
     items: TimelineItem[]
   }
@@ -160,7 +174,7 @@ export interface Content {
     certificationsLabel: string
     certifications: string[]
     copyrightsLabel: string
-    copyrights: string[]
+    copyrights: CopyrightItem[]
   }
   contact: {
     heading: string

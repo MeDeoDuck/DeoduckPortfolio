@@ -35,10 +35,10 @@ export default function Navbar({ variant = 'home' }: Props) {
   const links = [
     { href: '#hello', label: t.nav.hello },
     { href: '#skills', label: t.nav.skills },
-    { href: '#about', label: t.nav.about },
     { href: '#capabilities', label: t.nav.capabilities },
     { href: '#projects', label: t.nav.projects },
     { href: '#experience', label: t.nav.experience },
+    { href: '#activities', label: t.nav.activities },
     { href: '#awards', label: t.nav.awards },
     { href: '#contact', label: t.nav.contact },
   ]

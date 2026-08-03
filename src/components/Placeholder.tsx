@@ -14,6 +14,11 @@ interface Props {
   index?: number
   /** 장식용(마퀴 등): 실제 이미지여도 클릭·포커스 없이 그냥 보여준다. */
   decorative?: boolean
+  /**
+   * 라이트박스를 화면 전체가 아니라 가장 가까운 positioned 조상(프로젝트 카드) 안에만 띄운다.
+   * 이 모드에서는 오버레이 클릭으로 닫히지 않는다 — 닫기 버튼·이미지 재클릭·Esc로만 닫는다.
+   */
+  scoped?: boolean
 }
 
 /** 색을 늘리지 않는다. 하나의 중성 색에서 밝기만 미세하게 달리해 면을 구분한다. */
@@ -31,6 +36,7 @@ export default function Placeholder({
   rounded = 'rounded-3xl',
   index,
   decorative = false,
+  scoped = false,
 }: Props) {
   const key = seed ?? label
   const src = imageAsset(key)
@@ -54,7 +60,16 @@ export default function Placeholder({
         </div>
       )
     }
-    return <ImageTile src={src} label={label} rounded={rounded} className={className} seedKey={key} />
+    return (
+      <ImageTile
+        src={src}
+        label={label}
+        rounded={rounded}
+        className={className}
+        seedKey={key}
+        scoped={scoped}
+      />
+    )
   }
 
   const [from, to] = tone(key)
@@ -93,12 +108,14 @@ function ImageTile({
   rounded,
   className,
   seedKey,
+  scoped = false,
 }: {
   src: string
   label: string
   rounded: string
   className?: string
   seedKey: string
+  scoped?: boolean
 }) {
   const reduce = useReducedMotion()
   const [open, setOpen] = useState(false)
@@ -147,25 +164,46 @@ function ImageTile({
       <AnimatePresence>
         {open && (
           <motion.div
-            className="fixed inset-0 z-[90] flex items-center justify-center bg-black/80 p-5 backdrop-blur-sm md:p-10"
+            className={
+              scoped
+                ? /* scoped: 사이트 전체가 아니라 프로젝트 카드(가장 가까운 positioned 조상)만 어두워진다. */
+                  'absolute inset-0 z-[60] flex items-center justify-center rounded-[28px] bg-black/80 p-5 backdrop-blur-sm md:rounded-[36px] md:p-8'
+                : 'fixed inset-0 z-[90] flex items-center justify-center bg-black/80 p-5 backdrop-blur-sm md:p-10'
+            }
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
-            onClick={() => setOpen(false)}
+            /* scoped: 오버레이(바깥) 클릭으로는 닫지 않는다. 닫기 버튼·이미지 클릭·Esc만 허용. */
+            onClick={scoped ? undefined : () => setOpen(false)}
             role="dialog"
             aria-modal="true"
             aria-label={label}
           >
+            {scoped && (
+              <button
+                type="button"
+                onClick={() => setOpen(false)}
+                aria-label="닫기"
+                className="pressable absolute right-4 top-4 z-10 flex h-9 w-9 items-center justify-center rounded-full bg-white/15 text-lg leading-none text-white transition-colors hover:bg-white/30"
+              >
+                ×
+              </button>
+            )}
             <motion.img
               src={src}
               alt={label}
-              className="max-h-[90vh] max-w-[95vw] rounded-xl shadow-2xl"
+              className={
+                scoped
+                  ? 'max-h-full max-w-full cursor-zoom-out rounded-xl object-contain shadow-2xl'
+                  : 'max-h-[90vh] max-w-[95vw] rounded-xl shadow-2xl'
+              }
               initial={reduce ? { opacity: 0 } : { opacity: 0, scale: 0.92 }}
               animate={reduce ? { opacity: 1 } : { opacity: 1, scale: 1 }}
               exit={reduce ? { opacity: 0 } : { opacity: 0, scale: 0.95 }}
               transition={spring}
-              onClick={(e) => e.stopPropagation()}
+              /* scoped: 이미지를 다시 클릭하면 닫힌다. 기본 모드는 배경 클릭 닫힘을 막기 위해 전파만 차단. */
+              onClick={scoped ? () => setOpen(false) : (e) => e.stopPropagation()}
             />
           </motion.div>
         )}

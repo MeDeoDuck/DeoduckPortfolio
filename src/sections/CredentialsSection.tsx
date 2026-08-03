@@ -10,12 +10,16 @@ export default function CredentialsSection() {
       <CredentialList
         id="certifications"
         heading={t.awards.certificationsLabel}
-        items={t.awards.certifications}
+        items={t.awards.certifications.map((name, i) => ({
+          marker: String(i + 1).padStart(2, '0'),
+          text: name,
+        }))}
       />
       <CredentialList
         id="copyrights"
         heading={t.awards.copyrightsLabel}
-        items={t.awards.copyrights}
+        /* 저작권은 순번 대신 등록번호가 마커 자리에 선다. */
+        items={t.awards.copyrights.map((c) => ({ marker: c.code, text: c.name }))}
         surface
       />
     </>
@@ -30,7 +34,7 @@ function CredentialList({
 }: {
   id: string
   heading: string
-  items: string[]
+  items: Array<{ marker: string; text: string }>
   surface?: boolean
 }) {
   return (
@@ -45,15 +49,15 @@ function CredentialList({
 
         <ul>
           {items.map((item, i) => (
-            <FadeIn key={item} delay={i * 0.05} y={16}>
+            <FadeIn key={item.text} delay={i * 0.05} y={16}>
               <li
                 className="flex flex-col gap-1 py-5 md:flex-row md:gap-10 md:py-6"
                 style={{ borderTop: i === 0 ? 'none' : '1px solid rgb(29 29 31 / 0.1)' }}
               >
                 <span className="t-eyebrow shrink-0 pt-1 font-mono text-accent md:w-44">
-                  {String(i + 1).padStart(2, '0')}
+                  {item.marker}
                 </span>
-                <h3 className="t-h3 text-ink">{item}</h3>
+                <h3 className="t-h3 text-ink">{item.text}</h3>
               </li>
             </FadeIn>
           ))}

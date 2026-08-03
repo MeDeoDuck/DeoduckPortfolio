@@ -84,6 +84,7 @@ export const content: Record<Lang, Content> = {
       capabilities: '역량',
       projects: '프로젝트',
       experience: '경력',
+      activities: '대외활동',
       awards: '수상',
       contact: '연락',
     },
@@ -91,7 +92,7 @@ export const content: Record<Lang, Content> = {
       greeting: 'ML 엔지니어를 지망합니다',
       name: '김재현',
       tagline:
-        '완벽한 AI는 없다고 믿기에, 검증부터 설계합니다. LLM 에이전트 서비스를 설계하고 배포해 운영하며, 비용과 일관성 문제를 직접 해결했습니다.',
+        '완벽한 AI는 없다고 믿기에, 검증부터 설계합니다.\nLLM 에이전트 서비스를 설계하고 배포해 운영하며,\n비용과 일관성 문제를 직접 해결했습니다.\n신뢰할 수 있는 AI 제품을 만드는 엔지니어로 성장하며,\n문제 해결 노하우를 저만의 실무용 skill.md로 쌓아가는 것이 목표입니다.',
       metrics: [
         { value: '사용자 97명', label: '1주 배포 실사용' },
         { value: '98%', label: '판정 일관성 (300회 실행)' },
@@ -104,12 +105,16 @@ export const content: Record<Lang, Content> = {
       typed: '안녕하세요, AI 엔지니어 김재현입니다',
       headline: { lead: '모델이 제안하면 ', accent: '코드가 검증하는', tail: ' 시스템을 만듭니다' },
       body:
-        '인하대학교 인공지능공학과에 재학 중입니다. 모델이 답을 제안하면 코드가 그 답을 검사하는 구조로 시스템을 설계하고, 실사용자에게 배포한 뒤 운영 비용을 낮추는 일까지 합니다.',
+        '완벽한 AI는 없다고 믿기에, 검증부터 설계합니다.\nLLM 에이전트 서비스를 설계하고 배포해 운영하며,\n비용과 일관성 문제를 직접 해결했습니다.\n신뢰할 수 있는 AI 제품을 만드는 엔지니어로 성장하며,\n문제 해결 노하우를 저만의 실무용 skill.md로 쌓아가는 것이 목표입니다.',
       infoLabel: 'Personal Info',
       info: [
         { label: '학력', value: '인하대학교 인공지능공학 학사' },
         { label: '현재', value: '웨이버스 GeoAI 그룹 인턴 (VLM · GraphRAG · Multi Agent)' },
         { label: '관심 분야', value: '멀티에이전트 LLM · 하네스 엔지니어링' },
+        {
+          label: '저작권',
+          value: '모아봄 (Moabom) · LST 기반 Stable Diffusion 학습 성능 향상 프로그램',
+        },
       ],
       contactLabel: 'Contact',
       contacts: [
@@ -169,7 +174,7 @@ export const content: Record<Lang, Content> = {
       ],
     },
     projects: {
-      heading: '주요 프로젝트',
+      heading: 'Projects Overview',
       moreHeading: '그 외 작업',
       viewDetail: '자세히 보기',
       liveLabel: '라이브',
@@ -185,7 +190,6 @@ export const content: Record<Lang, Content> = {
             '여러 유튜브 테크 리뷰의 자막과 댓글을 모아 제품 단위 구매 판단 보고서를 만드는 멀티에이전트 LLM 서비스입니다.',
           stack: ['LangGraph', 'FastAPI', 'PostgreSQL', 'Docker', 'Azure', 'GPT-4.1', 'KLUE-RoBERTa'],
           metrics: [
-            { value: '사용자 97명', label: '1주 배포 실사용' },
             { value: '98%', label: '판정 일관성 (300회 실행)' },
             { value: '99%↓', label: '추론 비용' },
           ],
@@ -279,7 +283,7 @@ export const content: Record<Lang, Content> = {
           tagline: '리뷰를 6개 관계 그래프로 모델링해 조직적 가짜 리뷰를 탐지하는 멀티관계 GNN입니다.',
           stack: ['PyTorch Geometric', 'GAT', 'GCN', 'GraphSAGE', 'Sentence-BERT', 'LightGBM'],
           metrics: [
-            { value: 'PR-AUC 0.789', label: '단일 GAT 0.734 대비 +7.4%' },
+            { value: 'PR-AUC 0.789', label: '가장 낮은 baseline MLP(0.633) 대비 +24.7%' },
             { value: '6', label: '관계 그래프' },
           ],
           links: [{ label: '저장소', href: 'https://github.com/MeDeoDuck/CAGE-CareRF' }],
@@ -297,7 +301,7 @@ export const content: Record<Lang, Content> = {
             {
               heading: '결과',
               body:
-                'PR-AUC 0.789로, 단일 GAT 베이스라인 0.734 대비 7.4% 높았습니다.\n\n비교 대상 상위 모델들과는 통계적으로 동급 구간에 있으며, 정밀도와 재현율 사이의 균형이 상대적으로 고른 편이었습니다. 단독 1위라고 말할 수 있는 결과는 아닙니다.\n\n3인 팀 프로젝트이며, 저는 팀장으로 문제 정의·모델 설계·실험 전반을 총괄했습니다.',
+                'PR-AUC 0.789로, 가장 낮은 baseline인 MLP(0.633) 대비 24.7% 높았습니다. 최고 GNN baseline인 GAT(0.734) 대비로는 7.4% 높습니다.\n\n비교 대상 상위 모델들과는 통계적으로 동급 구간에 있으며, 정밀도와 재현율 사이의 균형이 상대적으로 고른 편이었습니다. 단독 1위라고 말할 수 있는 결과는 아닙니다.\n\n3인 팀 프로젝트이며, 저는 팀장으로 문제 정의·모델 설계·실험 전반을 총괄했습니다.',
             },
           ],
           featured: true,
@@ -392,31 +396,8 @@ export const content: Record<Lang, Content> = {
           featured: false,
         },
         {
-          id: 'linkus20',
-          no: '07',
-          category: 'Personal',
-          name: 'Linkus20 Agent Editor',
-          period: '',
-          role: '개인 개발',
-          tagline:
-            '자연어 지시를 구조화된 편집 연산으로 바꾸고, 적용하기 전에 검증 게이트를 거치는 다이어그램 에디터입니다.',
-          stack: ['React', 'TypeScript', 'Express', 'LLM'],
-          metrics: [],
-          links: [
-            { label: '저장소', href: 'https://github.com/MeDeoDuck/Linkus20-AgentStructureEducation' },
-          ],
-          detail: [
-            {
-              heading: '접근',
-              body:
-                'LLM이 다이어그램을 직접 다시 그리게 하면 결과를 되돌리기 어렵고, 어디가 왜 바뀌었는지 설명할 수 없습니다.\n\n그래서 자연어 지시를 노드 추가, 연결 변경 같은 구조화된 편집 연산으로 먼저 변환하고, 그 연산이 현재 그래프에 적용 가능한지 검증한 뒤에야 반영하도록 했습니다. 모델은 무엇을 할지 제안하고, 실제 상태 변경은 검증을 통과한 연산만 수행합니다.',
-            },
-          ],
-          featured: false,
-        },
-        {
           id: 'lg-aimers',
-          no: '08',
+          no: '07',
           category: 'Program',
           name: 'LG Aimers 8th: LLM Compression',
           period: '',
@@ -436,7 +417,7 @@ export const content: Record<Lang, Content> = {
         },
         {
           id: 'track-reid',
-          no: '09',
+          no: '08',
           category: 'Personal',
           name: 'TrackWithReID',
           period: '',
@@ -456,7 +437,7 @@ export const content: Record<Lang, Content> = {
         },
         {
           id: 'physical-ai',
-          no: '10',
+          no: '09',
           category: 'Team',
           name: 'Physical_AI_ws',
           period: '',
@@ -476,7 +457,7 @@ export const content: Record<Lang, Content> = {
         },
         {
           id: 'lidar-cone',
-          no: '11',
+          no: '10',
           category: 'Team',
           name: 'Lider_Cone_Path',
           period: '',
@@ -496,7 +477,7 @@ export const content: Record<Lang, Content> = {
         },
         {
           id: 'ssvep-bci',
-          no: '12',
+          no: '11',
           category: 'Coursework',
           name: 'SSVEP BCI 신호 분석',
           period: '2025.11',
@@ -528,35 +509,6 @@ export const content: Record<Lang, Content> = {
           ],
           featured: false,
         },
-        {
-          id: 'nlp-slm-lora',
-          no: '13',
-          category: 'Coursework',
-          name: '한국어 감성분석 · sLM LoRA',
-          period: '2025.12',
-          role: '개인 과제',
-          tagline:
-            '한국어 감성분석(NSMC)에 소형 LLM을 LoRA로 파인튜닝하고, 근거 생성까지 요구하면 오히려 정확도가 떨어지는 현상을 정량 분석한 과제입니다.',
-          stack: ['Llama-3.2-Korean-3B', 'LoRA · PEFT', 'NSMC', 'Gemini 2.5 Flash'],
-          metrics: [
-            { value: '0.673→0.698', label: 'LoRA 파인튜닝 정확도' },
-            { value: '+0.195', label: '라벨 한글화 효과' },
-          ],
-          links: [],
-          detail: [
-            {
-              heading: '실험',
-              body:
-                'IMDB용 예시 코드를 한국어 NSMC와 한국어 소형 LLM(Llama-3.2-Korean-3B)로 이식하며, LoRA 파인튜닝·LoRA rank 변경·few-shot 프롬프트·reasoning 데이터셋 생성을 각각 실험했습니다.\n\n라벨을 영어(Yes/No)에서 한글(긍정/부정)로 바꾸자 정확도가 약 0.195 올랐지만, 프롬프트를 전부 한글화하면 오히려 떨어져 일부를 영어로 유지하는 절충을 택했습니다. LoRA rank는 r=2, r=4를 비교해 표현력과 효율의 trade-off를 확인했습니다.',
-            },
-            {
-              heading: '발견',
-              body:
-                'Base 0.673에서 LoRA r=2 0.687, r=4 0.698로 rank가 커질수록 정확도가 올랐습니다. 반면 "문제-정답-근거" 템플릿으로 Gemini에 근거를 생성시켜 학습한 reasoning 방식은 few-shot(0.543)보다 낮은 0.478로, 근거 생성까지 요구하면 오히려 성능이 떨어졌습니다.\n\n출력 목표가 정답에서 정답+근거로 바뀌며 난이도가 오르고, 학습(정답 예측)과 추론(근거 생성) 사이의 분포 불일치가 원인으로 분석됩니다. LoRA는 정답 예측에는 효과적이지만 근거 생성까지 요구하면 별도의 학습 설계가 필요하다는 결론입니다.',
-            },
-          ],
-          featured: false,
-        },
       ],
     },
     experience: {
@@ -580,25 +532,30 @@ export const content: Record<Lang, Content> = {
           ],
         },
         {
-          period: '2026.01 ~ 2026.02',
-          title: 'LLM Compression 트랙 수료',
-          org: 'LG Aimers 8기 (LG AI 교육 프로그램)',
-        },
-        {
           period: '2021 ~ 현재',
           title: '인공지능공학 학사',
           org: '인하대학교',
         },
+      ],
+    },
+    activities: {
+      heading: '대외활동',
+      items: [
         {
-          period: '2025.03 ~ 현재',
+          period: '2026.03 ~ 현재',
           title: '부회장 · 멤버',
           org: 'LinkUs (AI talent network)',
           note:
-            '리더십 팀에서 유일한 엔지니어로, 커리어 네트워킹 모임에서 AI talent network로의 리브랜딩을 맡고 있습니다.',
+            '회장단에서 유일한 엔지니어로, 커리어 네트워킹 모임에서 AI talent network로의 리브랜딩을 맡고 있습니다.',
           children: [
             { label: '20기 부회장', period: '2026.07 ~ 현재' },
-            { label: '19기 멤버', period: '2025.03 ~ 2025.06' },
+            { label: '19기 멤버', period: '2026.03 ~ 2026.06' },
           ],
+        },
+        {
+          period: '2026.01 ~ 2026.02',
+          title: 'LLM Compression 트랙 수료',
+          org: 'LG Aimers 8기 (LG AI 교육 프로그램)',
         },
         {
           period: '2025.03 ~ 2026.02',
@@ -626,11 +583,11 @@ export const content: Record<Lang, Content> = {
         },
       ],
       certificationsLabel: '자격',
-      certifications: ['OPIc IH (영어, 2025.12)', 'SQLD (2025.12)'],
+      certifications: ['OPIc IH', 'SQLD'],
       copyrightsLabel: '저작권 등록',
       copyrights: [
-        '모아봄 (Moabom) — C-2026-03297',
-        'LST 기반 Stable Diffusion 학습 성능 향상 프로그램 — C-2026-022267',
+        { code: 'C-2026-03297', name: '모아봄 (Moabom)' },
+        { code: 'C-2026-022267', name: 'LST 기반 Stable Diffusion 학습 성능 향상 프로그램' },
       ],
     },
     contact: {
@@ -658,6 +615,7 @@ export const content: Record<Lang, Content> = {
       capabilities: 'Capabilities',
       projects: 'Projects',
       experience: 'Experience',
+      activities: 'Activities',
       awards: 'Awards',
       contact: 'Contact',
     },
@@ -665,7 +623,7 @@ export const content: Record<Lang, Content> = {
       greeting: 'Aspiring ML engineer',
       name: 'Jaehyun Kim',
       tagline:
-        'I believe no AI is perfect, so I start from verification. I design, ship, and operate LLM agent services, and I have solved their cost and consistency problems myself.',
+        'I believe no AI is perfect, so I start from verification.\nI design, ship, and operate LLM agent services,\nand I have solved their cost and consistency problems myself.\nI am growing into an engineer who builds trustworthy AI products,\nand my goal is to distill each problem I solve into my own practical skill.md library.',
       metrics: [
         { value: '97 users', label: 'One-week deployment' },
         { value: '98%', label: 'Verdict consistency over 300 runs' },
@@ -682,12 +640,16 @@ export const content: Record<Lang, Content> = {
         tail: ', not the other way around.',
       },
       body:
-        'I am an AI Engineering undergrad at Inha University. I design systems where the model proposes an answer and code checks it, then ship them to real users and bring the running cost down.',
+        'I believe no AI is perfect, so I start from verification.\nI design, ship, and operate LLM agent services,\nand I have solved their cost and consistency problems myself.\nI am growing into an engineer who builds trustworthy AI products,\nand my goal is to distill each problem I solve into my own practical skill.md library.',
       infoLabel: 'Personal Info',
       info: [
         { label: 'Education', value: 'BS in AI Engineering, Inha University' },
         { label: 'Currently', value: 'GeoAI group intern at WAVUS (VLM · GraphRAG · Multi Agent)' },
         { label: 'Focus', value: 'Multi-agent LLM · harness engineering' },
+        {
+          label: 'Copyrights',
+          value: 'Moabom · Stable Diffusion training efficiency program based on LST',
+        },
       ],
       contactLabel: 'Contact',
       contacts: [
@@ -747,7 +709,7 @@ export const content: Record<Lang, Content> = {
       ],
     },
     projects: {
-      heading: 'Selected Projects',
+      heading: 'Projects Overview',
       moreHeading: 'Other Work',
       viewDetail: 'View detail',
       liveLabel: 'Live',
@@ -763,7 +725,6 @@ export const content: Record<Lang, Content> = {
             'A multi-agent LLM service that collects transcripts and comments across YouTube tech reviews and turns them into a purchase decision report for a single product.',
           stack: ['LangGraph', 'FastAPI', 'PostgreSQL', 'Docker', 'Azure', 'GPT-4.1', 'KLUE-RoBERTa'],
           metrics: [
-            { value: '97 users', label: 'One-week deployment' },
             { value: '98%', label: 'Verdict consistency over 300 runs' },
             { value: '99%↓', label: 'Inference cost' },
           ],
@@ -858,7 +819,7 @@ export const content: Record<Lang, Content> = {
             'A multi-relational GNN that models reviews as six relation graphs to detect coordinated fake reviews.',
           stack: ['PyTorch Geometric', 'GAT', 'GCN', 'GraphSAGE', 'Sentence-BERT', 'LightGBM'],
           metrics: [
-            { value: 'PR-AUC 0.789', label: '+7.4% over a single GAT at 0.734' },
+            { value: 'PR-AUC 0.789', label: '+24.7% over the lowest baseline, MLP at 0.633' },
             { value: '6', label: 'Relation graphs' },
           ],
           links: [{ label: 'Repository', href: 'https://github.com/MeDeoDuck/CAGE-CareRF' }],
@@ -876,7 +837,7 @@ export const content: Record<Lang, Content> = {
             {
               heading: 'Results',
               body:
-                'PR-AUC reached 0.789, 7.4% above the single GAT baseline at 0.734.\n\nAgainst the strongest comparison models the result sits within a statistically comparable band, with a relatively even balance between precision and recall. It is not a result I would describe as a clear first place.\n\nA team project with 3 members. As team lead I owned the problem definition, model design, and experiments end to end.',
+                'PR-AUC reached 0.789, 24.7% above the lowest baseline, an MLP at 0.633, and 7.4% above the strongest GNN baseline, a GAT at 0.734.\n\nAgainst the strongest comparison models the result sits within a statistically comparable band, with a relatively even balance between precision and recall. It is not a result I would describe as a clear first place.\n\nA team project with 3 members. As team lead I owned the problem definition, model design, and experiments end to end.',
             },
           ],
           featured: true,
@@ -971,31 +932,8 @@ export const content: Record<Lang, Content> = {
           featured: false,
         },
         {
-          id: 'linkus20',
-          no: '07',
-          category: 'Personal',
-          name: 'Linkus20 Agent Editor',
-          period: '',
-          role: 'Personal project',
-          tagline:
-            'A diagram editor that turns natural language instructions into structured edit operations and runs them through a verification gate before applying them.',
-          stack: ['React', 'TypeScript', 'Express', 'LLM'],
-          metrics: [],
-          links: [
-            { label: 'Repository', href: 'https://github.com/MeDeoDuck/Linkus20-AgentStructureEducation' },
-          ],
-          detail: [
-            {
-              heading: 'Approach',
-              body:
-                'Letting an LLM redraw a diagram directly makes the result hard to undo and impossible to explain: you cannot say what changed or why.\n\nSo an instruction is first converted into structured edit operations such as add node or rewire edge, then checked for validity against the current graph, and only then applied. The model proposes what to do; only operations that pass the check mutate state.',
-            },
-          ],
-          featured: false,
-        },
-        {
           id: 'lg-aimers',
-          no: '08',
+          no: '07',
           category: 'Program',
           name: 'LG Aimers 8th: LLM Compression',
           period: '',
@@ -1015,7 +953,7 @@ export const content: Record<Lang, Content> = {
         },
         {
           id: 'track-reid',
-          no: '09',
+          no: '08',
           category: 'Personal',
           name: 'TrackWithReID',
           period: '',
@@ -1036,7 +974,7 @@ export const content: Record<Lang, Content> = {
         },
         {
           id: 'physical-ai',
-          no: '10',
+          no: '09',
           category: 'Team',
           name: 'Physical_AI_ws',
           period: '',
@@ -1057,7 +995,7 @@ export const content: Record<Lang, Content> = {
         },
         {
           id: 'lidar-cone',
-          no: '11',
+          no: '10',
           category: 'Team',
           name: 'Lider_Cone_Path',
           period: '',
@@ -1078,7 +1016,7 @@ export const content: Record<Lang, Content> = {
         },
         {
           id: 'ssvep-bci',
-          no: '12',
+          no: '11',
           category: 'Coursework',
           name: 'SSVEP BCI signal analysis',
           period: '2025.11',
@@ -1110,35 +1048,6 @@ export const content: Record<Lang, Content> = {
           ],
           featured: false,
         },
-        {
-          id: 'nlp-slm-lora',
-          no: '13',
-          category: 'Coursework',
-          name: 'Korean sentiment analysis · sLM LoRA',
-          period: '2025.12',
-          role: 'Individual assignment',
-          tagline:
-            'A study that LoRA fine-tunes a small LLM for Korean sentiment analysis (NSMC) and quantifies how demanding a generated rationale actually lowers accuracy.',
-          stack: ['Llama-3.2-Korean-3B', 'LoRA · PEFT', 'NSMC', 'Gemini 2.5 Flash'],
-          metrics: [
-            { value: '0.673→0.698', label: 'LoRA fine-tuning accuracy' },
-            { value: '+0.195', label: 'Korean label effect' },
-          ],
-          links: [],
-          detail: [
-            {
-              heading: 'Experiments',
-              body:
-                'Porting an IMDB example to Korean NSMC and a small Korean LLM (Llama-3.2-Korean-3B), I ran LoRA fine-tuning, LoRA rank changes, few-shot prompting, and reasoning-dataset generation.\n\nSwitching labels from English (Yes/No) to Korean raised accuracy by about 0.195, but making the whole prompt Korean lowered it, so I kept part of it in English. Comparing rank r=2 and r=4 showed the trade-off between capacity and efficiency.',
-            },
-            {
-              heading: 'Finding',
-              body:
-                'Accuracy rose from a base of 0.673 to 0.687 at r=2 and 0.698 at r=4 as rank grew. In contrast, the reasoning approach, trained on rationale that Gemini generated in a problem-answer-rationale template, scored 0.478, below few-shot at 0.543: demanding a rationale actually hurt.\n\nAs the output target shifts from answer to answer-plus-rationale the task gets harder, and the distribution mismatch between training (predict the answer) and inference (generate a rationale) is the likely cause. LoRA is effective for predicting the answer, but demanding a rationale needs a separate training design.',
-            },
-          ],
-          featured: false,
-        },
       ],
     },
     experience: {
@@ -1162,25 +1071,30 @@ export const content: Record<Lang, Content> = {
           ],
         },
         {
-          period: '2026.01 ~ 2026.02',
-          title: 'Completed the LLM Compression track',
-          org: 'LG Aimers 8th (LG AI education program)',
-        },
-        {
           period: '2021 ~ Present',
           title: 'BS in AI Engineering',
           org: 'Inha University',
         },
+      ],
+    },
+    activities: {
+      heading: 'Activities',
+      items: [
         {
-          period: '2025.03 ~ Present',
+          period: '2026.03 ~ Present',
           title: 'Vice president, member',
           org: 'LinkUs (AI talent network)',
           note:
-            'The only engineer on the leadership team, currently leading the rebrand from a career networking club into an AI talent network.',
+            'The only engineer on the executive board, currently leading the rebrand from a career networking club into an AI talent network.',
           children: [
             { label: 'Vice president, 20th cohort', period: '2026.07 ~ Present' },
-            { label: 'Member, 19th cohort', period: '2025.03 ~ 2025.06' },
+            { label: 'Member, 19th cohort', period: '2026.03 ~ 2026.06' },
           ],
+        },
+        {
+          period: '2026.01 ~ 2026.02',
+          title: 'Completed the LLM Compression track',
+          org: 'LG Aimers 8th (LG AI education program)',
         },
         {
           period: '2025.03 ~ 2026.02',
@@ -1208,11 +1122,11 @@ export const content: Record<Lang, Content> = {
         },
       ],
       certificationsLabel: 'Certifications',
-      certifications: ['OPIc IH (English, 2025.12)', 'SQLD (2025.12)'],
+      certifications: ['OPIc IH', 'SQLD'],
       copyrightsLabel: 'Registered software copyrights',
       copyrights: [
-        'Moabom — C-2026-03297',
-        'Stable Diffusion training efficiency program based on LST — C-2026-022267',
+        { code: 'C-2026-03297', name: 'Moabom' },
+        { code: 'C-2026-022267', name: 'Stable Diffusion training efficiency program based on LST' },
       ],
     },
     contact: {

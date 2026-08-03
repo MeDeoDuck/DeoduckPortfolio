@@ -3,10 +3,10 @@ import ScrollDepth from '../components/ScrollDepth'
 import HelloSection from '../sections/HelloSection'
 import SkillsSection from '../sections/SkillsSection'
 import MarqueeSection from '../sections/MarqueeSection'
-import AboutSection from '../sections/AboutSection'
 import CapabilitiesSection from '../sections/CapabilitiesSection'
 import ProjectsSection from '../sections/ProjectsSection'
 import ExperienceSection from '../sections/ExperienceSection'
+import ActivitiesSection from '../sections/ActivitiesSection'
 import AwardsSection from '../sections/AwardsSection'
 import CredentialsSection from '../sections/CredentialsSection'
 import ContactSection from '../sections/ContactSection'
@@ -33,10 +33,6 @@ export default function Home() {
           <MarqueeSection />
         </ScrollDepth>
 
-        <ScrollDepth depth={1.5} tilt={2.5}>
-          <AboutSection />
-        </ScrollDepth>
-
         <ScrollDepth depth={0.7} tilt={1.5}>
           <CapabilitiesSection />
         </ScrollDepth>
@@ -47,6 +43,10 @@ export default function Home() {
 
         <ScrollDepth depth={0.6} tilt={1.5}>
           <ExperienceSection />
+        </ScrollDepth>
+
+        <ScrollDepth depth={0.8} tilt={1.5}>
+          <ActivitiesSection />
         </ScrollDepth>
 
         <ScrollDepth depth={1.1} tilt={1.5}>
