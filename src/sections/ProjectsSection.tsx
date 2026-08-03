@@ -77,8 +77,6 @@ function StackCard({
   const ref = useRef<HTMLDivElement>(null)
   const reduce = useReducedMotion()
   const hasWide = Boolean(imageAsset(`${project.id}-c`))
-  // LST는 네트워크 구조도가 좁은 세로 슬롯에 끼어 보여서, 3장을 한 줄로 나란히 편다.
-  const singleRow = project.id === 'stablediffusion-lst'
   // 화면을 통째로 넘겨야 끝나면 지루하다. 카드 위가 화면 중간에 닿을 때 마무리한다.
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -131,21 +129,8 @@ function StackCard({
         )}
 
         {/* 넓은 앵커 이미지(-c)가 있으면 비대칭 3장, 없으면 남은 2장을 같은 비중으로 나눈다.
-            singleRow는 3장을 같은 크기로 한 줄에 편다(16:9 슬라이드가 좁은 슬롯에 끼는 것 방지). */}
-        {singleRow ? (
-          <div className="grid grid-cols-3 gap-3">
-            {(['a', 'b', 'c'] as const).map((slot, i) => (
-              <Placeholder
-                key={slot}
-                label={`${project.name} 0${i + 1}`}
-                seed={`${project.id}-${slot}`}
-                rounded="rounded-lg"
-                className="aspect-video w-full"
-                scoped
-              />
-            ))}
-          </div>
-        ) : hasWide ? (
+            현재는 모든 대표 카드가 -c 없이 2장 레이아웃이다. */}
+        {hasWide ? (
           <div className="grid grid-cols-5 gap-3">
             <div className="col-span-2 flex flex-col gap-3">
               <Placeholder

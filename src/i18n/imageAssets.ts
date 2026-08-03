@@ -3,13 +3,13 @@
  * Placeholder가 이 목록을 보고, 있으면 <img>로, 없으면 IMG NN 자리표시자로 렌더한다.
  * 파일은 public/images/<seed>.webp 에 있고, base 경로는 vite base(/DeoduckPortfolio/)를 따른다.
  */
+// 대표 카드는 전부 2장(-a·-b) 레이아웃으로 통일했다. -c 시드는 쓰지 않는다.
+// moabom-b = 발표 13p 보고서 UI, stablediffusion-lst-b = 결과표.
 const SEEDS = new Set<string>([
-  'moabom-a', 'moabom-b', 'moabom-c', 'moabom-d1', 'moabom-d2',
-  // fomo-breaker도 -c를 빼서 2장(왼쪽 -a·오른쪽 -b) 레이아웃으로 렌더한다.
+  'moabom-a', 'moabom-b', 'moabom-d1', 'moabom-d2',
   'fomo-breaker-a', 'fomo-breaker-b', 'fomo-breaker-d1', 'fomo-breaker-d2',
-  // cage-carerf는 실험 결과 표(-c)를 뺐다. 카드가 자동으로 2장 레이아웃으로 떨어진다.
   'cage-carerf-a', 'cage-carerf-b', 'cage-carerf-d1', 'cage-carerf-d2',
-  'stablediffusion-lst-a', 'stablediffusion-lst-b', 'stablediffusion-lst-c',
+  'stablediffusion-lst-a', 'stablediffusion-lst-b',
   'stablediffusion-lst-d1', 'stablediffusion-lst-d2',
   'track-reid-d1', 'track-reid-d2',
   'physical-ai-d1', 'physical-ai-d2',
