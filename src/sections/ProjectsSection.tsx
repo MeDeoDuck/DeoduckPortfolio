@@ -77,6 +77,8 @@ function StackCard({
   const ref = useRef<HTMLDivElement>(null)
   const reduce = useReducedMotion()
   const hasWide = Boolean(imageAsset(`${project.id}-c`))
+  // LST는 네트워크 구조도가 좁은 세로 슬롯에 끼어 보여서, 3장을 한 줄로 나란히 편다.
+  const singleRow = project.id === 'stablediffusion-lst'
   // 화면을 통째로 넘겨야 끝나면 지루하다. 카드 위가 화면 중간에 닿을 때 마무리한다.
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -87,10 +89,17 @@ function StackCard({
   const scale = useTransform(scrollYProgress, [0, 1], [1, targetScale])
 
   return (
-    <div ref={ref} className="sticky h-[66vh]" style={{ top: `${index * 22}px` }}>
+    // 고정 66vh는 카드 실제 높이보다 짧아 다음 카드가 하단을 미리 덮었다.
+    // 래퍼 높이를 콘텐츠에 맡기고 sticky를 래퍼 하나로 합치면,
+    // 카드가 하단까지 다 보인 뒤에야 다음 카드가 넘어온다(스택 연출 유지).
+    <div
+      ref={ref}
+      className="sticky pb-6 md:pb-8"
+      style={{ top: `calc(6rem + ${index * 22}px)` }}
+    >
       <motion.article
         style={{ scale: reduce ? 1 : scale }}
-        className="card sticky top-24 flex flex-col gap-5 rounded-[28px] p-5 md:top-28 md:rounded-[36px] md:p-7"
+        className="card flex flex-col gap-5 rounded-[28px] p-5 md:rounded-[36px] md:p-7"
       >
         <header className="flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
           <div className="flex min-w-0 flex-col gap-2">
@@ -121,8 +130,22 @@ function StackCard({
           </ul>
         )}
 
-        {/* 넓은 앵커 이미지(-c)가 있으면 비대칭 3장, 없으면 남은 2장을 같은 비중으로 나눈다. */}
-        {hasWide ? (
+        {/* 넓은 앵커 이미지(-c)가 있으면 비대칭 3장, 없으면 남은 2장을 같은 비중으로 나눈다.
+            singleRow는 3장을 같은 크기로 한 줄에 편다(16:9 슬라이드가 좁은 슬롯에 끼는 것 방지). */}
+        {singleRow ? (
+          <div className="grid grid-cols-3 gap-3">
+            {(['a', 'b', 'c'] as const).map((slot, i) => (
+              <Placeholder
+                key={slot}
+                label={`${project.name} 0${i + 1}`}
+                seed={`${project.id}-${slot}`}
+                rounded="rounded-lg"
+                className="aspect-video w-full"
+                scoped
+              />
+            ))}
+          </div>
+        ) : hasWide ? (
           <div className="grid grid-cols-5 gap-3">
             <div className="col-span-2 flex flex-col gap-3">
               <Placeholder

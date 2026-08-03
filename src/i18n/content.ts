@@ -289,7 +289,7 @@ export const content: Record<Lang, Content> = {
           tagline: '리뷰를 6개 관계 그래프로 모델링해 조직적 가짜 리뷰를 탐지하는 멀티관계 GNN입니다.',
           stack: ['PyTorch Geometric', 'GAT', 'GCN', 'GraphSAGE', 'Sentence-BERT', 'LightGBM'],
           metrics: [
-            { value: 'PR-AUC 0.789', label: '가장 낮은 baseline MLP(0.633) 대비 +24.7%' },
+            { value: 'PR-AUC 0.789', label: 'baseline MLP(0.633) 대비 +24.7%' },
             { value: '6', label: '관계 그래프' },
           ],
           links: [{ label: '저장소', href: 'https://github.com/MeDeoDuck/CAGE-CareRF' }],
@@ -307,7 +307,7 @@ export const content: Record<Lang, Content> = {
             {
               heading: '결과',
               body:
-                'PR-AUC 0.789로, 가장 낮은 baseline인 MLP(0.633) 대비 24.7% 높았습니다. 최고 GNN baseline인 GAT(0.734) 대비로는 7.4% 높습니다.\n\n비교 대상 상위 모델들과는 통계적으로 동급 구간에 있으며, 정밀도와 재현율 사이의 균형이 상대적으로 고른 편이었습니다. 단독 1위라고 말할 수 있는 결과는 아닙니다.\n\n3인 팀 프로젝트이며, 저는 팀장으로 문제 정의·모델 설계·실험 전반을 총괄했습니다.',
+                'PR-AUC 0.789로, baseline인 MLP(0.633) 대비 24.7% 높았습니다. 최고 GNN baseline인 GAT(0.734) 대비로는 7.4% 높습니다.\n\n비교 대상 상위 모델들과는 통계적으로 동급 구간에 있으며, 정밀도와 재현율 사이의 균형이 상대적으로 고른 편이었습니다. 단독 1위라고 말할 수 있는 결과는 아닙니다.\n\n3인 팀 프로젝트이며, 저는 팀장으로 문제 정의·모델 설계·실험 전반을 총괄했습니다.',
             },
           ],
           featured: true,
@@ -837,7 +837,7 @@ export const content: Record<Lang, Content> = {
             'A multi-relational GNN that models reviews as six relation graphs to detect coordinated fake reviews.',
           stack: ['PyTorch Geometric', 'GAT', 'GCN', 'GraphSAGE', 'Sentence-BERT', 'LightGBM'],
           metrics: [
-            { value: 'PR-AUC 0.789', label: '+24.7% over the lowest baseline, MLP at 0.633' },
+            { value: 'PR-AUC 0.789', label: '+24.7% over the baseline MLP at 0.633' },
             { value: '6', label: 'Relation graphs' },
           ],
           links: [{ label: 'Repository', href: 'https://github.com/MeDeoDuck/CAGE-CareRF' }],
@@ -855,7 +855,7 @@ export const content: Record<Lang, Content> = {
             {
               heading: 'Results',
               body:
-                'PR-AUC reached 0.789, 24.7% above the lowest baseline, an MLP at 0.633, and 7.4% above the strongest GNN baseline, a GAT at 0.734.\n\nAgainst the strongest comparison models the result sits within a statistically comparable band, with a relatively even balance between precision and recall. It is not a result I would describe as a clear first place.\n\nA team project with 3 members. As team lead I owned the problem definition, model design, and experiments end to end.',
+                'PR-AUC reached 0.789, 24.7% above the baseline MLP at 0.633, and 7.4% above the strongest GNN baseline, a GAT at 0.734.\n\nAgainst the strongest comparison models the result sits within a statistically comparable band, with a relatively even balance between precision and recall. It is not a result I would describe as a clear first place.\n\nA team project with 3 members. As team lead I owned the problem definition, model design, and experiments end to end.',
             },
           ],
           featured: true,
