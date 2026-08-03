@@ -1,10 +1,13 @@
 import { useEffect, useRef } from 'react'
 import type { RefObject } from 'react'
 import { useReducedMotion } from 'framer-motion'
+import FadeIn from '../components/FadeIn'
 import Placeholder from '../components/Placeholder'
+import { useLang } from '../i18n/LanguageContext'
 import { MARQUEE_ROW_ONE as ROW_ONE, MARQUEE_ROW_TWO as ROW_TWO } from '../i18n/images'
 
 export default function MarqueeSection() {
+  const { t } = useLang()
   const sectionRef = useRef<HTMLElement>(null)
   const rowOneRef = useRef<HTMLDivElement>(null)
   const rowTwoRef = useRef<HTMLDivElement>(null)
@@ -48,9 +51,14 @@ export default function MarqueeSection() {
     <section
       ref={sectionRef}
       className="overflow-hidden bg-paper pb-10 pt-24 sm:pt-32 md:pt-40"
-      aria-hidden="true"
     >
-      <div className="flex flex-col gap-3">
+      <div className="mx-auto max-w-5xl px-5 pb-12 md:px-10 md:pb-16">
+        <FadeIn y={20}>
+          <p className="t-eyebrow font-mono text-accent">{t.marquee.eyebrow}</p>
+          <h2 className="t-h2 font-display mt-3 text-ink">{t.marquee.heading}</h2>
+        </FadeIn>
+      </div>
+      <div className="flex flex-col gap-3" aria-hidden="true">
         <Row innerRef={rowOneRef} items={ROW_ONE} />
         <Row innerRef={rowTwoRef} items={ROW_TWO} />
       </div>

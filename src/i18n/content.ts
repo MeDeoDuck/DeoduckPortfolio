@@ -173,8 +173,12 @@ export const content: Record<Lang, Content> = {
         },
       ],
     },
+    marquee: {
+      eyebrow: 'Projects Overview',
+      heading: '프로젝트 한눈에 보기',
+    },
     projects: {
-      heading: 'Projects Overview',
+      heading: '주요 프로젝트',
       moreHeading: '그 외 작업',
       viewDetail: '자세히 보기',
       liveLabel: '라이브',
@@ -708,8 +712,12 @@ export const content: Record<Lang, Content> = {
         },
       ],
     },
+    marquee: {
+      eyebrow: 'Projects Overview',
+      heading: 'Projects at a glance',
+    },
     projects: {
-      heading: 'Projects Overview',
+      heading: 'Selected Projects',
       moreHeading: 'Other Work',
       viewDetail: 'View detail',
       liveLabel: 'Live',

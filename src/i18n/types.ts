@@ -150,6 +150,11 @@ export interface Content {
     heading: string
     items: Capability[]
   }
+  /** 프로젝트 화면들이 좌우로 흐르는 마퀴 섹션의 제목. */
+  marquee: {
+    eyebrow: string
+    heading: string
+  }
   projects: {
     heading: string
     moreHeading: string
