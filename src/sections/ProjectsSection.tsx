@@ -16,9 +16,12 @@ export default function ProjectsSection() {
   return (
     <section id="projects" className="scroll-mt-24 bg-paper px-5 py-20 md:px-10 md:py-28">
       <div className="mx-auto max-w-5xl">
-        <FadeIn y={24}>
-          <h2 className="t-h2 font-display mb-12 text-ink md:mb-16">{t.projects.heading}</h2>
-        </FadeIn>
+        {/* 제목 기준선은 경력 섹션(max-w-4xl)의 왼쪽 라인에 맞춘다. */}
+        <div className="mx-auto max-w-4xl">
+          <FadeIn y={24}>
+            <h2 className="t-h2 font-display mb-12 text-ink md:mb-16">{t.projects.heading}</h2>
+          </FadeIn>
+        </div>
 
         {featured.map((project, i) => (
           <StackCard

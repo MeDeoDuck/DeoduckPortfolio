@@ -52,11 +52,14 @@ export default function MarqueeSection() {
       ref={sectionRef}
       className="overflow-hidden bg-paper pb-10 pt-24 sm:pt-32 md:pt-40"
     >
-      <div className="mx-auto max-w-5xl px-5 pb-12 md:px-10 md:pb-16">
-        <FadeIn y={20}>
-          <p className="t-eyebrow font-mono text-accent">{t.marquee.eyebrow}</p>
-          <h2 className="t-h2 font-display mt-3 text-ink">{t.marquee.heading}</h2>
-        </FadeIn>
+      {/* 제목 기준선은 경력 섹션(max-w-4xl)의 왼쪽 라인에 맞춘다. 패딩은 바깥, max-w는 안쪽. */}
+      <div className="px-5 pb-12 md:px-10 md:pb-16">
+        <div className="mx-auto max-w-4xl">
+          <FadeIn y={20}>
+            <p className="t-eyebrow font-mono text-accent">{t.marquee.eyebrow}</p>
+            <h2 className="t-h2 font-display mt-3 text-ink">{t.marquee.heading}</h2>
+          </FadeIn>
+        </div>
       </div>
       <div className="flex flex-col gap-3" aria-hidden="true">
         <Row innerRef={rowOneRef} items={ROW_ONE} />
