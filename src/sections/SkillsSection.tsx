@@ -12,13 +12,10 @@ export default function SkillsSection() {
     /* 면은 색이 아니라 높이로 나눈다. 원본처럼 파란 판을 깔면 3색 팔레트가 무너진다. */
     <section id="skills" className="surface scroll-mt-24 px-5 py-20 md:px-10 md:py-28">
       <div className="mx-auto max-w-5xl">
-        {/* 제목 기준선은 경력 섹션(max-w-4xl)의 왼쪽 라인에 맞춘다. */}
-        <div className="mx-auto max-w-4xl">
-          <FadeIn y={20}>
-            <p className="t-eyebrow font-mono text-accent">{t.skills.eyebrow}</p>
-            <h2 className="t-h2 font-display mt-3 text-ink">{t.skills.heading}</h2>
-          </FadeIn>
-        </div>
+        <FadeIn y={20}>
+          <p className="t-eyebrow font-mono text-accent">{t.skills.eyebrow}</p>
+          <h2 className="t-h2 font-display mt-3 text-ink">{t.skills.heading}</h2>
+        </FadeIn>
 
         <div className="mt-12 grid gap-x-12 gap-y-10 md:mt-16 md:grid-cols-2">
           {t.skills.groups.map((group, gi) => (

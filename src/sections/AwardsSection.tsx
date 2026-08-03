@@ -7,11 +7,13 @@ export default function AwardsSection() {
 
   return (
     <section id="awards" className="surface scroll-mt-24 px-5 py-20 md:px-10 md:py-28">
-      <div className="mx-auto max-w-4xl">
+      {/* 제목 기준선은 기술 스택 섹션(max-w-5xl)의 왼쪽 라인에 맞춘다. 콘텐츠는 4xl 유지. */}
+      <div className="mx-auto max-w-5xl">
         <FadeIn y={24}>
           <h2 className="t-h2 font-display mb-12 text-ink md:mb-16">{t.awards.heading}</h2>
         </FadeIn>
-
+      </div>
+      <div className="mx-auto max-w-4xl">
         <ul>
           {t.awards.items.map((award, i) => (
             <FadeIn key={award.title} delay={i * 0.05} y={16}>
