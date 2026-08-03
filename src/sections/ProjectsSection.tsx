@@ -17,7 +17,8 @@ export default function ProjectsSection() {
     <section id="projects" className="scroll-mt-24 bg-paper px-5 py-20 md:px-10 md:py-28">
       <div className="mx-auto max-w-5xl">
         <FadeIn y={24}>
-          <h2 className="t-h2 font-display mb-12 text-ink md:mb-16">{t.projects.heading}</h2>
+          <p className="t-eyebrow font-mono text-accent">{t.projects.eyebrow}</p>
+          <h2 className="t-h2 font-display mb-12 mt-3 text-ink md:mb-16">{t.projects.heading}</h2>
         </FadeIn>
 
         {featured.map((project, i) => (

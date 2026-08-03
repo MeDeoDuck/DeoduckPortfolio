@@ -9,6 +9,7 @@ export default function CredentialsSection() {
     <>
       <CredentialList
         id="certifications"
+        eyebrow={t.awards.certificationsEyebrow}
         heading={t.awards.certificationsLabel}
         items={t.awards.certifications.map((name, i) => ({
           marker: String(i + 1).padStart(2, '0'),
@@ -17,6 +18,7 @@ export default function CredentialsSection() {
       />
       <CredentialList
         id="copyrights"
+        eyebrow={t.awards.copyrightsEyebrow}
         heading={t.awards.copyrightsLabel}
         /* 저작권은 순번 대신 등록번호가 마커 자리에 선다. */
         items={t.awards.copyrights.map((c) => ({ marker: c.code, text: c.name }))}
@@ -28,11 +30,13 @@ export default function CredentialsSection() {
 
 function CredentialList({
   id,
+  eyebrow,
   heading,
   items,
   surface,
 }: {
   id: string
+  eyebrow: string
   heading: string
   items: Array<{ marker: string; text: string }>
   surface?: boolean
@@ -45,7 +49,8 @@ function CredentialList({
       {/* 제목 기준선은 기술 스택 섹션(max-w-5xl)의 왼쪽 라인에 맞춘다. 콘텐츠는 4xl 유지. */}
       <div className="mx-auto max-w-5xl">
         <FadeIn y={24}>
-          <h2 className="t-h2 font-display mb-10 text-ink md:mb-14">{heading}</h2>
+          <p className="t-eyebrow font-mono text-accent">{eyebrow}</p>
+          <h2 className="t-h2 font-display mb-10 mt-3 text-ink md:mb-14">{heading}</h2>
         </FadeIn>
       </div>
       <div className="mx-auto max-w-4xl">

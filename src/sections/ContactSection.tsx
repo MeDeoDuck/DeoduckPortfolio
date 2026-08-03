@@ -11,7 +11,8 @@ export default function ContactSection() {
       className="relative flex scroll-mt-24 flex-col items-center gap-8 bg-paper px-5 pb-20 pt-24 md:px-10 md:pb-28 md:pt-32"
     >
       <FadeIn y={24}>
-        <h2 className="t-h2 font-display text-center text-ink">{t.contact.heading}</h2>
+        <p className="t-eyebrow text-center font-mono text-accent">{t.contact.eyebrow}</p>
+        <h2 className="t-h2 font-display mt-3 text-center text-ink">{t.contact.heading}</h2>
       </FadeIn>
 
       <FadeIn delay={0.08} y={16}>

@@ -147,6 +147,7 @@ export interface Content {
     body: string
   }
   capabilities: {
+    eyebrow: string
     heading: string
     items: Capability[]
   }
@@ -156,6 +157,7 @@ export interface Content {
     heading: string
   }
   projects: {
+    eyebrow: string
     heading: string
     moreHeading: string
     viewDetail: string
@@ -164,24 +166,30 @@ export interface Content {
   }
   /** 경력·학력. 수상과는 분리한다. */
   experience: {
+    eyebrow: string
     heading: string
     items: TimelineItem[]
   }
   /** 대외활동. 경력·학력과 분리한다. */
   activities: {
+    eyebrow: string
     heading: string
     items: TimelineItem[]
   }
   /** 수상·자격·저작권. 경력과는 분리한다. */
   awards: {
+    eyebrow: string
     heading: string
     items: AwardItem[]
+    certificationsEyebrow: string
     certificationsLabel: string
     certifications: string[]
+    copyrightsEyebrow: string
     copyrightsLabel: string
     copyrights: CopyrightItem[]
   }
   contact: {
+    eyebrow: string
     heading: string
     body: string
     email: string

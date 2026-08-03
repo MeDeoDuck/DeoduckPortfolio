@@ -139,6 +139,7 @@ export const content: Record<Lang, Content> = {
         '인하대학교 인공지능공학과 학사 과정에 재학 중입니다. 모델이 답을 제안하면 코드가 그 답을 검사하는 구조로 시스템을 설계합니다. 여러 에이전트가 역할을 나눠 일하는 제품을 만들어 실사용자에게 배포했고, 교사 모델의 라벨을 증류해 로컬 모델로 옮기며 추론 비용을 낮췄습니다. 근거 검증 게이트, 가드레일, self-healing 파이프라인 같은 하네스 엔지니어링을 공부하면서 실제 서비스에 적용하고 있습니다. 문제를 풀며 얻은 노하우는 저만의 업무용 skill.md로 쌓아가고 있습니다. 아직 학사 신입이고, 여기 적은 숫자는 모두 직접 측정한 값입니다.',
     },
     capabilities: {
+      eyebrow: 'Capabilities',
       heading: '역량',
       items: [
         {
@@ -178,6 +179,7 @@ export const content: Record<Lang, Content> = {
       heading: '프로젝트 한눈에 보기',
     },
     projects: {
+      eyebrow: 'Projects',
       heading: '주요 프로젝트',
       moreHeading: '그 외 작업',
       viewDetail: '자세히 보기',
@@ -516,6 +518,7 @@ export const content: Record<Lang, Content> = {
       ],
     },
     experience: {
+      eyebrow: 'Experience',
       heading: '경력 · 학력',
       items: [
         {
@@ -543,6 +546,7 @@ export const content: Record<Lang, Content> = {
       ],
     },
     activities: {
+      eyebrow: 'Activities',
       heading: '대외활동',
       items: [
         {
@@ -569,6 +573,7 @@ export const content: Record<Lang, Content> = {
       ],
     },
     awards: {
+      eyebrow: 'Awards',
       heading: '수상',
       items: [
         {
@@ -586,8 +591,10 @@ export const content: Record<Lang, Content> = {
           title: 'LinkUs 활동우수자 대상',
         },
       ],
+      certificationsEyebrow: 'Certifications',
       certificationsLabel: '자격',
       certifications: ['OPIc IH', 'SQLD'],
+      copyrightsEyebrow: 'Copyrights',
       copyrightsLabel: '저작권 등록',
       copyrights: [
         { code: 'C-2026-03297', name: '모아봄 (Moabom)' },
@@ -595,6 +602,7 @@ export const content: Record<Lang, Content> = {
       ],
     },
     contact: {
+      eyebrow: 'Contact',
       heading: '연락',
       body:
         '채용과 협업 문의를 환영합니다. 프로젝트에 대해 더 알고 싶은 부분이 있으면 이메일로 알려주시면 확인 후 회신하겠습니다.',
@@ -678,6 +686,7 @@ export const content: Record<Lang, Content> = {
         'I am an undergraduate in AI Engineering at Inha University. I design systems where the model proposes an answer and code checks it before anything reaches the user. I shipped a multi-agent product to real users, distilled teacher labels into a local model to cut inference cost, and I am studying harness engineering, evidence gates, guardrails, and self-healing pipelines, by applying it to services people actually use. I turn the know-how from each problem into my own library of work skill.md files. I am early in my career, and every number on this site is one I measured myself.',
     },
     capabilities: {
+      eyebrow: 'Capabilities',
       heading: 'Capabilities',
       items: [
         {
@@ -717,6 +726,7 @@ export const content: Record<Lang, Content> = {
       heading: 'Projects at a glance',
     },
     projects: {
+      eyebrow: 'Projects',
       heading: 'Selected Projects',
       moreHeading: 'Other Work',
       viewDetail: 'View detail',
@@ -1059,6 +1069,7 @@ export const content: Record<Lang, Content> = {
       ],
     },
     experience: {
+      eyebrow: 'Experience',
       heading: 'Experience',
       items: [
         {
@@ -1086,6 +1097,7 @@ export const content: Record<Lang, Content> = {
       ],
     },
     activities: {
+      eyebrow: 'Activities',
       heading: 'Activities',
       items: [
         {
@@ -1112,6 +1124,7 @@ export const content: Record<Lang, Content> = {
       ],
     },
     awards: {
+      eyebrow: 'Awards',
       heading: 'Awards',
       items: [
         {
@@ -1129,8 +1142,10 @@ export const content: Record<Lang, Content> = {
           title: 'LinkUs, Grand Prize for outstanding members',
         },
       ],
+      certificationsEyebrow: 'Certifications',
       certificationsLabel: 'Certifications',
       certifications: ['OPIc IH', 'SQLD'],
+      copyrightsEyebrow: 'Copyrights',
       copyrightsLabel: 'Registered software copyrights',
       copyrights: [
         { code: 'C-2026-03297', name: 'Moabom' },
@@ -1138,6 +1153,7 @@ export const content: Record<Lang, Content> = {
       ],
     },
     contact: {
+      eyebrow: 'Contact',
       heading: 'Contact',
       body:
         'Open to hiring conversations and collaboration. If you want more detail on any of these projects, send me an email and I will get back to you.',
