@@ -48,7 +48,7 @@ export default function ProjectsSection() {
                     {project.no}
                   </span>
                   <span className="t-h3 min-w-0 shrink-0 text-ink sm:w-52">{project.name}</span>
-                  <span className="t-body flex-1 text-ink/50">{project.tagline}</span>
+                  <span className="t-body min-w-0 flex-1 text-ink/50 sm:truncate">{project.tagline}</span>
                   <ArrowUpRight
                     size={16}
                     className="shrink-0 text-ink/45 transition-transform duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-ink"
@@ -106,7 +106,8 @@ function StackCard({
               <span className="t-eyebrow font-mono text-ink/55">{project.category}</span>
             </div>
             <h3 className="t-h3 text-ink">{project.name}</h3>
-            <p className="t-body max-w-xl text-ink/65">{project.tagline}</p>
+            {/* 한 줄 설명은 줄바꿈 없이 한 줄로. 폭이 모자라면 말줄임(모바일은 예외적으로 래핑 허용). */}
+            <p className="t-body text-ink/65 md:truncate">{project.tagline}</p>
           </div>
 
           <Link
