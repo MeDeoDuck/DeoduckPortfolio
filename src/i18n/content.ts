@@ -19,7 +19,7 @@ const logo = (file: string) => `${import.meta.env.BASE_URL}logos/${file}`
  * icon이 없는 항목은 공개 아이콘이 없는 것들 — 모노그램 타일로 그린다.
  */
 const SKILLS: Record<'ai' | 'backend' | 'lang' | 'plugin', SkillItem[]> = {
-  /* 13개 → 2줄 7+6. LangGraph·LangChain은 아랫줄 선두에 온다. */
+  /* 13개 → 2줄 7+6 강제. 윗줄은 기본 라이브러리 6개 + Distillation, 아랫줄은 LangGraph·LangChain·PEFT부터. */
   ai: [
     { name: 'PyTorch', icon: devicon('pytorch/pytorch-original') },
     { name: 'Hugging Face', icon: simple('huggingface') },
@@ -27,10 +27,10 @@ const SKILLS: Record<'ai' | 'backend' | 'lang' | 'plugin', SkillItem[]> = {
     { name: 'OpenCV', icon: devicon('opencv/opencv-original') },
     { name: 'NumPy', icon: devicon('numpy/numpy-original') },
     { name: 'Pandas', icon: devicon('pandas/pandas-original') },
-    { name: 'PEFT', icon: glyph('peft') },
+    { name: 'Distillation', icon: glyph('distillation') },
     { name: 'LangGraph', icon: simple('langchain') },
     { name: 'LangChain', icon: simple('langchain') },
-    { name: 'Distillation', icon: glyph('distillation') },
+    { name: 'PEFT', icon: glyph('peft') },
     { name: 'MoT', icon: glyph('mot') },
     { name: 'GNN', icon: glyph('gnn') },
     { name: 'Time Series', icon: glyph('time-series') },
@@ -39,7 +39,6 @@ const SKILLS: Record<'ai' | 'backend' | 'lang' | 'plugin', SkillItem[]> = {
     { name: 'FastAPI', icon: devicon('fastapi/fastapi-original') },
     { name: 'PostgreSQL', icon: devicon('postgresql/postgresql-original') },
     { name: 'SQLite', icon: devicon('sqlite/sqlite-original') },
-    { name: 'Azure', icon: devicon('azure/azure-original') },
     { name: 'Docker', icon: devicon('docker/docker-original') },
     { name: 'Anaconda', icon: devicon('anaconda/anaconda-original') },
     { name: 'GitHub Actions', icon: devicon('githubactions/githubactions-original') },
@@ -54,7 +53,6 @@ const SKILLS: Record<'ai' | 'backend' | 'lang' | 'plugin', SkillItem[]> = {
     { name: 'Gazebo', icon: devicon('gazebo/gazebo-original') },
     { name: 'Git', icon: devicon('git/git-original') },
     { name: 'GitHub', icon: devicon('github/github-original') },
-    { name: 'GitLab', icon: devicon('gitlab/gitlab-original') },
     { name: 'Claude Max', icon: simple('claude') },
     { name: 'Codex Pro', icon: simpleRaw('openai') },
     { name: 'Higgsfield', icon: logo('higgsfield.jpg') },
