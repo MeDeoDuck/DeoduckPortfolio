@@ -12,7 +12,7 @@ export default function ProjectsSection() {
   const rest = t.projects.items.filter((p) => !p.featured)
 
   return (
-    <section id="projects" className="scroll-mt-24 bg-paper px-5 py-20 md:px-10 md:py-28">
+    <section id="projects" className="surface scroll-mt-24 px-5 py-20 md:px-10 md:py-28">
       <div className="mx-auto max-w-5xl">
         <FadeIn y={24}>
           <p className="t-eyebrow font-mono text-accent">{t.projects.eyebrow}</p>

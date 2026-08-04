@@ -10,7 +10,7 @@ export default function SkillsSection() {
 
   return (
     /* 면은 색이 아니라 높이로 나눈다. 원본처럼 파란 판을 깔면 3색 팔레트가 무너진다. */
-    <section id="skills" className="surface scroll-mt-24 px-5 py-20 md:px-10 md:py-28">
+    <section id="skills" className="scroll-mt-24 bg-paper px-5 py-20 md:px-10 md:py-28">
       <div className="mx-auto max-w-5xl">
         <FadeIn y={20}>
           <p className="t-eyebrow font-mono text-accent">{t.skills.eyebrow}</p>

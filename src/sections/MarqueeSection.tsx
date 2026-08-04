@@ -50,7 +50,7 @@ export default function MarqueeSection() {
   return (
     <section
       ref={sectionRef}
-      className="overflow-hidden bg-paper pb-10 pt-24 sm:pt-32 md:pt-40"
+      className="surface overflow-hidden pb-10 pt-24 sm:pt-32 md:pt-40"
     >
       {/* 제목 기준선은 기술 스택 섹션(max-w-5xl)의 왼쪽 라인에 맞춘다. 패딩은 바깥, max-w는 안쪽. */}
       <div className="px-5 pb-12 md:px-10 md:pb-16">

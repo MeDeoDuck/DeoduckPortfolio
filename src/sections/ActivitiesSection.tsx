@@ -6,7 +6,7 @@ export default function ActivitiesSection() {
   const { t } = useLang()
 
   return (
-    <section id="activities" className="scroll-mt-24 bg-paper px-5 py-20 md:px-10 md:py-28">
+    <section id="activities" className="surface scroll-mt-24 px-5 py-20 md:px-10 md:py-28">
       {/* 제목 기준선은 기술 스택 섹션(max-w-5xl)의 왼쪽 라인에 맞춘다. 콘텐츠는 4xl 유지. */}
       <div className="mx-auto max-w-5xl">
         <FadeIn y={24}>

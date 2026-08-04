@@ -8,7 +8,7 @@ export default function CapabilitiesSection() {
     /* 면은 색이 아니라 높이로 나눈다. 흰 판을 끼워 넣으면 팔레트가 무너진다. */
     <section
       id="capabilities"
-      className="surface scroll-mt-24 px-5 py-20 md:px-10 md:py-28"
+      className="scroll-mt-24 bg-paper px-5 py-20 md:px-10 md:py-28"
     >
       {/* 제목 기준선은 기술 스택 섹션(max-w-5xl)의 왼쪽 라인에 맞춘다. 콘텐츠는 4xl 유지. */}
       <div className="mx-auto max-w-5xl">
