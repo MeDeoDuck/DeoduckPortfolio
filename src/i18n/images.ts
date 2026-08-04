@@ -18,17 +18,19 @@ import { imageAsset } from './imageAssets'
  * 대표작·비대표작을 섞고, 결과표·표지 대신 파이프라인·구조도만 고른다.
  */
 /* 사이트에서 내린 프로젝트(nlp-slm-lora·ssvep·track-reid)의 타일도 함께 뺐다. */
-/* 카드와 겹치던 moabom-a·stablediffusion-lst-a는 일관성 비교·LST 결과 페이지로 교체. */
+/* 한 줄 3장이면 3배 복제 루프에서 양 끝에 같은 이미지가 보인다. 줄당 4장을 유지한다. */
 export const MARQUEE_ROW_ONE = [
-  'moabom-consistency', // 일관성 검증 98/90/86 비교
+  'moabom-a', // 서비스 아키텍처
   'cage-carerf-b', // 전체 학습 파이프라인
   'physical-ai-d1', // 인지 → 판단 → 제어 파이프라인
+  'moabom-consistency', // 일관성 검증 98/90/86 비교
 ]
 
 export const MARQUEE_ROW_TWO = [
   'fomo-breaker-b', // 입력 데이터 플로우차트
-  'stablediffusion-lst-b', // LST 적용 결과표
+  'stablediffusion-lst-a', // UNet + LST 구조
   'moabom-d2', // Supervisor Agent 플로우차트
+  'stablediffusion-lst-b', // LST 적용 결과표
 ]
 
 function buildOrder(): string[] {
