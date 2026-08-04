@@ -289,7 +289,7 @@ export const content: Record<Lang, Content> = {
           tagline: '리뷰를 6개 관계 그래프로 모델링해 조직적 가짜 리뷰를 탐지하는 멀티관계 GNN입니다.',
           stack: ['PyTorch Geometric', 'GAT', 'GCN', 'GraphSAGE', 'Sentence-BERT', 'LightGBM'],
           metrics: [
-            { value: 'PR-AUC 0.789', label: 'baseline MLP(0.633) 대비 +24.7%' },
+            { value: 'PR-AUC 0.789', label: '이상 비율 ~25% 샘플링 데이터셋 · 5 seeds' },
             { value: '6', label: '관계 그래프' },
           ],
           links: [{ label: '저장소', href: 'https://github.com/MeDeoDuck/CAGE-CareRF' }],
@@ -307,7 +307,7 @@ export const content: Record<Lang, Content> = {
             {
               heading: '결과',
               body:
-                'PR-AUC 0.789로, baseline인 MLP(0.633) 대비 24.7% 높았습니다. 최고 GNN baseline인 GAT(0.734) 대비로는 7.4% 높습니다.\n\n비교 대상 상위 모델들과는 통계적으로 동급 구간에 있으며, 정밀도와 재현율 사이의 균형이 상대적으로 고른 편이었습니다. 단독 1위라고 말할 수 있는 결과는 아닙니다.\n\n3인 팀 프로젝트이며, 저는 팀장으로 문제 정의·모델 설계·실험 전반을 총괄했습니다.',
+                'fraud 비율을 약 25%로 끌어올린 cascade 샘플링 데이터셋(5 seeds)에서 PR-AUC 0.789를 기록했습니다. 같은 조건의 MLP(0.633), 최고 GNN baseline GAT(0.734)보다 높은 수치입니다. 초기의 11.16% 불균형 데이터셋에서는 PR-AUC 0.44대였습니다 — 샘플링 재구성 후 전 모델이 오른 조건에서의 비교입니다.\n\n비교 대상 상위 모델들과는 통계적으로 동급 구간에 있으며, 정밀도와 재현율 사이의 균형이 상대적으로 고른 편이었습니다. 단독 1위라고 말할 수 있는 결과는 아닙니다.\n\n3인 팀 프로젝트이며, 저는 팀장으로 문제 정의·모델 설계·실험 전반을 총괄했습니다.',
             },
           ],
           featured: true,
@@ -722,7 +722,7 @@ export const content: Record<Lang, Content> = {
             'A multi-relational GNN that models reviews as six relation graphs to detect coordinated fake reviews.',
           stack: ['PyTorch Geometric', 'GAT', 'GCN', 'GraphSAGE', 'Sentence-BERT', 'LightGBM'],
           metrics: [
-            { value: 'PR-AUC 0.789', label: '+24.7% over the baseline MLP at 0.633' },
+            { value: 'PR-AUC 0.789', label: 'Sampled set with ~25% fraud ratio · 5 seeds' },
             { value: '6', label: 'Relation graphs' },
           ],
           links: [{ label: 'Repository', href: 'https://github.com/MeDeoDuck/CAGE-CareRF' }],
@@ -740,7 +740,7 @@ export const content: Record<Lang, Content> = {
             {
               heading: 'Results',
               body:
-                'PR-AUC reached 0.789, 24.7% above the baseline MLP at 0.633, and 7.4% above the strongest GNN baseline, a GAT at 0.734.\n\nAgainst the strongest comparison models the result sits within a statistically comparable band, with a relatively even balance between precision and recall. It is not a result I would describe as a clear first place.\n\nA team project with 3 members. As team lead I owned the problem definition, model design, and experiments end to end.',
+                'On a cascade-sampled dataset with the fraud ratio raised to about 25% (5 seeds), PR-AUC reached 0.789 — above an MLP at 0.633 and the strongest GNN baseline, a GAT at 0.734, under the same conditions. On the original 11.16% imbalanced set, PR-AUC was in the 0.44 range; the comparison holds after the sampling redesign lifted every model.\n\nAgainst the strongest comparison models the result sits within a statistically comparable band, with a relatively even balance between precision and recall. It is not a result I would describe as a clear first place.\n\nA team project with 3 members. As team lead I owned the problem definition, model design, and experiments end to end.',
             },
           ],
           featured: true,
