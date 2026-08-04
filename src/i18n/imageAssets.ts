@@ -21,7 +21,11 @@ const SEEDS = new Set<string>([
   'nlp-slm-lora-d1', 'nlp-slm-lora-d2',
 ])
 
+/** 같은 파일명으로 이미지를 갈아끼우면 브라우저 캐시가 옛 그림을 보여준다.
+ *  이미지 교체 배포 시 이 버전을 올려 캐시를 무효화한다. */
+const ASSET_VERSION = 2
+
 export function imageAsset(seed: string | undefined): string | undefined {
   if (!seed || !SEEDS.has(seed)) return undefined
-  return `${import.meta.env.BASE_URL}images/${seed}.webp`
+  return `${import.meta.env.BASE_URL}images/${seed}.webp?v=${ASSET_VERSION}`
 }
