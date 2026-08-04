@@ -7,6 +7,8 @@
 // moabom-b = 발표 13p 보고서 UI, stablediffusion-lst-b = 결과표.
 const SEEDS = new Set<string>([
   'moabom-a', 'moabom-b', 'moabom-d1', 'moabom-d2',
+  // 마퀴 전용: 발표 16p 일관성 검증(98/90/86) 슬라이드.
+  'moabom-consistency',
   'fomo-breaker-a', 'fomo-breaker-b', 'fomo-breaker-d1', 'fomo-breaker-d2',
   'cage-carerf-a', 'cage-carerf-b', 'cage-carerf-d1', 'cage-carerf-d2',
   'stablediffusion-lst-a', 'stablediffusion-lst-b',
