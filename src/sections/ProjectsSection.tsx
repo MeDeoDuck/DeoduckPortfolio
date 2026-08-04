@@ -1,5 +1,3 @@
-import { useRef } from 'react'
-import { motion, useReducedMotion, useScroll, useTransform } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import FadeIn from '../components/FadeIn'
 import Placeholder from '../components/Placeholder'
@@ -7,6 +5,7 @@ import { imageAsset } from '../i18n/imageAssets'
 import { useLang } from '../i18n/LanguageContext'
 import type { Project } from '../i18n/types'
 
+/** 스택(넘김) 연출 없이 카드를 위에서 아래로 그냥 나열한다. */
 export default function ProjectsSection() {
   const { t } = useLang()
   const featured = t.projects.items.filter((p) => p.featured)
@@ -20,76 +19,48 @@ export default function ProjectsSection() {
           <h2 className="t-h2 font-display mb-12 mt-3 text-ink md:mb-16">{t.projects.heading}</h2>
         </FadeIn>
 
-        {featured.map((project, i) => (
-          <StackCard
-            key={project.id}
-            project={project}
-            index={i}
-            total={featured.length}
-            viewDetail={t.projects.viewDetail}
-          />
-        ))}
+        <div className="flex flex-col gap-6 md:gap-8">
+          {featured.map((project) => (
+            <ProjectCard key={project.id} project={project} viewDetail={t.projects.viewDetail} />
+          ))}
+        </div>
       </div>
 
-      <div className="mx-auto mt-20 max-w-4xl md:mt-28">
-        <FadeIn y={20}>
-          <h3 className="t-eyebrow mb-6 font-mono text-ink/55">{t.projects.moreHeading}</h3>
-        </FadeIn>
-        <ul>
-          {/* 그 외 경험은 상세 페이지로 보내지 않는다. 한 줄 요약만 담백하게. */}
-          {rest.map((project, i) => (
-            <FadeIn key={project.id} delay={i * 0.04} y={14}>
-              <li className="flex flex-col gap-1.5 border-t border-ink/10 py-5 sm:flex-row sm:items-baseline sm:gap-5 md:py-6">
-                <span className="t-eyebrow shrink-0 font-mono text-ink/45 sm:w-10">
-                  {project.no}
-                </span>
-                <span className="t-h3 min-w-0 shrink-0 text-ink sm:w-52">{project.name}</span>
-                <span className="t-body min-w-0 flex-1 text-ink/50 sm:truncate">{project.tagline}</span>
-              </li>
-            </FadeIn>
-          ))}
-        </ul>
-      </div>
+      {rest.length > 0 && (
+        <div className="mx-auto mt-20 max-w-4xl md:mt-28">
+          <FadeIn y={20}>
+            <h3 className="t-eyebrow mb-6 font-mono text-ink/55">{t.projects.moreHeading}</h3>
+          </FadeIn>
+          <ul>
+            {/* 그 외 경험은 상세 페이지로 보내지 않는다. 한 줄 요약만 담백하게. */}
+            {rest.map((project) => (
+              <FadeIn key={project.id} y={14}>
+                <li className="flex flex-col gap-1.5 border-t border-ink/10 py-5 sm:flex-row sm:items-baseline sm:gap-5 md:py-6">
+                  <span className="t-eyebrow shrink-0 font-mono text-ink/45 sm:w-10">
+                    {project.no}
+                  </span>
+                  <span className="t-h3 min-w-0 shrink-0 text-ink sm:w-52">{project.name}</span>
+                  <span className="t-body min-w-0 flex-1 text-ink/50 sm:truncate">
+                    {project.tagline}
+                  </span>
+                </li>
+              </FadeIn>
+            ))}
+          </ul>
+        </div>
+      )}
     </section>
   )
 }
 
-function StackCard({
-  project,
-  index,
-  total,
-  viewDetail,
-}: {
-  project: Project
-  index: number
-  total: number
-  viewDetail: string
-}) {
-  const ref = useRef<HTMLDivElement>(null)
-  const reduce = useReducedMotion()
+function ProjectCard({ project, viewDetail }: { project: Project; viewDetail: string }) {
+  // 등록된 이미지가 없는 프로젝트(ShiftLoss 등)는 이미지 블록 자체를 생략한다.
+  const hasImages = Boolean(imageAsset(`${project.id}-a`))
   const hasWide = Boolean(imageAsset(`${project.id}-c`))
-  // 화면을 통째로 넘겨야 끝나면 지루하다. 카드 위가 화면 중간에 닿을 때 마무리한다.
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ['start end', 'start 0.5'],
-  })
-
-  const targetScale = 1 - (total - 1 - index) * 0.025
-  const scale = useTransform(scrollYProgress, [0, 1], [1, targetScale])
 
   return (
-    // 고정 66vh는 카드 실제 높이보다 짧아 다음 카드가 하단을 미리 덮었다.
-    // 래퍼 높이를 콘텐츠에 맡기고 sticky를 래퍼 하나로 합치면,
-    // 카드가 하단까지 다 보인 뒤에야 다음 카드가 넘어온다(스택 연출 유지).
-    <div
-      ref={ref}
-      className="sticky pb-6 md:pb-8"
-      style={{ top: `calc(6rem + ${index * 22}px)` }}
-    >
-      <motion.article
-        style={{ scale: reduce ? 1 : scale }}
-        className="card flex flex-col gap-5 rounded-[28px] p-5 md:rounded-[36px] md:p-7"
-      >
+    <FadeIn y={20}>
+      <article className="card flex flex-col gap-5 rounded-[28px] p-5 md:rounded-[36px] md:p-7">
         <header className="flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
           <div className="flex min-w-0 flex-col gap-2">
             <div className="flex items-center gap-3">
@@ -120,53 +91,53 @@ function StackCard({
           </ul>
         )}
 
-        {/* 넓은 앵커 이미지(-c)가 있으면 비대칭 3장, 없으면 남은 2장을 같은 비중으로 나눈다.
-            현재는 모든 대표 카드가 -c 없이 2장 레이아웃이다. */}
-        {hasWide ? (
-          <div className="grid grid-cols-5 gap-3">
-            <div className="col-span-2 flex flex-col gap-3">
+        {/* 넓은 앵커 이미지(-c)가 있으면 비대칭 3장, 없으면 2장을 같은 비중으로 나눈다. */}
+        {hasImages &&
+          (hasWide ? (
+            <div className="grid grid-cols-5 gap-3">
+              <div className="col-span-2 flex flex-col gap-3">
+                <Placeholder
+                  label={`${project.name} 01`}
+                  seed={`${project.id}-a`}
+                  rounded="rounded-lg"
+                  className="w-full flex-1"
+                  scoped
+                />
+                <Placeholder
+                  label={`${project.name} 02`}
+                  seed={`${project.id}-b`}
+                  rounded="rounded-lg"
+                  className="w-full flex-1"
+                  scoped
+                />
+              </div>
+              <Placeholder
+                label={`${project.name} 03`}
+                seed={`${project.id}-c`}
+                rounded="rounded-lg"
+                className="col-span-3 min-h-[170px] w-full md:min-h-[240px]"
+                scoped
+              />
+            </div>
+          ) : (
+            <div className="grid grid-cols-2 gap-3">
               <Placeholder
                 label={`${project.name} 01`}
                 seed={`${project.id}-a`}
                 rounded="rounded-lg"
-                className="w-full flex-1"
+                className="aspect-video w-full"
                 scoped
               />
               <Placeholder
                 label={`${project.name} 02`}
                 seed={`${project.id}-b`}
                 rounded="rounded-lg"
-                className="w-full flex-1"
+                className="aspect-video w-full"
                 scoped
               />
             </div>
-            <Placeholder
-              label={`${project.name} 03`}
-              seed={`${project.id}-c`}
-              rounded="rounded-lg"
-              className="col-span-3 min-h-[170px] w-full md:min-h-[240px]"
-              scoped
-            />
-          </div>
-        ) : (
-          <div className="grid grid-cols-2 gap-3">
-            <Placeholder
-              label={`${project.name} 01`}
-              seed={`${project.id}-a`}
-              rounded="rounded-lg"
-              className="aspect-video w-full"
-              scoped
-            />
-            <Placeholder
-              label={`${project.name} 02`}
-              seed={`${project.id}-b`}
-              rounded="rounded-lg"
-              className="aspect-video w-full"
-              scoped
-            />
-          </div>
-        )}
-      </motion.article>
-    </div>
+          ))}
+      </article>
+    </FadeIn>
   )
 }
