@@ -129,7 +129,7 @@ export const content: Record<Lang, Content> = {
         { label: 'AI · ML', items: SKILLS.ai, wide: true },
         { label: 'Backend · Infra', items: SKILLS.backend },
         { label: 'Language · Tool', items: SKILLS.lang, wide: true },
-        { label: 'AI Plugin', items: SKILLS.plugin, wide: true, tile: 128 },
+        { label: 'AI Plugin & MCP', items: SKILLS.plugin, wide: true, tile: 128 },
       ],
     },
     about: {
@@ -558,7 +558,7 @@ export const content: Record<Lang, Content> = {
         { label: 'AI · ML', items: SKILLS.ai, wide: true },
         { label: 'Backend · Infra', items: SKILLS.backend },
         { label: 'Language · Tool', items: SKILLS.lang, wide: true },
-        { label: 'AI Plugin', items: SKILLS.plugin, wide: true, tile: 128 },
+        { label: 'AI Plugin & MCP', items: SKILLS.plugin, wide: true, tile: 128 },
       ],
     },
     about: {
