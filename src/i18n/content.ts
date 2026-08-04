@@ -143,33 +143,36 @@ export const content: Record<Lang, Content> = {
       items: [
         {
           no: '01',
-          name: '멀티에이전트 LLM 시스템',
+          name: '멀티에이전트 오케스트레이션',
+          highlight: true,
           desc:
-            'LangGraph로 에이전트 간 흐름을 오케스트레이션합니다. 하나의 큰 프롬프트에 맡기는 대신 역할을 나눠 분업시키고, 자유 대화가 아닌 규칙 기반 흐름 제어로 결과를 예측 가능하게 만듭니다.',
+            'LangGraph로 에이전트 간 흐름을 오케스트레이션합니다. 하나의 큰 프롬프트에 맡기는 대신 영상 선정, 감성 분석, 보고서 작성처럼 역할을 나눠 분업시키고, 자유 대화가 아닌 규칙 기반 흐름 제어로 결과를 예측 가능하게 만듭니다.',
         },
         {
           no: '02',
-          name: '모델 경량화 · 비용 최적화',
+          name: '하네스 · 가드레일 엔지니어링',
+          highlight: true,
           desc:
-            '지식 증류로 큰 모델의 판단을 작은 모델에 옮기고, GPTQ와 AWQ 양자화로 모델 크기를 줄입니다. 반복 호출이 많은 구간을 로컬 모델로 전환해 API 비용을 낮춥니다.',
+            '모델 출력을 그대로 쓰지 않고 근거 검증 게이트를 통과시킵니다. 페르소나의 세계관은 소프트 룰로 열어두되 수치 임계는 하드 룰로 강제해, 자유로운 토론에서도 판정이 일관되게 만듭니다. 게이트에서 걸러진 제안은 기록으로 남겨 시스템의 판단을 추적 가능하게 유지합니다.',
         },
         {
           no: '03',
-          name: '백엔드 · 배포',
+          name: 'LLM 라우팅 · 서빙 백엔드',
+          highlight: true,
           desc:
-            'FastAPI와 PostgreSQL로 서비스를 구성하고, Docker로 묶어 Azure Container Apps에 배포합니다. CI/CD로 배포 과정을 자동화하고 스키마 마이그레이션을 관리합니다.',
+            'FastAPI와 PostgreSQL로 AI 서비스의 백엔드를 구성합니다. 확신이 낮은 예측만 큰 모델로 보내는 cascade 라우팅, 발언과 사고에 서로 다른 LLM을 배치하는 이중 구성으로 품질이 필요한 곳에만 비용을 씁니다.',
         },
         {
           no: '04',
-          name: '하네스 · 가드레일 엔지니어링',
+          name: '그래프 · 시계열 모델링',
           desc:
-            '모델 출력을 그대로 쓰지 않고 근거 검증 게이트를 통과시킵니다. 서로 다른 LLM으로 교차검증하고, 실패한 단계를 다시 시도해 복구하는 self-healing 파이프라인을 구현합니다.',
+            '관계가 있는 데이터는 그래프로 봅니다. 멀티관계 GNN으로 개별 계정이 아닌 조직 단위의 이상 패턴을 탐지하고, 시계열 예측에서는 기존 지표가 놓치는 시간 지연 오차를 손실 함수 설계로 풀어냅니다.',
         },
         {
           no: '05',
           name: '컴퓨터비전 · 로보틱스',
           desc:
-            '객체 검출·추적·재식별 파이프라인을 다루고, LiDAR 점군에서 지면과 장애물을 분리합니다. ROS로 인지에서 경로계획, 제어까지 하나로 연결합니다.',
+            '객체 검출·추적·재식별 파이프라인을 다룹니다. CCTV 영상 인지에서 A* 경로계획, Pure Pursuit 제어까지 ROS로 하나로 연결해, 모델의 판단을 화면 밖 실제 움직임으로 이어봅니다.',
         },
       ],
     },
@@ -572,33 +575,36 @@ export const content: Record<Lang, Content> = {
       items: [
         {
           no: '01',
-          name: 'Multi-agent LLM systems',
+          name: 'Multi-agent orchestration',
+          highlight: true,
           desc:
-            'I orchestrate flow between agents with LangGraph. Instead of handing everything to one large prompt, I split the work by role and control the flow with explicit rules rather than free-form conversation, so the output stays predictable.',
+            'I orchestrate flow between agents with LangGraph. Instead of handing everything to one large prompt, the work is split by role — video selection, sentiment analysis, report writing — and controlled by explicit rules rather than free-form conversation, so results stay predictable.',
         },
         {
           no: '02',
-          name: 'Model compression and cost optimization',
+          name: 'Harness and guardrail engineering',
+          highlight: true,
           desc:
-            'I move a large model judgment into a small one through knowledge distillation, and shrink models with GPTQ and AWQ quantization. Where calls repeat at high volume, I switch to a local model to cut API cost.',
+            'Model output never ships as is; it passes an evidence gate first. Persona worldviews stay open as soft rules while numeric thresholds are enforced as hard rules, so verdicts stay consistent even in free-flowing debate. Proposals filtered at the gate are logged, keeping every decision traceable.',
         },
         {
           no: '03',
-          name: 'Backend and deployment',
+          name: 'LLM routing and serving backend',
+          highlight: true,
           desc:
-            'I build services with FastAPI and PostgreSQL, package them with Docker, and deploy to Azure Container Apps. I automate the release path with CI/CD and manage schema migrations.',
+            'I build AI service backends with FastAPI and PostgreSQL. Cascade routing sends only low-confidence predictions to the large model, and a dual-LLM setup assigns different models to speech and internal reasoning — spending cost only where quality matters.',
         },
         {
           no: '04',
-          name: 'Harness and guardrail engineering',
+          name: 'Graph and time series modeling',
           desc:
-            'I never use model output as is. It passes an evidence gate first. I cross-check with a second LLM and build self-healing pipelines that retry and recover from a failed step.',
+            'Data with relationships is treated as a graph. A multi-relational GNN detects anomalous patterns at the level of coordinated groups rather than individual accounts, and in time series forecasting I tackle the time-shift error existing metrics miss through loss function design.',
         },
         {
           no: '05',
           name: 'Computer vision and robotics',
           desc:
-            'I work on detection, tracking, and re-identification pipelines, and separate ground from obstacles in LiDAR point clouds. With ROS I connect perception, planning, and control into one pipeline.',
+            'I work on detection, tracking, and re-identification pipelines. From CCTV perception through A* path planning to Pure Pursuit control, everything runs as one ROS pipeline — carrying a model's judgment into real motion beyond the screen.',
         },
       ],
     },

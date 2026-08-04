@@ -12,6 +12,8 @@ export interface Capability {
   no: string
   name: string
   desc: string
+  /** 핵심 역량 — 카드형 하이라이트로 강조한다. */
+  highlight?: boolean
 }
 
 export interface ProjectLink {

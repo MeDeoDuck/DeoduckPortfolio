@@ -20,22 +20,34 @@ export default function CapabilitiesSection() {
         </FadeIn>
       </div>
       <div className="mx-auto max-w-4xl">
-        {t.capabilities.items.map((item, i) => (
-          <FadeIn key={item.no} delay={i * 0.06} y={18}>
-            <div
-              className="flex flex-col gap-2 py-6 md:flex-row md:gap-10 md:py-7"
-              style={{ borderTop: i === 0 ? 'none' : '1px solid rgb(29 29 31 / 0.1)' }}
-            >
-              <span className="t-eyebrow shrink-0 pt-1 font-mono text-accent md:w-16">
-                {item.no}
-              </span>
-              <div className="flex flex-col gap-2">
-                <h3 className="t-h3 text-ink">{item.name}</h3>
-                <p className="t-body max-w-2xl text-ink/65">{item.desc}</p>
+        {/* 핵심 역량(highlight)은 액센트 카드로 세우고, 나머지는 구분선 리스트로 둔다. */}
+        {t.capabilities.items.map((item, i) => {
+          const prev = i > 0 ? t.capabilities.items[i - 1] : undefined
+          return (
+            <FadeIn key={item.no} delay={i * 0.06} y={18}>
+              <div
+                className={
+                  item.highlight
+                    ? 'mb-3 flex flex-col gap-2 rounded-2xl border-l-2 border-accent bg-accent/[0.05] px-5 py-6 md:flex-row md:gap-10 md:px-7 md:py-7'
+                    : 'flex flex-col gap-2 px-5 py-6 md:flex-row md:gap-10 md:px-7 md:py-7'
+                }
+                style={
+                  item.highlight
+                    ? undefined
+                    : { borderTop: prev && !prev.highlight ? '1px solid rgb(29 29 31 / 0.1)' : 'none' }
+                }
+              >
+                <span className="t-eyebrow shrink-0 pt-1 font-mono text-accent md:w-16">
+                  {item.no}
+                </span>
+                <div className="flex flex-col gap-2">
+                  <h3 className="t-h3 text-ink">{item.name}</h3>
+                  <p className="t-body max-w-2xl text-ink/65">{item.desc}</p>
+                </div>
               </div>
-            </div>
-          </FadeIn>
-        ))}
+            </FadeIn>
+          )
+        })}
       </div>
     </section>
   )
