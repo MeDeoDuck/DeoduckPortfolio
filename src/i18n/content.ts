@@ -320,7 +320,7 @@ export const content: Record<Lang, Content> = {
           period: '2026',
           role: '손실 함수 설계 · 실험',
           tagline:
-            'DBLoss(NeurIPS 2025)에 미분 가능한 시간 지연 항을 더한 손실 함수를 설계해, 시계열 예측의 위상 오차를 다뤄본 경험이 있습니다.',
+            'DBLoss(NeurIPS 2025)에 미분 가능한 시간 지연 항을 추가해, 시계열 예측의 위상 오차를 분석한 논문을 작성했습니다(심사 중).',
           stack: ['PyTorch', 'PatchTST', 'DLinear', 'iTransformer', 'Amplifier'],
           metrics: [],
           links: [{ label: '저장소', href: 'https://github.com/MeDeoDuck/ShiftLoss' }],
@@ -753,7 +753,7 @@ export const content: Record<Lang, Content> = {
           period: '2026',
           role: 'Loss function design and experiments',
           tagline:
-            'Experience designing a loss that adds a differentiable time-shift term to DBLoss (NeurIPS 2025) to absorb phase error in forecasting.',
+            'Wrote an analysis paper adding a differentiable time-shift term to DBLoss (NeurIPS 2025) for phase error in forecasting (under review).',
           stack: ['PyTorch', 'PatchTST', 'DLinear', 'iTransformer', 'Amplifier'],
           metrics: [],
           links: [{ label: 'Repository', href: 'https://github.com/MeDeoDuck/ShiftLoss' }],
