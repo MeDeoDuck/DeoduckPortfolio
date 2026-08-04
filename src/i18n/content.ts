@@ -19,6 +19,7 @@ const logo = (file: string) => `${import.meta.env.BASE_URL}logos/${file}`
  * icon이 없는 항목은 공개 아이콘이 없는 것들 — 모노그램 타일로 그린다.
  */
 const SKILLS: Record<'ai' | 'backend' | 'lang' | 'plugin', SkillItem[]> = {
+  /* 13개 → 2줄 7+6. LangGraph·LangChain은 아랫줄 선두에 온다. */
   ai: [
     { name: 'PyTorch', icon: devicon('pytorch/pytorch-original') },
     { name: 'Hugging Face', icon: simple('huggingface') },
@@ -26,11 +27,9 @@ const SKILLS: Record<'ai' | 'backend' | 'lang' | 'plugin', SkillItem[]> = {
     { name: 'OpenCV', icon: devicon('opencv/opencv-original') },
     { name: 'NumPy', icon: devicon('numpy/numpy-original') },
     { name: 'Pandas', icon: devicon('pandas/pandas-original') },
+    { name: 'PEFT', icon: glyph('peft') },
     { name: 'LangGraph', icon: simple('langchain') },
     { name: 'LangChain', icon: simple('langchain') },
-    { name: 'n8n', icon: simple('n8n') },
-    { name: 'PEFT', icon: glyph('peft') },
-    { name: 'Quantization', icon: glyph('quantization') },
     { name: 'Distillation', icon: glyph('distillation') },
     { name: 'MoT', icon: glyph('mot') },
     { name: 'GNN', icon: glyph('gnn') },
