@@ -604,7 +604,7 @@ export const content: Record<Lang, Content> = {
           no: '05',
           name: 'Computer vision and robotics',
           desc:
-            'I work on detection, tracking, and re-identification pipelines. From CCTV perception through A* path planning to Pure Pursuit control, everything runs as one ROS pipeline — carrying a model's judgment into real motion beyond the screen.',
+            'I work on detection, tracking, and re-identification pipelines. From CCTV perception through A* path planning to Pure Pursuit control, everything runs as one ROS pipeline — carrying the model judgment into real motion beyond the screen.',
         },
       ],
     },
