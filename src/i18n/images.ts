@@ -17,18 +17,17 @@ import { imageAsset } from './imageAssets'
  * 한두 프로젝트로 보인다. 이미지가 있는 8개 프로젝트를 두 줄에 나눠
  * 대표작·비대표작을 섞고, 결과표·표지 대신 파이프라인·구조도만 고른다.
  */
+/* 사이트에서 내린 프로젝트(nlp-slm-lora·ssvep·track-reid)의 타일도 함께 뺐다. */
 export const MARQUEE_ROW_ONE = [
   'moabom-a', // 서비스 아키텍처
   'cage-carerf-b', // 전체 학습 파이프라인
   'physical-ai-d1', // 인지 → 판단 → 제어 파이프라인
-  'nlp-slm-lora-d2', // 과제 수행 파이프라인
 ]
 
 export const MARQUEE_ROW_TWO = [
-  'fomo-breaker-b', // 환각 게이트 플로우차트
+  'fomo-breaker-b', // 입력 데이터 플로우차트
   'stablediffusion-lst-a', // UNet + LST 구조
-  'ssvep-bci-pipeline', // 최종 EEG 전처리 파이프라인
-  'track-reid-d1', // ByteTrack + TransReID 통합
+  'moabom-d2', // Supervisor Agent 플로우차트
 ]
 
 function buildOrder(): string[] {
