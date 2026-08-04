@@ -32,14 +32,15 @@ export default function Navbar({ variant = 'home' }: Props) {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
+  /* 섹션 순서와 동일하게: 역량 → 프로젝트 → 경력 → 수상 → 기술 → 대외활동 → 연락 */
   const links = [
     { href: '#hello', label: t.nav.hello },
-    { href: '#skills', label: t.nav.skills },
     { href: '#capabilities', label: t.nav.capabilities },
     { href: '#projects', label: t.nav.projects },
     { href: '#experience', label: t.nav.experience },
-    { href: '#activities', label: t.nav.activities },
     { href: '#awards', label: t.nav.awards },
+    { href: '#skills', label: t.nav.skills },
+    { href: '#activities', label: t.nav.activities },
     { href: '#contact', label: t.nav.contact },
   ]
 

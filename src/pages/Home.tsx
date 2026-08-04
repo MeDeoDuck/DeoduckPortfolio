@@ -23,11 +23,8 @@ export default function Home() {
     <>
       <Navbar />
       <main className="bg-paper" style={{ overflowX: 'clip' }}>
+        {/* 읽는 흐름: 누구다 → 뭘 할 수 있다 → 증거 → 실무 → 증빙 → 참조 → 연락 */}
         <HelloSection />
-
-        <ScrollDepth depth={1.2} tilt={1.5}>
-          <SkillsSection />
-        </ScrollDepth>
 
         <ScrollDepth depth={0.4}>
           <MarqueeSection />
@@ -37,16 +34,10 @@ export default function Home() {
           <CapabilitiesSection />
         </ScrollDepth>
 
-        {/* 프로젝트는 감싸지 않는다. 카드가 sticky로 쌓이는 연출이 이미 있어서
-            래퍼가 y로 밀면 두 움직임이 서로 싸운다. */}
         <ProjectsSection />
 
         <ScrollDepth depth={0.6} tilt={1.5}>
           <ExperienceSection />
-        </ScrollDepth>
-
-        <ScrollDepth depth={0.8} tilt={1.5}>
-          <ActivitiesSection />
         </ScrollDepth>
 
         <ScrollDepth depth={1.1} tilt={1.5}>
@@ -55,6 +46,14 @@ export default function Home() {
 
         <ScrollDepth depth={0.5} tilt={1.5}>
           <CredentialsSection />
+        </ScrollDepth>
+
+        <ScrollDepth depth={1.2} tilt={1.5}>
+          <SkillsSection />
+        </ScrollDepth>
+
+        <ScrollDepth depth={0.8} tilt={1.5}>
+          <ActivitiesSection />
         </ScrollDepth>
 
         <ContactSection />
