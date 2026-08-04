@@ -1,6 +1,5 @@
 import { useRef } from 'react'
 import { motion, useReducedMotion, useScroll, useTransform } from 'framer-motion'
-import { ArrowUpRight } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import FadeIn from '../components/FadeIn'
 import Placeholder from '../components/Placeholder'
@@ -37,23 +36,15 @@ export default function ProjectsSection() {
           <h3 className="t-eyebrow mb-6 font-mono text-ink/55">{t.projects.moreHeading}</h3>
         </FadeIn>
         <ul>
+          {/* 그 외 경험은 상세 페이지로 보내지 않는다. 한 줄 요약만 담백하게. */}
           {rest.map((project, i) => (
             <FadeIn key={project.id} delay={i * 0.04} y={14}>
-              <li className="border-t border-ink/10">
-                <Link
-                  to={`/project/${project.id}`}
-                  className="group pressable flex flex-col gap-1.5 py-5 sm:flex-row sm:items-baseline sm:gap-5 md:py-6"
-                >
-                  <span className="t-eyebrow shrink-0 font-mono text-ink/45 sm:w-10">
-                    {project.no}
-                  </span>
-                  <span className="t-h3 min-w-0 shrink-0 text-ink sm:w-52">{project.name}</span>
-                  <span className="t-body min-w-0 flex-1 text-ink/50 sm:truncate">{project.tagline}</span>
-                  <ArrowUpRight
-                    size={16}
-                    className="shrink-0 text-ink/45 transition-transform duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-ink"
-                  />
-                </Link>
+              <li className="flex flex-col gap-1.5 border-t border-ink/10 py-5 sm:flex-row sm:items-baseline sm:gap-5 md:py-6">
+                <span className="t-eyebrow shrink-0 font-mono text-ink/45 sm:w-10">
+                  {project.no}
+                </span>
+                <span className="t-h3 min-w-0 shrink-0 text-ink sm:w-52">{project.name}</span>
+                <span className="t-body min-w-0 flex-1 text-ink/50 sm:truncate">{project.tagline}</span>
               </li>
             </FadeIn>
           ))}

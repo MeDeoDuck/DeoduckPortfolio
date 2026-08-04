@@ -181,7 +181,7 @@ export const content: Record<Lang, Content> = {
     projects: {
       eyebrow: 'Projects',
       heading: '주요 프로젝트',
-      moreHeading: '그 외 작업',
+      moreHeading: '그 외 경험',
       viewDetail: '자세히 보기',
       liveLabel: '라이브',
       items: [
@@ -320,7 +320,7 @@ export const content: Record<Lang, Content> = {
           period: '2026',
           role: '손실 함수 설계 · 실험',
           tagline:
-            'DBLoss(NeurIPS 2025)에 미분 가능한 시간 지연 항을 더해, 시계열 예측에서 생기는 위상 오차를 흡수하는 손실 함수입니다.',
+            'DBLoss(NeurIPS 2025)에 미분 가능한 시간 지연 항을 더한 손실 함수를 설계해, 시계열 예측의 위상 오차를 다뤄본 경험이 있습니다.',
           stack: ['PyTorch', 'PatchTST', 'DLinear', 'iTransformer', 'Amplifier'],
           metrics: [],
           links: [{ label: '저장소', href: 'https://github.com/MeDeoDuck/ShiftLoss' }],
@@ -384,7 +384,7 @@ export const content: Record<Lang, Content> = {
           name: 'VoiceStep',
           period: '',
           role: '백엔드 · LLM 연동 (팀)',
-          tagline: '음성으로 면접과 업무 대화를 연습하는 AI 서비스입니다.',
+          tagline: 'faster-whisper와 Gemini로 음성 면접·업무 대화 연습 서비스의 백엔드를 만들어본 경험이 있습니다.',
           stack: ['faster-whisper', 'Gemini', 'FastAPI', 'React'],
           metrics: [],
           links: [{ label: '저장소', href: 'https://github.com/MeDeoDuck/VoiceStep' }],
@@ -408,7 +408,7 @@ export const content: Record<Lang, Content> = {
           name: 'LG Aimers 8th: LLM Compression',
           period: '',
           role: '참여 · 수료',
-          tagline: '양자화, 프루닝, 지식 증류를 적용해 LLM을 경량화하는 실험을 진행했습니다.',
+          tagline: '양자화·프루닝·지식 증류를 적용해 LLM을 경량화하는 실험을 해본 경험이 있습니다.',
           stack: ['PyTorch', 'GPTQ', 'AWQ', 'Pruning', 'Distillation'],
           metrics: [],
           links: [{ label: '저장소', href: 'https://github.com/MeDeoDuck/LG_Aimers_8th_Quant' }],
@@ -428,7 +428,7 @@ export const content: Record<Lang, Content> = {
           name: 'TrackWithReID',
           period: '',
           role: '개인 개발',
-          tagline: '재식별 결과를 연관 비용에 융합해, 가림과 재등장 상황에서도 추적 ID를 유지합니다.',
+          tagline: 'ReID 특징을 추적 연관 비용에 융합해, 가림·재등장 상황에서도 ID를 유지하는 추적기를 만들어본 경험이 있습니다.',
           stack: ['YOLOX', 'ByteTrack', 'TransReID'],
           metrics: [],
           links: [{ label: '저장소', href: 'https://github.com/MeDeoDuck/TrackWithReID' }],
@@ -448,7 +448,7 @@ export const content: Record<Lang, Content> = {
           name: 'Physical_AI_ws',
           period: '',
           role: '팀장 · 전체 총괄 (팀)',
-          tagline: 'CCTV 인지에서 A* 경로계획, Pure Pursuit 제어까지 ROS로 통합한 물류 로봇 파이프라인입니다.',
+          tagline: 'CCTV 인지부터 A* 경로계획, Pure Pursuit 제어까지 물류 로봇 파이프라인을 ROS로 통합해본 경험이 있습니다.',
           stack: ['ROS', 'OpenCV', 'A*', 'Pure Pursuit', 'TurtleBot4'],
           metrics: [],
           links: [{ label: '저장소', href: 'https://github.com/MeDeoDuck/Physical_AI_ws' }],
@@ -468,7 +468,7 @@ export const content: Record<Lang, Content> = {
           name: 'Lider_Cone_Path',
           period: '',
           role: '알고리즘 구현 (팀)',
-          tagline: 'LiDAR 점군에서 지면 분리, 콘 인식, 중앙선 회귀, 경로계획까지 C++로 직접 구현했습니다.',
+          tagline: 'LiDAR 점군의 지면 분리부터 콘 인식·중앙선 회귀·경로계획까지 C++로 직접 구현해본 경험이 있습니다.',
           stack: ['C++', 'LiDAR', 'Point Cloud', 'Clustering'],
           metrics: [],
           links: [{ label: '저장소', href: 'https://github.com/MeDeoDuck/Lider_Cone_Path' }],
@@ -489,7 +489,7 @@ export const content: Record<Lang, Content> = {
           period: '2025.11',
           role: '신호 전처리 직접 구현 (팀 3인)',
           tagline:
-            '외부 라이브러리 없이 FFT와 필터를 직접 구현해 EEG(SSVEP) 뇌파를 전처리하고, 사용자가 응시한 자극 주파수를 분류한 신호처리 과제입니다.',
+            'FFT와 필터를 외부 라이브러리 없이 직접 구현해 EEG(SSVEP) 뇌파를 전처리하고, 응시 자극 주파수를 분류해본 경험이 있습니다.',
           stack: ['Python', 'FFT · IFFT', 'Bandpass · Notch', 'CSP', 'SVM'],
           metrics: [
             { value: '83.3%', label: '습식 EEG 정확도' },
@@ -728,7 +728,7 @@ export const content: Record<Lang, Content> = {
     projects: {
       eyebrow: 'Projects',
       heading: 'Selected Projects',
-      moreHeading: 'Other Work',
+      moreHeading: 'Other Experience',
       viewDetail: 'View detail',
       liveLabel: 'Live',
       items: [
@@ -868,7 +868,7 @@ export const content: Record<Lang, Content> = {
           period: '2026',
           role: 'Loss function design and experiments',
           tagline:
-            'A loss function that adds a differentiable time-shift term to DBLoss (NeurIPS 2025) to absorb phase error in time series forecasting.',
+            'Experience designing a loss that adds a differentiable time-shift term to DBLoss (NeurIPS 2025) to absorb phase error in forecasting.',
           stack: ['PyTorch', 'PatchTST', 'DLinear', 'iTransformer', 'Amplifier'],
           metrics: [],
           links: [{ label: 'Repository', href: 'https://github.com/MeDeoDuck/ShiftLoss' }],
@@ -932,7 +932,7 @@ export const content: Record<Lang, Content> = {
           name: 'VoiceStep',
           period: '',
           role: 'Backend and LLM integration (team)',
-          tagline: 'An AI service for practicing interviews and work conversations by voice.',
+          tagline: 'Experience building the backend of a voice interview and work-conversation practice service with faster-whisper and Gemini.',
           stack: ['faster-whisper', 'Gemini', 'FastAPI', 'React'],
           metrics: [],
           links: [{ label: 'Repository', href: 'https://github.com/MeDeoDuck/VoiceStep' }],
@@ -956,7 +956,7 @@ export const content: Record<Lang, Content> = {
           name: 'LG Aimers 8th: LLM Compression',
           period: '',
           role: 'Participant, completed',
-          tagline: 'Experiments in compressing LLMs with quantization, pruning, and knowledge distillation.',
+          tagline: 'Experience running LLM compression experiments with quantization, pruning, and knowledge distillation.',
           stack: ['PyTorch', 'GPTQ', 'AWQ', 'Pruning', 'Distillation'],
           metrics: [],
           links: [{ label: 'Repository', href: 'https://github.com/MeDeoDuck/LG_Aimers_8th_Quant' }],
@@ -977,7 +977,7 @@ export const content: Record<Lang, Content> = {
           period: '',
           role: 'Personal project',
           tagline:
-            'Fuses re-identification into the association cost so a track keeps its ID through occlusion and reappearance.',
+            'Experience fusing ReID features into the tracking association cost so IDs survive occlusion and reappearance.',
           stack: ['YOLOX', 'ByteTrack', 'TransReID'],
           metrics: [],
           links: [{ label: 'Repository', href: 'https://github.com/MeDeoDuck/TrackWithReID' }],
@@ -998,7 +998,7 @@ export const content: Record<Lang, Content> = {
           period: '',
           role: 'Team lead, overall ownership (team)',
           tagline:
-            'A logistics robot pipeline built in ROS, running from CCTV perception through A* path planning to Pure Pursuit control.',
+            'Experience integrating a logistics robot pipeline in ROS, from CCTV perception through A* planning to Pure Pursuit control.',
           stack: ['ROS', 'OpenCV', 'A*', 'Pure Pursuit', 'TurtleBot4'],
           metrics: [],
           links: [{ label: 'Repository', href: 'https://github.com/MeDeoDuck/Physical_AI_ws' }],
@@ -1019,7 +1019,7 @@ export const content: Record<Lang, Content> = {
           period: '',
           role: 'Algorithm implementation (team)',
           tagline:
-            'Ground separation, cone detection, centerline regression, and path planning from LiDAR point clouds, written from scratch in C++.',
+            'Experience implementing a LiDAR pipeline in C++ from scratch: ground separation, cone detection, centerline regression, and path planning.',
           stack: ['C++', 'LiDAR', 'Point Cloud', 'Clustering'],
           metrics: [],
           links: [{ label: 'Repository', href: 'https://github.com/MeDeoDuck/Lider_Cone_Path' }],
@@ -1040,7 +1040,7 @@ export const content: Record<Lang, Content> = {
           period: '2025.11',
           role: 'Signal preprocessing from scratch (team of 3)',
           tagline:
-            'A signal-processing assignment that implements FFT and filters from scratch, with no library, to preprocess EEG (SSVEP) and classify the stimulus frequency the user was looking at.',
+            'Experience implementing FFT and filters from scratch, with no library, to preprocess EEG (SSVEP) signals and classify the gazed stimulus frequency.',
           stack: ['Python', 'FFT · IFFT', 'Bandpass · Notch', 'CSP', 'SVM'],
           metrics: [
             { value: '83.3%', label: 'Wet EEG accuracy' },
