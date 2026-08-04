@@ -15,8 +15,8 @@ interface Props {
   /** 장식용(마퀴 등): 실제 이미지여도 클릭·포커스 없이 그냥 보여준다. */
   decorative?: boolean
   /**
-   * 라이트박스를 화면 전체가 아니라 가장 가까운 positioned 조상(프로젝트 카드) 안에만 띄운다.
-   * 이 모드에서는 오버레이 클릭으로 닫히지 않는다 — 닫기 버튼·이미지 재클릭·Esc로만 닫는다.
+   * 라이트박스 위치는 항상 화면(뷰포트) 기준. scoped는 닫기 규칙만 다르다 —
+   * 오버레이(바깥) 클릭으로 닫히지 않고, 닫기 버튼·이미지 재클릭·Esc로만 닫는다.
    */
   scoped?: boolean
 }
@@ -165,10 +165,9 @@ function ImageTile({
         {open && (
           <motion.div
             className={
-              scoped
-                ? /* scoped: 사이트 전체가 아니라 프로젝트 카드(가장 가까운 positioned 조상)만 어두워진다. */
-                  'absolute inset-0 z-[60] flex items-center justify-center rounded-[28px] bg-black/80 p-5 backdrop-blur-sm md:rounded-[36px] md:p-8'
-                : 'fixed inset-0 z-[90] flex items-center justify-center bg-black/80 p-5 backdrop-blur-sm md:p-10'
+              /* 카드 기준(absolute)으로 띄우면 카드가 화면보다 길 때 이미지가 화면 밖 아래에 놓인다.
+                 그래서 scoped도 위치는 화면(뷰포트) 고정 — 닫기 규칙만 기본 모드와 다르다. */
+              'fixed inset-0 z-[90] flex items-center justify-center bg-black/80 p-5 backdrop-blur-sm md:p-10'
             }
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -195,7 +194,7 @@ function ImageTile({
               alt={label}
               className={
                 scoped
-                  ? 'max-h-full max-w-full cursor-zoom-out rounded-xl object-contain shadow-2xl'
+                  ? 'max-h-[90vh] max-w-[95vw] cursor-zoom-out rounded-xl object-contain shadow-2xl'
                   : 'max-h-[90vh] max-w-[95vw] rounded-xl shadow-2xl'
               }
               initial={reduce ? { opacity: 0 } : { opacity: 0, scale: 0.92 }}
