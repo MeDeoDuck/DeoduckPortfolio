@@ -156,7 +156,7 @@ export default function ProjectDetail() {
                             rounded="rounded-2xl"
                             className="w-full"
                           />
-                          <figcaption className="t-eyebrow text-center text-ink/45">
+                          <figcaption className="text-center text-[0.82rem] font-light text-ink">
                             {img.label}
                           </figcaption>
                         </figure>
