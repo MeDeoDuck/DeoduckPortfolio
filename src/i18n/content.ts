@@ -194,6 +194,8 @@ export const content: Record<Lang, Content> = {
           role: '백엔드 아키텍처 · DB 설계 · 댓글 필터링 Agent · KLUE 증류 (팀 3인)',
           tagline:
             '여러 유튜브 테크 리뷰의 자막과 댓글을 모아 제품 단위 구매 판단 보고서를 만드는 멀티에이전트 LLM 서비스입니다.',
+          detailTagline:
+            '한 테크 제품에 대한 N개의 유튜브 리뷰 영상을 자동 선별하고, 자막·댓글에 담긴 다양한 의견을 종합 분석해 한눈에 보기 좋은 리포트로 제공함으로써 합리적인 구매 판단을 지원하는 AI 웹 서비스입니다.',
           stack: ['LangGraph', 'FastAPI', 'PostgreSQL', 'Docker', 'Azure', 'GPT-4.1', 'KLUE-RoBERTa'],
           metrics: [
             { value: '98%', label: '판정 일관성 (300회 실행)' },
@@ -626,6 +628,8 @@ export const content: Record<Lang, Content> = {
           role: 'Backend architecture, DB design, comment filtering agent, KLUE distillation (team of 3)',
           tagline:
             'A multi-agent LLM service that collects transcripts and comments across YouTube tech reviews and turns them into a purchase decision report for a single product.',
+          detailTagline:
+            'An AI web service that automatically selects N YouTube review videos for a tech product, analyzes the range of opinions in their transcripts and comments, and delivers an easy-to-scan report that supports a rational purchase decision.',
           stack: ['LangGraph', 'FastAPI', 'PostgreSQL', 'Docker', 'Azure', 'GPT-4.1', 'KLUE-RoBERTa'],
           metrics: [
             { value: '98%', label: 'Verdict consistency over 300 runs' },

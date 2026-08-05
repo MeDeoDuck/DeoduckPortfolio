@@ -67,6 +67,8 @@ export interface Project {
   role: string
   /** 카드에 들어갈 한 줄 */
   tagline: string
+  /** 상세 페이지 상단 소개문. 없으면 tagline을 그대로 쓴다. */
+  detailTagline?: string
   stack: string[]
   /** 카드·상세 상단에 크게 박히는 지표 (없으면 빈 배열) */
   metrics: Metric[]

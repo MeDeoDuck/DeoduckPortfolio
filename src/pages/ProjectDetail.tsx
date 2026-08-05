@@ -39,7 +39,9 @@ export default function ProjectDetail() {
           </FadeIn>
 
           <FadeIn delay={0.1} y={16}>
-            <p className="t-body mt-4 max-w-2xl text-ink/70">{project.tagline}</p>
+            <p className="t-body mt-4 max-w-2xl text-ink/70">
+              {project.detailTagline ?? project.tagline}
+            </p>
           </FadeIn>
 
           {project.metrics.length > 0 && (
