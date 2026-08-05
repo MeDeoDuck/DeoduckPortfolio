@@ -11,9 +11,12 @@ const SEEDS = new Set<string>([
   'moabom-consistency',
   // 상세 페이지 전용(-p-): 2026-1 전시판넬에서 추출한 본문 이미지들.
   'moabom-p-arch', 'moabom-p-flow', 'moabom-p-agents', 'moabom-p-main',
-  'moabom-p-select', 'moabom-p-report', 'moabom-p-comment-model', 'moabom-p-compare-model',
-  'moabom-p-consistency', 'moabom-p-summary', 'moabom-p-opinion', 'moabom-p-highlight',
-  'moabom-p-subtitle-report', 'moabom-p-comment-report',
+  'moabom-p-report', 'moabom-p-comment-model', 'moabom-p-compare-model',
+  'moabom-p-consistency', 'moabom-p-summary',
+  // 서비스 화면 워크스루(-s01~-s13): 영상 선정 → 영상별 보고서 → 제품 단위 종합 보고서.
+  'moabom-p-s01', 'moabom-p-s02', 'moabom-p-s03', 'moabom-p-s04', 'moabom-p-s05',
+  'moabom-p-s06', 'moabom-p-s07', 'moabom-p-s08', 'moabom-p-s09', 'moabom-p-s10',
+  'moabom-p-s11', 'moabom-p-s12', 'moabom-p-s13',
   'fomo-breaker-a', 'fomo-breaker-b', 'fomo-breaker-d1', 'fomo-breaker-d2',
   'cage-carerf-a', 'cage-carerf-b', 'cage-carerf-d1', 'cage-carerf-d2',
   'stablediffusion-lst-a', 'stablediffusion-lst-b',
