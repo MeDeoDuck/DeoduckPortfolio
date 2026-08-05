@@ -308,6 +308,8 @@ export const content: Record<Lang, Content> = {
           role: 'PM · 백엔드 · 멀티에이전트 토론·검증 게이트 (팀 5인)',
           tagline:
             '종목을 사고 싶은 이유가 분석에서 나온 것인지 FOMO에서 나온 것인지 점검하는 멀티페르소나 토론 시스템입니다.',
+          detailTagline:
+            '매수 버튼을 누르기 전, 데이터 기반 토론으로 한 번 더 확인하게 해주는 세컨드 오피니언 서비스입니다. 다중 AI 페르소나 토론으로 뇌동매매를 막는 지능형 멀티 에이전트입니다.',
           stack: ['React', 'TypeScript', 'FastAPI', 'WebSocket', 'GPT-4.1', 'Llama-3.3-70B (Groq)'],
           metrics: [
             { value: '390/736', label: '검증 게이트가 보류·거부한 제안 (30회 실행)' },
@@ -317,29 +319,85 @@ export const content: Record<Lang, Content> = {
           links: [{ label: '저장소', href: 'https://github.com/MeDeoDuck/FOMO-Breaker' }],
           detail: [
             {
-              heading: '문제',
+              heading: '프로젝트 개요',
               body:
-                '결론만 주는 AI는 이미 사고 싶은 사람에게 사도 된다는 근거만 더해줍니다. 판단 과정이 보이지 않으면 사용자는 확신만 얻고 검증은 건너뛰게 됩니다.\n\nFOMO Breaker는 결론 대신 과정을 보여주는 쪽을 택했습니다. 서로 다른 관점이 부딪히는 토론을 그대로 노출해, 사용자가 자기 판단의 근거를 다시 확인하도록 만듭니다.',
+                'FOMO(Fear Of Missing Out)는 나만 기회를 놓칠까 두려워 급등 자산을 좇는 심리이고, Breaker는 과열된 회로를 끊어 사고를 막는 안전장치입니다.\n\nFOMO Breaker는 투자자가 매수 버튼을 누르기 전, 데이터 기반 토론으로 한 번 더 확인하게 해주는 세컨드 오피니언 서비스 — 다중 AI 페르소나 토론 기반 뇌동매매 방지 지능형 멀티 에이전트입니다. 매수 직전에 결론 대신 토론을 제공합니다.',
+              images: [
+                { seed: 'fomo-p-idea', label: '핵심 아이디어 — 결론 대신 토론' },
+              ],
             },
             {
-              heading: '페르소나 설계',
+              heading: '문제 정의 — 투자 열풍과 시장 변동성',
               body:
-                '5명의 페르소나에 각각 다른 금융 이론 prior와 리스크 임계값, 시간 지평을 부여했습니다. 같은 종목, 같은 데이터를 봐도 서로 다른 결론에 도달하도록 전제를 다르게 설정한 것입니다.\n\n말투만 다른 페르소나는 결국 같은 답을 냅니다. 의견이 갈리게 하려면 판단 기준 자체가 달라야 한다고 보고, 이론적 전제 수준에서 차이를 만들었습니다.\n\n세계관은 소프트 룰로, 수치 임계는 하드 룰로 나눴습니다. 페르소나의 성격은 프롬프트가 만들고, 넘어서는 안 되는 한계선은 코드가 지키는 구조입니다.',
+                '커뮤니티·SNS를 통한 종목 정보 확산, 코로나19 이후 주식 투자의 대중화로 주식 열풍이 사회적 트렌드가 됐습니다. 급등주 추격 매수, 공포·탐욕에 흔들리는 매매가 늘며 시세 제공을 넘어선 심리적 브레이크의 필요성이 대두됐습니다.\n\n2026년 상반기 시장 현황이 이를 보여줍니다 — 사이드카 20회 발동(이미 금융위기 수준 26회에 육박), 신용융자 43조 돌파(빚투 잔액 3년 8개월 새 최고, 금감원 경고).',
             },
             {
-              heading: '검증 게이트',
+              heading: '기존 AI 투자 서비스의 문제점',
               body:
-                '페르소나는 최종 점수의 가중치를 바꾸자고 제안할 수 있지만, 제안이 곧바로 반영되지는 않습니다. 제안한 근거가 실제 신호 점수와 맞는지, 조정폭이 캡을 넘지 않는지 확인하는 게이트를 통과해야 합니다.\n\n가중치는 zero-sum으로 재분배해 총합이 유지되도록 했고, 최종 지수를 역산해 구성 요소와 일치하는지 검증합니다. 30회 실행에서 페르소나가 낸 제안 736건 중 390건(53%)이 이 게이트에서 보류되거나 거부됐습니다.',
+                '기존 서비스는 AI가 지금 사라고 답을 정해주거나 자동으로 구매까지 이어줍니다. 정답만 던지는 AI 투자 서비스는 초보 투자자의 뇌동매매를 부추겨 리스크가 큽니다. FOMO Breaker는 반대로, 판단 과정 자체를 사용자 앞에 펼쳐 놓습니다.',
             },
             {
-              heading: '이중 LLM 구조',
+              heading: '차별점 1 — Agent별 페르소나 부여',
               body:
-                '토론에서 하는 발언과 내부 사고를 서로 다른 모델로 분리했습니다. 발언은 사용자에게 노출되는 텍스트, 내부 사고는 다음 발언과 가중치 제안을 결정하는 판단 과정입니다.\n\n둘을 분리하면 사용자에게 보여줄 문장을 다듬는 일과 판단을 내리는 일이 섞이지 않습니다. 토론 진행은 WebSocket으로 실시간 스트리밍해, 결론이 아니라 결론이 만들어지는 과정을 보게 했습니다.',
+                '5명의 페르소나가 각각 다른 경제·행동재무학 이론을 세계관(prior)으로 삼아, 동일한 시장 데이터를 보고도 의도적으로 다른 결론에 도달하도록 설계했습니다.\n\n리스크 심사역(초저위험) — 손실회피(Kahneman & Tversky, 1979). 손실의 고통은 이익의 2배: 과열 국면의 손실 리스크를 항상 크게 잡습니다.\n\n수급 추적자(중위험) — 수급의 정보력(Choe, Kho & Stulz, 1999). 말은 속여도 돈의 이동은 못 속인다: 외국인·기관 순매수를 정보거래의 대리변수로 봅니다.\n\n모멘텀 헌터(초고위험) — 가격 모멘텀(Jegadeesh & Titman, 1993). 모멘텀은 꺾이는 신호가 나오기 전까지 지속된다: 거래량이 생사를 알려줍니다.\n\n역발상가(저위험) — 역발상 투자(Lakonishok, Shleifer & Vishny, 1994). 가격은 결국 펀더멘털로 수렴한다: 인기는 프리미엄, 프리미엄은 수익률의 적.\n\n군중심리 대변인(고위험) — 군집행동·정보 폭포(Bikhchandani et al., 1992). 분위기는 데이터보다 먼저 움직인다: 개인은 남의 행동을 따라갑니다.',
+              images: [
+                { seed: 'fomo-p-persona', label: 'Agent별 페르소나 부여' },
+              ],
+            },
+            {
+              heading: '차별점 2 — 다중 페르소나 토론',
+              body:
+                '페르소나들이 서로 토론을 진행하고, 사회자 AI가 전체 토론과 페르소나별 발언을 종합해 결론 리포트를 제공합니다. 말투만 다른 페르소나는 결국 같은 답을 내기 때문에, 판단 기준(이론적 전제) 수준에서 차이를 만들어 의견이 실제로 갈리게 했습니다.',
+              images: [
+                { seed: 'fomo-p-debate', label: '다중 페르소나 토론 구조' },
+              ],
+            },
+            {
+              heading: '데이터 기반 심리 브레이크 5단계 프로세스',
+              body:
+                '① 데이터 수집 — 시세(pykrx)·거래량·주가, 기업 DART 공시·재무제표, 시장 VKOSPI·VI 발동 확인, 뉴스 감성 분석 데이터(Hype)\n\n② 분석/엔지니어링 — 이상 징후 실시간 탐지, 거래 과열 피처 추출, 카테고리별 데이터 점수화, 심리 데이터 연산 엔진\n\n③ 다중 페르소나 토론 — 가치 vs 기술 vs 투자자 토론, 매수 논리 다각적 검증, AI 페르소나 5종 난상 토론, 사회자 AI의 중재 및 종합\n\n④ FOMO 지수 확정 — 데이터+심리 가중치 산출, 최종 FOMO 레벨 도출, 실시간 지수 시각화, 리포트 생성 및 요약\n\n⑤ 액션 플랜/심리 케어 — 충동 매수 브레이크 경고, 현실 객관화 지표 제시, 분할 매수·조정 전략, 이성적 매매 플랜 유도\n\n단순 정보 제공을 넘어, 매수 직전 감정에 제동을 거는 데이터 기반 심리 브레이크 시스템입니다.',
+              images: [
+                { seed: 'fomo-p-process', label: '심리 브레이크 5단계 프로세스' },
+              ],
+            },
+            {
+              heading: '시스템 아키텍처',
+              body:
+                '입력 — 사용자 입력 → 데이터 불러오기 → 6개 지표 생성 → FOMO 점수 선형 계산 → 페르소나 input JSON 생성 → 각 Agent에 전달.\n\n토론 — Round 1 → Round 2(2~10회 반복) → Round 3 → 토론 보고서. 가중치 제안은 Weight Validator를 거쳐 Final Merge로 합쳐집니다.\n\n환각 게이트 — 페르소나별 응답에 환각이 없도록 하네스 엔지니어링을 수행합니다. 제안된 근거가 실제 신호 점수와 맞는지, 조정폭이 캡을 넘지 않는지 확인하고, 가중치는 zero-sum으로 재분배해 총합을 유지하며 최종 지수를 역산해 구성 요소와 일치하는지 검증합니다.',
+              images: [
+                { seed: 'fomo-p-input-flow', label: '입력 데이터 플로우차트' },
+                { seed: 'fomo-p-debate-flow', label: '토론 플로우차트' },
+                { seed: 'fomo-p-gate-flow', label: '환각 게이트 플로우차트' },
+              ],
+              stackImages: true,
+            },
+            {
+              heading: '데이터 파이프라인 · 지표 엔지니어링',
+              body:
+                'pykrx / KIS API — 주가·거래량·PER/PBR·배당 → Price Overheat, Volume Spike(과열 신호) → 기술적 과열 및 수급 쏠림 파악\n\nOpen DART — 주요 사항 보고서(전자공시) → 재무적 리스크 플래그 → 펀더멘털 기반 이성적 방어 논리 생성\n\nNaver News API — 뉴스 제목·본문 텍스트 → 감성·과열 지수(Sentiment/Hype) → 시장 군중 심리 및 과열 트렌드 확인\n\nKRX VKOSPI / KIS — 변동성 지표·VI 발동 현황 → 공포지수(변동성 Proxy)·VI Flag → 가시적 시장 공포·과열 수준 인지\n\n수집 지표는 행동경제학 근거 가중치로 카테고리별 점수화·병합해 종합 FOMO 지수 산출에 활용합니다.',
+            },
+            {
+              heading: '개발 스택',
+              body:
+                'Frontend — React 18 + TypeScript 5, Vite 6, Tailwind CSS 4, 네이티브 WebSocket\n\nBackend — FastAPI + uvicorn, Pydantic v2, WebSocket 스트리밍, asyncio\n\nAI — GPT-4.1, Llama-3.3-70B. 공개 발언과 내부 사고를 서로 다른 모델로 분리한 이중 LLM 구성으로, 사용자에게 보여줄 문장을 다듬는 일과 판단을 내리는 일이 섞이지 않게 했습니다. 토론은 WebSocket으로 실시간 스트리밍됩니다.\n\nData API — pykrx, 네이버 뉴스 API, OpenDART, KIS API',
+            },
+            {
+              heading: '성능 검증 — 타 AI 서비스와의 비교',
+              body:
+                '단일 모델과 비교해 출처 추적(Evidence), 환각 게이트(숫자 대조), 페르소나 합의·이견 표기, 신뢰도 Coverage 표기, Degraded(품질 저하) 배너, 조기 종료 라운드 관측을 모두 갖춘 것은 FOMO Breaker뿐입니다.\n\n판정 일관성 96.7%(30건 중 29건 일치), 환각 게이트 작동률 39.9%(736건 중 294건). 같은 종목 세트에서 주의 판정을 낸 종목 수는 FOMO Breaker 6개, GPT-4.1 1개, Gemini 2.5 1개였습니다.\n\n과열·FOMO 경고 도구에서는 실제 과열을 안전이라 놓치는 것(false negative)이 잘못된 경보보다 치명적입니다. 우리가 더 정확하다가 아니라, 경고 도구로서 이런 방향을 택했다는 설계 선택입니다.',
+              images: [
+                { seed: 'fomo-p-benchmark', label: '타 AI 서비스와의 비교' },
+              ],
+            },
+            {
+              heading: '성과 · 한계 · 향후 계획',
+              body:
+                '핵심 성과 — 실시간 위험 신호 탐지 파이프라인 구축을 완료하고, 감정을 배제한 팩트 기반 의사결정 체계(AI 토론장)를 성공적으로 구현했습니다.\n\n현재의 한계 — 뉴스 감성 데이터의 노이즈 처리와 비중 조절은 추가 연구가 필요하고, 각 지표에 민감한 것이 더 정확하다는 확실한 근거 지표가 아직 없습니다.\n\n향후 계획 — 사용자 과거 투자 내역 기반 투자 성향 프로파일링 고도화, 타 금융 플랫폼(MTS 등) API 연동 확장.',
             },
             {
               heading: '범위',
               body:
-                '투자 자문 서비스가 아닙니다. 매수·매도를 권하지 않고, 사용자가 이미 가진 매수 의사에 과열과 리스크 요인이 있는지 점검하는 용도로 범위를 한정했습니다.\n\n5인 팀 프로젝트이며, 저는 PM으로 팀을 이끌고 백엔드와 멀티에이전트 토론 구조·검증 게이트의 설계 및 구현을 맡았습니다.',
+                '투자 자문 서비스가 아닙니다. 매수·매도를 권하지 않고, 사용자가 이미 가진 매수 의사에 과열과 리스크 요인이 있는지 점검하는 용도로 범위를 한정했습니다.',
             },
           ],
           featured: true,
@@ -805,6 +863,8 @@ export const content: Record<Lang, Content> = {
           role: 'PM and backend; multi-agent debate and verification gate (team of 5)',
           tagline:
             'A multi-persona debate system that checks whether the urge to buy a stock came from analysis or from FOMO.',
+          detailTagline:
+            'A second-opinion service that makes an investor check once more, through a data-grounded debate, before pressing the buy button — an intelligent multi-agent system that curbs impulse trading with a multi-persona AI debate.',
           stack: ['React', 'TypeScript', 'FastAPI', 'WebSocket', 'GPT-4.1', 'Llama-3.3-70B (Groq)'],
           metrics: [
             { value: '390/736', label: 'Proposals held or rejected at the gate, 30 runs' },
@@ -814,29 +874,85 @@ export const content: Record<Lang, Content> = {
           links: [{ label: 'Repository', href: 'https://github.com/MeDeoDuck/FOMO-Breaker' }],
           detail: [
             {
-              heading: 'Problem',
+              heading: 'Overview',
               body:
-                'An AI that returns only a conclusion hands someone who already wants to buy one more reason to buy. When the reasoning stays hidden, the user gains confidence and skips the check.\n\nFOMO Breaker shows the process instead of the verdict. It exposes a debate where different views collide, so the user has to revisit the grounds for their own decision.',
+                'FOMO (Fear Of Missing Out) is the urge to chase surging assets for fear of being the only one left out; a breaker is the safety device that cuts an overheated circuit before an accident.\n\nFOMO Breaker is a second-opinion service that makes an investor check once more, through a data-grounded debate, before pressing the buy button — an intelligent multi-agent system that prevents impulse trading with a multi-persona AI debate. Right before a purchase, it offers a debate instead of a verdict.',
+              images: [
+                { seed: 'fomo-p-idea', label: 'Core idea — a debate instead of a verdict' },
+              ],
             },
             {
-              heading: 'Persona design',
+              heading: 'Problem — investment frenzy and market volatility',
               body:
-                'Each of the five personas carries a different financial theory prior, risk threshold, and time horizon. Given the same ticker and the same data, they are set up to reach different conclusions.\n\nPersonas that differ only in tone end up agreeing. To make opinions actually diverge, the judging criteria themselves have to differ, so the differences were built in at the level of theoretical priors.\n\nEach worldview is enforced as soft rules while numeric thresholds are hard rules: the persona\'s character lives in the prompt, and the limits it must not cross live in code.',
+                'Stock tips spread through communities and social media, and investing went mainstream after COVID-19, turning the stock rush into a social trend. Chasing surging tickers and trading on fear and greed grew, raising the need for a psychological brake beyond price feeds.\n\nThe first half of 2026 shows it — sidecar circuit breakers fired 20 times (nearing the financial-crisis level of 26), and margin loans passed 43 trillion won, the highest in 3 years and 8 months, with regulator warnings.',
             },
             {
-              heading: 'Verification gate',
+              heading: 'What is wrong with existing AI investing services',
               body:
-                'A persona may propose a change to the weights behind the final score, but the proposal is not applied on the spot. It has to pass a gate that checks whether the stated grounds match the actual signal scores and whether the adjustment stays under a cap.\n\nWeights are redistributed zero-sum so the total is preserved, and the final index is recomputed backward to confirm it matches its components. Across 30 runs, 390 of the 736 persona proposals (53%) were held or rejected at this gate.',
+                'Existing services let the AI decide — buy now — or even automate the purchase. An AI that hands out answers fuels impulse trading in novice investors. FOMO Breaker does the opposite: it lays the reasoning process itself in front of the user.',
             },
             {
-              heading: 'Dual LLM structure',
+              heading: 'Differentiator 1 — a persona per agent',
               body:
-                'What a persona says in the debate and what it reasons internally run on separate models. Speech is the text the user sees; internal reasoning decides the next statement and any weight proposal.\n\nKeeping them apart means polishing a sentence for the user does not get mixed with making a judgment. The debate streams over WebSocket in real time, so the user watches the conclusion being formed rather than receiving it.',
+                'Five personas each take a different theory from economics and behavioral finance as their worldview (prior), so they deliberately reach different conclusions from the same market data.\n\nRisk examiner (ultra-low risk) — loss aversion (Kahneman & Tversky, 1979). The pain of loss is twice the joy of gain: it always weighs downside risk heavily in overheated phases.\n\nFlow tracker (medium risk) — the information content of order flow (Choe, Kho & Stulz, 1999). Words can lie, money flows cannot: foreign and institutional net buying proxy informed trading.\n\nMomentum hunter (ultra-high risk) — price momentum (Jegadeesh & Titman, 1993). Momentum persists until the reversal signal: volume tells life from death.\n\nContrarian (low risk) — contrarian investment (Lakonishok, Shleifer & Vishny, 1994). Prices converge to fundamentals: popularity is a premium, and premium is the enemy of returns.\n\nCrowd psychology advocate (high risk) — herding and information cascades (Bikhchandani et al., 1992). Mood moves before data: individuals follow the crowd.',
+              images: [
+                { seed: 'fomo-p-persona', label: 'A persona per agent' },
+              ],
+            },
+            {
+              heading: 'Differentiator 2 — multi-persona debate',
+              body:
+                'The personas debate each other, and a moderator AI synthesizes the whole debate into a concluding report. Personas that differ only in tone end up agreeing, so the differences were built in at the level of judging criteria — their theoretical priors — to make opinions actually diverge.',
+              images: [
+                { seed: 'fomo-p-debate', label: 'Multi-persona debate structure' },
+              ],
+            },
+            {
+              heading: 'The 5-stage data-driven psychological brake',
+              body:
+                '1. Data collection — prices and volume (pykrx), corporate DART filings and financials, market VKOSPI and VI triggers, news sentiment (hype) data\n\n2. Analysis and engineering — real-time anomaly detection, overheat feature extraction, per-category scoring, a psychology computation engine\n\n3. Multi-persona debate — value vs technicals vs investor views, multi-angle verification of the buy thesis, a five-persona open debate, moderation and synthesis by the moderator AI\n\n4. FOMO index finalization — data plus psychology weighting, the final FOMO level, real-time visualization, report generation and summary\n\n5. Action plan and care — impulse-buy brake warnings, reality-check indicators, staged-buy and adjustment strategies, guidance toward rational trading\n\nBeyond serving information, it is a data-driven brake that slows emotion at the moment right before a purchase.',
+              images: [
+                { seed: 'fomo-p-process', label: 'The 5-stage psychological brake' },
+              ],
+            },
+            {
+              heading: 'System architecture',
+              body:
+                'Input — user input, data loading, six indicators, a linear FOMO score, persona input JSON, delivery to each agent.\n\nDebate — Round 1, then Round 2 repeated 2 to 10 times, then Round 3 and the debate report. Weight proposals pass a Weight Validator and are combined in a Final Merge.\n\nHallucination gate — harness engineering keeps every persona response free of hallucination. It checks whether stated grounds match the actual signal scores and whether adjustments stay under a cap; weights are redistributed zero-sum to preserve the total, and the final index is recomputed backward to confirm it matches its components.',
+              images: [
+                { seed: 'fomo-p-input-flow', label: 'Input data flowchart' },
+                { seed: 'fomo-p-debate-flow', label: 'Debate flowchart' },
+                { seed: 'fomo-p-gate-flow', label: 'Hallucination gate flowchart' },
+              ],
+              stackImages: true,
+            },
+            {
+              heading: 'Data pipeline and indicator engineering',
+              body:
+                'pykrx / KIS API — prices, volume, PER/PBR, dividends → Price Overheat, Volume Spike → technical overheat and flow concentration\n\nOpen DART — major-event filings → financial risk flags → rational, fundamentals-based defense logic\n\nNaver News API — headlines and article text → sentiment and hype indices → crowd psychology and overheat trends\n\nKRX VKOSPI / KIS — volatility indicators and VI triggers → a fear proxy and VI flag → visible market fear and overheat\n\nCollected indicators are scored per category with weights grounded in behavioral economics and merged into the final FOMO index.',
+            },
+            {
+              heading: 'Stack',
+              body:
+                'Frontend — React 18 + TypeScript 5, Vite 6, Tailwind CSS 4, native WebSocket\n\nBackend — FastAPI + uvicorn, Pydantic v2, WebSocket streaming, asyncio\n\nAI — GPT-4.1 and Llama-3.3-70B in a dual-LLM setup that separates public speech from internal reasoning, so polishing a sentence for the user never mixes with making a judgment. The debate streams live over WebSocket.\n\nData APIs — pykrx, Naver News API, OpenDART, KIS API',
+            },
+            {
+              heading: 'Verification — against other AI services',
+              body:
+                'Compared with single models, only FOMO Breaker carries all of: evidence tracing, a hallucination gate with number cross-checks, consensus and dissent labels per persona, coverage-based confidence labels, degraded-quality banners, and early-stop round observation.\n\nVerdict consistency 96.7% (29 of 30 matched); hallucination-gate trigger rate 39.9% (294 of 736). On the same ticker set, FOMO Breaker flagged 6 tickers as caution versus 1 for GPT-4.1 and 1 for Gemini 2.5.\n\nFor an overheat warning tool, missing real overheat (a false negative) is deadlier than a false alarm. The claim is not that we are more accurate — it is a design choice about which direction a warning tool should err.',
+              images: [
+                { seed: 'fomo-p-benchmark', label: 'Comparison with other AI services' },
+              ],
+            },
+            {
+              heading: 'Results, limits, and next steps',
+              body:
+                'Achievements — a real-time risk-signal pipeline, and a fact-based decision system (the AI debate floor) that removes emotion from the loop.\n\nLimitations — noise handling and weighting for news sentiment needs further research, and there is no hard evidence yet that sensitivity to each indicator equals accuracy.\n\nFuture plans — deeper investor-profile modeling from past trading history, and API integration with brokerage platforms (MTS and others).',
             },
             {
               heading: 'Scope',
               body:
-                'This is not investment advice. It does not recommend buying or selling. The scope is limited to checking a purchase intent the user already holds for signs of overheating and risk.\n\nA team project with 5 members. As PM I led the team and owned the backend and the design and implementation of the multi-agent debate structure and the verification gate.',
+                'This is not investment advice. It does not recommend buying or selling. The scope is limited to checking a purchase intent the user already holds for signs of overheating and risk.',
             },
           ],
           featured: true,

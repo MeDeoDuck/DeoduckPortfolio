@@ -18,6 +18,9 @@ const SEEDS = new Set<string>([
   'moabom-p-s06', 'moabom-p-s07', 'moabom-p-s08', 'moabom-p-s09', 'moabom-p-s10',
   'moabom-p-s11', 'moabom-p-s12', 'moabom-p-s13',
   'fomo-breaker-a', 'fomo-breaker-b', 'fomo-breaker-d1', 'fomo-breaker-d2',
+  // FOMO 상세 페이지 전용(-p-): 최종발표 PDF에서 추출한 본문 이미지들.
+  'fomo-p-idea', 'fomo-p-persona', 'fomo-p-debate', 'fomo-p-process',
+  'fomo-p-input-flow', 'fomo-p-debate-flow', 'fomo-p-gate-flow', 'fomo-p-benchmark',
   'cage-carerf-a', 'cage-carerf-b', 'cage-carerf-d1', 'cage-carerf-d2',
   'stablediffusion-lst-a', 'stablediffusion-lst-b',
   'stablediffusion-lst-d1', 'stablediffusion-lst-d2',
