@@ -363,11 +363,11 @@ export const content: Record<Lang, Content> = {
             {
               heading: '시스템 아키텍처',
               body:
-                '입력 — 사용자 입력 → 데이터 불러오기 → 6개 지표 생성 → FOMO 점수 선형 계산 → 페르소나 input JSON 생성 → 각 Agent에 전달.\n\n토론 — Round 1 → Round 2(2~10회 반복) → Round 3 → 토론 보고서. 가중치 제안은 Weight Validator를 거쳐 Final Merge로 합쳐집니다.\n\n환각 게이트 — 페르소나별 응답에 환각이 없도록 하네스 엔지니어링을 수행합니다. 제안된 근거가 실제 신호 점수와 맞는지, 조정폭이 캡을 넘지 않는지 확인하고, 가중치는 zero-sum으로 재분배해 총합을 유지하며 최종 지수를 역산해 구성 요소와 일치하는지 검증합니다.',
+                '입력 — 사용자 입력 → 데이터 불러오기 → 6개 지표 생성 → FOMO 점수 선형 계산 → 페르소나 input JSON 생성 → 각 Agent에 전달.\n\n토론 — Round 1 → Round 2(2~10회 반복) → Round 3 → 토론 보고서. 가중치 제안은 Weight Validator를 거쳐 Final Merge로 합쳐집니다.\n\n검증 게이트 — 페르소나별 응답이 근거에서 벗어나지 않도록 하네스 엔지니어링을 수행합니다. 제안된 근거가 실제 신호 점수와 맞는지, 조정폭이 캡을 넘지 않는지 확인하고, 가중치는 zero-sum으로 재분배해 총합을 유지하며 최종 지수를 역산해 구성 요소와 일치하는지 검증합니다. 게이트에 걸리는 건은 대부분 근거 부족으로 인한 보류입니다.',
               images: [
                 { seed: 'fomo-p-input-flow', label: '입력 데이터 플로우차트' },
                 { seed: 'fomo-p-debate-flow', label: '토론 플로우차트' },
-                { seed: 'fomo-p-gate-flow', label: '환각 게이트 플로우차트' },
+                { seed: 'fomo-p-gate-flow', label: '검증 게이트 플로우차트' },
               ],
               stackImages: true,
             },
@@ -384,7 +384,7 @@ export const content: Record<Lang, Content> = {
             {
               heading: '성능 검증 — 타 AI 서비스와의 비교',
               body:
-                '단일 모델과 비교해 출처 추적(Evidence), 환각 게이트(숫자 대조), 페르소나 합의·이견 표기, 신뢰도 Coverage 표기, Degraded(품질 저하) 배너, 조기 종료 라운드 관측을 모두 갖춘 것은 FOMO Breaker뿐입니다.\n\n판정 일관성 96.7%(30건 중 29건 일치), 환각 게이트 작동률 39.9%(736건 중 294건). 같은 종목 세트에서 주의 판정을 낸 종목 수는 FOMO Breaker 6개, GPT-4.1 1개, Gemini 2.5 1개였습니다.\n\n과열·FOMO 경고 도구에서는 실제 과열을 안전이라 놓치는 것(false negative)이 잘못된 경보보다 치명적입니다. 우리가 더 정확하다가 아니라, 경고 도구로서 이런 방향을 택했다는 설계 선택입니다.',
+                '단일 모델과 비교해 출처 추적(Evidence), 검증 게이트(숫자 대조), 페르소나 합의·이견 표기, 신뢰도 Coverage 표기, Degraded(품질 저하) 배너, 조기 종료 라운드 관측을 모두 갖춘 것은 FOMO Breaker뿐입니다.\n\n판정 일관성 96.7%(30건 중 29건 일치), 검증 게이트 작동률 39.9%(736건 중 294건). 같은 종목 세트에서 주의 판정을 낸 종목 수는 FOMO Breaker 6개, GPT-4.1 1개, Gemini 2.5 1개였습니다.\n\n과열·FOMO 경고 도구에서는 실제 과열을 안전이라 놓치는 것(false negative)이 잘못된 경보보다 치명적입니다. 우리가 더 정확하다가 아니라, 경고 도구로서 이런 방향을 택했다는 설계 선택입니다.',
               images: [
                 { seed: 'fomo-p-benchmark', label: '타 AI 서비스와의 비교' },
               ],
@@ -918,11 +918,11 @@ export const content: Record<Lang, Content> = {
             {
               heading: 'System architecture',
               body:
-                'Input — user input, data loading, six indicators, a linear FOMO score, persona input JSON, delivery to each agent.\n\nDebate — Round 1, then Round 2 repeated 2 to 10 times, then Round 3 and the debate report. Weight proposals pass a Weight Validator and are combined in a Final Merge.\n\nHallucination gate — harness engineering keeps every persona response free of hallucination. It checks whether stated grounds match the actual signal scores and whether adjustments stay under a cap; weights are redistributed zero-sum to preserve the total, and the final index is recomputed backward to confirm it matches its components.',
+                'Input — user input, data loading, six indicators, a linear FOMO score, persona input JSON, delivery to each agent.\n\nDebate — Round 1, then Round 2 repeated 2 to 10 times, then Round 3 and the debate report. Weight proposals pass a Weight Validator and are combined in a Final Merge.\n\nVerification gate — harness engineering keeps every persona response grounded in evidence. It checks whether stated grounds match the actual signal scores and whether adjustments stay under a cap; weights are redistributed zero-sum to preserve the total, and the final index is recomputed backward to confirm it matches its components. Most gate triggers are holds for insufficient evidence.',
               images: [
                 { seed: 'fomo-p-input-flow', label: 'Input data flowchart' },
                 { seed: 'fomo-p-debate-flow', label: 'Debate flowchart' },
-                { seed: 'fomo-p-gate-flow', label: 'Hallucination gate flowchart' },
+                { seed: 'fomo-p-gate-flow', label: 'Verification gate flowchart' },
               ],
               stackImages: true,
             },
@@ -939,7 +939,7 @@ export const content: Record<Lang, Content> = {
             {
               heading: 'Verification — against other AI services',
               body:
-                'Compared with single models, only FOMO Breaker carries all of: evidence tracing, a hallucination gate with number cross-checks, consensus and dissent labels per persona, coverage-based confidence labels, degraded-quality banners, and early-stop round observation.\n\nVerdict consistency 96.7% (29 of 30 matched); hallucination-gate trigger rate 39.9% (294 of 736). On the same ticker set, FOMO Breaker flagged 6 tickers as caution versus 1 for GPT-4.1 and 1 for Gemini 2.5.\n\nFor an overheat warning tool, missing real overheat (a false negative) is deadlier than a false alarm. The claim is not that we are more accurate — it is a design choice about which direction a warning tool should err.',
+                'Compared with single models, only FOMO Breaker carries all of: evidence tracing, a verification gate with number cross-checks, consensus and dissent labels per persona, coverage-based confidence labels, degraded-quality banners, and early-stop round observation.\n\nVerdict consistency 96.7% (29 of 30 matched); verification-gate trigger rate 39.9% (294 of 736). On the same ticker set, FOMO Breaker flagged 6 tickers as caution versus 1 for GPT-4.1 and 1 for Gemini 2.5.\n\nFor an overheat warning tool, missing real overheat (a false negative) is deadlier than a false alarm. The claim is not that we are more accurate — it is a design choice about which direction a warning tool should err.',
               images: [
                 { seed: 'fomo-p-benchmark', label: 'Comparison with other AI services' },
               ],
