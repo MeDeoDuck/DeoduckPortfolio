@@ -53,6 +53,8 @@ export interface DetailBlock {
   body: string
   /** 문단 아래에 붙는 이미지들 (블로그식 본문 이미지). seed는 imageAssets 등록 필요. */
   images?: { seed: string; label: string }[]
+  /** true면 이미지를 2열 그리드 대신 세로 1열로 크게 쌓는다 (가로형 다이어그램용). */
+  stackImages?: boolean
 }
 
 export interface Project {

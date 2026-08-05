@@ -144,7 +144,9 @@ export default function ProjectDetail() {
                   </div>
                   {block.images && block.images.length > 0 && (
                     <div
-                      className={`mt-5 grid gap-3 ${block.images.length > 1 ? 'sm:grid-cols-2' : ''}`}
+                      className={`mt-5 grid gap-3 ${
+                        block.images.length > 1 && !block.stackImages ? 'sm:grid-cols-2' : ''
+                      }`}
                     >
                       {block.images.map((img) => (
                         <figure key={img.seed} className="flex flex-col gap-1.5">

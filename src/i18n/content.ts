@@ -242,6 +242,7 @@ export const content: Record<Lang, Content> = {
                 { seed: 'moabom-p-arch', label: '시스템 아키텍처' },
                 { seed: 'moabom-p-flow', label: 'MOABOM 서비스 사용자 이용 흐름' },
               ],
+              stackImages: true,
             },
             {
               heading: '에이전트별 아키텍처',
@@ -285,11 +286,6 @@ export const content: Record<Lang, Content> = {
                 { seed: 'moabom-p-subtitle-report', label: '영상별 자막 기반 보고서' },
                 { seed: 'moabom-p-comment-report', label: '영상별 댓글 기반 보고서' },
               ],
-            },
-            {
-              heading: '팀',
-              body:
-                '인공지능공학과 캡스톤디자인 성과발표회 출품작입니다. 팀명 모아봄, 3인 팀(김유현 · 김재현 · 한상민) — 저는 백엔드 아키텍처와 DB 설계, 댓글 필터링 에이전트, KLUE 증류를 맡았습니다.\n\n지도교수 김도국 교수님, 기업멘토 신광훈 (LG CNS).',
             },
           ],
           featured: true,
@@ -734,6 +730,7 @@ export const content: Record<Lang, Content> = {
                 { seed: 'moabom-p-arch', label: 'System architecture' },
                 { seed: 'moabom-p-flow', label: 'MOABOM user flow' },
               ],
+              stackImages: true,
             },
             {
               heading: 'Agent-by-agent architecture',
@@ -777,11 +774,6 @@ export const content: Record<Lang, Content> = {
                 { seed: 'moabom-p-subtitle-report', label: 'Per-video transcript report' },
                 { seed: 'moabom-p-comment-report', label: 'Per-video comment report' },
               ],
-            },
-            {
-              heading: 'Team',
-              body:
-                'Built for the AI Engineering capstone design showcase. Team Moabom, three members (Yuhyeon Kim, Jaehyun Kim, Sangmin Han) — I owned the backend architecture, DB design, the comment filtering agent, and the KLUE distillation.\n\nAdvisor: Prof. Doguk Kim. Industry mentor: Gwanghun Shin (LG CNS).',
             },
           ],
           featured: true,
