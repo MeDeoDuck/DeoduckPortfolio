@@ -119,8 +119,8 @@ function ImageTile({
 }) {
   const reduce = useReducedMotion()
   const [open, setOpen] = useState(false)
-  // 상세 슬롯(-d1/-d2)은 전체 슬라이드를 다 보여주고, 카드 썸네일은 꽉 채운다.
-  const fit = seedKey.endsWith('-d1') || seedKey.endsWith('-d2') ? 'object-contain' : 'object-cover'
+  // 상세 슬롯(-d1/-d2)과 본문 이미지(-p-)는 전체를 다 보여주고, 카드 썸네일은 꽉 채운다.
+  const fit = /-d1$|-d2$|-p-/.test(seedKey) ? 'object-contain' : 'object-cover'
   // stiffness 260 / damping 26 ≈ response ~0.4s, damping ratio ~0.8 (살짝만 진동)
   const spring = { type: 'spring' as const, stiffness: 260, damping: 26 }
 

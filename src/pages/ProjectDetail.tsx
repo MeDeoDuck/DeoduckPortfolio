@@ -110,22 +110,25 @@ export default function ProjectDetail() {
             </FadeIn>
           )}
 
-          <FadeIn delay={0.3} y={20}>
-            <div className="mt-12 grid gap-3 sm:grid-cols-2">
-              <Placeholder
-                label={`${project.name} 스크린샷 1`}
-                seed={`${project.id}-d1`}
-                rounded="rounded-2xl"
-                className="min-h-[180px] w-full md:min-h-[230px]"
-              />
-              <Placeholder
-                label={`${project.name} 스크린샷 2`}
-                seed={`${project.id}-d2`}
-                rounded="rounded-2xl"
-                className="min-h-[180px] w-full md:min-h-[230px]"
-              />
-            </div>
-          </FadeIn>
+          {/* 본문 블록에 이미지가 흐르는(블로그식) 프로젝트는 상단 고정 스크린샷 그리드를 겹치지 않게 생략한다. */}
+          {!project.detail.some((b) => b.images && b.images.length > 0) && (
+            <FadeIn delay={0.3} y={20}>
+              <div className="mt-12 grid gap-3 sm:grid-cols-2">
+                <Placeholder
+                  label={`${project.name} 스크린샷 1`}
+                  seed={`${project.id}-d1`}
+                  rounded="rounded-2xl"
+                  className="min-h-[180px] w-full md:min-h-[230px]"
+                />
+                <Placeholder
+                  label={`${project.name} 스크린샷 2`}
+                  seed={`${project.id}-d2`}
+                  rounded="rounded-2xl"
+                  className="min-h-[180px] w-full md:min-h-[230px]"
+                />
+              </div>
+            </FadeIn>
+          )}
 
           <div className="mt-14 flex flex-col gap-10">
             {project.detail.map((block, i) => (
@@ -139,6 +142,25 @@ export default function ProjectDetail() {
                       </p>
                     ))}
                   </div>
+                  {block.images && block.images.length > 0 && (
+                    <div
+                      className={`mt-5 grid gap-3 ${block.images.length > 1 ? 'sm:grid-cols-2' : ''}`}
+                    >
+                      {block.images.map((img) => (
+                        <figure key={img.seed} className="flex flex-col gap-1.5">
+                          <Placeholder
+                            label={img.label}
+                            seed={img.seed}
+                            rounded="rounded-2xl"
+                            className="w-full"
+                          />
+                          <figcaption className="t-eyebrow text-center text-ink/45">
+                            {img.label}
+                          </figcaption>
+                        </figure>
+                      ))}
+                    </div>
+                  )}
                 </section>
               </FadeIn>
             ))}

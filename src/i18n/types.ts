@@ -51,6 +51,8 @@ export interface DetailBlock {
   heading: string
   /** 문단. 줄바꿈은 \n\n 으로 구분 */
   body: string
+  /** 문단 아래에 붙는 이미지들 (블로그식 본문 이미지). seed는 imageAssets 등록 필요. */
+  images?: { seed: string; label: string }[]
 }
 
 export interface Project {

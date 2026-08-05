@@ -9,6 +9,11 @@ const SEEDS = new Set<string>([
   'moabom-a', 'moabom-b', 'moabom-d1', 'moabom-d2',
   // 마퀴 전용: 발표 16p 일관성 검증(98/90/86) 슬라이드.
   'moabom-consistency',
+  // 상세 페이지 전용(-p-): 2026-1 전시판넬에서 추출한 본문 이미지들.
+  'moabom-p-arch', 'moabom-p-flow', 'moabom-p-agents', 'moabom-p-main',
+  'moabom-p-select', 'moabom-p-report', 'moabom-p-comment-model', 'moabom-p-compare-model',
+  'moabom-p-consistency', 'moabom-p-summary', 'moabom-p-opinion', 'moabom-p-highlight',
+  'moabom-p-subtitle-report', 'moabom-p-comment-report',
   'fomo-breaker-a', 'fomo-breaker-b', 'fomo-breaker-d1', 'fomo-breaker-d2',
   'cage-carerf-a', 'cage-carerf-b', 'cage-carerf-d1', 'cage-carerf-d2',
   'stablediffusion-lst-a', 'stablediffusion-lst-b',

@@ -204,34 +204,92 @@ export const content: Record<Lang, Content> = {
           links: [{ label: '벤치마크 저장소', href: 'https://github.com/MeDeoDuck/MoabomVSAll' }],
           detail: [
             {
-              heading: '문제',
+              heading: '프로젝트 개요',
               body:
-                '제품 하나를 사기 전에 확인해야 할 리뷰는 채널마다 흩어져 있습니다. 영상 여러 개를 끝까지 보고 댓글까지 훑어야 판단이 서고, 채널마다 기준과 편향이 달라 어느 쪽을 믿어야 할지 판단하기 어렵습니다.\n\nMoabom은 이 과정을 자동화합니다. 제품 단위로 자막과 댓글을 모아, 어떤 근거에서 나온 판단인지 함께 제시하는 보고서를 만듭니다.',
+                '제품명 입력부터 영상 선정, 자막·댓글 분석, 종합 보고서 생성까지 전 과정을 스스로 수행하는 멀티 에이전트 서비스입니다.\n\n단일 채널이 아닌 다수 채널의 리뷰어 의견과 실사용자 댓글을 동시에 취합해, 한쪽에 치우치지 않은 결론을 도출합니다.',
+              images: [
+                { seed: 'moabom-p-main', label: 'MOABOM 메인 화면' },
+              ],
             },
             {
-              heading: '에이전트 구성',
+              heading: '개발 목표',
               body:
-                '영상 선정, 댓글 필터, 보고서 생성 세 개의 에이전트로 역할을 나눴습니다. 하나의 큰 프롬프트가 전부를 처리하는 대신, 각 단계가 다음 단계로 넘길 입력을 책임지는 구조입니다.\n\n에이전트 간 흐름은 LangGraph에서 규칙 기반으로 제어했습니다. 모델이 다음 행동을 자유롭게 정하지 않기 때문에 같은 입력에 대해 같은 경로를 밟고, 실패 지점을 특정할 수 있습니다.',
+                '시간 절약 — AI Agent 자동 분석으로 120분 걸리던 리뷰 탐색을 5분으로 (24배 단축)\n\n편향 보정 — 다수 리뷰어와 댓글을 동시 활용해 채널 편중 완화\n\n통합 비교 — 자막 + RAG + 감성 라벨을 엮은 7섹션 종합 보고서\n\n일관성 — 다단계 파이프라인으로 일관성 있는 답변',
             },
             {
-              heading: '비용 최적화',
+              heading: '왜 유튜브 테크 제품 리뷰인가?',
               body:
-                '댓글 분류는 호출 빈도가 가장 높은 구간이라 상용 API로 계속 처리하면 운영이 어려웠습니다. GPT-4.1로 라벨 6,375건을 만들고, 이를 교사 데이터로 KLUE-RoBERTa에 증류해 해당 구간을 로컬 모델로 전환했습니다.\n\n증류 모델의 댓글 분류 macro F1은 0.917이고, 이 전환으로 추론 비용을 99% 줄이면서 처리량은 22배로 늘렸습니다.',
+                '테크 제품 리뷰는 영상 형태가 표준화되어 있어 자막·댓글 데이터 확보가 용이합니다. 스펙·성능 등 객관 비교 요소가 많아 다수 합의 추출의 효과가 크고, 댓글에 실사용 후기가 풍부해 전문가 시각과의 대조 가치가 높습니다.\n\n시장 환경도 뚜렷합니다 — 소비자의 91.1%가 구매 전 리뷰를 확인하고 54.7%는 4개 이상을 비교하며, 리뷰의 30%는 진정성이 의심되고 82%가 가짜 리뷰를 경험했습니다. 테크 제품은 구매 의사결정에서 리뷰의 영향력이 특히 큰 품목입니다. (Capital One Shopping 2026 · Katyal et al. 2025, IJSAEM 16(9))',
             },
             {
-              heading: '신뢰성',
+              heading: '핵심 타깃 사용자',
               body:
-                '리뷰 요약은 근거 없는 문장이 섞이면 바로 쓸모가 없어집니다. 서로 다른 LLM으로 교차검증하고, 원문에 없는 주장을 걸러내는 환각 방지 규칙을 넣었으며, 실패한 단계를 다시 시도해 복구하는 self-healing 구조를 붙였습니다.\n\n제품 10종 × 시스템 3종 × 반복 10회, 총 300회 실행에서 판정 일관성 98%를 측정했습니다. 같은 조건에서 GPT-4.1 단독은 90%, Gemini는 86%였습니다.',
+                '스마트폰·노트북·이어폰 같은 테크 제품 구매를 앞두고 여러 리뷰를 비교하는 일반 소비자.\n\n리뷰 영상을 끝까지 볼 시간은 없지만, 공통적인 리뷰 내용과 실사용 여론은 알고 싶은 사용자.',
             },
             {
-              heading: '배포와 운영',
+              heading: '사용자가 받는 결과물',
               body:
-                'Docker로 묶어 Azure Container Apps에 배포하고 PostgreSQL로 데이터를 관리했습니다. v1 배포 후 사용자 13명에게 설문을 받아 개선 사항을 반영했고, 배포에서 피드백, 개선으로 이어지는 한 바퀴를 완주했습니다.\n\n약 1주의 배포·설문 기간 동안 사용자 97명이 들어왔습니다. 제품 본체 서버는 이후 종료했고, 공개 저장소는 판정 일관성 벤치마크(MoabomVSAll)로 유지합니다.',
+                '제품 1개당 7섹션 종합 보고서를 자동 생성합니다 — 구매 판정, 핵심 요약, 6차원 평가표, 합의 기반 장단점, 소비자 여론, 전작 대비 변화, 추천/비추.\n\n모든 주장에 몇 명의 리뷰어가 동의했는가(N/N 합의도)를 수치로 표기해 신뢰도를 바로 확인할 수 있습니다.',
+              images: [
+                { seed: 'moabom-p-report', label: '제품 단위 통합 보고서' },
+              ],
             },
             {
-              heading: '팀과 역할',
+              heading: '시스템 아키텍처',
               body:
-                '3인 캡스톤 프로젝트입니다. 저는 백엔드 아키텍처와 DB 설계, 댓글 필터링 에이전트, KLUE-RoBERTa 증류를 맡았습니다. 보고서 생성 파이프라인은 다른 팀원이 담당했습니다.',
+                '제품명 입력 후 영상 선정 → 댓글 필터링 → 보고서 생성으로 이어지는 멀티 에이전트 파이프라인을 거칩니다. 마지막 보고서 단계는 DB 상태를 보고 캐시 반환·데이터 자가 보강·종합 생성을 분기하는 LangGraph Supervisor가 지휘합니다.',
+              images: [
+                { seed: 'moabom-p-arch', label: '시스템 아키텍처' },
+                { seed: 'moabom-p-flow', label: 'MOABOM 서비스 사용자 이용 흐름' },
+              ],
+            },
+            {
+              heading: '에이전트별 아키텍처',
+              body:
+                '영상 선정 Agent — 유튜브 리뷰 영상 후보를 임베딩 군집으로 클러스터링하고 자막을 근거로 분석해, 다양한 관점의 리뷰 영상을 자동 선별합니다.\n\n댓글 필터링 Agent — 수집된 영상 댓글을 룰 소프트필터와 다기준 선정으로 추려내고, LLM 5-class 분류와 ABSA 감성분석으로 정제해 제품과 관련된 신뢰할 수 있는 소비자 여론만 추출합니다.\n\n보고서 생성 Agent — 선정된 영상의 자막·댓글을 종합해 영상 단위 보고서 3종 + 제품 단위 종합 보고서 1종(총 4종)을 자동 생성하고, 다수 리뷰를 교차 검증해 신뢰도 높은 최종 제품 분석 리포트를 산출합니다.\n\nSupervisor Agent — 영상별 입력(자막·댓글·통합)의 신선도를 점검하여, 캐시 반환·댓글 self-heal·보고서 보장·합성·저장 중 어느 단계를 어떤 순서로 수행할지 결정하는 LangGraph 오케스트레이터입니다.',
+              images: [
+                { seed: 'moabom-p-agents', label: '에이전트별 아키텍처' },
+              ],
+            },
+            {
+              heading: '경량 모델 최적화',
+              body:
+                '댓글 분류 모델 — 정확도 유지, 비용·속도 최적화. GPT-4.1(teacher)의 라벨을 KLUE-BERT full fine-tuning으로 옮겼습니다(A40, 3 Epoch, 자체 수집 데이터). 비슷한 라벨은 Video Reaction으로 통합해 성능을 안정화했고, GPT-4.1 대비 정확도를 유지하며 추론 22배 가속 · API 비용 0을 달성했습니다.\n\n비교영상 탐지 모델 — 영상 선정 노이즈 자동 제거. 여러 제품 비교영상을 자동 분류하며, 3개 모델을 비교해 KLUE-RoBERTa를 채택했습니다(RTX 4060 Ti, 3 Epoch, 자체 수집 데이터). 제목·설명만으로 비교영상을 판별해 자막 수집 전 사전 필터링으로 비용을 절감하고, 데이터 규모에 맞는 모델 선택으로 과적합을 회피했습니다.',
+              images: [
+                { seed: 'moabom-p-comment-model', label: '로컬 댓글 필터링 모델 성능' },
+                { seed: 'moabom-p-compare-model', label: '영상 선정 비교영상 탐지 모델 성능' },
+              ],
+            },
+            {
+              heading: '일관성 검증 — 모아봄 vs 상용 LLM',
+              body:
+                '동일 제품을 10회 반복 질의했을 때의 판정 일관성을 자체 실험했습니다(10개 제품 × 10회 × 3개 모델 = 총 300회). 모아봄 98.0%, GPT 90.0%, Gemini 86.0%.\n\n모아봄이 가장 안정적입니다 — 환각 방지와 다중 LLM 교차 검증 설계의 직접 효과입니다.',
+              images: [
+                { seed: 'moabom-p-consistency', label: 'AI별 평균 판정 일관성' },
+              ],
+            },
+            {
+              heading: '핵심 기능',
+              body:
+                '흩어진 정보의 제품 단위 통합과 대중적 해설 — 각기 다른 채널에 분산된 영상·자막·댓글 정보를 종합해 제품 단위 보고서로 재구성합니다. 리뷰어 의견과 실사용 댓글 반응 비교, 제품 특징별 댓글 감성 분석까지 한눈에 확인할 수 있고, 복잡한 전문 용어는 일반인도 이해하기 쉽게 풀어 설명합니다.\n\n리뷰 탐색 시간의 획기적 단축 — 120분 소요되던 제품 탐색 과정을 5분 이내로 줄였습니다(약 24배). 영상을 직접 보지 않아도 밀도 높고 구조화된 보고서로 빠른 구매 의사결정을 지원합니다.\n\n편향 없고 일관적인 제품 평가 — 대형 채널과 익숙한 채널 중심의 유튜브 추천 알고리즘을 벗어난 다양성 높은 영상 선정, 다수 리뷰어와 댓글의 동시 활용으로 특정 리뷰어의 편향을 보정합니다. 동일 제품 반복 평가에서 98.0% 일관성을 달성했습니다.\n\n타 제품군·B2B 서비스로의 높은 확장성 — 유튜브 리뷰 영상이 있는 어떤 제품(화장품·식품 등)으로도 확장 가능하고, 기업을 위한 리뷰어·소비자 반응 분석 서비스로도 활용할 수 있습니다.',
+            },
+            {
+              heading: '서비스 화면',
+              body:
+                '메인 화면에서 제품명을 입력하면 영상 선정 목록을 거쳐 보고서 4종이 생성됩니다. 아래는 실제 서비스 화면입니다.',
+              images: [
+                { seed: 'moabom-p-select', label: '유튜브 영상 선정 목록' },
+                { seed: 'moabom-p-summary', label: '제품 종합 의견 요약 정리' },
+                { seed: 'moabom-p-opinion', label: '리뷰어와 댓글 간 의견 비교' },
+                { seed: 'moabom-p-highlight', label: '구매합리성·리뷰어 강조 포인트' },
+                { seed: 'moabom-p-subtitle-report', label: '영상별 자막 기반 보고서' },
+                { seed: 'moabom-p-comment-report', label: '영상별 댓글 기반 보고서' },
+              ],
+            },
+            {
+              heading: '팀',
+              body:
+                '인공지능공학과 캡스톤디자인 성과발표회 출품작입니다. 팀명 모아봄, 3인 팀(김유현 · 김재현 · 한상민) — 저는 백엔드 아키텍처와 DB 설계, 댓글 필터링 에이전트, KLUE 증류를 맡았습니다.\n\n지도교수 김도국 교수님, 기업멘토 신광훈 (LG CNS).',
             },
           ],
           featured: true,
@@ -638,34 +696,92 @@ export const content: Record<Lang, Content> = {
           links: [{ label: 'Benchmark repo', href: 'https://github.com/MeDeoDuck/MoabomVSAll' }],
           detail: [
             {
-              heading: 'Problem',
+              heading: 'Overview',
               body:
-                'Reviews for a single product are scattered across channels. You have to watch several videos end to end and scan the comments before you can decide, and each channel carries its own criteria and bias, so it is unclear which one to trust.\n\nMoabom automates that pass. It gathers transcripts and comments per product and produces a report that states what evidence each judgment came from.',
+                'A multi-agent service that runs the whole journey on its own: type a product name and it selects videos, analyzes transcripts and comments, and writes the final report.\n\nIt gathers reviewer opinions across many channels together with real-user comments, so the conclusion does not lean on any single channel.',
+              images: [
+                { seed: 'moabom-p-main', label: 'MOABOM main screen' },
+              ],
             },
             {
-              heading: 'Agent design',
+              heading: 'Goals',
               body:
-                'The work is split across three agents: video selection, comment filtering, and report generation. Rather than one large prompt handling everything, each stage owns the input it hands to the next.\n\nFlow between agents is controlled by explicit rules in LangGraph. Because the model does not choose its next action freely, the same input follows the same path and a failure can be traced to a specific stage.',
+                'Save time — AI agents cut a 120-minute review hunt down to 5 minutes (24x faster)\n\nCorrect bias — multiple reviewers plus comments soften channel bias\n\nUnified comparison — a 7-section report weaving transcripts, RAG, and sentiment labels\n\nConsistency — a multi-stage pipeline keeps verdicts stable',
             },
             {
-              heading: 'Cost optimization',
+              heading: 'Why YouTube tech reviews?',
               body:
-                'Comment classification was the highest volume call in the pipeline, and running it on a commercial API was not sustainable. I generated 6,375 labels with GPT-4.1, distilled them into KLUE-RoBERTa, and moved that stage to a local model.\n\nThe distilled model reached macro F1 0.917 on comment classification. The switch cut inference cost by 99% and raised throughput by 22 times.',
+                'Tech review videos follow a standard format, which makes transcript and comment data easy to collect. Specs and performance offer objective points of comparison, so majority-consensus extraction works well, and comments are rich in real-use feedback to contrast with expert views.\n\nThe market signal is clear too — 91.1% of consumers check reviews before buying and 54.7% compare four or more; 30% of reviews are suspected of being inauthentic and 82% have run into fake reviews. For tech products, reviews weigh especially heavily on purchase decisions. (Capital One Shopping 2026 - Katyal et al. 2025, IJSAEM 16(9))',
             },
             {
-              heading: 'Reliability',
+              heading: 'Target users',
               body:
-                'A review summary loses its value the moment an unsupported sentence slips in. I cross-checked with a second LLM, added rules that filter claims absent from the source text, and built a self-healing path that retries a failed stage.\n\nAcross 10 products by 3 systems by 10 repetitions, 300 runs in total, verdict consistency measured 98%. Under the same conditions GPT-4.1 alone reached 90% and Gemini 86%.',
+                'Everyday consumers comparing reviews before buying tech products such as phones, laptops, and earbuds.\n\nPeople who cannot watch review videos end to end but still want the common findings and real-user sentiment.',
             },
             {
-              heading: 'Deployment and operation',
+              heading: 'What the user gets',
               body:
-                'The service runs in Docker on Azure Container Apps with PostgreSQL behind it. After the v1 release I collected a survey from 13 users and shipped the changes it pointed to, closing one full loop from release to feedback to improvement.\n\nAbout 97 users came in during the roughly one-week deployment and survey window. The product server has since been taken down; the public repository stays as the verdict-consistency benchmark (MoabomVSAll).',
+                'One 7-section report per product, generated automatically: purchase verdict, key summary, 6-dimension score table, consensus-based pros and cons, consumer sentiment, changes from the previous model, and recommend or not.\n\nEvery claim carries an N-of-N agreement count — how many reviewers agreed — so trust is visible at a glance.',
+              images: [
+                { seed: 'moabom-p-report', label: 'Product-level integrated report' },
+              ],
             },
             {
-              heading: 'Team and role',
+              heading: 'System architecture',
               body:
-                'A capstone project with a team of 3. I owned the backend architecture, DB design, the comment filtering agent, and the KLUE-RoBERTa distillation. The report generation pipeline was owned by another teammate.',
+                'After the product name is entered, the pipeline runs video selection, comment filtering, and report generation as separate agents. The final stage is directed by a LangGraph Supervisor that inspects DB state and branches between cache return, self-healing data repair, and full synthesis.',
+              images: [
+                { seed: 'moabom-p-arch', label: 'System architecture' },
+                { seed: 'moabom-p-flow', label: 'MOABOM user flow' },
+              ],
+            },
+            {
+              heading: 'Agent-by-agent architecture',
+              body:
+                'Video selection agent — clusters candidate review videos by embedding and analyzes transcripts as evidence, automatically picking reviews with diverse perspectives.\n\nComment filtering agent — trims collected comments with rule-based soft filters and multi-criteria selection, then refines them with LLM 5-class classification and ABSA sentiment analysis, keeping only trustworthy, product-relevant consumer opinion.\n\nReport generation agent — synthesizes transcripts and comments into three per-video reports plus one product-level report (four in total), cross-checking multiple reviews to produce a reliable final analysis.\n\nSupervisor agent — a LangGraph orchestrator that checks the freshness of each input (transcripts, comments, integration) and decides which steps to run, in what order: cache return, comment self-heal, report guarantee, synthesis, and storage.',
+              images: [
+                { seed: 'moabom-p-agents', label: 'Agent-by-agent architecture' },
+              ],
+            },
+            {
+              heading: 'Lightweight model optimization',
+              body:
+                'Comment classifier — keep accuracy, cut cost and latency. GPT-4.1 (teacher) labels were transferred into a fully fine-tuned KLUE-BERT (A40, 3 epochs, self-collected data). Similar labels were merged into Video Reaction for stability; accuracy holds against GPT-4.1 while inference runs 22x faster at zero API cost.\n\nComparison-video detector — automatic noise removal for video selection. It classifies multi-product comparison videos; three models were benchmarked and KLUE-RoBERTa was adopted (RTX 4060 Ti, 3 epochs, self-collected data). Judging from title and description alone allows pre-filtering before transcript collection, cutting cost, and choosing a model sized to the data avoids overfitting.',
+              images: [
+                { seed: 'moabom-p-comment-model', label: 'Local comment filtering model performance' },
+                { seed: 'moabom-p-compare-model', label: 'Comparison-video detection model performance' },
+              ],
+            },
+            {
+              heading: 'Consistency check — Moabom vs commercial LLMs',
+              body:
+                'We measured verdict consistency by asking about the same product ten times (10 products x 10 repeats x 3 models = 300 runs, in-house). Moabom 98.0%, GPT 90.0%, Gemini 86.0%.\n\nMoabom is the most stable — a direct effect of the anti-hallucination rules and multi-LLM cross-verification design.',
+              images: [
+                { seed: 'moabom-p-consistency', label: 'Average verdict consistency by AI' },
+              ],
+            },
+            {
+              heading: 'Key features',
+              body:
+                'Product-level integration with plain-language explanation — information scattered across channels, transcripts, and comments is rebuilt into one product report. Reviewer opinions are compared against real-user comment reactions, sentiment is analyzed per product trait, and jargon is unpacked for general readers.\n\nDramatically shorter review hunting — the 120-minute exploration drops under 5 minutes (about 24x). A dense, structured report supports fast purchase decisions without watching a single video.\n\nUnbiased, consistent evaluation — video selection escapes the big-channel bias of the recommendation algorithm, and using many reviewers plus comments together corrects individual reviewer bias. Repeated evaluation of the same product reached 98.0% consistency.\n\nHigh extensibility to other categories and B2B — any product with YouTube reviews (cosmetics, food, and more) fits, and the same engine can serve companies as a reviewer and consumer reaction analysis service.',
+            },
+            {
+              heading: 'Service screens',
+              body:
+                'Type a product name on the main screen and the service walks through video selection to four generated reports. Below are actual screens.',
+              images: [
+                { seed: 'moabom-p-select', label: 'Selected YouTube videos' },
+                { seed: 'moabom-p-summary', label: 'Product opinion summary' },
+                { seed: 'moabom-p-opinion', label: 'Reviewer vs comment comparison' },
+                { seed: 'moabom-p-highlight', label: 'Purchase rationale and reviewer highlights' },
+                { seed: 'moabom-p-subtitle-report', label: 'Per-video transcript report' },
+                { seed: 'moabom-p-comment-report', label: 'Per-video comment report' },
+              ],
+            },
+            {
+              heading: 'Team',
+              body:
+                'Built for the AI Engineering capstone design showcase. Team Moabom, three members (Yuhyeon Kim, Jaehyun Kim, Sangmin Han) — I owned the backend architecture, DB design, the comment filtering agent, and the KLUE distillation.\n\nAdvisor: Prof. Doguk Kim. Industry mentor: Gwanghun Shin (LG CNS).',
             },
           ],
           featured: true,
