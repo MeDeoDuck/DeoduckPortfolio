@@ -89,7 +89,7 @@ export const content: Record<Lang, Content> = {
       greeting: 'ML 엔지니어를 지망합니다',
       name: '김재현',
       tagline:
-        '완벽한 AI는 없다고 믿기에, 검증부터 설계합니다.\nLLM 에이전트 서비스를 설계하고 배포해 운영하며,\n비용과 일관성 문제를 직접 해결했습니다.\n신뢰할 수 있는 AI 제품을 만드는 엔지니어로 성장하며,\n문제 해결 노하우를 저만의 실무용 skill.md로 쌓아가는 것이 목표입니다.',
+        '완벽한 AI는 없다고 믿기에, 검증부터 설계합니다.\nLLM 에이전트 서비스를 설계하고 배포해 운영하며,\n비용과 일관성 문제를 직접 해결했습니다.\n신뢰할 수 있는 아키텍처를 만드는 엔지니어로 성장하며,\n저만의 decision log를 실무용 skill.md로 쌓아가는 것이 목표입니다.',
       metrics: [
         { value: '사용자 97명', label: '1주 배포 실사용' },
         { value: '98%', label: '판정 일관성 (300회 실행)' },
@@ -102,7 +102,7 @@ export const content: Record<Lang, Content> = {
       typed: '안녕하세요, AI 엔지니어 김재현입니다',
       headline: { lead: '모델이 제안하면 ', accent: '코드가 검증하는', tail: ' 시스템을 만듭니다' },
       body:
-        '완벽한 AI는 없다고 믿기에, 검증부터 설계합니다.\nLLM 에이전트 서비스를 설계하고 배포해 운영하며,\n비용과 일관성 문제를 직접 해결했습니다.\n신뢰할 수 있는 AI 제품을 만드는 엔지니어로 성장하며,\n문제 해결 노하우를 저만의 실무용 skill.md로 쌓아가는 것이 목표입니다.',
+        '완벽한 AI는 없다고 믿기에, 검증부터 설계합니다.\nLLM 에이전트 서비스를 설계하고 배포해 운영하며,\n비용과 일관성 문제를 직접 해결했습니다.\n신뢰할 수 있는 아키텍처를 만드는 엔지니어로 성장하며,\n저만의 decision log를 실무용 skill.md로 쌓아가는 것이 목표입니다.',
       infoLabel: 'Personal Info',
       info: [
         { label: '학력', value: '인하대학교 인공지능공학 학사' },
@@ -517,7 +517,7 @@ export const content: Record<Lang, Content> = {
       greeting: 'Aspiring ML engineer',
       name: 'Jaehyun Kim',
       tagline:
-        'I believe no AI is perfect, so I start from verification.\nI design, ship, and operate LLM agent services,\nand I have solved their cost and consistency problems myself.\nI am growing into an engineer who builds trustworthy AI products,\nand my goal is to distill each problem I solve into my own practical skill.md library.',
+        'I believe no AI is perfect, so I start from verification.\nI design, ship, and operate LLM agent services,\nand I have solved their cost and consistency problems myself.\nI am growing into an engineer who builds trustworthy architecture,\nand my goal is to turn my decision log into my own practical skill.md library.',
       metrics: [
         { value: '97 users', label: 'One-week deployment' },
         { value: '98%', label: 'Verdict consistency over 300 runs' },
@@ -534,7 +534,7 @@ export const content: Record<Lang, Content> = {
         tail: ', not the other way around.',
       },
       body:
-        'I believe no AI is perfect, so I start from verification.\nI design, ship, and operate LLM agent services,\nand I have solved their cost and consistency problems myself.\nI am growing into an engineer who builds trustworthy AI products,\nand my goal is to distill each problem I solve into my own practical skill.md library.',
+        'I believe no AI is perfect, so I start from verification.\nI design, ship, and operate LLM agent services,\nand I have solved their cost and consistency problems myself.\nI am growing into an engineer who builds trustworthy architecture,\nand my goal is to turn my decision log into my own practical skill.md library.',
       infoLabel: 'Personal Info',
       info: [
         { label: 'Education', value: 'BS in AI Engineering, Inha University' },
