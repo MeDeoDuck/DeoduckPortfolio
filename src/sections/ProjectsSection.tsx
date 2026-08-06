@@ -29,7 +29,7 @@ export default function ProjectsSection() {
       {rest.length > 0 && (
         <div className="mx-auto mt-20 max-w-4xl md:mt-28">
           <FadeIn y={20}>
-            <h3 className="t-eyebrow mb-6 font-mono text-ink/55">{t.projects.moreHeading}</h3>
+            <h3 className="t-eyebrow mb-6 font-mono text-accent">{t.projects.moreHeading}</h3>
           </FadeIn>
           <ul>
             {/* 그 외 경험은 상세 페이지로 보내지 않는다. 한 줄 요약만 담백하게. */}

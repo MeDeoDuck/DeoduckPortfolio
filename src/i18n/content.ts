@@ -181,7 +181,7 @@ export const content: Record<Lang, Content> = {
     projects: {
       eyebrow: 'Projects',
       heading: '주요 프로젝트',
-      moreHeading: '그 외 경험',
+      moreHeading: 'KCI 논문 심사중',
       viewDetail: '자세히 보기',
       liveLabel: '라이브',
       items: [
@@ -443,7 +443,7 @@ export const content: Record<Lang, Content> = {
           period: '2026',
           role: '개인 연구',
           tagline:
-            'KCI 논문 심사 중 — DBLoss(NeurIPS 2025)에 window 기반의 미분 가능한 시간 정렬 항을 더해, 정렬 기반 손실이 유효한 조건을 분석한 시계열 예측 손실 함수 연구입니다.',
+            '기존 시계열 예측 모델의 손실함수에 시간 지연 항을 추가하여 정렬 기반 손실이 유효한 조건을 분석한 시계열 예측 손실 함수 연구',
           stack: ['PyTorch', 'PatchTST', 'DLinear', 'iTransformer', 'Amplifier'],
           metrics: [],
           links: [{ label: '저장소', href: 'https://github.com/MeDeoDuck/ShiftLoss' }],
@@ -720,7 +720,7 @@ export const content: Record<Lang, Content> = {
     projects: {
       eyebrow: 'Projects',
       heading: 'Selected Projects',
-      moreHeading: 'Other Experience',
+      moreHeading: 'KCI Paper Under Review',
       viewDetail: 'View detail',
       liveLabel: 'Live',
       items: [
@@ -983,7 +983,7 @@ export const content: Record<Lang, Content> = {
           period: '2026',
           role: 'Personal research',
           tagline:
-            'KCI paper under review — a time-series forecasting loss study adding a windowed differentiable time-alignment term to DBLoss (NeurIPS 2025) and analyzing when alignment-based losses help.',
+            'A time-series forecasting loss study that adds a time-shift term to an existing loss function and analyzes when alignment-based losses are effective.',
           stack: ['PyTorch', 'PatchTST', 'DLinear', 'iTransformer', 'Amplifier'],
           metrics: [],
           links: [{ label: 'Repository', href: 'https://github.com/MeDeoDuck/ShiftLoss' }],
