@@ -408,29 +408,60 @@ export const content: Record<Lang, Content> = {
           category: 'Team',
           name: 'CAGE-CareRF',
           period: '2026',
-          role: '팀장 · 전체 총괄 (팀 3인)',
+          role: '팀장 · 문제 정의 · 모델 설계 · 실험 총괄 (팀 3인)',
           tagline: '리뷰를 6개 관계 그래프로 모델링해 조직적 가짜 리뷰를 탐지하는 멀티관계 GNN입니다.',
-          stack: ['PyTorch Geometric', 'GAT', 'GCN', 'GraphSAGE', 'Sentence-BERT', 'LightGBM'],
+          detailTagline:
+            'YelpZip 리뷰 데이터에서 조직적으로 움직이는 가짜 리뷰를 잡기 위해, 리뷰 사이의 관계를 6개 채널로 분리해 학습하는 멀티관계 GNN을 설계·검증한 연구입니다. ITDA 제2회 수도권 학술제에서 발표했습니다.',
+          stack: ['PyTorch Geometric', 'ChebConv', 'Sentence-BERT', 'TF-IDF · SVD', 'Focal Loss'],
           metrics: [
-            { value: 'PR-AUC 0.789', label: '이상 비율 ~25% 샘플링 데이터셋 · 5 seeds' },
-            { value: '6', label: '관계 그래프' },
+            { value: 'PR-AUC 0.4447', label: '원본 불균형(11:89) · 5 seeds 평균' },
+            { value: '+62%', label: '최고 단일 그래프 baseline 대비' },
+            { value: '6', label: '관계 그래프 채널' },
           ],
           links: [{ label: '저장소', href: 'https://github.com/MeDeoDuck/CAGE-CareRF' }],
           detail: [
             {
-              heading: '가설',
+              heading: '프로젝트 개요',
               body:
-                '가짜 리뷰를 리뷰 한 건씩 따로 보면 진짜와 구분되는 특징이 뚜렷하지 않습니다. 문장만 놓고 보면 잘 쓴 리뷰와 잘 만든 가짜 리뷰가 비슷하기 때문입니다.\n\n대신 가짜 리뷰는 개별이 아니라 조직적으로 움직인다는 가설을 세웠습니다. 같은 시기에, 같은 대상에, 비슷한 패턴으로 몰리는 관계 구조를 보면 개별 텍스트에서 보이지 않던 신호가 드러납니다.',
+                'YelpZip 리뷰 데이터셋에서 가짜 리뷰를 탐지하는 그래프 신경망 연구입니다. 리뷰 한 건씩 텍스트만 보면 잘 쓴 리뷰와 잘 만든 가짜 리뷰가 비슷해 구분이 어렵습니다.\n\n대신 가짜 리뷰는 개별이 아니라 조직적으로 움직인다는 관점에서, 각 리뷰를 고립된 문장이 아니라 사용자·상품·시간·평점·행동 유사성으로 연결된 행동 기록으로 보고 그 관계 구조에서 사기 신호를 찾습니다.',
             },
             {
-              heading: '그래프 구성',
+              heading: '핵심 가설 4가지',
               body:
-                '리뷰 사이의 관계를 6가지로 나눠 각각 별도의 그래프로 만들었습니다. 하나의 그래프에 모든 관계를 섞으면 강한 관계가 약한 관계를 덮어버리기 때문입니다.\n\n관계별로 GNN을 학습시킨 뒤 게이트로 융합해, 어떤 관계를 얼마나 반영할지 모델이 학습하도록 했습니다. 텍스트 표현은 Sentence-BERT로 얻고, 그래프 임베딩과 함께 LightGBM 스태킹 앙상블에 넣어 최종 판정을 만들었습니다.',
+                '관계 가설 — 사기 리뷰는 텍스트가 아니라 리뷰 사이의 관계 구조에서 드러난다. 리뷰를 노드로, 관계를 엣지로 한 그래프 학습이 NLP 단독보다 본질적으로 유리합니다.\n\n다중 관계 가설 — 관계마다 사기 신호의 강도가 다르므로 분리해서 학습해야 한다. 6개 관계를 독립 채널로 학습한 뒤 융합합니다.\n\n노드별 신뢰 가설 — 어떤 관계가 신뢰할 만한지는 노드마다 다르다. 관계별 가중치를 고정값이 아니라 노드별로 동적 학습합니다.\n\n위장 가설 — 숙련된 어뷰저는 정상 노드와 의도적으로 연결을 맺어 자신을 감춘다. 메시지 전파 이전 단계에서 의심스러운 이웃을 미리 필터링합니다.',
             },
             {
-              heading: '결과',
+              heading: '그래프 엣지 설계',
               body:
-                'fraud 비율을 약 25%로 끌어올린 cascade 샘플링 데이터셋(5 seeds)에서 PR-AUC 0.789를 기록했습니다. 같은 조건의 MLP(0.633), 최고 GNN baseline GAT(0.734)보다 높은 수치입니다. 초기의 11.16% 불균형 데이터셋에서는 PR-AUC 0.44대였습니다 — 샘플링 재구성 후 전 모델이 오른 조건에서의 비교입니다.\n\n비교 대상 상위 모델들과는 통계적으로 동급 구간에 있으며, 정밀도와 재현율 사이의 균형이 상대적으로 고른 편이었습니다. 단독 1위라고 말할 수 있는 결과는 아닙니다.\n\n3인 팀 프로젝트이며, 저는 팀장으로 문제 정의·모델 설계·실험 전반을 총괄했습니다.',
+                '기본 관계 3종에 조직적 어뷰징 특유의 패턴을 잡는 커스텀 관계 3종을 더해, 총 6개 관계를 별도 채널로 구성했습니다.\n\n기본 관계 — 같은 사용자(R-U-R, 동일 사용자 반복 작성) · 같은 상품·같은 달(R-T-R, 시간 집중 조작) · 같은 상품·같은 별점(R-S-R, 별점 평판 조작).\n\n커스텀 관계 — 같은 상품·7일 이내·별점 ±1(R-Burst-R, 단기 평판 폭격) · 상품 내 텍스트 유사도 top-5(R-SemSim-R, 템플릿 리뷰 양산) · 사용자 행동벡터 유사도 top-5(R-Behavior-R, 다중 계정 행동 동기화).',
+            },
+            {
+              heading: '텍스트 인코더 — 5가지 비교',
+              body:
+                'fraud 라벨이 3,366개뿐인 환경에서 파라미터 300만 개 이상의 인코더를 fine-tuning하면 과적합과 label leakage 위험이 커집니다. 그래서 SBERT는 frozen으로 유지하고 학습 가능한 부분을 최소화한 5가지 인코더 변형을 비교했습니다.\n\nTF-IDF의 도메인 토큰 정밀도와 SBERT의 문맥 일반화를 결합한 concat 인코더가 PR-AUC와 Macro F1 두 핵심 지표 모두에서 1위와 표준편차 내 동률을 기록해 최종 채택됐습니다.',
+            },
+            {
+              heading: '모델 아키텍처',
+              body:
+                'CARE filter — 메시지 패싱 전에 feature 유사도만으로(label-free) 위장 이웃을 걸러내 오염된 신호 전달을 줄입니다.\n\nChebConv × 6 — 관계별 독립 GNN 채널을 운영해 강한 관계 신호가 약한 신호를 희석하지 않게 합니다. baseline 실측에서 spectral 계열이 spatial 계열보다 우세했고(ChebConv 0.2752 vs GAT 0.2435), fraud의 고주파 신호 특성을 보존한다는 이론 근거를 따랐습니다.\n\nGated Fusion — 노드별 softmax 가중치로 6개 채널을 융합해, 노드마다 신뢰할 관계가 다르다는 점을 자동 학습합니다.\n\nAux Loss + Focal Loss — 채널별 보조 supervision으로 각 관계가 단독으로도 판별력을 갖게 하고, 11:89 클래스 불균형에서 어려운 샘플에 더 큰 가중치를 줍니다.',
+              images: [
+                { seed: 'cage-carerf-b', label: '전체 학습 파이프라인' },
+              ],
+            },
+            {
+              heading: '실험 결과',
+              body:
+                '제안 변형·ablation·단일 그래프 baseline 6종을 합친 15개 모델을 5개 seed 평균으로 비교했습니다. 최종 모델의 PR-AUC는 0.4447±0.0061 — 최고 baseline인 ChebConv(0.2752) 대비 +62%, baseline 평균 대비 +75%입니다.\n\n후속으로 fraud 비율을 약 25%로 끌어올린 cascade 샘플링 데이터셋에서는 PR-AUC 0.789를 기록했습니다(같은 조건의 MLP 0.633, 최고 GNN baseline GAT 0.734 — 전 모델이 함께 오른 조건에서의 비교입니다).',
+            },
+            {
+              heading: 'Ablation — 무엇이 성능을 만들었나',
+              body:
+                '모듈을 하나씩 제거해 기여도를 측정했습니다. Aux Loss를 빼면 PR-AUC가 0.4447에서 0.2982로 떨어져(−33%) 압도적으로 중요했고, CARE filter 제거는 −0.0203(−5%)으로 분명한 양의 기여를 보였습니다.\n\nSkip connection과 Gating은 제거해도 표준편차 이내 차이였습니다. 핵심은 채널별 보조 supervision이고, Skip·Gating은 해석성 옵션 수준이라고 정직하게 결론지었습니다.',
+            },
+            {
+              heading: '도메인 일반화 · 한계',
+              body:
+                '같은 backbone을 Amazon·YelpChi 데이터셋에 그대로 적용했을 때 YelpChi에서는 최고 baseline 대비 PR-AUC +0.094로 우세했고, Amazon에서는 동급(−0.004)이었습니다. 큰 구조 재설계 없이 다른 fraud 도메인으로 이식될 가능성을 확인했습니다.\n\n한계도 명확합니다 — 절대 성능은 SOTA 텍스트 표현·외부 메타데이터 활용 모델에 미치지 못할 수 있고, 사용자 행동벡터 관계(R-Behavior-R)는 헤비 유저와 어뷰저를 잘 구분하지 못하는 약신호였습니다.\n\n3인 팀 프로젝트이며, 저는 팀장으로 문제 정의·모델 설계·실험 전반을 총괄했습니다.',
             },
           ],
           featured: true,
@@ -459,6 +490,8 @@ export const content: Record<Lang, Content> = {
           role: '개인 연구 · 구현 (저작권 프로그램 등록)',
           tagline:
             'Latent Diffusion에 Ladder Side Tuning 모듈을 붙여, 백본을 동결하고 경량 사이드 네트워크만 학습하는 구조입니다.',
+          detailTagline:
+            'Stable Diffusion급 대형 생성 모델을 제한된 자원으로 학습하기 위해, 백본을 동결하고 경량 사이드 네트워크만 학습하는 Ladder Side Tuning을 Latent Diffusion의 UNet에 통합한 개인 연구입니다. 저작권 프로그램으로 등록했습니다.',
           stack: ['PyTorch', 'Latent Diffusion', 'Ladder Side Tuning'],
           metrics: [
             { value: '29%↓', label: 'GPU 메모리' },
@@ -467,14 +500,35 @@ export const content: Record<Lang, Content> = {
           links: [{ label: '저장소', href: 'https://github.com/MeDeoDuck/StableDiffusionWithLST' }],
           detail: [
             {
-              heading: '접근',
+              heading: '프로젝트 개요',
               body:
-                'Latent Diffusion 백본의 파라미터를 모두 동결하고, 옆에 붙인 경량 사이드 네트워크만 학습하는 Ladder Side Tuning 구조를 적용했습니다. 백본으로 흐르는 역전파를 끊으면 중간 활성값을 보관할 필요가 줄어 메모리 사용량이 내려갑니다.',
+                'Stable Diffusion을 처음부터 학습하려면 NVIDIA A100 256장으로 15만 GPU-hours가 필요합니다. 개인 연구 환경에서는 비현실적인 사양입니다.\n\n이 연구는 백본 전체를 학습하는 대신 옆에 붙인 경량 사이드 네트워크만 학습하는 Ladder Side Tuning(LST)을 Latent Diffusion에 통합해, 제한된 GPU 한 장으로도 학습이 돌아가게 만드는 파라미터 효율 학습(PEFT) 연구입니다.',
             },
             {
-              heading: '측정',
+              heading: '접근 — 왜 메모리가 줄어드는가',
               body:
-                'LSUN Churches 데이터셋, 192×192 해상도, TITAN RTX 환경에서 측정했습니다. GPU 메모리 사용량은 23,115 MiB에서 16,509 MiB로 약 29% 줄었고, 학습 시간은 1시간 7분에서 32분으로 약 52% 줄었습니다.\n\n학습 효율에 대한 결과이며, 생성 품질 자체가 기존 파인튜닝 기법보다 좋아졌다는 뜻은 아닙니다.',
+                '백본 파라미터를 모두 동결하고, 각 블록의 중간 활성값을 ladder shortcut으로 사이드 네트워크에 전달해 예측은 사이드 네트워크가 담당합니다.\n\n역전파가 백본을 통과하지 않기 때문에, 백본의 중간 활성값을 역전파용으로 보관할 필요가 사라져 메모리와 연산이 함께 줄어듭니다.',
+              images: [
+                { seed: 'stablediffusion-lst-a', label: 'Stable Diffusion UNet + LST 구조' },
+              ],
+            },
+            {
+              heading: '구현',
+              body:
+                'denoising이 일어나는 latent space의 UNet 각 블록에 LST 모듈을 삽입했습니다. 각 블록의 중간 feature를 이전 LST 출력과 concat해 다음 LST 모듈의 입력으로 쓰고, 첫 스텝에는 UNet 초기 입력 h를 대신 사용합니다. 마지막에는 final_proj가 LST feature map을 원하는 출력 채널·형식으로 변환합니다.\n\nLST 모듈 자체는 GroupNorm → SiLU → 1×1 Conv의 최소 구조로 설계해, 추가되는 파라미터와 연산을 최소화했습니다.',
+            },
+            {
+              heading: '실험 설계',
+              body:
+                'Latent Diffusion 공식 코드를 기반으로 LSUN Churches(192×192) 데이터셋을 TITAN RTX 한 장에서 학습했습니다.\n\nbatch 1 · 1000 epoch · learning rate 5e-5 · AdamW의 동일 조건에서, 원본 Stable Diffusion 학습과 LST 적용 학습을 비교했습니다.',
+            },
+            {
+              heading: '결과',
+              body:
+                'GPU 메모리 사용량은 23,115 MiB에서 16,509 MiB로 약 29% 줄었고, 학습 시간은 1시간 7분에서 32분으로 약 52% 줄었습니다. 백본 역전파가 사라지고 사이드 네트워크와 ladder 연결만 학습한 직접 효과입니다.\n\n학습 효율에 대한 결과이며, 생성 품질 자체가 기존 파인튜닝 기법보다 좋아졌다는 뜻은 아닙니다.',
+              images: [
+                { seed: 'stablediffusion-lst-b', label: '적용 결과 — GPU 메모리·학습 시간 비교' },
+              ],
             },
             {
               heading: '공개 범위',
@@ -489,17 +543,50 @@ export const content: Record<Lang, Content> = {
           no: '05',
           category: 'Team',
           name: 'Physical_AI_ws',
-          period: '',
-          role: '팀장 · 전체 총괄 (팀)',
+          period: '2025',
+          role: '팀장 · 인지 · 판단 · 제어 통합 총괄 (팀 3인)',
           tagline: 'CCTV 인지부터 A* 경로계획, Pure Pursuit 제어까지 물류 로봇 파이프라인을 ROS로 통합해본 경험이 있습니다.',
-          stack: ['ROS', 'OpenCV', 'A*', 'Pure Pursuit', 'TurtleBot4'],
-          metrics: [],
+          detailTagline:
+            '천장 CCTV 기반 인지, A* 경로 계획, Pure Pursuit 제어로 이어지는 자율주행 파이프라인을 ROS 2·Gazebo에서 통합하고, 랜덤 배치된 정적 장애물 환경에서 검증한 팀 프로젝트입니다.',
+          stack: ['ROS 2', 'Gazebo', 'TurtleBot4', 'DMPR-PS', 'A*', 'Pure Pursuit'],
+          metrics: [
+            { value: '26', label: '정적 장애물 (고정 2 + 랜덤 24)' },
+            { value: '3', label: '인지 · 판단 · 제어 통합 단계' },
+          ],
           links: [{ label: '저장소', href: 'https://github.com/MeDeoDuck/Physical_AI_ws' }],
           detail: [
             {
-              heading: '개요',
+              heading: '프로젝트 개요',
               body:
-                '물류 창고 시나리오를 가정해, 천장 CCTV로 공간과 대상을 인지하고 A*로 경로를 계획한 뒤 Pure Pursuit으로 주행을 제어하는 파이프라인을 ROS에서 하나로 연결했습니다.\n\n인지, 계획, 제어를 각각 만드는 것보다 세 단계를 하나의 노드 그래프로 이어 붙이는 과정에서 좌표계와 타이밍 문제가 주로 발생했고, 그 부분을 맞추는 데 시간을 썼습니다. 저는 팀장으로 인지·판단·제어 통합 전반을 총괄했습니다.',
+                '자율주행 알고리즘은 특정 환경에서 한 번 성공했다고 해서 다른 환경에서도 안정적으로 동작한다는 보장이 없습니다. 물류센터 같은 실제 산업 환경은 장애물은 정적이지만 공간 구조가 장소마다 다릅니다.\n\n그래서 장애물을 랜덤 배치한 여러 정적 환경에서, CCTV 인지 → A* 계획 → Pure Pursuit 제어 파이프라인이 목표 지점까지 안정적으로 도달하는지를 Gazebo·TurtleBot4 시뮬레이션으로 구현·검증했습니다.',
+              images: [
+                { seed: 'physical-ai-d1', label: '인지 → 판단 → 제어 파이프라인' },
+              ],
+            },
+            {
+              heading: '개발 목표',
+              body:
+                '환경 일반화 — 단일 환경에 의존하지 않는 자율주행 파이프라인의 안정성 검증\n\n통합 동작 — 인지·판단·제어 세 단계가 하나의 시스템으로 정상 동작하는지 검증\n\nTop-Down 인지 — 천장 CCTV 시점 인지가 물류센터 같은 구조화된 정적 환경에서 실용적인지 평가',
+            },
+            {
+              heading: '인지 — CCTV 기반 목표 탐지',
+              body:
+                '천장 CCTV top-down 영상에서 목표 슬롯을 찾는 인지에는 DMPR-PS(IEEE T-ITS 2021)를 사용했습니다. 사전학습 가중치가 시뮬레이터 환경에서 성능이 떨어져, MATLAB으로 직접 라벨링·증강한 데이터셋을 만들어 A6000에서 1000 epoch full fine-tuning했습니다.\n\n검출된 슬롯 네 모서리 좌표의 평균을 도착점으로 삼고, 이미지 좌표를 20m×20m 월드 좌표계로 변환한 뒤 Gazebo-ROS 2 브릿지로 rviz에 연동했습니다.',
+            },
+            {
+              heading: '판단 — A* 경로 계획',
+              body:
+                '실제 이동 비용 g(n)과 목표까지의 추정 비용 h(n)을 합한 f(n) = g(n) + h(n) 기준으로 탐색하는 A*로 경로를 생성했습니다.\n\n시작점, 인지된 장애물, 도착점 좌표를 입력으로 받아 고정 장애물 2개 + 랜덤 장애물 24개(총 26개)를 배치한 맵에서 경로 생성을 확인했고, 장애물 수와 배치를 바꿔가며 반복 검증했습니다.',
+            },
+            {
+              heading: '제어 — Pure Pursuit',
+              body:
+                '전역 경로를 기하학적으로 추종하는 Pure Pursuit으로 주행을 제어했습니다. 차량 운동 방정식과 경로 지오메트리만 사용하는 단순한 구조라 계산 비용이 낮아 실시간 제어와 반복 실험에 적합합니다.\n\n경로가 부드러우면 안정적으로 추종하지만, 급격히 꺾이는 구간에서는 진동과 오차가 생기는 한계도 실험에서 그대로 관찰했습니다.',
+            },
+            {
+              heading: '결과',
+              body:
+                '랜덤 배치된 정적 장애물 환경에서 인지 → 판단 → 제어가 하나의 시스템으로 동작해 목표 지점 도달을 확인했습니다. 단일 환경에서의 1회 성공이 아니라, 배치가 바뀌는 환경에서의 반복 검증이라는 점이 핵심입니다.\n\n3인 팀 프로젝트로, 저는 팀장으로 Computer Vision·Planning·Control 세 파트에 모두 참여하며 통합을 총괄했습니다.',
             },
           ],
           featured: true,
@@ -947,30 +1034,60 @@ export const content: Record<Lang, Content> = {
           category: 'Team',
           name: 'CAGE-CareRF',
           period: '2026',
-          role: 'Team lead, overall ownership (team of 3)',
-          tagline:
-            'A multi-relational GNN that models reviews as six relation graphs to detect coordinated fake reviews.',
-          stack: ['PyTorch Geometric', 'GAT', 'GCN', 'GraphSAGE', 'Sentence-BERT', 'LightGBM'],
+          role: 'Team lead — problem definition, model design, experiments (team of 3)',
+          tagline: 'A multi-relation GNN that models reviews as six relation graphs to detect organized fake-review rings.',
+          detailTagline:
+            'A study that detects organized fake reviews in the YelpZip dataset with a multi-relation GNN that learns six separate relation channels between reviews. Presented at the 2nd ITDA regional conference.',
+          stack: ['PyTorch Geometric', 'ChebConv', 'Sentence-BERT', 'TF-IDF · SVD', 'Focal Loss'],
           metrics: [
-            { value: 'PR-AUC 0.789', label: 'Sampled set with ~25% fraud ratio · 5 seeds' },
-            { value: '6', label: 'Relation graphs' },
+            { value: 'PR-AUC 0.4447', label: 'Original 11:89 imbalance · 5-seed avg' },
+            { value: '+62%', label: 'vs best single-graph baseline' },
+            { value: '6', label: 'Relation graph channels' },
           ],
           links: [{ label: 'Repository', href: 'https://github.com/MeDeoDuck/CAGE-CareRF' }],
           detail: [
             {
-              heading: 'Hypothesis',
+              heading: 'Overview',
               body:
-                'Looked at one review at a time, fake reviews do not carry a clear signature. On text alone, a well written genuine review and a well made fake one look much the same.\n\nThe hypothesis was that fake reviews move as a group rather than individually. Once you look at the relational structure, who posts when, about what, in what pattern, signals appear that are invisible in any single piece of text.',
+                'A graph neural network study for detecting fake reviews in the YelpZip dataset. Looking at one review at a time, a well-written fake is hard to tell from a genuine review.\n\nInstead, this work starts from the view that fake reviews move in coordinated groups: each review is treated not as an isolated sentence but as a behavioral record connected by user, product, time, rating, and behavioral similarity — and the fraud signal is searched for in that relation structure.',
             },
             {
-              heading: 'Graph construction',
+              heading: 'Four Core Hypotheses',
               body:
-                'Relations between reviews were split into six types, each built as its own graph. Mixing every relation into one graph lets the strong relations bury the weak ones.\n\nA GNN was trained per relation and the outputs fused through a gate, so the model learns how much weight each relation deserves. Text representations came from Sentence-BERT and were combined with the graph embeddings in a LightGBM stacking ensemble for the final decision.',
+                'Relation — fraud shows up in the relation structure between reviews, not in the text. Graph learning over review nodes and relation edges is fundamentally better positioned than NLP alone.\n\nMulti-relation — different relations carry fraud signals of different strength, so they must be learned separately. Six relations are trained as independent channels and then fused.\n\nPer-node trust — which relation is trustworthy differs by node. Relation weights are learned dynamically per node instead of being fixed.\n\nCamouflage — skilled abusers deliberately connect to normal nodes to hide. Suspicious neighbors are filtered out before message passing.',
+            },
+            {
+              heading: 'Edge Design',
+              body:
+                'Three basic relations are extended with three custom relations that target patterns unique to organized abuse, for six channels in total.\n\nBasic — same user (R-U-R, repeated authorship) · same product and month (R-T-R, time-concentrated manipulation) · same product and rating (R-S-R, rating manipulation).\n\nCustom — same product within 7 days at ±1 rating (R-Burst-R, short-term reputation bombing) · top-5 text similarity within a product (R-SemSim-R, template review farming) · top-5 user behavior-vector similarity (R-Behavior-R, multi-account synchronization).',
+            },
+            {
+              heading: 'Text Encoder — 5 Variants Compared',
+              body:
+                'With only 3,366 fraud labels, fine-tuning an encoder with 3M+ parameters risks overfitting and label leakage. SBERT was therefore kept frozen and five encoder variants with minimal trainable parts were compared.\n\nThe concat encoder — combining the lexical precision of TF-IDF with the semantic generalization of SBERT — tied for first place within one standard deviation on both key metrics (PR-AUC and Macro F1) and was adopted.',
+            },
+            {
+              heading: 'Architecture',
+              body:
+                'CARE filter — removes camouflaged neighbors before message passing using feature similarity only (label-free), reducing contaminated signal flow.\n\nChebConv × 6 — one independent GNN channel per relation, so strong relations do not dilute weak ones. Spectral models beat spatial ones in baseline runs (ChebConv 0.2752 vs GAT 0.2435), consistent with theory that fraud carries high-frequency graph signal.\n\nGated fusion — per-node softmax weights fuse the six channels, letting the model learn which relation each node should trust.\n\nAux loss + focal loss — per-channel auxiliary supervision makes each relation discriminative on its own, and hard samples get larger weights under the 11:89 class imbalance.',
+              images: [
+                { seed: 'cage-carerf-b', label: 'Full training pipeline' },
+              ],
             },
             {
               heading: 'Results',
               body:
-                'On a cascade-sampled dataset with the fraud ratio raised to about 25% (5 seeds), PR-AUC reached 0.789 — above an MLP at 0.633 and the strongest GNN baseline, a GAT at 0.734, under the same conditions. On the original 11.16% imbalanced set, PR-AUC was in the 0.44 range; the comparison holds after the sampling redesign lifted every model.\n\nAgainst the strongest comparison models the result sits within a statistically comparable band, with a relatively even balance between precision and recall. It is not a result I would describe as a clear first place.\n\nA team project with 3 members. As team lead I owned the problem definition, model design, and experiments end to end.',
+                'Fifteen models — proposed variants, ablations, and six single-graph baselines — were compared as 5-seed averages. The final model reaches PR-AUC 0.4447±0.0061, +62% over the best baseline (ChebConv, 0.2752) and +75% over the baseline average.\n\nOn a follow-up cascade-sampled dataset with the fraud ratio raised to about 25%, it recorded PR-AUC 0.789 (MLP 0.633 and the best GNN baseline GAT 0.734 under the same condition — a comparison where every model improved together).',
+            },
+            {
+              heading: 'Ablation — What Drove the Performance',
+              body:
+                'Removing modules one at a time: dropping the aux loss collapses PR-AUC from 0.4447 to 0.2982 (−33%), by far the most important; removing the CARE filter costs −0.0203 (−5%), a clear positive contribution.\n\nSkip connections and gating stayed within one standard deviation when removed. The honest conclusion: per-channel auxiliary supervision is the core, while skip and gating are interpretability options.',
+            },
+            {
+              heading: 'Generalization and Limitations',
+              body:
+                'Applying the same backbone unchanged to Amazon and YelpChi: on YelpChi it beat the best baseline by +0.094 PR-AUC, and on Amazon it was on par (−0.004) — suggesting portability to other fraud domains without structural redesign.\n\nLimitations are equally clear — absolute performance may trail SOTA models that use richer text representations or external metadata, and the behavior-vector relation (R-Behavior-R) was a weak signal that struggles to separate heavy users from abusers.\n\nA three-person team project; as team lead I owned problem definition, model design, and the experiments.',
             },
           ],
           featured: true,
@@ -998,7 +1115,9 @@ export const content: Record<Lang, Content> = {
           period: '2025',
           role: 'Personal research and implementation (registered software copyright)',
           tagline:
-            'A Ladder Side Tuning module attached to Latent Diffusion, freezing the backbone and training only a lightweight side network.',
+            'Attaches Ladder Side Tuning modules to Latent Diffusion, freezing the backbone and training only a lightweight side network.',
+          detailTagline:
+            'A personal study that integrates Ladder Side Tuning into the Latent Diffusion UNet — freezing the backbone and training only a lightweight side network — so a Stable-Diffusion-scale model can be trained on limited hardware. Registered as a copyrighted program.',
           stack: ['PyTorch', 'Latent Diffusion', 'Ladder Side Tuning'],
           metrics: [
             { value: '29%↓', label: 'GPU memory' },
@@ -1007,19 +1126,40 @@ export const content: Record<Lang, Content> = {
           links: [{ label: 'Repository', href: 'https://github.com/MeDeoDuck/StableDiffusionWithLST' }],
           detail: [
             {
-              heading: 'Approach',
+              heading: 'Overview',
               body:
-                'Every parameter of the Latent Diffusion backbone is frozen and only a lightweight side network alongside it is trained, following Ladder Side Tuning. Cutting backpropagation through the backbone removes most of the intermediate activations that would otherwise be kept in memory.',
+                'Training Stable Diffusion from scratch takes 150,000 GPU-hours on 256 NVIDIA A100s — unrealistic for an individual research setup.\n\nInstead of training the whole backbone, this study integrates Ladder Side Tuning (LST) into Latent Diffusion so that only a lightweight side network is trained: a parameter-efficient fine-tuning (PEFT) approach that keeps training feasible on a single limited GPU.',
             },
             {
-              heading: 'Measurements',
+              heading: 'Approach — Why Memory Drops',
               body:
-                'Measured on LSUN Churches at 192 by 192 resolution on a TITAN RTX. GPU memory use went from 23,115 MiB to 16,509 MiB, about 29% lower, and training time went from 1 hour 7 minutes to 32 minutes, about 52% lower.\n\nThese are training efficiency results. They do not mean generation quality improved over existing fine-tuning methods.',
+                'All backbone parameters are frozen; intermediate activations from each block flow through ladder shortcut connections into the side network, which produces the prediction.\n\nBecause backpropagation never passes through the backbone, its intermediate activations no longer need to be kept for the backward pass — cutting both memory and compute.',
+              images: [
+                { seed: 'stablediffusion-lst-a', label: 'Stable Diffusion UNet with LST' },
+              ],
             },
             {
-              heading: 'Availability',
+              heading: 'Implementation',
               body:
-                'The work is registered as a software copyright and the source is not public. Only the structure and the measurements are shared.',
+                'LST modules are inserted into every UNet block of the latent-space denoising process. Each block\u2019s intermediate features are concatenated with the previous LST output as the next module\u2019s input; the first step substitutes the initial UNet input h, and a final_proj converts the last LST feature map into the target output channels and format.\n\nThe module itself is a minimal GroupNorm → SiLU → 1×1 Conv structure, keeping the added parameters and compute as small as possible.',
+            },
+            {
+              heading: 'Experiment Setup',
+              body:
+                'Built on the official Latent Diffusion codebase, trained on LSUN Churches (192×192) with a single TITAN RTX.\n\nOriginal Stable Diffusion training and LST training were compared under identical settings: batch 1, 1000 epochs, learning rate 5e-5, AdamW.',
+            },
+            {
+              heading: 'Results',
+              body:
+                'GPU memory dropped from 23,115 MiB to 16,509 MiB (about 29%), and training time fell from 1h 07m to 32m (about 52%) — the direct effect of removing backbone backpropagation and training only the side network and ladder connections.\n\nThese are training-efficiency results; they do not claim better generation quality than existing fine-tuning methods.',
+              images: [
+                { seed: 'stablediffusion-lst-b', label: 'Results — GPU memory and training time' },
+              ],
+            },
+            {
+              heading: 'Disclosure',
+              body:
+                'The source is closed as a registered copyrighted program; only the architecture and measurements are public.',
             },
           ],
           featured: true,
@@ -1029,18 +1169,50 @@ export const content: Record<Lang, Content> = {
           no: '05',
           category: 'Team',
           name: 'Physical_AI_ws',
-          period: '',
-          role: 'Team lead, overall ownership (team)',
-          tagline:
-            'Experience integrating a logistics robot pipeline in ROS, from CCTV perception through A* planning to Pure Pursuit control.',
-          stack: ['ROS', 'OpenCV', 'A*', 'Pure Pursuit', 'TurtleBot4'],
-          metrics: [],
+          period: '2025',
+          role: 'Team lead — perception, planning, and control integration (team of 3)',
+          tagline: 'Integrated a warehouse-robot pipeline in ROS, from CCTV perception through A* planning to Pure Pursuit control.',
+          detailTagline:
+            'A team project that integrates ceiling-CCTV perception, A* path planning, and Pure Pursuit control into one autonomous-driving pipeline on ROS 2 and Gazebo, validated across randomly placed static-obstacle environments.',
+          stack: ['ROS 2', 'Gazebo', 'TurtleBot4', 'DMPR-PS', 'A*', 'Pure Pursuit'],
+          metrics: [
+            { value: '26', label: 'Static obstacles (2 fixed + 24 random)' },
+            { value: '3', label: 'Integrated stages: perceive · plan · control' },
+          ],
           links: [{ label: 'Repository', href: 'https://github.com/MeDeoDuck/Physical_AI_ws' }],
           detail: [
             {
               heading: 'Overview',
               body:
-                'Assuming a warehouse scenario, an overhead CCTV feed handles perception of the space and its targets, A* plans the route, and Pure Pursuit drives the robot, all wired together as one pipeline in ROS.\n\nBuilding perception, planning, and control separately was the easier part. Most of the effort went into joining the three into a single node graph, where coordinate frames and timing caused the real problems. As team lead I owned the perception-planning-control integration end to end.',
+                'An autonomous-driving algorithm that succeeds once in one environment is not guaranteed to work in another. Real industrial spaces like fulfillment centers have static obstacles but a different layout at every site.\n\nSo the pipeline — CCTV perception → A* planning → Pure Pursuit control — was built and validated in Gazebo with a TurtleBot4, across environments whose obstacles are randomly rearranged, checking that the robot reliably reaches its goal.',
+              images: [
+                { seed: 'physical-ai-d1', label: 'Perceive → plan → control pipeline' },
+              ],
+            },
+            {
+              heading: 'Goals',
+              body:
+                'Environment generalization — validate pipeline stability without depending on a single environment\n\nIntegrated operation — verify that perception, planning, and control run correctly as one system\n\nTop-down perception — assess whether ceiling-CCTV perception is practical in structured static spaces such as warehouses',
+            },
+            {
+              heading: 'Perception — CCTV Target Detection',
+              body:
+                'DMPR-PS (IEEE T-ITS 2021) detects the target slot in the top-down CCTV view. Pre-trained weights degraded in the simulator, so a custom dataset was labeled in MATLAB, augmented, and fully fine-tuned for 1000 epochs on an A6000.\n\nThe average of the four detected corner points becomes the goal; image coordinates are converted into a 20m×20m world frame and bridged into rviz via Gazebo-ROS 2.',
+            },
+            {
+              heading: 'Planning — A*',
+              body:
+                'Paths are generated with A*, expanding nodes by f(n) = g(n) + h(n) — actual cost so far plus estimated cost to goal.\n\nGiven the start point, perceived obstacles, and goal, path generation was verified on maps with 2 fixed + 24 random obstacles (26 total), repeatedly re-validated as the count and layout changed.',
+            },
+            {
+              heading: 'Control — Pure Pursuit',
+              body:
+                'Driving is controlled by Pure Pursuit, a geometric path-tracking method that uses only the vehicle kinematics and the path geometry. Its low compute cost suits real-time control and repeated experiments.\n\nIt tracks smooth paths stably, and the known limitation — oscillation and error on sharp turns — was observed as-is in the experiments.',
+            },
+            {
+              heading: 'Results',
+              body:
+                'Across randomly rearranged static-obstacle environments, perception, planning, and control operated as one system and the robot reached its goal. The point is repeated validation under changing layouts, not a single success in one environment.\n\nA three-person team project; as team lead I worked across all three parts — computer vision, planning, and control — and owned the integration.',
             },
           ],
           featured: true,
