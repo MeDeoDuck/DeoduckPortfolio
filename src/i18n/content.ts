@@ -437,75 +437,18 @@ export const content: Record<Lang, Content> = {
         },
         {
           id: 'shiftloss',
-          no: '05',
+          no: '06',
           category: 'Research',
           name: 'ShiftLoss',
           period: '2026',
-          role: '손실 함수 설계 · 실험',
+          role: '개인 연구',
           tagline:
-            'DBLoss(NeurIPS 2025)에 window 기반의 미분 가능한 시간 지연 항을 추가해, 정렬 기반 손실이 언제 효과적인지 분석한 논문을 KCI 등재지에 투고했습니다(심사 중).',
-          detailTagline:
-            '모양은 맞지만 시간축으로 밀린 예측을 공정하게 평가하도록, DBLoss(NeurIPS 2025) 위에 window 기반의 미분 가능한 시간 정렬 항을 더한 시계열 예측 손실 함수 연구입니다. 이 연구를 정리한 논문이 KCI 등재지에 투고되어 심사 중입니다.',
+            'KCI 논문 심사 중 — DBLoss(NeurIPS 2025)에 window 기반의 미분 가능한 시간 정렬 항을 더해, 정렬 기반 손실이 유효한 조건을 분석한 시계열 예측 손실 함수 연구입니다.',
           stack: ['PyTorch', 'PatchTST', 'DLinear', 'iTransformer', 'Amplifier'],
-          metrics: [{ value: 'KCI', label: '논문 심사 중' }],
+          metrics: [],
           links: [{ label: '저장소', href: 'https://github.com/MeDeoDuck/ShiftLoss' }],
-          detail: [
-            {
-              heading: '프로젝트 개요',
-              body:
-                '시계열 예측 모델이 파형의 모양은 맞게 예측하면서 시점만 몇 스텝 밀리는 경우, 기존 손실 함수는 이를 크게 틀린 예측으로 계산합니다. 이 연구는 그 위상 오차를 학습 과정에서 직접 다루는 손실 함수를 설계하고, 정렬 기반 손실이 어떤 데이터·모델 조건에서 효과적인지를 규명합니다.\n\nNeurIPS 2025 손실 함수 DBLoss의 추세·계절성 분해 구조를 유지한 채, 그 위에 window 기반 shift 정렬 항을 더하는 확장 연구입니다.',
-              images: [
-                { seed: 'shiftloss-p-problem', label: '예측 비교 (ETTh2 · PatchTST) — 모양은 맞지만 시간축으로 밀리는 위상 오차' },
-              ],
-            },
-            {
-              heading: '연구 목표',
-              body:
-                '위상 오차 흡수 — 예측이 정답보다 몇 스텝 앞서거나 뒤처져도, 시프트를 보정한 오차로 평가\n\n미분 가능성 — soft-min으로 시프트 선택을 미분 가능하게 만들어 end-to-end 학습에 그대로 사용\n\n계산 효율 — 전체 시퀀스 정렬(O(N²)) 없이, 윈도우 단위의 제한된 탐색만으로 정렬 정보 반영\n\n조건 규명 — 정렬 기반 손실이 효과적인 데이터·모델 조건과 제한되는 조건을 함께 분석',
-            },
-            {
-              heading: '왜 손실 함수인가?',
-              body:
-                '주기성이 강한 시계열에서 모델은 모양은 잘 잡아도 위상을 조금 놓치는 경우가 많습니다. MSE·MAE 같은 point-wise 손실은 시점 t의 예측을 시점 t의 정답하고만 비교하기 때문에, 한 스텝만 늦어도 봉우리와 골이 어긋나며 큰 오차가 쌓입니다.\n\n그 결과 손실은 모델에게 위상을 맞추기보다 진폭을 줄여 평탄하게 예측하라는 잘못된 신호를 줍니다. 이 신호를 손실 함수 단위에서 교정하면, 모델 구조를 바꾸지 않고도 어떤 예측 모델에든 그대로 적용할 수 있습니다.',
-            },
-            {
-              heading: '기존 접근의 한계',
-              body:
-                'DBLoss(NeurIPS 2025) — 시계열을 추세·계절성 성분으로 분해해 반복 패턴과 장기 구조를 보존합니다. 다만 분해 뒤에도 두 성분은 동일 시점끼리 비교되어, 시간축 정렬 오차가 손실에 그대로 남습니다.\n\nDTW·Soft-DTW — 시간 정렬을 직접 다루지만, 전체 시퀀스 수준의 정렬 비용 O(N²)이 필요해 긴 시계열에 부담이 큽니다.\n\nDILATE(NeurIPS 2019) — 형태 오차와 시간 왜곡 오차를 분리해 결합한, 문제 인식이 가장 가까운 선행 연구입니다. 다만 Soft-DTW 기반이라 같은 계산 비용 한계를 가집니다.',
-            },
-            {
-              heading: '제안 방법 — Window 기반 Shift Alignment Loss',
-              body:
-                '시계열을 일정 길이의 윈도우로 분할하고, 각 윈도우에서 제한된 범위(δ ∈ [−k, k])의 시간 이동 후보마다 예측과 정답의 겹침 오차를 계산합니다. 미분 불가능한 min 대신 온도 τ의 soft-min(logsumexp)으로 가장 잘 맞는 시프트를 고르기 때문에, 전 과정이 미분 가능해 기존 학습 루프에 그대로 붙습니다.\n\n최종 손실은 total = DBLoss + λ_shift · L_shift — 기존 DBLoss의 구조 보존 능력을 유지하면서 시간 정렬 정보를 함께 학습합니다.\n\nshift 정렬은 추세 성분에만 적용합니다. 주기적 반복 구조를 가지는 계절성 성분은 제한된 shift 탐색이 인접 주기의 유사 패턴과 오정렬될 위험이 있는 반면, 저주파인 추세 성분은 국소적 시간 이동을 안정적으로 추정할 수 있기 때문입니다.',
-              images: [
-                { seed: 'shiftloss-p-arch', label: '손실 계산 흐름 — DBLoss + 윈도우 단위 shift 항' },
-              ],
-            },
-            {
-              heading: '실험 설계',
-              body:
-                '시간적 특성이 다른 네 데이터셋을 골랐습니다 — 일·주 단위 계절성이 뚜렷한 시간 단위 데이터(ETTh1·ETTh2), 변동이 빠른 분 단위 고주파 데이터(ETTm1), 장기 패턴이 부드러운 다변량 기상 데이터(Weather).\n\n모델도 구조가 다른 두 가지를 사용했습니다 — 주파수 특성을 직접 다루는 Amplifier(AAAI 2024)와 patch 단위 입력의 Transformer인 PatchTST(ICLR 2023). 예측 길이 96·192·336의 평균으로, 예측 정확도(MSE·MAE)와 정렬 품질(DTW·TDI)을 함께 측정했습니다.',
-            },
-            {
-              heading: '실험 결과 — 조건부 효과',
-              body:
-                '계절성이 뚜렷한 ETTh1·ETTh2에서는 네 조합 중 세 조합에서 DTW가 개선됐습니다(ETTh2 Amplifier 0.1882→0.1876, ETTh2 PatchTST 0.1857→0.1842, ETTh1 PatchTST 0.0281→0.0280). Amplifier에서는 MSE도 줄었습니다 — ETTh1 0.4051→0.4034, ETTm1 0.3275→0.3251.\n\n반면 분 단위 고주파의 ETTm1(PatchTST)과 Weather 전반에서는 기존 DBLoss가 더 낮은 값을 유지했고, MAE는 전 조합에서 DBLoss가 최저이거나 동등했습니다. 개선 수치를 부풀리는 대신, 효과가 나타나는 조건과 나타나지 않는 조건을 그대로 보고했습니다.',
-              images: [
-                { seed: 'shiftloss-p-results', label: '데이터셋·모델별 실험 결과 (예측 길이 96·192·336 평균)' },
-              ],
-            },
-            {
-              heading: '결과 분석 — 정렬 손실이 유효한 조건',
-              body:
-                '데이터 특성 — 시간 단위로 기록되어 일·주 단위 계절성이 명확하면, 미세한 시간 이동이 point-wise 오차에 직접 반영되므로 shift 보정이 의미 있는 신호가 됩니다. 반대로 shift 탐색 범위가 데이터의 지배적 변동 주기보다 크면 정렬 신호가 오히려 노이즈로 작용합니다.\n\n모델 구조 — patch 단위로 입력을 쪼개는 PatchTST는 patch 내부의 미세한 시간 이동에 대한 국소 정렬 불변성을 이미 내포해, 명시적 shift 정렬의 추가 이득이 제한적입니다. 주파수 성분을 직접 다루는 Amplifier에서는 shift 보정이 예측 정확도 개선으로 이어졌습니다.\n\n결론 — 정렬 기반 손실은 명확한 계절성 + 정렬 불변성이 없는 모델 조건에서 효과적이고, 고주파 데이터 또는 patch 기반 모델에서는 기존 DBLoss가 안정적입니다. 무조건 적용이 아니라 데이터·모델 특성에 따른 선택적 적용이 이 논문이 제시하는 실용적 지침입니다.',
-            },
-            {
-              heading: '현재 상태 · 향후 연구',
-              body:
-                '이 연구를 정리한 논문이 KCI 등재지에 투고되어 심사 중입니다.\n\n향후에는 데이터의 지배적 변동 주기에 따라 shift 범위와 윈도우 길이를 적응적으로 조절하는 방법, 정렬 손실 가중치의 동적 조정, DILATE 등 전체 시퀀스 정렬 기법과의 정량 비교를 계획하고 있습니다.',
-            },
-          ],
-          featured: true,
+          detail: [],
+          featured: false,
         },
         {
           id: 'stablediffusion-lst',
@@ -543,7 +486,7 @@ export const content: Record<Lang, Content> = {
         },
         {
           id: 'physical-ai',
-          no: '06',
+          no: '05',
           category: 'Team',
           name: 'Physical_AI_ws',
           period: '',
@@ -1034,75 +977,18 @@ export const content: Record<Lang, Content> = {
         },
         {
           id: 'shiftloss',
-          no: '05',
+          no: '06',
           category: 'Research',
           name: 'ShiftLoss',
           period: '2026',
-          role: 'Loss function design and experiments',
+          role: 'Personal research',
           tagline:
-            'Added a windowed differentiable time-shift term to DBLoss (NeurIPS 2025) and analyzed when alignment-based losses help; the paper is under review at a KCI-indexed journal.',
-          detailTagline:
-            'A time-series loss function study that adds a windowed, differentiable time-alignment term on top of DBLoss (NeurIPS 2025), so forecasts that are right in shape but shifted along the time axis are scored fairly. The paper on this work is under review at a KCI-indexed journal.',
+            'KCI paper under review — a time-series forecasting loss study adding a windowed differentiable time-alignment term to DBLoss (NeurIPS 2025) and analyzing when alignment-based losses help.',
           stack: ['PyTorch', 'PatchTST', 'DLinear', 'iTransformer', 'Amplifier'],
-          metrics: [{ value: 'KCI', label: 'Paper under review' }],
+          metrics: [],
           links: [{ label: 'Repository', href: 'https://github.com/MeDeoDuck/ShiftLoss' }],
-          detail: [
-            {
-              heading: 'Overview',
-              body:
-                'When a forecasting model gets the shape of the waveform right but slips a few steps along the time axis, conventional loss functions score it as badly wrong. This study designs a loss function that handles that phase error directly during training, and identifies under which data and model conditions alignment-based losses actually help.\n\nIt is an extension built on DBLoss (NeurIPS 2025): the trend–seasonality decomposition is kept intact, and a window-based shift-alignment term is added on top.',
-              images: [
-                { seed: 'shiftloss-p-problem', label: 'Forecast comparison (ETTh2 · PatchTST) — right shape, shifted along the time axis' },
-              ],
-            },
-            {
-              heading: 'Research Goals',
-              body:
-                'Absorb phase error — score forecasts by their shift-corrected error even when they run a few steps ahead of or behind the target\n\nDifferentiability — make shift selection differentiable with a soft-min so it trains end-to-end\n\nComputational efficiency — inject alignment information through bounded per-window search, without the O(N²) cost of full-sequence alignment\n\nCondition analysis — identify both the conditions where alignment-based loss helps and the conditions where it does not',
-            },
-            {
-              heading: 'Why the Loss Function?',
-              body:
-                'On strongly periodic series, models often capture the shape well while missing the phase slightly. Point-wise losses like MSE and MAE compare the prediction at time t only against the target at time t, so even a one-step lag misaligns peaks and troughs and piles up error.\n\nThe loss then sends the model the wrong signal: shrink the amplitude and predict flat rather than fix the phase. Correcting that signal at the loss-function level applies to any forecasting model without changing its architecture.',
-            },
-            {
-              heading: 'Limitations of Prior Approaches',
-              body:
-                'DBLoss (NeurIPS 2025) — decomposes the series into trend and seasonal components to preserve repeating patterns and long-term structure. But even after decomposition, both components are still compared timestep-to-timestep, so time-axis misalignment stays in the loss.\n\nDTW · Soft-DTW — handle temporal alignment directly, but require full-sequence alignment at O(N²) cost, which is heavy for long series.\n\nDILATE (NeurIPS 2019) — the closest prior work, combining separate shape and temporal distortion terms. Being Soft-DTW based, it shares the same computational cost limit.',
-            },
-            {
-              heading: 'Proposed Method — Window-based Shift Alignment Loss',
-              body:
-                'The series is split into fixed-length windows, and each window evaluates the overlap error between prediction and target for every shift candidate within a bounded range (δ ∈ [−k, k]). Instead of a non-differentiable min, a soft-min (logsumexp with temperature τ) picks the best-matching shift, so the whole computation stays differentiable and drops into an existing training loop.\n\nThe final loss is total = DBLoss + λ_shift · L_shift — keeping the structural preservation of DBLoss while learning temporal alignment alongside it.\n\nThe shift term is applied only to the trend component. The seasonal component, with its periodic structure, risks misaligning to a similar pattern in a neighboring cycle, whereas the low-frequency trend component allows local time shifts to be estimated stably.',
-              images: [
-                { seed: 'shiftloss-p-arch', label: 'Loss computation flow — DBLoss + window-based shift loss' },
-              ],
-            },
-            {
-              heading: 'Experiment Design',
-              body:
-                'Four datasets with different temporal profiles were chosen — hourly data with clear daily/weekly seasonality (ETTh1, ETTh2), fast-moving minute-level high-frequency data (ETTm1), and multivariate weather data with smooth long-term patterns (Weather).\n\nTwo structurally different models were used — Amplifier (AAAI 2024), which works directly with frequency components, and PatchTST (ICLR 2023), a Transformer with patch-based input. Averaged over horizons 96, 192, and 336, both forecast accuracy (MSE, MAE) and alignment quality (DTW, TDI) were measured.',
-            },
-            {
-              heading: 'Results — Conditional Gains',
-              body:
-                'On the strongly seasonal ETTh1 and ETTh2, DTW improved in three of four model–dataset pairs (ETTh2 Amplifier 0.1882→0.1876, ETTh2 PatchTST 0.1857→0.1842, ETTh1 PatchTST 0.0281→0.0280). With Amplifier, MSE also dropped — ETTh1 0.4051→0.4034, ETTm1 0.3275→0.3251.\n\nOn minute-level high-frequency ETTm1 (PatchTST) and Weather overall, plain DBLoss kept lower values, and DBLoss was lowest or tied on MAE across every pair. Rather than inflating the gains, the paper reports both where the effect appears and where it does not.',
-              images: [
-                { seed: 'shiftloss-p-results', label: 'Results by dataset and model (averaged over horizons 96/192/336)' },
-              ],
-            },
-            {
-              heading: 'Analysis — When Alignment Loss Works',
-              body:
-                'Data profile — with hourly recording and clear daily/weekly seasonality, small time shifts feed directly into point-wise error, so shift correction becomes a meaningful signal. Conversely, when the shift search range exceeds the dominant variation period of the data, the alignment signal turns into noise.\n\nModel structure — PatchTST, which splits input into patches, already carries local shift invariance inside each patch, limiting the extra gain from explicit alignment. Amplifier, which works directly with frequency components, converted shift correction into accuracy gains.\n\nConclusion — alignment-based loss works under clear seasonality plus models without built-in shift invariance, while plain DBLoss stays more stable on high-frequency data or patch-based models. The practical guideline this paper offers is selective application by data and model profile, not blanket adoption.',
-            },
-            {
-              heading: 'Status · Future Work',
-              body:
-                'The paper on this work is under review at a KCI-indexed journal.\n\nFuture work includes adapting the shift range and window length to the dominant variation period of the data, dynamically adjusting the alignment loss weight during training, and a quantitative comparison against full-sequence alignment methods such as DILATE.',
-            },
-          ],
-          featured: true,
+          detail: [],
+          featured: false,
         },
         {
           id: 'stablediffusion-lst',
@@ -1140,7 +1026,7 @@ export const content: Record<Lang, Content> = {
         },
         {
           id: 'physical-ai',
-          no: '06',
+          no: '05',
           category: 'Team',
           name: 'Physical_AI_ws',
           period: '',
