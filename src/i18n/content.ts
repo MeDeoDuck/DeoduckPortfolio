@@ -443,9 +443,9 @@ export const content: Record<Lang, Content> = {
           period: '2026',
           role: '손실 함수 설계 · 실험',
           tagline:
-            'DBLoss(NeurIPS 2025)에 window 기반의 미분 가능한 시간 지연 항을 추가해, 정렬 기반 손실이 언제 효과적인지 분석한 논문 「Window 기반 Shift Loss」를 KCI 등재지에 투고했습니다(심사 중).',
+            'DBLoss(NeurIPS 2025)에 window 기반의 미분 가능한 시간 지연 항을 추가해, 정렬 기반 손실이 언제 효과적인지 분석한 논문을 KCI 등재지에 투고했습니다(심사 중).',
           detailTagline:
-            '모양은 맞지만 시간축으로 밀린 예측을 공정하게 평가하도록, DBLoss(NeurIPS 2025) 위에 window 기반의 미분 가능한 시간 정렬 항을 더한 시계열 예측 손실 함수 연구입니다. 「Window 기반 Shift Loss」 논문으로 KCI 등재지 스마트미디어저널에 투고해 심사 중입니다.',
+            '모양은 맞지만 시간축으로 밀린 예측을 공정하게 평가하도록, DBLoss(NeurIPS 2025) 위에 window 기반의 미분 가능한 시간 정렬 항을 더한 시계열 예측 손실 함수 연구입니다. 이 연구를 정리한 논문이 KCI 등재지에 투고되어 심사 중입니다.',
           stack: ['PyTorch', 'PatchTST', 'DLinear', 'iTransformer', 'Amplifier'],
           metrics: [{ value: 'KCI', label: '논문 심사 중' }],
           links: [{ label: '저장소', href: 'https://github.com/MeDeoDuck/ShiftLoss' }],
@@ -478,7 +478,7 @@ export const content: Record<Lang, Content> = {
               body:
                 '시계열을 일정 길이의 윈도우로 분할하고, 각 윈도우에서 제한된 범위(δ ∈ [−k, k])의 시간 이동 후보마다 예측과 정답의 겹침 오차를 계산합니다. 미분 불가능한 min 대신 온도 τ의 soft-min(logsumexp)으로 가장 잘 맞는 시프트를 고르기 때문에, 전 과정이 미분 가능해 기존 학습 루프에 그대로 붙습니다.\n\n최종 손실은 total = DBLoss + λ_shift · L_shift — 기존 DBLoss의 구조 보존 능력을 유지하면서 시간 정렬 정보를 함께 학습합니다.\n\nshift 정렬은 추세 성분에만 적용합니다. 주기적 반복 구조를 가지는 계절성 성분은 제한된 shift 탐색이 인접 주기의 유사 패턴과 오정렬될 위험이 있는 반면, 저주파인 추세 성분은 국소적 시간 이동을 안정적으로 추정할 수 있기 때문입니다.',
               images: [
-                { seed: 'shiftloss-p-arch', label: '손실 계산 흐름 — DBLoss + Window 기반 Shift Loss' },
+                { seed: 'shiftloss-p-arch', label: '손실 계산 흐름 — DBLoss + 윈도우 단위 shift 항' },
               ],
             },
             {
@@ -502,7 +502,7 @@ export const content: Record<Lang, Content> = {
             {
               heading: '현재 상태 · 향후 연구',
               body:
-                '논문 「Window 기반 Shift Loss」를 KCI 등재지 스마트미디어저널에 투고해 심사 중입니다.\n\n향후에는 데이터의 지배적 변동 주기에 따라 shift 범위와 윈도우 길이를 적응적으로 조절하는 방법, 정렬 손실 가중치의 동적 조정, DILATE 등 전체 시퀀스 정렬 기법과의 정량 비교를 계획하고 있습니다.',
+                '이 연구를 정리한 논문이 KCI 등재지에 투고되어 심사 중입니다.\n\n향후에는 데이터의 지배적 변동 주기에 따라 shift 범위와 윈도우 길이를 적응적으로 조절하는 방법, 정렬 손실 가중치의 동적 조정, DILATE 등 전체 시퀀스 정렬 기법과의 정량 비교를 계획하고 있습니다.',
             },
           ],
           featured: true,
@@ -1042,7 +1042,7 @@ export const content: Record<Lang, Content> = {
           tagline:
             'Added a windowed differentiable time-shift term to DBLoss (NeurIPS 2025) and analyzed when alignment-based losses help; the paper is under review at a KCI-indexed journal.',
           detailTagline:
-            'A time-series loss function study that adds a windowed, differentiable time-alignment term on top of DBLoss (NeurIPS 2025), so forecasts that are right in shape but shifted along the time axis are scored fairly. The paper ("Window-based Shift Loss") is under review at the Smart Media Journal, a KCI-indexed journal.',
+            'A time-series loss function study that adds a windowed, differentiable time-alignment term on top of DBLoss (NeurIPS 2025), so forecasts that are right in shape but shifted along the time axis are scored fairly. The paper on this work is under review at a KCI-indexed journal.',
           stack: ['PyTorch', 'PatchTST', 'DLinear', 'iTransformer', 'Amplifier'],
           metrics: [{ value: 'KCI', label: 'Paper under review' }],
           links: [{ label: 'Repository', href: 'https://github.com/MeDeoDuck/ShiftLoss' }],
@@ -1099,7 +1099,7 @@ export const content: Record<Lang, Content> = {
             {
               heading: 'Status · Future Work',
               body:
-                'The paper ("Window-based Shift Loss") is under review at the Smart Media Journal, a KCI-indexed journal.\n\nFuture work includes adapting the shift range and window length to the dominant variation period of the data, dynamically adjusting the alignment loss weight during training, and a quantitative comparison against full-sequence alignment methods such as DILATE.',
+                'The paper on this work is under review at a KCI-indexed journal.\n\nFuture work includes adapting the shift range and window length to the dominant variation period of the data, dynamically adjusting the alignment loss weight during training, and a quantitative comparison against full-sequence alignment methods such as DILATE.',
             },
           ],
           featured: true,
