@@ -24,6 +24,8 @@ const SEEDS = new Set<string>([
   'cage-carerf-a', 'cage-carerf-b', 'cage-carerf-d1', 'cage-carerf-d2',
   'stablediffusion-lst-a', 'stablediffusion-lst-b',
   'stablediffusion-lst-d1', 'stablediffusion-lst-d2',
+  // ShiftLoss 상세 페이지 전용(-p-): 투고 논문(스마트미디어저널)에서 추출한 그림 1·2와 표 1.
+  'shiftloss-p-problem', 'shiftloss-p-arch', 'shiftloss-p-results',
   // physical-ai 카드 승격용: d1/d2를 카드 슬롯(-a/-b)으로 복제했다.
   'physical-ai-a', 'physical-ai-b',
   'track-reid-d1', 'track-reid-d2',

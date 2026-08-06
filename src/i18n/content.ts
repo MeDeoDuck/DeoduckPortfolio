@@ -455,7 +455,7 @@ export const content: Record<Lang, Content> = {
               body:
                 '시계열 예측 모델이 파형의 모양은 맞게 예측하면서 시점만 몇 스텝 밀리는 경우, 기존 손실 함수는 이를 크게 틀린 예측으로 계산합니다. 이 연구는 그 위상 오차를 학습 과정에서 직접 다루는 손실 함수를 설계하고, 정렬 기반 손실이 어떤 데이터·모델 조건에서 효과적인지를 규명합니다.\n\nNeurIPS 2025 손실 함수 DBLoss의 추세·계절성 분해 구조를 유지한 채, 그 위에 window 기반 shift 정렬 항을 더하는 확장 연구입니다.',
               images: [
-                { seed: 'shiftloss-p-problem', label: '위상 오차 — 모양은 맞지만 시간축으로 밀린 예측' },
+                { seed: 'shiftloss-p-problem', label: '예측 비교 (ETTh2 · PatchTST) — 모양은 맞지만 시간축으로 밀리는 위상 오차' },
               ],
             },
             {
@@ -1052,7 +1052,7 @@ export const content: Record<Lang, Content> = {
               body:
                 'When a forecasting model gets the shape of the waveform right but slips a few steps along the time axis, conventional loss functions score it as badly wrong. This study designs a loss function that handles that phase error directly during training, and identifies under which data and model conditions alignment-based losses actually help.\n\nIt is an extension built on DBLoss (NeurIPS 2025): the trend–seasonality decomposition is kept intact, and a window-based shift-alignment term is added on top.',
               images: [
-                { seed: 'shiftloss-p-problem', label: 'Phase error — right shape, shifted in time' },
+                { seed: 'shiftloss-p-problem', label: 'Forecast comparison (ETTh2 · PatchTST) — right shape, shifted along the time axis' },
               ],
             },
             {
