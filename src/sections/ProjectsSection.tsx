@@ -40,7 +40,7 @@ export default function ProjectsSection() {
                     {project.no}
                   </span>
                   <span className="t-h3 min-w-0 shrink-0 text-ink sm:w-52">{project.name}</span>
-                  <span className="t-body min-w-0 flex-1 text-ink/50 sm:truncate">
+                  <span className="t-body min-w-0 flex-1 text-ink/50">
                     {project.tagline}
                   </span>
                 </li>
