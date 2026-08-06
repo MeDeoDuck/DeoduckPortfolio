@@ -443,9 +443,9 @@ export const content: Record<Lang, Content> = {
           period: '2026',
           role: '손실 함수 설계 · 실험',
           tagline:
-            'DBLoss(NeurIPS 2025)에 미분 가능한 시간 지연 항을 추가해, 시계열 예측의 위상 오차를 분석한 논문을 작성했습니다(심사 중).',
+            'DBLoss(NeurIPS 2025)에 window 기반의 미분 가능한 시간 지연 항을 추가해, 정렬 기반 손실이 언제 효과적인지 분석한 논문 「Window 기반 Shift Loss」를 KCI 등재지에 투고했습니다(심사 중).',
           stack: ['PyTorch', 'PatchTST', 'DLinear', 'iTransformer', 'Amplifier'],
-          metrics: [],
+          metrics: [{ value: 'KCI', label: '논문 심사 중' }],
           links: [{ label: '저장소', href: 'https://github.com/MeDeoDuck/ShiftLoss' }],
           detail: [
             {
@@ -456,12 +456,17 @@ export const content: Record<Lang, Content> = {
             {
               heading: '접근',
               body:
-                'DBLoss에 미분 가능한 시간 지연 항을 추가해, 예측이 시간축으로 얼마나 밀렸는지를 학습 과정에서 함께 최적화하도록 했습니다. 미분 가능하게 구성했기 때문에 별도의 후처리 없이 기존 학습 루프에 그대로 붙습니다.\n\nPatchTST, DLinear, iTransformer, Amplifier 등 구조가 다른 예측 모델에 각각 적용해 손실 함수 단위의 교체가 가능한지 확인했습니다.',
+                'DBLoss의 추세·계절성 분해 구조는 유지한 채, 시계열을 윈도우 단위로 쪼개 각 윈도우에서 제한된 범위의 시간 이동을 soft-min으로 탐색하는 미분 가능한 shift 항을 추가했습니다. 전체 시퀀스를 정렬하는 DTW 계열 기법의 O(N²) 비용 없이 정렬 정보를 학습에 반영하며, 오정렬 위험이 있는 계절성 성분 대신 추세 성분에만 적용합니다.\n\n손실 함수는 하이퍼파라미터 하나로 PatchTST, DLinear, iTransformer, Amplifier에 그대로 붙는 drop-in 구조로 구현했습니다.',
+            },
+            {
+              heading: '결과',
+              body:
+                '시간적 특성이 다른 네 데이터셋(ETTh1·ETTh2·ETTm1·Weather)과 두 모델(Amplifier·PatchTST)에서 예측 정확도(MSE·MAE)와 정렬 품질(DTW·TDI)을 함께 측정했습니다.\n\n일·주 단위 계절성이 뚜렷한 시간 단위 데이터에서는 네 조합 중 세 조합에서 DTW가 개선됐고, 주파수 기반 모델인 Amplifier에서는 MSE도 줄었습니다(ETTh1 0.4051→0.4034, ETTm1 0.3275→0.3251). 반면 분 단위 고주파 데이터와 patch 기반 모델에서는 기존 DBLoss가 더 안정적이었습니다.\n\n정렬 기반 손실이 항상 이긴다가 아니라, 어떤 데이터·모델 조건에서 효과적인지를 규명한 것이 논문의 핵심입니다.',
             },
             {
               heading: '현재 상태',
               body:
-                '논문 심사 중입니다. 벤치마크 수치는 심사 결과가 나온 뒤 공개할 예정이라 여기에는 적지 않았습니다.',
+                '논문 「Window 기반 Shift Loss」를 KCI 등재지 스마트미디어저널에 투고해 심사 중입니다.',
             },
           ],
           featured: true,
@@ -999,9 +1004,9 @@ export const content: Record<Lang, Content> = {
           period: '2026',
           role: 'Loss function design and experiments',
           tagline:
-            'Wrote an analysis paper adding a differentiable time-shift term to DBLoss (NeurIPS 2025) for phase error in forecasting (under review).',
+            'Added a windowed differentiable time-shift term to DBLoss (NeurIPS 2025) and analyzed when alignment-based losses help; the paper is under review at a KCI-indexed journal.',
           stack: ['PyTorch', 'PatchTST', 'DLinear', 'iTransformer', 'Amplifier'],
-          metrics: [],
+          metrics: [{ value: 'KCI', label: 'Paper under review' }],
           links: [{ label: 'Repository', href: 'https://github.com/MeDeoDuck/ShiftLoss' }],
           detail: [
             {
@@ -1012,12 +1017,17 @@ export const content: Record<Lang, Content> = {
             {
               heading: 'Approach',
               body:
-                'A differentiable time-shift term was added to DBLoss so that how far a prediction has slipped along the time axis is optimized during training. Because the term is differentiable, it drops into an existing training loop without extra post-processing.\n\nIt was applied to PatchTST, DLinear, iTransformer, and Amplifier to check whether it works as a drop-in replacement across architectures.',
+                'Keeping the trend–seasonality decomposition of DBLoss, the series is split into windows and each window searches a bounded range of time shifts with a soft-min — a differentiable alignment term that avoids the O(N²) cost of full-sequence alignment methods like DTW. The shift term is applied only to the trend component, since the seasonal component risks misaligning to a neighboring cycle.\n\nThe loss is implemented as a drop-in replacement selectable by a single hyperparameter across PatchTST, DLinear, iTransformer, and Amplifier.',
+            },
+            {
+              heading: 'Results',
+              body:
+                'Experiments covered four datasets with different temporal profiles (ETTh1, ETTh2, ETTm1, Weather) and two models (Amplifier, PatchTST), measuring both forecast accuracy (MSE, MAE) and alignment quality (DTW, TDI).\n\nOn hourly datasets with clear daily/weekly seasonality, DTW improved in three of four model–dataset pairs, and the frequency-aware Amplifier also gained in MSE (ETTh1 0.4051→0.4034, ETTm1 0.3275→0.3251). On high-frequency minute-level data and patch-based models, plain DBLoss stayed more stable.\n\nThe core finding is not that alignment-based loss always wins, but under which data and model conditions it helps.',
             },
             {
               heading: 'Status',
               body:
-                'The paper is under review. Benchmark numbers will be published after the review concludes, so none are listed here.',
+                'The paper ("Window-based Shift Loss") is under review at the Smart Media Journal, a KCI-indexed journal.',
             },
           ],
           featured: true,
